@@ -1,91 +1,33 @@
-<!DOCTYPE html>
-<html lang="ar" dir="rtl">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EZWA Official Store</title>
-    <style>
-        /* الهوية البصرية: تباعد أحرف ضيق جداً للفخامة */
-        body { background-color: #000; color: #fff; text-align: center; font-family: 'Arial', sans-serif; margin: 0; padding: 10px; }
-        
-        .header-section { padding: 20px 0; }
-        .brand-name { font-size: 2.5rem; color: #D4AF37; letter-spacing: -3px; text-transform: uppercase; margin: 0; }
-        
-        /* توزيع المنتجات: عمودين متساويين لتقليل المساحات الضائعة */
-        .product-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; padding: 10px; max-width: 1000px; margin: auto; }
-
-        .product-card { 
-            background: #050505; 
-            border: 1px solid #1a1a1a; 
-            border-radius: 5px; 
-            padding: 8px; 
-            display: flex; 
-            flex-direction: column;
-        }
-
-        .product-card img { 
-            width: 100%; 
-            aspect-ratio: 1 / 1; 
-            object-fit: cover; 
-            filter: contrast(1.1);
-        }
-
-        .product-title { font-size: 0.8rem; margin: 10px 0 5px; color: #D4AF37; letter-spacing: -0.5px; }
-        .price { font-size: 0.9rem; font-weight: bold; margin-bottom: 10px; }
-
-        .order-btn { 
-            background: #D4AF37; 
-            color: #000; 
-            text-decoration: none; 
-            padding: 8px 0; 
-            font-size: 0.7rem; 
-            font-weight: bold; 
-            border-radius: 2px;
-        }
-
-        footer { margin-top: 30px; color: #333; font-size: 0.7rem; }
-    </style>
-</head>
-<body>
-
-    <div class="header-section">
-        <h1 class="brand-name">EZWA</h1>
+<div class="product-grid">
+    <!-- المنتج 1: واجهة المجموعة الجديدة -->
+    <div class="product-card">
+        <img src="تيشرت بوكس RAW.png">
+        <div class="product-title">PERSIST | SIGNATURE BOXY</div>
+        <div class="price">89 ر.س</div>
+        <a href="https://wa.me/966502777884" class="order-btn">اطلب واتساب</a>
     </div>
 
-    <div class="product-grid">
-        <!-- المنتج 1 -->
-        <div class="product-card">
-            <img src="تيشرت بوكس RAW.png">
-            <div class="product-title">PERSIST BOXY FIT</div>
-            <div class="price">89 ر.س</div>
-            <a href="https://wa.me/966502777884" class="order-btn">اطلب واتساب</a>
-        </div>
-
-        <!-- المنتج 2 -->
-        <div class="product-card">
-            <img src="تيشرت اوفر سايز.png">
-            <div class="product-title">ALONE OVERSIZED</div>
-            <div class="price">89 ر.س</div>
-            <a href="https://wa.me/966502777884" class="order-btn">اطلب واتساب</a>
-        </div>
-
-        <!-- المنتج 3 -->
-        <div class="product-card">
-            <img src="تيشرت بوكس RAW (2).png">
-            <div class="product-title">SILENT LUXURY</div>
-            <div class="price">89 ر.س</div>
-            <a href="https://wa.me/966502777884" class="order-btn">اطلب واتساب</a>
-        </div>
-
-        <!-- المنتج 4 -->
-        <div class="product-card">
-            <img src="تيشرت بوكس RAW (3).png">
-            <div class="product-title">PERSIST ELITE</div>
-            <div class="price">89 ر.س</div>
-            <a href="https://wa.me/966502777884" class="order-btn">اطلب واتساب</a>
-        </div>
+    <!-- المنتج 2: مجموعة Alone -->
+    <div class="product-card">
+        <img src="تيشرت اوفر سايز.png">
+        <div class="product-title">ALONE | OVERSIZED ESSENTIAL</div>
+        <div class="price">89 ر.س</div>
+        <a href="https://wa.me/966502777884" class="order-btn">اطلب واتساب</a>
     </div>
 
-    <footer>© 2026 EZWA STORE</footer>
-</body>
-</html>
+    <!-- المنتج 3: مجموعة Silent Luxury -->
+    <div class="product-card">
+        <img src="تيشرت بوكس RAW (2).png">
+        <div class="product-title">SILENT LUXURY | BLACK EDITION</div>
+        <div class="price">89 ر.س</div>
+        <a href="https://wa.me/966502777884" class="order-btn">اطلب واتساب</a>
+    </div>
+
+    <!-- المنتج 4: إضافة القطع الـ Linen إذا توفرت صورها -->
+    <div class="product-card">
+        <img src="تيشرت بوكس RAW (3).png">
+        <div class="product-title">PREMIUM LINEN SET</div>
+        <div class="price">149 ر.س</div>
+        <a href="https://wa.me/966502777884" class="order-btn">اطلب واتساب</a>
+    </div>
+</div>
