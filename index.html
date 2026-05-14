@@ -3,32 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EZWA Official</title>
+    <title>EZWA Official | عزوة</title>
     <style>
-        body {
-            background-color: #000;
-            color: #fff;
-            font-family: Arial, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-        }
-        .container {
-            text-align: center;
-        }
-        h1 {
-            color: #D4AF37;
-            letter-spacing: -1px;
-            font-size: 3rem;
-        }
+        body { background-color: #000; color: #fff; font-family: sans-serif; margin: 0; padding: 20px; text-align: center; }
+        h1 { color: #D4AF37; letter-spacing: -2px; font-size: 2.5rem; margin-top: 40px; }
+        .gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px; max-width: 1000px; margin: 40px auto; }
+        .gallery img { width: 100%; border-radius: 10px; border: 1px solid #333; transition: 0.3s; }
+        .gallery img:hover { border-color: #D4AF37; transform: scale(1.02); }
+        .tagline { color: #D4AF37; font-size: 14px; opacity: 0.8; letter-spacing: 2px; }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>EZWA</h1>
-        <p>قريباً.. الفخامة بشكل جديد</p>
+    <h1>EZWA</h1>
+    <p class="tagline">PREMIUM STREETWEAR</p>
+
+    <div class="gallery">
+        <img src="رابط_صورة_التيشيرت_1.jpg" alt="EZWA Collection">
+        <img src="رابط_صورة_التيشيرت_2.jpg" alt="EZWA Collection">
+        <img src="رابط_صورة_التيشيرت_3.jpg" alt="EZWA Collection">
     </div>
+
+    <p>قريباً.. إطلاق المجموعة الجديدة</p>
 </body>
 </html>
