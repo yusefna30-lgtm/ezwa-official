@@ -1,33 +1,100 @@
-<div class="product-grid">
-    <!-- المنتج 1: واجهة المجموعة الجديدة -->
-    <div class="product-card">
-        <img src="تيشرت بوكس RAW.png">
-        <div class="product-title">PERSIST | SIGNATURE BOXY</div>
-        <div class="price">89 ر.س</div>
-        <a href="https://wa.me/966502777884" class="order-btn">اطلب واتساب</a>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EZWA | Official Store</title>
+    <style>
+        body {
+            background-color: #000000;
+            color: #D4AF37; /* اللون الذهبي الفاخر */
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 0;
+            padding: 40px 20px;
+            text-align: center;
+        }
+        h1 {
+            font-size: 3.5rem;
+            letter-spacing: -3px; /* المسافات المتقاربة التي تميز براند EZWA */
+            text-transform: uppercase;
+            margin-bottom: 50px;
+        }
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            width: 100%;
+            max-width: 1100px;
+        }
+        .product-card {
+            background: #050505;
+            border: 1px solid #1a1a1a;
+            padding: 15px;
+            transition: 0.3s;
+        }
+        .product-card:hover {
+            border-color: #D4AF37;
+        }
+        img {
+            width: 100%;
+            height: auto;
+            display: block;
+            filter: contrast(1.1); /* لمسة سينمائية عالية التباين */
+        }
+        .product-info {
+            margin-top: 20px;
+        }
+        .brand-line {
+            font-size: 0.8rem;
+            letter-spacing: 2px;
+            color: #888;
+            margin-bottom: 5px;
+        }
+        .product-name {
+            font-size: 1.1rem;
+            letter-spacing: -1px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>EZWA</h1>
+
+    <div class="gallery">
+        <!-- المنتج 1 -->
+        <div class="product-card">
+            <img src="تيشرت بوكس RAW.png" alt="EZWA Persist">
+            <div class="product-info">
+                <div class="brand-line">PERSIST COLLECTION</div>
+                <div class="product-name">URBAN BOXY FIT</div>
+            </div>
+        </div>
+
+        <!-- المنتج 2 -->
+        <div class="product-card">
+            <img src="تيشرت اوفر سايز.png" alt="EZWA Alone">
+            <div class="product-info">
+                <div class="brand-line">ALONE COLLECTION</div>
+                <div class="product-name">ESSENTIAL OVERSIZED</div>
+            </div>
+        </div>
+        
+        <!-- المنتج 3 -->
+        <div class="product-card">
+            <img src="تيشرت بوكس RAW (2).png" alt="EZWA Collection">
+            <div class="product-info">
+                <div class="brand-line">SILENT LUXURY</div>
+                <div class="product-name">ELITE BLACK PIECE</div>
+            </div>
+        </div>
     </div>
 
-    <!-- المنتج 2: مجموعة Alone -->
-    <div class="product-card">
-        <img src="تيشرت اوفر سايز.png">
-        <div class="product-title">ALONE | OVERSIZED ESSENTIAL</div>
-        <div class="price">89 ر.س</div>
-        <a href="https://wa.me/966502777884" class="order-btn">اطلب واتساب</a>
-    </div>
-
-    <!-- المنتج 3: مجموعة Silent Luxury -->
-    <div class="product-card">
-        <img src="تيشرت بوكس RAW (2).png">
-        <div class="product-title">SILENT LUXURY | BLACK EDITION</div>
-        <div class="price">89 ر.س</div>
-        <a href="https://wa.me/966502777884" class="order-btn">اطلب واتساب</a>
-    </div>
-
-    <!-- المنتج 4: إضافة القطع الـ Linen إذا توفرت صورها -->
-    <div class="product-card">
-        <img src="تيشرت بوكس RAW (3).png">
-        <div class="product-title">PREMIUM LINEN SET</div>
-        <div class="price">149 ر.س</div>
-        <a href="https://wa.me/966502777884" class="order-btn">اطلب واتساب</a>
-    </div>
-</div>
+    <footer style="margin-top: 50px; color: #444; font-size: 0.8rem;">
+        © 2026 EZWA STORE
+    </footer>
+</body>
+</html>
