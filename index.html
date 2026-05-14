@@ -11,11 +11,10 @@
         .product-card { background: #0a0a0a; border: 1px solid #D4AF37; border-radius: 12px; padding: 8px; display: flex; flex-direction: column; justify-content: space-between; position: relative; }
         .badge { position: absolute; top: 12px; right: 12px; background: #D4AF37; color: #000; padding: 3px 7px; font-size: 0.55rem; font-weight: bold; border-radius: 4px; z-index: 10; text-transform: uppercase; }
 
-        /* تعديل لعرض المودل كاملاً بدون قص */
         .product-card img { 
             width: 100%; 
-            height: 220px; /* طول ثابت ومناسب للجوال */
-            object-fit: contain; /* يضمن ظهور المودل كاملاً */
+            height: 220px; 
+            object-fit: contain; 
             border-radius: 8px; 
             margin-bottom: 6px; 
             background: #050505;
@@ -24,8 +23,11 @@
         .product-title { font-size: 0.65rem; font-weight: bold; margin-bottom: 5px; letter-spacing: -0.5px; height: 35px; display: flex; align-items: center; justify-content: center; }
         .price { color: #D4AF37; font-size: 0.95rem; font-weight: bold; margin-bottom: 8px; }
         .btn-group { display: flex; flex-direction: column; gap: 5px; }
-        .order-btn { background: #D4AF37; color: #000 !important; text-decoration: none; padding: 8px 0; border-radius: 6px; font-weight: bold; font-size: 0.65rem; }
-        .video-btn { background: transparent; color: #D4AF37 !important; border: 1px solid #D4AF37; text-decoration: none; padding: 6px 0; border-radius: 6px; font-weight: bold; font-size: 0.6rem; }
+
+        /* زر الواتساب المصلح */
+        .order-btn { background: #D4AF37; color: #000 !important; text-decoration: none; padding: 10px 0; border-radius: 6px; font-weight: bold; font-size: 0.7rem; display: block; }
+        .video-btn { background: transparent; color: #D4AF37 !important; border: 1px solid #D4AF37; text-decoration: none; padding: 6px 0; border-radius: 6px; font-weight: bold; font-size: 0.6rem; cursor: pointer; }
+        
         footer { margin-top: 30px; color: #444; font-size: 0.7rem; padding-bottom: 20px; }
     </style>
 </head>
@@ -42,7 +44,7 @@
             <div class="product-title">PERSIST BOXY FIT</div>
             <div class="price">89 ر.س</div>
             <div class="btn-group">
-                <a href="https://wa.me/966502777884" class="order-btn">اطلب عبر واتساب</a>
+                <a href="https://wa.me/966502777884?text=أريد طلب تيشرت PERSIST" target="_blank" class="order-btn">اطلب الآن مباشر</a>
                 <a href="#" class="video-btn">مشاهدة الفيديو</a>
             </div>
         </div>
@@ -54,7 +56,7 @@
             <div class="product-title">ALONE OVERSIZED</div>
             <div class="price">89 ر.س</div>
             <div class="btn-group">
-                <a href="https://wa.me/966502777884" class="order-btn">اطلب عبر واتساب</a>
+                <a href="https://wa.me/966502777884?text=أريد طلب تيشرت ALONE" target="_blank" class="order-btn">اطلب الآن مباشر</a>
                 <a href="#" class="video-btn">مشاهدة الفيديو</a>
             </div>
         </div>
@@ -66,7 +68,7 @@
             <div class="product-title">SILENT LUXURY BLACK</div>
             <div class="price">89 ر.س</div>
             <div class="btn-group">
-                <a href="https://wa.me/966502777884" class="order-btn">اطلب عبر واتساب</a>
+                <a href="https://wa.me/966502777884?text=أريد طلب تيشرت SILENT LUXURY" target="_blank" class="order-btn">اطلب الآن مباشر</a>
                 <a href="#" class="video-btn">مشاهدة الفيديو</a>
             </div>
         </div>
@@ -78,7 +80,7 @@
             <div class="product-title">PERSIST WHITE EDITION</div>
             <div class="price">89 ر.س</div>
             <div class="btn-group">
-                <a href="https://wa.me/966502777884" class="order-btn">اطلب عبر واتساب</a>
+                <a href="https://wa.me/966502777884?text=أريد طلب تيشرت PERSIST WHITE" target="_blank" class="order-btn">اطلب الآن مباشر</a>
                 <a href="#" class="video-btn">مشاهدة الفيديو</a>
             </div>
         </div>
@@ -90,7 +92,7 @@
             <div class="product-title">PREMIUM RAW CUT</div>
             <div class="price">89 ر.س</div>
             <div class="btn-group">
-                <a href="https://wa.me/966502777884" class="order-btn">اطلب عبر واتساب</a>
+                <a href="https://wa.me/966502777884?text=أريد طلب تيشرت PREMIUM RAW" target="_blank" class="order-btn">اطلب الآن مباشر</a>
                 <a href="#" class="video-btn">مشاهدة الفيديو</a>
             </div>
         </div>
@@ -102,7 +104,7 @@
             <div class="product-title">ESSENTIAL COLLECTION</div>
             <div class="price">89 ر.س</div>
             <div class="btn-group">
-                <a href="https://wa.me/966502777884" class="order-btn">اطلب عبر واتساب</a>
+                <a href="https://wa.me/966502777884?text=أريد طلب تيشرت ESSENTIAL" target="_blank" class="order-btn">اطلب الآن مباشر</a>
                 <a href="#" class="video-btn">مشاهدة الفيديو</a>
             </div>
         </div>
