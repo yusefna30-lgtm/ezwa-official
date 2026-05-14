@@ -5,49 +5,166 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EZWA Official Store</title>
     <style>
-        body { background-color: #000; color: #fff; text-align: center; font-family: sans-serif; margin: 0; padding: 10px; }
-        .brand-header { font-size: 3rem; color: #D4AF37; letter-spacing: -3px; margin: 20px 0; font-weight: bold; }
-        .product-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; max-width: 800px; margin: auto; }
-        .product-card { background: #0a0a0a; border: 1px solid #1a1a1a; border-radius: 12px; padding: 12px; display: flex; flex-direction: column; align-items: center; }
-        .product-card img { width: 100%; height: auto; border-radius: 8px; margin-bottom: 10px; }
-        .product-title { font-size: 0.7rem; font-weight: bold; margin-bottom: 8px; color: #fff; height: 35px; display: flex; align-items: center; }
-        .price { color: #D4AF37; font-weight: bold; margin-bottom: 12px; font-size: 0.9rem; }
-        .btn-group { display: flex; flex-direction: column; gap: 6px; width: 100%; }
-        .order-btn { background: #D4AF37; color: #000; padding: 8px; border-radius: 5px; text-decoration: none; font-size: 0.65rem; font-weight: bold; }
-        .video-btn { background: none; border: 1px solid #333; color: #D4AF37; padding: 6px; border-radius: 5px; text-decoration: none; font-size: 0.6rem; }
+        body { background-color: #000; color: #fff; text-align: center; font-family: sans-serif; margin: 0; padding: 15px; }
+        .brand-header { font-size: 3.5rem; color: #D4AF37; letter-spacing: -3px; margin: 30px 0; font-weight: bold; }
+        
+        .container { display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; max-width: 1000px; margin: auto; }
+        
+        .card { background: #0a0a0a; border: 1px solid #1a1a1a; border-radius: 15px; width: calc(50% - 15px); min-width: 160px; padding: 15px; box-sizing: border-box; display: flex; flex-direction: column; }
+        
+        .card img { width: 100%; border-radius: 10px; margin-bottom: 12px; }
+        .title { font-size: 0.8rem; font-weight: bold; margin-bottom: 8px; color: #fff; height: 35px; }
+        .price { color: #D4AF37; font-weight: bold; margin-bottom: 15px; font-size: 1rem; }
+        
+        .btns { display: flex; flex-direction: column; gap: 8px; }
+        .btn-wa { background: #D4AF37; color: #000; padding: 10px; border-radius: 6px; text-decoration: none; font-size: 0.7rem; font-weight: bold; }
+        .btn-video { border: 1px solid #333; color: #D4AF37; padding: 8px; border-radius: 6px; text-decoration: none; font-size: 0.65rem; }
     </style>
 </head>
 <body>
 
     <div class="brand-header">EZWA</div>
 
-    <div class="product-grid">
-        <script>
-            const images = [
-                "TSHIRT BOX RAW.png",
-                "%D8%AA%D9%8A%D8%B4%D8%B1%D8%AA%20%D8%A8%D9%88%D9%83%D8%B3%20RAW%20(2).png",
-                "%D8%AA%D9%8A%D8%B4%D8%B1%D8%AA%20%D8%A8%D9%88%D9%83%D8%B3%20RAW%20(3).png",
-                "%D8%AA%D9%8A%D8%B4%D8%B1%D8%AA%20%D8%A8%D9%88%D9%83%D8%B3%20RAW%20(4).png",
-                "%D8%AA%D9%8A%D8%B4%D8%B1%D8%AA%20%D8%A8%D9%88%D9%83%D8%B3%20RAW%20(5).png",
-                "%D8%AA%D9%8A%D8%B4%D8%B1%D8%AA%20%D8%A8%D9%88%D9%83%D8%B3%20RAW%20(6).png"
-            ];
-            const titles = ["PREMIUM RAW", "ESSENTIAL BLACK", "STREET MODE", "URBAN STYLE", "PREMIUM SET", "EZWA SPECIAL"];
-            
-            let gridHtml = "";
-            images.forEach((img, i) => {
-                gridHtml += `
-                <div class="product-card">
-                    <img src="${img}" alt="EZWA Product">
-                    <div class="product-title">${titles[i]}</div>
-                    <div class="price">89 ر.س</div>
-                    <div class="btn-group">
-                        <a href="https://wa.me/966502777884" class="order-btn">واتساب مباشر</a>
-                        <a href="#" class="video-btn">مشاهدة الفيديو</a>
-                    </div>
-                </div>`;
-            });
-            document.write(`<div class="product-grid">${gridHtml}</div>`);
-        </script>
+    <div class="container">
+        <div class="card">
+            <img src="TSHIRT BOX RAW.png">
+            <div class="title">PREMIUM RAW</div>
+            <div class="price">89 ر.س</div>
+            <div class="btns">
+                <a href="https://wa.me/966502777884" class="btn-wa">واتساب مباشر</a>
+                <a href="#" class="btn-video">مشاهدة الفيديو</a>
+            </div>
+        </div>
+        <div class="card">
+            <img src="تيشرت بوكس RAW (2).png">
+            <div class="title">ESSENTIAL BLACK</div>
+            <div class="price">89 ر.س</div>
+            <div class="btns">
+                <a href="https://wa.me/966502777884" class="btn-wa">واتساب مباشر</a>
+                <a href="#" class="btn-video">مشاهدة الفيديو</a>
+            </div>
+        </div>
+        <div class="card">
+            <img src="تيشرت بوكس RAW (3).png">
+            <div class="title">STREET MODE</div>
+            <div class="price">89 ر.س</div>
+            <div class="btns">
+                <a href="https://wa.me/966502777884" class="btn-wa">واتساب مباشر</a>
+                <a href="#" class="btn-video">مشاهدة الفيديو</a>
+            </div>
+        </div>
+        <div class="card">
+            <img src="تيشرت بوكس RAW (4).png">
+            <div class="title">URBAN STYLE</div>
+            <div class="price">89 ر.س</div>
+            <div class="btns">
+                <a href="https://wa.me/966502777884" class="btn-wa">واتساب مباشر</a>
+                <a href="#" class="btn-video">مشاهدة الفيديو</a>
+            </div>
+        </div>
+        <div class="card">
+            <img src="تيشرت بوكس RAW (5).png">
+            <div class="title">PREMIUM SET</div>
+            <div class="price">89 ر.س</div>
+            <div class="btns">
+                <a href="https://wa.me/966502777884" class="btn-wa">واتساب مباشر</a>
+                <a href="#" class="btn-video">مشاهدة الفيديو</a>
+            </div>
+        </div>
+        <div class="card">
+            <img src="تيشرت بوكس RAW (6).png">
+            <div class="title">EZWA SPECIAL</div>
+            <div class="price">89 ر.س</div>
+            <div class="btns">
+                <a href="https://wa.me/966502777884" class="btn-wa">واتساب مباشر</a>
+                <a href="#" class="btn-video">مشاهدة الفيديو</a>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html><!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EZWA Official Store</title>
+    <style>
+        body { background-color: #000; color: #fff; text-align: center; font-family: sans-serif; margin: 0; padding: 15px; }
+        .brand-header { font-size: 3.5rem; color: #D4AF37; letter-spacing: -3px; margin: 30px 0; font-weight: bold; }
+        
+        .container { display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; max-width: 1000px; margin: auto; }
+        
+        .card { background: #0a0a0a; border: 1px solid #1a1a1a; border-radius: 15px; width: calc(50% - 15px); min-width: 160px; padding: 15px; box-sizing: border-box; display: flex; flex-direction: column; }
+        
+        .card img { width: 100%; border-radius: 10px; margin-bottom: 12px; }
+        .title { font-size: 0.8rem; font-weight: bold; margin-bottom: 8px; color: #fff; height: 35px; }
+        .price { color: #D4AF37; font-weight: bold; margin-bottom: 15px; font-size: 1rem; }
+        
+        .btns { display: flex; flex-direction: column; gap: 8px; }
+        .btn-wa { background: #D4AF37; color: #000; padding: 10px; border-radius: 6px; text-decoration: none; font-size: 0.7rem; font-weight: bold; }
+        .btn-video { border: 1px solid #333; color: #D4AF37; padding: 8px; border-radius: 6px; text-decoration: none; font-size: 0.65rem; }
+    </style>
+</head>
+<body>
+
+    <div class="brand-header">EZWA</div>
+
+    <div class="container">
+        <div class="card">
+            <img src="TSHIRT BOX RAW.png">
+            <div class="title">PREMIUM RAW</div>
+            <div class="price">89 ر.س</div>
+            <div class="btns">
+                <a href="https://wa.me/966502777884" class="btn-wa">واتساب مباشر</a>
+                <a href="#" class="btn-video">مشاهدة الفيديو</a>
+            </div>
+        </div>
+        <div class="card">
+            <img src="تيشرت بوكس RAW (2).png">
+            <div class="title">ESSENTIAL BLACK</div>
+            <div class="price">89 ر.س</div>
+            <div class="btns">
+                <a href="https://wa.me/966502777884" class="btn-wa">واتساب مباشر</a>
+                <a href="#" class="btn-video">مشاهدة الفيديو</a>
+            </div>
+        </div>
+        <div class="card">
+            <img src="تيشرت بوكس RAW (3).png">
+            <div class="title">STREET MODE</div>
+            <div class="price">89 ر.س</div>
+            <div class="btns">
+                <a href="https://wa.me/966502777884" class="btn-wa">واتساب مباشر</a>
+                <a href="#" class="btn-video">مشاهدة الفيديو</a>
+            </div>
+        </div>
+        <div class="card">
+            <img src="تيشرت بوكس RAW (4).png">
+            <div class="title">URBAN STYLE</div>
+            <div class="price">89 ر.س</div>
+            <div class="btns">
+                <a href="https://wa.me/966502777884" class="btn-wa">واتساب مباشر</a>
+                <a href="#" class="btn-video">مشاهدة الفيديو</a>
+            </div>
+        </div>
+        <div class="card">
+            <img src="تيشرت بوكس RAW (5).png">
+            <div class="title">PREMIUM SET</div>
+            <div class="price">89 ر.س</div>
+            <div class="btns">
+                <a href="https://wa.me/966502777884" class="btn-wa">واتساب مباشر</a>
+                <a href="#" class="btn-video">مشاهدة الفيديو</a>
+            </div>
+        </div>
+        <div class="card">
+            <img src="تيشرت بوكس RAW (6).png">
+            <div class="title">EZWA SPECIAL</div>
+            <div class="price">89 ر.س</div>
+            <div class="btns">
+                <a href="https://wa.me/966502777884" class="btn-wa">واتساب مباشر</a>
+                <a href="#" class="btn-video">مشاهدة الفيديو</a>
+            </div>
+        </div>
     </div>
 
 </body>
