@@ -7,41 +7,63 @@
     <style>
         body {
             background-color: #000000;
-            color: #D4AF37;
+            color: #D4AF37; /* لون ذهبي فخم */
             font-family: 'Arial', sans-serif;
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
-            height: 100vh;
             margin: 0;
+            padding: 20px;
             text-align: center;
         }
         h1 {
             font-size: 3rem;
-            letter-spacing: -3PX; /* تقريب المسافات بين الحروف للأناقة */
+            letter-spacing: -3px; /* المسافات المتقاربة التي اخترتها */
             text-transform: uppercase;
-            margin-bottom: 10px;
+            margin-bottom: 30px;
         }
-        p {
-            font-size: 1.2rem;
-            letter-spacing: 1px;
-            opacity: 0.8;
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            width: 100%;
+            max-width: 1200px;
         }
-        .collection {
-            margin-top: 30px;
+        .product-card {
             border: 1px solid #D4AF37;
-            padding: 20px;
-            border-radius: 5px;
+            padding: 10px;
+            background: #0a0a0a;
+        }
+        img {
+            width: 100%;
+            height: auto;
+            filter: contrast(1.1); /* لمسة سينمائية عالية التباين */
+        }
+        .product-name {
+            margin-top: 15px;
+            font-size: 1.2rem;
+            letter-spacing: -1px;
         }
     </style>
 </head>
 <body>
+
     <h1>EZWA</h1>
-    <p>Luxury Streetwear | Alone & Persist Collections</p>
-    
-    <div class="collection">
-        <p>New Oversized Sets Coming Soon</p>
+
+    <div class="gallery">
+        <!-- عرض الصور التي رفعتها -->
+        <div class="product-card">
+            <img src="تيشرت بوكس RAW.png" alt="Persist Collection">
+            <div class="product-name">PERSIST SIGNATURE</div>
+        </div>
+        
+        <div class="product-card">
+            <img src="تيشرت اوفر سايز.png" alt="Alone Collection">
+            <div class="product-name">ALONE OVERSIZED</div>
+        </div>
+        
+        <!-- يمكنك إضافة المزيد من الكروت هنا لبقية الصور بنفس الطريقة -->
     </div>
+
 </body>
 </html>
