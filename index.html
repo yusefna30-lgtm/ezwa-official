@@ -5,56 +5,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EZWA Official Store</title>
     <style>
-        /* الهوية البصرية لبراند EZWA */
         body { background-color: #000; color: #fff; text-align: center; font-family: sans-serif; margin: 0; padding: 10px; }
         .brand-header { font-size: 3rem; color: #D4AF37; letter-spacing: -4px; text-transform: uppercase; margin: 20px 0; font-weight: bold; }
-        
-        /* شبكة المنتجات - عمودين متساويين */
         .product-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; padding: 5px; max-width: 800px; margin: auto; }
         .product-card { background: #0a0a0a; border: 1px solid #D4AF37; border-radius: 12px; padding: 8px; display: flex; flex-direction: column; justify-content: space-between; position: relative; }
-        
-        /* التاغ الذهبي */
         .badge { position: absolute; top: 12px; right: 12px; background: #D4AF37; color: #000; padding: 3px 7px; font-size: 0.55rem; font-weight: bold; border-radius: 4px; z-index: 10; }
-        
-        /* ضبط حجم الصورة لظهور المودل كاملاً */
         .product-card img { width: 100%; height: 220px; object-fit: contain; border-radius: 8px; margin-bottom: 6px; background: #050505; }
-        
         .product-title { font-size: 0.65rem; font-weight: bold; margin-bottom: 5px; letter-spacing: -0.5px; height: 35px; display: flex; align-items: center; justify-content: center; }
         .price { color: #D4AF37; font-size: 0.95rem; font-weight: bold; margin-bottom: 8px; }
-        
         .btn-group { display: flex; flex-direction: column; gap: 5px; }
         .order-btn { background: #D4AF37; color: #000 !important; text-decoration: none; padding: 10px 0; border-radius: 6px; font-weight: bold; font-size: 0.7rem; display: block; }
-        
-        /* زر الفيديو مع الأيقونة الجديدة */
-        .video-btn { 
-            background: transparent; color: #D4AF37 !important; border: 1px solid #D4AF37; text-decoration: none; 
-            padding: 8px 0; border-radius: 6px; font-weight: bold; font-size: 0.6rem; 
-            display: flex; align-items: center; justify-content: center; 
-        }
-        .video-btn::before { content: "▶"; margin-left: 5px; font-size: 0.5rem; }
-
+        .video-btn { background: transparent; color: #D4AF37 !important; border: 1px solid #D4AF37; text-decoration: none; padding: 8px 0; border-radius: 6px; font-weight: bold; font-size: 0.6rem; display: flex; align-items: center; justify-content: center; }
+        .video-btn::after { content: " ▶️"; font-size: 0.5rem; }
         footer { margin-top: 30px; color: #444; font-size: 0.7rem; padding-bottom: 20px; }
     </style>
 </head>
 <body>
-
     <div class="brand-header">EZWA</div>
-
     <div class="product-grid">
-        
-        <!-- منتج 1 -->
-        <div class="product-card">
-            <span class="badge">BEST SELLER</span>
-            <img src="تيشرت بوكس RAW.png">
-            <div class="product-title">PERSIST BOXY FIT</div>
-            <div class="price">89 ر.س</div>
-            <div class="btn-group">
-                <a href="https://wa.me/966502777884" class="order-btn">اطلب عبر واتساب</a>
-                <a href="#" class="video-btn">مشاهدة الفيديو</a>
-            </div>
-        </div>
-
-        <!-- منتج 2 -->
+        <!-- 1 -->
         <div class="product-card">
             <span class="badge">NEW</span>
             <img src="تيشرت اوفر سايز.png">
@@ -65,57 +34,31 @@
                 <a href="#" class="video-btn">مشاهدة الفيديو</a>
             </div>
         </div>
-
-        <!-- منتج 3 -->
+        <!-- 2 -->
         <div class="product-card">
-            <span class="badge">ELITE</span>
-            <img src="تيشرت بوكس RAW (2).png">
-            <div class="product-title">SILENT LUXURY BLACK</div>
+            <span class="badge">BEST SELLER</span>
+            <img src="تيشرت بوكس RAW.png">
+            <div class="product-title">PERSIST BOXY FIT</div>
             <div class="price">89 ر.س</div>
             <div class="btn-group">
                 <a href="https://wa.me/966502777884" class="order-btn">اطلب عبر واتساب</a>
                 <a href="#" class="video-btn">مشاهدة الفيديو</a>
             </div>
         </div>
-
-        <!-- منتج 4 -->
+        <!-- 3 -->
         <div class="product-card">
             <span class="badge">PERSIST</span>
+            <img src="تيشرت بوكس RAW (2).png">
+            <div class="product-title">PERSIST BLUE</div>
+            <div class="price">89 ر.س</div>
+            <div class="btn-group">
+                <a href="https://wa.me/966502777884" class="order-btn">اطلب عبر واتساب</a>
+                <a href="#" class="video-btn">مشاهدة الفيديو</a>
+            </div>
+        </div>
+        <!-- 4 -->
+        <div class="product-card">
+            <span class="badge">ELITE</span>
             <img src="تيشرت بوكس RAW (3).png">
-            <div class="product-title">PERSIST WHITE EDITION</div>
-            <div class="price">89 ر.س</div>
-            <div class="btn-group">
-                <a href="https://wa.me/966502777884" class="order-btn">اطلب عبر واتساب</a>
-                <a href="#" class="video-btn">مشاهدة الفيديو</a>
-            </div>
-        </div>
-
-        <!-- منتج 5 -->
-        <div class="product-card">
-            <span class="badge">LIMITED</span>
-            <img src="تيشرت بوكس RAW (4).png">
-            <div class="product-title">PREMIUM RAW CUT</div>
-            <div class="price">89 ر.س</div>
-            <div class="btn-group">
-                <a href="https://wa.me/966502777884" class="order-btn">اطلب عبر واتساب</a>
-                <a href="#" class="video-btn">مشاهدة الفيديو</a>
-            </div>
-        </div>
-
-        <!-- منتج 6 -->
-        <div class="product-card">
-            <span class="badge">MUST HAVE</span>
-            <img src="TSHIRT BOX RAW.png">
-            <div class="product-title">ESSENTIAL COLLECTION</div>
-            <div class="price">89 ر.س</div>
-            <div class="btn-group">
-                <a href="https://wa.me/966502777884" class="order-btn">اطلب عبر واتساب</a>
-                <a href="#" class="video-btn">مشاهدة الفيديو</a>
-            </div>
-        </div>
-
-    </div>
-
-    <footer>EZWA STORE 2026 ©</footer>
-</body>
-</html>
+            <div class="product-title">ELITE GREEN</div>
+            <div class="price">89…
