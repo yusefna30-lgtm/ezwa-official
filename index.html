@@ -5,24 +5,57 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EZWA Official Store</title>
     <style>
+        /* إعدادات الخلفية والخط */
         body { background-color: #000; color: #fff; text-align: center; font-family: sans-serif; margin: 0; padding: 10px; }
         .brand-header { font-size: 3rem; color: #D4AF37; letter-spacing: -3px; margin: 25px 0; font-weight: bold; }
-        .container { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; max-width: 1000px; margin: auto; }
-        .card { background: #0a0a0a; border: 1px solid #1a1a1a; border-radius: 15px; width: calc(50% - 12px); min-width: 160px; padding: 12px; box-sizing: border-box; display: flex; flex-direction: column; }
-        .card img { width: 100%; border-radius: 10px; margin-bottom: 10px; min-height: 150px; background: #111; }
-        .title { font-size: 0.75rem; font-weight: bold; margin-bottom: 8px; color: #fff; height: 35px; }
-        .price { color: #D4AF37; font-weight: bold; margin-bottom: 15px; font-size: 1rem; }
+        
+        /* الحاوية الرئيسية لترتيب الصور (2 في كل صف) */
+        .container { 
+            display: grid; 
+            grid-template-columns: 1fr 1fr; 
+            gap: 15px; 
+            max-width: 600px; 
+            margin: auto; 
+            padding: 10px;
+        }
+        
+        /* تصميم الكرت لكل منتج */
+        .card { 
+            background: #0a0a0a; 
+            border: 1px solid #1a1a1a; 
+            border-radius: 15px; 
+            padding: 12px; 
+            display: flex; 
+            flex-direction: column; 
+            justify-content: space-between;
+        }
+        
+        /* ضبط حجم الصورة لتكون متساوية */
+        .card img { 
+            width: 100%; 
+            height: 180px; /* طول ثابت لجعلهم متساويين */
+            object-fit: cover; 
+            border-radius: 10px; 
+            margin-bottom: 10px; 
+        }
+        
+        .title { font-size: 0.7rem; font-weight: bold; margin-bottom: 5px; color: #fff; height: 35px; overflow: hidden; }
+        .price { color: #D4AF37; font-weight: bold; margin-bottom: 12px; font-size: 1rem; }
+        
+        /* أزرار الواتساب والفيديو */
         .btns { display: flex; flex-direction: column; gap: 6px; }
         .btn-wa { background: #D4AF37; color: #000; padding: 10px; border-radius: 6px; text-decoration: none; font-size: 0.7rem; font-weight: bold; }
-        .btn-video { border: 1px solid #333; color: #D4AF37; padding: 7px; border-radius: 6px; text-decoration: none; font-size: 0.65rem; }
+        .btn-video { border: 1px solid #333; color: #D4AF37; padding: 8px; border-radius: 6px; text-decoration: none; font-size: 0.65rem; }
     </style>
 </head>
 <body>
+
     <div class="brand-header">EZWA</div>
+
     <div class="container">
         <script>
-            // هذه قائمة الأسماء اللي شفتها في صورتك يا نبيل
-            const realImages = [
+            // الأسماء الحقيقية لملفاتك كما تظهر في المستودع
+            const images = [
                 "TSHIRT BOX RAW.png",
                 "تيشرت بوكس RAW.png",
                 "تيشرت بوكس RAW (2).png",
@@ -30,12 +63,21 @@
                 "تيشرت بوكس RAW (4).png",
                 "تيشرت اوفر سايز.png"
             ];
-            const titles = ["PREMIUM RAW", "ESSENTIAL BLACK", "STREET MODE", "URBAN STYLE", "PREMIUM SET", "EZWA SPECIAL"];
             
-            realImages.forEach((img, i) => {
+            const titles = [
+                "PREMIUM RAW", 
+                "ESSENTIAL BLACK", 
+                "STREET MODE", 
+                "URBAN STYLE", 
+                "PREMIUM SET", 
+                "EZWA SPECIAL"
+            ];
+            
+            // إنشاء البطاقات تلقائياً
+            images.forEach((img, i) => {
                 document.write(`
                     <div class="card">
-                        <img src="${encodeURIComponent(img)}" alt="Product">
+                        <img src="${encodeURIComponent(img)}" alt="EZWA Product">
                         <div class="title">${titles[i]}</div>
                         <div class="price">89 ر.س</div>
                         <div class="btns">
@@ -47,5 +89,6 @@
             });
         </script>
     </div>
+
 </body>
 </html>
