@@ -6,7 +6,7 @@
     <title>EZWA Official Store</title>
     <style>
         body { background-color: #000; color: #fff; text-align: center; font-family: sans-serif; margin: 0; padding: 10px; }
-        .brand-header { font-size: 3rem; color: #D4AF37; letter-spacing: -3px; margin: 30px 0; font-weight: bold; }
+        .brand-header { font-size: 3rem; color: #D4AF37; letter-spacing: -3px; margin: 25px 0; font-weight: bold; }
         .container { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; max-width: 600px; margin: auto; padding: 10px; }
         .card { background: #0a0a0a; border: 1px solid #1a1a1a; border-radius: 15px; padding: 12px; display: flex; flex-direction: column; justify-content: space-between; }
         .card img { width: 100%; height: 180px; object-fit: cover; border-radius: 10px; margin-bottom: 10px; }
@@ -21,59 +21,33 @@
     <div class="brand-header">EZWA</div>
 
     <div class="container">
-        <div class="card">
-            <img src="TSHIRT%20BOX%20RAW.png">
-            <div class="price">89 ر.س</div>
-            <div class="btns">
-                <a href="https://wa.me/966502777884" target="_blank" class="btn-wa">واتساب مباشر</a>
-                <a href="https://www.tiktok.com/@ezwa36" target="_blank" class="btn-tiktok">مشاهدة الفيديو</a>
-            </div>
-        </div>
+        <script>
+            // الأسماء الصحيحة لصورك كما هي في GitHub
+            const images = [
+                "TSHIRT BOX RAW.png",
+                "تيشرت بوكس RAW.png",
+                "تيشرت بوكس RAW (2).png",
+                "تيشرت بوكس RAW (3).png",
+                "تيشرت بوكس RAW (4).png",
+                "تيشرت اوفر سايز.png"
+            ];
+            
+            // الرابط الذي أرسلته أنت
+            const videoLink = "https://vt.tiktok.com/ZSxRBGRQT/";
 
-        <div class="card">
-            <img src="%D8%AA%D9%8A%D8%B4%D8%B1%D8%AA%20%D8%A8%D9%88%D9%83%D8%B3%20RAW.png">
-            <div class="price">89 ر.س</div>
-            <div class="btns">
-                <a href="https://wa.me/966502777884" target="_blank" class="btn-wa">واتساب مباشر</a>
-                <a href="https://www.tiktok.com/@ezwa36" target="_blank" class="btn-tiktok">مشاهدة الفيديو</a>
-            </div>
-        </div>
-
-        <div class="card">
-            <img src="%D8%AA%D9%8A%D8%B4%D8%B1%D8%AA%20%D8%A8%D9%88%D9%83%D8%B3%20RAW%20(2).png">
-            <div class="price">89 ر.س</div>
-            <div class="btns">
-                <a href="https://wa.me/966502777884" target="_blank" class="btn-wa">واتساب مباشر</a>
-                <a href="https://www.tiktok.com/@ezwa36" target="_blank" class="btn-tiktok">مشاهدة الفيديو</a>
-            </div>
-        </div>
-
-        <div class="card">
-            <img src="%D8%AA%D9%8A%D8%B4%D8%B1%D8%AA%20%D8%A8%D9%88%D9%83%D8%B3%20RAW%20(3).png">
-            <div class="price">89 ر.س</div>
-            <div class="btns">
-                <a href="https://wa.me/966502777884" target="_blank" class="btn-wa">واتساب مباشر</a>
-                <a href="https://www.tiktok.com/@ezwa36" target="_blank" class="btn-tiktok">مشاهدة الفيديو</a>
-            </div>
-        </div>
-
-        <div class="card">
-            <img src="%D8%AA%D9%8A%D8%B4%D8%B1%D8%AA%20%D8%A8%D9%88%D9%83%D8%B3%20RAW%20(4).png">
-            <div class="price">89 ر.س</div>
-            <div class="btns">
-                <a href="https://wa.me/966502777884" target="_blank" class="btn-wa">واتساب مباشر</a>
-                <a href="https://www.tiktok.com/@ezwa36" target="_blank" class="btn-tiktok">مشاهدة الفيديو</a>
-            </div>
-        </div>
-
-        <div class="card">
-            <img src="%D8%AA%D9%8A%D8%B4%D8%B1%D8%AA%20%D8%A7%D9%88%D9%81%D8%B1%20%D8%B3%D8%A7%D9%8A%D8%B2.png">
-            <div class="price">89 ر.س</div>
-            <div class="btns">
-                <a href="https://wa.me/966502777884" target="_blank" class="btn-wa">واتساب مباشر</a>
-                <a href="https://www.tiktok.com/@ezwa36" target="_blank" class="btn-tiktok">مشاهدة الفيديو</a>
-            </div>
-        </div>
+            images.forEach((img, i) => {
+                document.write(`
+                    <div class="card">
+                        <img src="${encodeURIComponent(img)}" alt="EZWA">
+                        <div class="price">89 ر.س</div>
+                        <div class="btns">
+                            <a href="https://wa.me/966502777884" target="_blank" class="btn-wa">واتساب مباشر</a>
+                            <a href="${videoLink}" target="_blank" class="btn-tiktok">مشاهدة الفيديو</a>
+                        </div>
+                    </div>
+                `);
+            });
+        </script>
     </div>
 
 </body>
