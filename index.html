@@ -6,7 +6,7 @@
     <title>EZWA Official Store</title>
     <style>
         body { background-color: #000; color: #fff; text-align: center; font-family: sans-serif; margin: 0; padding: 10px; }
-        .brand-header { font-size: 3rem; color: #D4AF37; letter-spacing: -3px; margin: 25px 0; font-weight: bold; }
+        .brand-header { font-size: 3rem; color: #D4AF37; letter-spacing: -3px; margin: 20px 0; font-weight: bold; }
         
         .container { 
             display: grid; 
@@ -40,7 +40,6 @@
         
         .btns { display: flex; flex-direction: column; gap: 6px; }
         .btn-wa { background: #D4AF37; color: #000; padding: 10px; border-radius: 6px; text-decoration: none; font-size: 0.7rem; font-weight: bold; }
-        /* زر التيك توك الجديد */
         .btn-tiktok { border: 1px solid #333; color: #D4AF37; padding: 8px; border-radius: 6px; text-decoration: none; font-size: 0.65rem; }
     </style>
 </head>
@@ -59,14 +58,7 @@
                 "تيشرت اوفر سايز.png"
             ];
             
-            const titles = [
-                "PREMIUM RAW", 
-                "ESSENTIAL BLACK", 
-                "STREET MODE", 
-                "URBAN STYLE", 
-                "PREMIUM SET", 
-                "EZWA SPECIAL"
-            ];
+            const titles = ["PREMIUM RAW", "ESSENTIAL BLACK", "STREET MODE", "URBAN STYLE", "PREMIUM SET", "EZWA SPECIAL"];
             
             images.forEach((img, i) => {
                 document.write(`
@@ -75,7 +67,7 @@
                         <div class="title">${titles[i]}</div>
                         <div class="price">89 ر.س</div>
                         <div class="btns">
-                            <a href="https://wa.me/966502777884" class="btn-wa">واتساب مباشر</a>
+                            <a href="https://api.whatsapp.com/send?phone=966502777884" target="_blank" class="btn-wa">واتساب مباشر</a>
                             <a href="https://www.tiktok.com/@ezwa.36" target="_blank" class="btn-tiktok">مشاهدة الفيديو</a>
                         </div>
                     </div>
