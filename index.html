@@ -7,40 +7,14 @@
     <style>
         body { background-color: #000; color: #fff; text-align: center; font-family: sans-serif; margin: 0; padding: 10px; }
         .brand-header { font-size: 3rem; color: #D4AF37; letter-spacing: -3px; margin: 25px 0; font-weight: bold; }
-        
-        .container { 
-            display: grid; 
-            grid-template-columns: 1fr 1fr; 
-            gap: 15px; 
-            max-width: 600px; 
-            margin: auto; 
-            padding: 10px;
-        }
-        
-        .card { 
-            background: #0a0a0a; 
-            border: 1px solid #1a1a1a; 
-            border-radius: 15px; 
-            padding: 12px; 
-            display: flex; 
-            flex-direction: column; 
-            justify-content: space-between;
-        }
-        
-        .card img { 
-            width: 100%; 
-            height: 180px; 
-            object-fit: cover; 
-            border-radius: 10px; 
-            margin-bottom: 10px; 
-        }
-        
+        .container { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; max-width: 600px; margin: auto; padding: 10px; }
+        .card { background: #0a0a0a; border: 1px solid #1a1a1a; border-radius: 15px; padding: 12px; display: flex; flex-direction: column; justify-content: space-between; }
+        .card img { width: 100%; height: 180px; object-fit: cover; border-radius: 10px; margin-bottom: 10px; }
         .title { font-size: 0.7rem; font-weight: bold; margin-bottom: 5px; color: #fff; height: 35px; overflow: hidden; }
         .price { color: #D4AF37; font-weight: bold; margin-bottom: 12px; font-size: 1rem; }
-        
         .btns { display: flex; flex-direction: column; gap: 6px; }
-        .btn-wa { background: #D4AF37; color: #000; padding: 10px; border-radius: 6px; text-decoration: none; font-size: 0.7rem; font-weight: bold; }
-        .btn-tiktok { border: 1px solid #333; color: #D4AF37; padding: 8px; border-radius: 6px; text-decoration: none; font-size: 0.65rem; }
+        .btn-wa { background: #D4AF37; color: #000; padding: 10px; border-radius: 6px; text-decoration: none; font-size: 0.7rem; font-weight: bold; display: block; }
+        .btn-tiktok { border: 1px solid #333; color: #D4AF37; padding: 8px; border-radius: 6px; text-decoration: none; font-size: 0.65rem; display: block; }
     </style>
 </head>
 <body>
@@ -48,33 +22,65 @@
     <div class="brand-header">EZWA</div>
 
     <div class="container">
-        <script>
-            const images = [
-                "TSHIRT BOX RAW.png",
-                "تيشرت بوكس RAW.png",
-                "تيشرت بوكس RAW (2).png",
-                "تيشرت بوكس RAW (3).png",
-                "تيشرت بوكس RAW (4).png",
-                "تيشرت اوفر سايز.png"
-            ];
-            
-            const titles = ["PREMIUM RAW", "ESSENTIAL BLACK", "STREET MODE", "URBAN STYLE", "PREMIUM SET", "EZWA SPECIAL"];
-            
-            images.forEach((img, i) => {
-                document.write(`
-                    <div class="card">
-                        <img src="${encodeURIComponent(img)}" alt="EZWA Product">
-                        <div class="title">${titles[i]}</div>
-                        <div class="price">89 ر.س</div>
-                        <div class="btns">
-                            <a href="https://wa.me/966502777884" target="_blank" class="btn-wa">واتساب مباشر</a>
-                            
-                            <a href="https://www.tiktok.com/@ezwa.36" target="_blank" class="btn-tiktok">مشاهدة الفيديو</a>
-                        </div>
-                    </div>
-                `);
-            });
-        </script>
+        <div class="card">
+            <img src="TSHIRT%20BOX%20RAW.png">
+            <div class="title">PREMIUM RAW</div>
+            <div class="price">89 ر.س</div>
+            <div class="btns">
+                <a href="https://wa.me/966502777884" class="btn-wa">واتساب مباشر</a>
+                <a href="https://www.tiktok.com/@ezwa.36" class="btn-tiktok">مشاهدة الفيديو</a>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="%D8%AA%D9%8A%D8%B4%D8%B1%D8%AA%20%D8%A8%D9%88%D9%83%D8%B3%20RAW.png">
+            <div class="title">ESSENTIAL BLACK</div>
+            <div class="price">89 ر.س</div>
+            <div class="btns">
+                <a href="https://wa.me/966502777884" class="btn-wa">واتساب مباشر</a>
+                <a href="https://www.tiktok.com/@ezwa.36" class="btn-tiktok">مشاهدة الفيديو</a>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="%D8%AA%D9%8A%D8%B4%D8%B1%D8%AA%20%D8%A8%D9%88%D9%83%D8%B3%20RAW%20(2).png">
+            <div class="title">STREET MODE</div>
+            <div class="price">89 ر.س</div>
+            <div class="btns">
+                <a href="https://wa.me/966502777884" class="btn-wa">واتساب مباشر</a>
+                <a href="https://www.tiktok.com/@ezwa.36" class="btn-tiktok">مشاهدة الفيديو</a>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="%D8%AA%D9%8A%D8%B4%D8%B1%D8%AA%20%D8%A8%D9%88%D9%83%D8%B3%20RAW%20(3).png">
+            <div class="title">URBAN STYLE</div>
+            <div class="price">89 ر.س</div>
+            <div class="btns">
+                <a href="https://wa.me/966502777884" class="btn-wa">واتساب مباشر</a>
+                <a href="https://www.tiktok.com/@ezwa.36" class="btn-tiktok">مشاهدة الفيديو</a>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="%D8%AA%D9%8A%D8%B4%D8%B1%D8%AA%20%D8%A8%D9%88%D9%83%D8%B3%20RAW%20(4).png">
+            <div class="title">PREMIUM SET</div>
+            <div class="price">89 ر.س</div>
+            <div class="btns">
+                <a href="https://wa.me/966502777884" class="btn-wa">واتساب مباشر</a>
+                <a href="https://www.tiktok.com/@ezwa.36" class="btn-tiktok">مشاهدة الفيديو</a>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="%D8%AA%D9%8A%D8%B4%D8%B1%D8%AA%20%D8%A7%D9%88%D9%81%D8%B1%20%D8%B3%D8%A7%D9%8A%D8%B2.png">
+            <div class="title">EZWA SPECIAL</div>
+            <div class="price">89 ر.س</div>
+            <div class="btns">
+                <a href="https://wa.me/966502777884" class="btn-wa">واتساب مباشر</a>
+                <a href="https://www.tiktok.com/@ezwa.36" class="btn-tiktok">مشاهدة الفيديو</a>
+            </div>
+        </div>
     </div>
 
 </body>
