@@ -14,15 +14,9 @@
             box-shadow: 0 10px 30px rgba(212, 175, 55, 0.15);
         }
         .brand-name { font-size: 1.1rem; color: #D4AF37; font-weight: bold; letter-spacing: -1.5px; position: absolute; top: 20px; right: 20px; text-transform: uppercase; }
-        
-        /* الرقم التسلسلي */
         .member-id { position: absolute; top: 22px; left: 20px; color: #D4AF37; font-size: 0.65rem; font-weight: bold; }
-        
         .label { color: #fff; font-size: 0.7rem; margin-top: 45px; opacity: 0.7; }
-        
-        /* اسم العميل */
         .member-name { color: #D4AF37; font-size: 1.2rem; margin-top: 5px; font-weight: bold; min-height: 30px; }
-
         .actions { position: absolute; bottom: 20px; left: 20px; right: 20px; display: flex; gap: 10px; }
         .btn { flex: 1; text-align: center; padding: 9px; border-radius: 6px; text-decoration: none; font-size: 0.7rem; font-weight: bold; }
         .btn-call { background: #D4AF37; color: #000; }
@@ -34,10 +28,8 @@
     <div class="card-container">
         <div class="member-id" id="vip-no">VIP #00/20</div>
         <div class="brand-name">EZWA</div>
-        
         <div class="label">فئة النخبة (أركان عزوة)</div>
         <div class="member-name" id="name-field">جاري التحميل...</div>
-
         <div class="actions">
             <a href="tel:966502777884" class="btn btn-call">اتصال هاتفي</a>
             <a href="https://wa.me/966502777884" class="btn btn-wa">واتساب مباشر</a>
@@ -45,12 +37,12 @@
     </div>
 
     <script>
-        // كود ذكي لقراءة الاسم والرقم من الرابط
+        // الكود السحري الذي سيظهر الاسم والرقم من الرابط
         const urlParams = new URLSearchParams(window.location.search);
         const customerName = urlParams.get('name') || "عميل VIP";
         const customerNo = urlParams.get('no') || "00";
 
-        document.getElementById('name-field').innerText = customerName;
+        document.getElementById('name-field').innerText = decodeURIComponent(customerName).replace(/_/g, ' ');
         document.getElementById('vip-no').innerText = "VIP #" + customerNo + "/20";
     </script>
 
