@@ -5,75 +5,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EZWA VIP Card</title>
     <style>
-        /* إعدادات الصفحة - خلفية سوداء */
-        body { 
-            background-color: #000; 
-            display: flex; 
-            justify-content: center; 
-            align-items: center; 
-            height: 100vh; 
-            margin: 0; 
-            font-family: sans-serif; 
-        }
-        
-        /* تصميم البطاقة الملكي */
+        body { background-color: #000; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; font-family: sans-serif; }
         .card-container { 
-            width: 350px; 
-            height: 200px; 
+            width: 350px; height: 200px; 
             background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%); 
-            border: 1px solid #D4AF37; 
-            border-radius: 15px; 
-            position: relative; 
-            padding: 20px; 
-            box-sizing: border-box;
+            border: 1px solid #D4AF37; border-radius: 15px; 
+            position: relative; padding: 20px; box-sizing: border-box;
             box-shadow: 0 10px 30px rgba(212, 175, 55, 0.15);
         }
-
-        /* اسم البراند: إنجليزي، صغير، ومتقارب */
-        .brand-name { 
-            font-size: 1.1rem; 
-            color: #D4AF37; 
-            font-weight: bold; 
-            letter-spacing: -1.5px; 
-            position: absolute; 
-            top: 20px; 
-            right: 20px; 
-            text-transform: uppercase;
-        }
-
-        /* رقم العضوية (لأركان عزوة الـ 20) */
-        .member-id {
-            position: absolute;
-            top: 22px;
-            left: 20px;
-            color: #D4AF37;
-            font-size: 0.6rem;
-            opacity: 0.6;
-        }
-
+        .brand-name { font-size: 1.1rem; color: #D4AF37; font-weight: bold; letter-spacing: -1.5px; position: absolute; top: 20px; right: 20px; text-transform: uppercase; }
+        
+        /* الرقم التسلسلي */
+        .member-id { position: absolute; top: 22px; left: 20px; color: #D4AF37; font-size: 0.65rem; font-weight: bold; }
+        
         .label { color: #fff; font-size: 0.7rem; margin-top: 45px; opacity: 0.7; }
-        .member-name { color: #D4AF37; font-size: 1.1rem; margin-top: 5px; font-weight: bold; }
+        
+        /* اسم العميل */
+        .member-name { color: #D4AF37; font-size: 1.2rem; margin-top: 5px; font-weight: bold; min-height: 30px; }
 
-        /* الأزرار التفاعلية أسفل البطاقة */
-        .actions { 
-            position: absolute; 
-            bottom: 20px; 
-            left: 20px; 
-            right: 20px; 
-            display: flex; 
-            gap: 10px; 
-        }
-
-        .btn { 
-            flex: 1; 
-            text-align: center; 
-            padding: 9px; 
-            border-radius: 6px; 
-            text-decoration: none; 
-            font-size: 0.7rem; 
-            font-weight: bold; 
-        }
-
+        .actions { position: absolute; bottom: 20px; left: 20px; right: 20px; display: flex; gap: 10px; }
+        .btn { flex: 1; text-align: center; padding: 9px; border-radius: 6px; text-decoration: none; font-size: 0.7rem; font-weight: bold; }
         .btn-call { background: #D4AF37; color: #000; }
         .btn-wa { border: 1px solid #D4AF37; color: #D4AF37; }
     </style>
@@ -81,17 +32,27 @@
 <body>
 
     <div class="card-container">
-        <div class="member-id">VIP #01/20</div>
+        <div class="member-id" id="vip-no">VIP #00/20</div>
         <div class="brand-name">EZWA</div>
         
-        <div class="label">فئة النخبة</div>
-        <div class="member-name">أركان عزوة</div>
+        <div class="label">فئة النخبة (أركان عزوة)</div>
+        <div class="member-name" id="name-field">جاري التحميل...</div>
 
         <div class="actions">
             <a href="tel:966502777884" class="btn btn-call">اتصال هاتفي</a>
             <a href="https://wa.me/966502777884" class="btn btn-wa">واتساب مباشر</a>
         </div>
     </div>
+
+    <script>
+        // كود ذكي لقراءة الاسم والرقم من الرابط
+        const urlParams = new URLSearchParams(window.location.search);
+        const customerName = urlParams.get('name') || "عميل VIP";
+        const customerNo = urlParams.get('no') || "00";
+
+        document.getElementById('name-field').innerText = customerName;
+        document.getElementById('vip-no').innerText = "VIP #" + customerNo + "/20";
+    </script>
 
 </body>
 </html>
