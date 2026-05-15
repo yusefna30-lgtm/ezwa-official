@@ -9,7 +9,7 @@
         .brand-header { font-size: 3rem; color: #D4AF37; letter-spacing: -3px; margin: 25px 0; font-weight: bold; }
         .container { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; max-width: 1000px; margin: auto; }
         .card { background: #0a0a0a; border: 1px solid #1a1a1a; border-radius: 15px; width: calc(50% - 12px); min-width: 160px; padding: 12px; box-sizing: border-box; display: flex; flex-direction: column; }
-        .card img { width: 100%; border-radius: 10px; margin-bottom: 10px; }
+        .card img { width: 100%; border-radius: 10px; margin-bottom: 10px; min-height: 150px; background: #111; }
         .title { font-size: 0.75rem; font-weight: bold; margin-bottom: 8px; color: #fff; height: 35px; }
         .price { color: #D4AF37; font-weight: bold; margin-bottom: 15px; font-size: 1rem; }
         .btns { display: flex; flex-direction: column; gap: 6px; }
@@ -21,19 +21,22 @@
     <div class="brand-header">EZWA</div>
     <div class="container">
         <script>
-            const titles = [
-                "PREMIUM RAW", 
-                "ESSENTIAL BLACK", 
-                "STREET MODE", 
-                "URBAN STYLE", 
-                "PREMIUM SET", 
-                "EZWA SPECIAL"
+            // هذه قائمة الأسماء اللي شفتها في صورتك يا نبيل
+            const realImages = [
+                "TSHIRT BOX RAW.png",
+                "تيشرت بوكس RAW.png",
+                "تيشرت بوكس RAW (2).png",
+                "تيشرت بوكس RAW (3).png",
+                "تيشرت بوكس RAW (4).png",
+                "تيشرت اوفر سايز.png"
             ];
-            for(let i=1; i<=6; i++) {
+            const titles = ["PREMIUM RAW", "ESSENTIAL BLACK", "STREET MODE", "URBAN STYLE", "PREMIUM SET", "EZWA SPECIAL"];
+            
+            realImages.forEach((img, i) => {
                 document.write(`
                     <div class="card">
-                        <img src="${i}.png" alt="Product ${i}">
-                        <div class="title">${titles[i-1]}</div>
+                        <img src="${encodeURIComponent(img)}" alt="Product">
+                        <div class="title">${titles[i]}</div>
                         <div class="price">89 ر.س</div>
                         <div class="btns">
                             <a href="https://wa.me/966502777884" class="btn-wa">واتساب مباشر</a>
@@ -41,7 +44,7 @@
                         </div>
                     </div>
                 `);
-            }
+            });
         </script>
     </div>
 </body>
