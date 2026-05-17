@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>عضوية EZWA VIP</title>
+    <title>EZWA VIP CARD</title>
     
     <link rel="apple-touch-icon" sizes="180x180" href="https://media.zid.store/b35aeefa-f017-4ef5-ae8e-c4d132cb202b/2708f463-deda-4440-aac3-6ce260b5beab-200x.png">
     <link rel="icon" type="image/png" sizes="32x32" href="https://media.zid.store/b35aeefa-f017-4ef5-ae8e-c4d132cb202b/2708f463-deda-4440-aac3-6ce260b5beab-200x.png">
@@ -12,69 +12,52 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
     
     <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
         body {
-            background-color: #0a0a0a;
-            color: #ffffff;
-            font-family: 'Montserrat', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #000;
             display: flex;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
+            margin: 0;
+            font-family: 'Montserrat', 'Segoe UI', sans-serif;
             padding: 20px;
         }
 
+        /* إعادة الكرت القديم بالإطار الذهبي الكامل والزوايا الدائرية الفخمة */
         .card-container {
             width: 100%;
             max-width: 380px;
-            background: linear-gradient(135deg, #111111 0%, #000000 100%);
-            border: 1px solid #c5a880; /* إطار ذهبي نحيف يعكس هوية البراند الملكية */
+            height: auto;
+            background: linear-gradient(135deg, #0f0f0f 0%, #1a1a1a 100%);
+            border: 1px solid #D4AF37;
             border-radius: 16px;
-            padding: 30px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.8);
+            padding: 24px;
+            box-shadow: 0 15px 35px rgba(212, 175, 55, 0.2);
             position: relative;
-            overflow: hidden;
-        }
-
-        /* تأثير إضاءة خلفية ذهبية ناعمة لمنح الكرت فخامة إضافية */
-        .card-container::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(197,168,128,0.05) 0%, transparent 70%);
-            pointer-events: none;
+            color: #fff;
         }
 
         .card-header {
             display: flex;
             justify-content: space-between;
-            align-items: flex-start;
-            margin-bottom: 60px;
+            align-items: center;
+            margin-top: 10px;
+            margin-bottom: 30px;
         }
 
         .brand-name {
-            font-size: 24px;
+            font-size: 26px;
             font-weight: 700;
-            letter-spacing: 2px;
-            color: #ffffff;
+            color: #D4AF37;
+            letter-spacing: 1px;
         }
 
-        .tier-badge {
-            font-size: 11px;
-            background-color: #c5a880;
-            color: #000000;
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-weight: 700;
-            letter-spacing: 1px;
+        /* شريحة البطاقة الذهبية الذكية على اليمين */
+        .chip {
+            width: 45px;
+            height: 35px;
+            background: linear-gradient(135deg, #e5c060 0%, #b88d2f 100%);
+            border-radius: 6px;
         }
 
         .card-body {
@@ -82,49 +65,63 @@
         }
 
         .user-name {
-            font-size: 20px;
-            font-weight: 400;
-            color: #ffffff;
+            font-size: 22px;
+            font-weight: bold;
+            color: #D4AF37;
             margin-bottom: 8px;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
         .membership-number {
-            font-size: 14px;
-            color: #c5a880;
-            letter-spacing: 1px;
-        }
-
-        .card-footer {
-            border-top: 1px solid rgba(197, 168, 128, 0.2);
-            padding-top: 20px;
-            display: flex;
-            justify-content: space-around;
-        }
-
-        .action-button {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-decoration: none;
-            color: #888888;
-            transition: color 0.3s ease;
-        }
-
-        .action-button:hover {
-            color: #c5a880;
-        }
-
-        .action-button svg {
-            width: 24px;
-            height: 24px;
+            font-size: 15px;
+            color: #D4AF37;
+            font-weight: 700;
             margin-bottom: 6px;
-            fill: currentColor;
         }
 
-        .action-button span {
-            font-size: 11px;
-            letter-spacing: 0.5px;
+        .tier-text {
+            font-size: 13px;
+            color: #c5a880;
+            font-weight: bold;
+        }
+
+        .exclusive-text {
+            font-size: 10px;
+            color: #888;
+            letter-spacing: 1px;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+        }
+
+        /* إعادة الأزرار العريضة المتجاورة بنفس التصميم الأول تماماً */
+        .card-footer {
+            display: flex;
+            gap: 12px;
+            justify-content: space-between;
+        }
+
+        .btn {
+            flex: 1;
+            padding: 14px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: bold;
+            text-decoration: none;
+            text-align: center;
+            display: inline-block;
+            transition: all 0.3s ease;
+        }
+
+        /* زر الاتصال المباشر الذهبي العريض */
+        .btn-call {
+            background-color: #D4AF37;
+            color: #000;
+        }
+
+        /* زر الواتساب المفرغ ذو الإطار الذهبي */
+        .btn-whatsapp {
+            background-color: transparent;
+            color: #D4AF37;
+            border: 1px solid #D4AF37;
         }
     </style>
 </head>
@@ -132,29 +129,22 @@
 
     <div class="card-container">
         <div class="card-header">
+            <div class="chip"></div>
             <div class="brand-name">EZWA</div>
-            <div class="tier-badge">أركان وعزوة</div>
         </div>
         
         <div class="card-body">
             <div class="user-name">محمد نبيل محمد</div>
-            <div class="membership-number">001 - 2026</div>
+            <div class="membership-number">VIP #001-2026/20</div>
+            <div class="tier-text">فئة أركان عزوة</div>
         </div>
         
+        <div class="exclusive-text">EXCLUSIVE ACCESS • EST. 2026</div>
+        
         <div class="card-footer">
-            <a href="tel:+966502777884" class="action-button">
-                <svg viewBox="0 0 24 24">
-                    <path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56a.977.977 0 0 0-1.01.24l-2.2 2.2a15.045 15.045 0 0 1-6.59-6.59l2.2-2.21a.96.96 0 0 0 .25-1.02c-.36-1.11-.56-2.3-.56-3.53C8.37 3.45 7.92 3 7.37 3H3.63c-.55 0-1 .45-1 1C2.63 14.38 10.62 22 20.37 22c.55 0 1-.45 1-1v-3.62c0-.55-.45-.99-1-.99z"/>
-                </svg>
-                <span>اتصال مباشر</span>
-            </a>
+            <a href="https://wa.me/966502777884" target="_blank" class="btn btn-whatsapp">واتساب</a>
             
-            <a href="https://wa.me/966502777884" target="_blank" class="action-button">
-                <svg viewBox="0 0 24 24">
-                    <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.717-1.456L0 24zm6.59-4.846c1.6.95 3.488 1.449 5.412 1.451 5.428 0 9.845-4.414 9.848-9.842.002-2.631-1.02-5.101-2.877-6.958-1.856-1.856-4.326-2.876-6.957-2.877-5.434 0-9.852 4.414-9.855 9.842-.001 1.983.518 3.916 1.5 5.62l-.997 3.642 3.73-.978zm11.567-7.382c-.3-.149-1.774-.875-2.046-.974-.272-.1-.471-.149-.669.149-.198.299-.769.974-.943 1.173-.173.199-.347.224-.648.075-.3-.15-1.266-.466-2.41-1.487-.892-.795-1.493-1.777-1.668-2.076-.173-.299-.018-.46.131-.609.135-.134.3-.349.449-.523.15-.174.198-.299.298-.498.1-.2.05-.374-.025-.523s-.669-1.612-.916-2.207c-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.299-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.774-.726 2.022-1.43.247-.704.247-1.306.173-1.43-.073-.124-.272-.198-.57-.347z"/>
-                </svg>
-                <span>واتساب مباشر</span>
-            </a>
+            <a href="tel:+966502777884" class="btn btn-call">اتصال مباشر</a>
         </div>
     </div>
 
