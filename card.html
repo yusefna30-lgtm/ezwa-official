@@ -23,7 +23,6 @@
             padding: 20px;
         }
 
-        /* إعادة الكرت القديم بالإطار الذهبي الكامل والزوايا الدائرية الفخمة */
         .card-container {
             width: 100%;
             max-width: 380px;
@@ -52,7 +51,6 @@
             letter-spacing: 1px;
         }
 
-        /* شريحة البطاقة الذهبية الذكية على اليمين */
         .chip {
             width: 45px;
             height: 35px;
@@ -92,7 +90,6 @@
             text-transform: uppercase;
         }
 
-        /* إعادة الأزرار العريضة المتجاورة بنفس التصميم الأول تماماً */
         .card-footer {
             display: flex;
             gap: 12px;
@@ -111,13 +108,11 @@
             transition: all 0.3s ease;
         }
 
-        /* زر الاتصال المباشر الذهبي العريض */
         .btn-call {
             background-color: #D4AF37;
             color: #000;
         }
 
-        /* زر الواتساب المفرغ ذو الإطار الذهبي */
         .btn-whatsapp {
             background-color: transparent;
             color: #D4AF37;
@@ -134,8 +129,8 @@
         </div>
         
         <div class="card-body">
-            <div class="user-name">محمد نبيل محمد</div>
-            <div class="membership-number">VIP #001-2026/20</div>
+            <div class="user-name" id="customer-name">جاري التحميل...</div>
+            <div class="membership-number" id="card-number">VIP #000-2026/20</div>
             <div class="tier-text">فئة أركان عزوة</div>
         </div>
         
@@ -143,10 +138,29 @@
         
         <div class="card-footer">
             <a href="https://wa.me/966502777884" target="_blank" class="btn btn-whatsapp">واتساب</a>
-            
             <a href="tel:+966502777884" class="btn btn-call">اتصال مباشر</a>
         </div>
     </div>
+
+    <script>
+        function getQueryParam(param) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(param);
+        }
+
+        const nameParam = getQueryParam('name');
+        const noParam = getQueryParam('no');
+
+        if (nameParam) {
+            document.getElementById('customer-name').innerText = decodeURIComponent(nameParam);
+        } else {
+            document.getElementById('customer-name').innerText = "عميل مميز";
+        }
+
+        if (noParam) {
+            document.getElementById('card-number').innerText = "VIP #" + decodeURIComponent(noParam) + "-2026/20";
+        }
+    </script>
 
 </body>
 </html>
