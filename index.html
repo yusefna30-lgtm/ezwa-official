@@ -6,43 +6,41 @@
     <title>EZWA Catalog - كتالوج عزوة</title>
     <style>
         body { font-family: Arial, sans-serif; background-color: #000; color: #fff; text-align: center; margin: 0; padding: 20px; }
-        .logo { width: 150px; margin-bottom: 30px; }
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; max-width: 1200px; margin: auto; }
-        .card { background: #111; padding: 15px; border-radius: 15px; border: 1px solid #333; transition: 0.3s; }
-        .card:hover { transform: translateY(-5px); border-color: #d4af37; }
-        .card img { width: 100%; border-radius: 10px; margin-bottom: 15px; }
-        .price { font-size: 20px; color: #d4af37; font-weight: bold; margin: 10px 0; }
-        .desc { font-size: 13px; color: #888; margin-bottom: 15px; }
-        .btn { display: block; background: #d4af37; color: #000; padding: 10px; border-radius: 8px; text-decoration: none; font-weight: bold; margin-bottom: 10px; }
+        .logo { width: 120px; margin-bottom: 20px; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 15px; max-width: 1000px; margin: auto; }
+        .card { background: #111; padding: 10px; border-radius: 12px; border: 1px solid #333; }
+        .card img { width: 100%; border-radius: 8px; margin-bottom: 10px; height: 180px; object-fit: cover; }
+        .price { font-size: 18px; color: #d4af37; font-weight: bold; margin: 5px 0; }
+        .desc { font-size: 11px; color: #888; margin-bottom: 10px; }
+        .btn { display: block; background: #d4af37; color: #000; padding: 8px; border-radius: 5px; text-decoration: none; font-weight: bold; font-size: 13px; margin-bottom: 5px; }
         .btn-video { background: transparent; color: #d4af37; border: 1px solid #d4af37; }
     </style>
 </head>
 <body>
 
-    <img src="https://github.com/ezwa-official/ezwa-official/blob/main/logo.png?raw=true" alt="EZWA" class="logo">
+    <h1 style="color:#d4af37; letter-spacing: 2px;">EZWA</h1>
 
     <div class="grid" id="catalog"></div>
 
     <script>
-        // هنا قائمة الصور (عدلها مثل ما تعلمت JPG أو PNG)
-        const images = [
-            "تيشيرت بوكس RAW.jpg",
-            "17791343971943769684611368319521_eae72e.jpg",
-            "persist-white.jpg" // أضف هنا أي أسماء صور جديدة ترفعها
+        // روابط الصور المباشرة من GitHub الخاص بك
+        const products = [
+            { name: "Persist White", img: "https://raw.githubusercontent.com/yusefna30-lgtm/ezwa-official/main/persist-white.jpg" },
+            { name: "New Collection", img: "https://raw.githubusercontent.com/yusefna30-lgtm/ezwa-official/main/17791343971943769684611368319521_eae72e.jpg" },
+            { name: "RAW Box", img: "https://raw.githubusercontent.com/yusefna30-lgtm/ezwa-official/main/TSHIRT%20BOX%20RAW.png" }
         ];
 
         const catalogContainer = document.getElementById('catalog');
         const phoneNumber = "966502777884";
 
-        images.forEach(imgName => {
-            const cleanName = imgName.split('.')[0]; // اسم المنتج بدون الصيغة
+        products.forEach(p => {
             const card = document.createElement('div');
             card.className = 'card';
             card.innerHTML = `
-                <img src="${imgName}" alt="${cleanName}">
+                <img src="${p.img}" alt="${p.name}">
                 <div class="price">89 ر.س</div>
                 <div class="desc">قطن فاخر 100% | قصة Oversized</div>
-                <a href="https://wa.me/${phoneNumber}?text=أهلاً%20عزوة..%20أرغب%20في%20طلب%20منتج:%20${encodeURIComponent(cleanName)}%20بسعر%2089%20ر.س" class="btn">واتساب مباشر</a>
+                <a href="https://wa.me/${phoneNumber}?text=أهلاً%20عزوة..%20أرغب%20في%20طلب%20منتج:%20${encodeURIComponent(p.name)}%20بسعر%2089%20ر.س" class="btn">واتساب مباشر</a>
                 <a href="#" class="btn btn-video">مشاهدة الفيديو</a>
             `;
             catalogContainer.appendChild(card);
