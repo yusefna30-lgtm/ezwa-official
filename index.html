@@ -3,42 +3,46 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EZWA Catalog</title>
+    <title>EZWA Official Catalog</title>
     <style>
         body { font-family: sans-serif; background-color: #000; color: #fff; text-align: center; margin: 0; padding: 20px; }
-        .brand-header { font-size: 2.5rem; color: #D4AF37; margin: 20px 0; font-weight: bold; }
-        .container { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 15px; max-width: 1000px; margin: auto; }
-        .card { background: #0a0a0a; border: 1px solid #1a1a1a; border-radius: 12px; padding: 10px; }
-        .card img { width: 100%; height: 220px; object-fit: cover; border-radius: 8px; background: #111; }
-        .price { color: #D4AF37; font-weight: bold; font-size: 1.2rem; margin: 5px 0; }
-        .desc { color: #888; font-size: 0.8rem; margin-bottom: 10px; }
-        .btn { display: block; background: #D4AF37; color: #000; padding: 8px; border-radius: 5px; text-decoration: none; font-weight: bold; font-size: 0.9rem; }
+        .brand-header { font-size: 2.5rem; color: #D4AF37; margin: 30px 0; font-weight: bold; letter-spacing: 3px; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; max-width: 1000px; margin: auto; }
+        .card { background: #0a0a0a; border: 1px solid #1a1a1a; border-radius: 15px; padding: 15px; transition: 0.3s; }
+        .card:hover { border-color: #D4AF37; }
+        .card img { width: 100%; height: 320px; object-fit: cover; border-radius: 10px; background: #111; margin-bottom: 15px; }
+        .price { color: #D4AF37; font-weight: bold; font-size: 1.4rem; margin-bottom: 5px; }
+        .desc { color: #888; font-size: 0.9rem; margin-bottom: 15px; }
+        .btn { display: block; background: #D4AF37; color: #000; padding: 12px; border-radius: 8px; text-decoration: none; font-weight: bold; }
     </style>
 </head>
 <body>
 
     <div class="brand-header">EZWA</div>
 
-    <div class="container" id="catalog"></div>
+    <div class="grid" id="catalog"></div>
 
     <script>
-        // هنا السر.. نكتب اسم الملف فقط مثل ما هو في GitHub
-        const products = [
+        // هنا قائمة الأسماء بالضبط كما هي في حسابك (راعيت الحروف الكبيرة والصغيرة والمسافات)
+        const items = [
             { name: "RAW Box Edition", file: "TSHIRT BOX RAW.png" },
             { name: "Persist White", file: "persist-white.jpg" },
-            { name: "EZWA Special", file: "17791343971943769684611368319521_eae72e.jpg" }
+            { name: "EZWA Collection", file: "17791343971943769684611368319521_eae72e.jpg" }
         ];
 
-        const container = document.getElementById('catalog');
-        const phone = "966502777884";
+        const catalog = document.getElementById('catalog');
+        const waNumber = "966502777884";
 
-        products.forEach(p => {
-            container.innerHTML += `
+        items.forEach(product => {
+            // كود سحري لمعالجة المسافات في الأسماء عشان تظهر الصورة غصب
+            const encodedFile = encodeURIComponent(product.file).replace(/'/g, "%27").replace(/"/g, "%22");
+            
+            catalog.innerHTML += `
                 <div class="card">
-                    <img src="${p.file}" alt="${p.name}">
+                    <img src="${encodedFile}" alt="${product.name}" onerror="this.src='https://via.placeholder.com/300x400/111/D4AF37?text=EZWA+Loading...'">
                     <div class="price">89 ر.س</div>
-                    <div class="desc">قطن فاخر 100%</div>
-                    <a href="https://wa.me/${phone}?text=أهلاً%20عزوة..%20أطلب:%20${encodeURIComponent(p.name)}" class="btn">واتساب مباشر</a>
+                    <div class="desc">قطن فاخر 100% | تصميم عصري</div>
+                    <a href="https://wa.me/${waNumber}?text=أهلاً%20عزوة..%20أرغب%20في%20طلب:%20${encodeURIComponent(product.name)}" class="btn">واتساب مباشر</a>
                 </div>
             `;
         });
