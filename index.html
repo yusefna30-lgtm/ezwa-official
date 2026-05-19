@@ -7,37 +7,47 @@
     <style>
         body { background-color: #000; color: #fff; text-align: center; font-family: sans-serif; margin: 0; padding: 10px; padding-bottom: 120px; }
         .brand-header { font-size: 3rem; color: #D4AF37; letter-spacing: -3px; margin: 25px 0; font-weight: bold; }
-        
         .container { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; max-width: 600px; margin: auto; padding: 10px; }
         
-        .card { 
-            background: #0a0a0a; border: 1px solid #1a1a1a; border-radius: 15px; padding: 12px; 
-            display: flex; flex-direction: column; justify-content: space-between; transition: 0.3s;
-        }
-        .card:hover { border-color: #D4AF37; transform: translateY(-5px); }
+        .card { background: #0a0a0a; border: 1px solid #1a1a1a; border-radius: 15px; padding: 12px; display: flex; flex-direction: column; justify-content: space-between; transition: 0.3s; }
         .card img { width: 100%; height: 180px; object-fit: cover; border-radius: 10px; margin-bottom: 10px; }
         .price { color: #D4AF37; font-weight: bold; margin-bottom: 10px; font-size: 1rem; }
-        .product-title { font-size: 0.85rem; margin-bottom: 8px; color: #eee; }
         
         .btns { display: flex; flex-direction: column; gap: 8px; }
         .btn-add { background: #D4AF37; color: #000; padding: 10px; border-radius: 6px; border: none; font-weight: bold; cursor: pointer; font-size: 0.75rem; }
+        .btn-info { border: 1px solid #444; color: #fff; padding: 7px; border-radius: 6px; cursor: pointer; background: none; font-size: 0.65rem; }
         .btn-vid { border: 1px solid #333; color: #D4AF37; padding: 7px; border-radius: 6px; text-decoration: none; font-size: 0.65rem; }
-        .btn-share { border: 1px solid #222; color: #666; padding: 6px; border-radius: 6px; background: none; cursor: pointer; font-size: 0.6rem; }
 
-        #cart-bar {
-            position: fixed; bottom: 0; left: 0; right: 0;
-            background: #D4AF37; color: #000; padding: 15px 20px;
-            display: none; justify-content: space-between; align-items: center;
-            font-weight: bold; z-index: 1000; border-radius: 20px 20px 0 0;
+        /* تنسيق النافذة المنبثقة (Modal) */
+        #details-modal {
+            display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.9); z-index: 2000; justify-content: center; align-items: center;
         }
+        .modal-content {
+            background: #111; border: 1px solid #D4AF37; padding: 25px; border-radius: 20px;
+            width: 85%; max-width: 400px; text-align: right; line-height: 1.6;
+        }
+        .modal-content h3 { color: #D4AF37; margin-top: 0; }
+        .close-btn { background: #D4AF37; color: #000; padding: 8px 20px; border-radius: 5px; border: none; cursor: pointer; margin-top: 20px; width: 100%; font-weight: bold; }
+
+        #cart-bar { position: fixed; bottom: 0; left: 0; right: 0; background: #D4AF37; color: #000; padding: 15px 20px; display: none; justify-content: space-between; align-items: center; font-weight: bold; z-index: 1000; border-radius: 20px 20px 0 0; }
         .btn-order { background: #000; color: #D4AF37; padding: 10px 20px; border-radius: 8px; text-decoration: none; font-size: 0.9rem; }
     </style>
 </head>
 <body>
 
     <div class="brand-header">EZWA</div>
-
     <div class="container" id="products-grid"></div>
+
+    <div id="details-modal">
+        <div class="modal-content">
+            <h3 id="m-title">اسم المنتج</h3>
+            <p><strong>🧶 المكونات:</strong> <span id="m-desc">قطن فاخر 100%</span></p>
+            <p><strong>🧼 التعليمات:</strong> غسيل يدوي أو غسيل بارد - تجنب المبيضات.</p>
+            <p><strong>📏 المقاسات:</strong> متوفر (S, M, L, XL, XXL) - قصة واسعة (Oversize).</p>
+            <button class="close-btn" onclick="closeModal()">إغلاق التوضيح</button>
+        </div>
+    </div>
 
     <div id="cart-bar">
         <div id="cart-info">القطع: 0 | المجموع: 0 ر.س</div>
@@ -49,12 +59,9 @@
         const videoLink = "https://vt.tiktok.com/ZSxRBGRQT/";
 
         const products = [
-            { id: 1, name: "Persist White", img: "new%20tshirt%2001.jpg", price: 89 },
-            { id: 2, name: "RAW Box", img: "تيشرت%20بوكس%20RAW.png", price: 89 },
-            { id: 3, name: "RAW Box 2", img: "تيشرت%20بوكس%20RAW%20(2).png", price: 89 },
-            { id: 4, name: "RAW Box 3", img: "تيشرت%20بوكس%20RAW%20(3).png", price: 89 },
-            { id: 5, name: "RAW Box 4", img: "تيشرت%20بوكس%20RAW%20(4).png", price: 89 },
-            { id: 6, name: "Oversize", img: "تيشرت%20اوفر%20سايز.png", price: 89 }
+            { id: 1, name: "Persist White", img: "new%20tshirt%2001.jpg", price: 89, desc: "قطن طبيعي 100% - نسيج ناعم مريح للصيف" },
+            { id: 2, name: "RAW Box", img: "تيشرت%20بوكس%20RAW.png", price: 89, desc: "قطن ثقيل عالي الجودة - طباعة حرارية ثابتة" },
+            { id: 3, name: "RAW Box 2", img: "تيشرت%20بوكس%20RAW%20(2).png", price: 89, desc: "قطن مغسول مسبقاً - قصة أوفراسايز" }
         ];
 
         let cart = [];
@@ -64,18 +71,25 @@
             grid.innerHTML += `
                 <div class="card">
                     <img src="${baseURL + p.img}" alt="${p.name}">
-                    <div>
-                        <div class="product-title">${p.name}</div>
-                        <div class="price">${p.price} ر.س</div>
-                    </div>
+                    <div class="price">${p.price} ر.س</div>
                     <div class="btns">
                         <button class="btn-add" onclick="addToCart(${p.id})">➕ أضف للطلب</button>
-                        <a href="${videoLink}" target="_blank" class="btn-vid">🎬 مشاهدة الفيديو</a>
-                        <button class="btn-share" onclick="shareMe()">🔗 مشاركة</button>
+                        <button class="btn-info" onclick="showDetails('${p.name}', '${p.desc}')">ℹ️ تفاصيل ومقاسات</button>
+                        <a href="${videoLink}" target="_blank" class="btn-vid">🎬 فيديو</a>
                     </div>
                 </div>
             `;
         });
+
+        function showDetails(name, desc) {
+            document.getElementById('m-title').innerText = name;
+            document.getElementById('m-desc').innerText = desc;
+            document.getElementById('details-modal').style.display = 'flex';
+        }
+
+        function closeModal() {
+            document.getElementById('details-modal').style.display = 'none';
+        }
 
         function addToCart(productId) {
             const product = products.find(p => p.id === productId);
@@ -96,10 +110,6 @@
             message += `\n💰 المجموع: ${total} ر.س`;
             window.open(`https://wa.me/966502777884?text=${encodeURIComponent(message)}`, '_blank');
         }
-
-        function shareMe() {
-            if (navigator.share) { navigator.share({ title: 'عزوة', url: window.location.href }); }
-            else { alert('تم نسخ الرابط'); }
-        }
     </script>
 </body>
+</html>
