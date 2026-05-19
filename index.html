@@ -1,56 +1,104 @@
-<style>
-    /* التنسيق الجديد لزر المشاركة */
-    .btn-share { 
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 5px;
-        background: rgba(212, 175, 55, 0.05); /* خلفية ذهبية خفيفة جداً */
-        border: 1px dashed #D4AF37; /* إطار ذهبي منقط يعطي طابعاً مميزاً */
-        color: #D4AF37; 
-        padding: 10px; 
-        border-radius: 8px; 
-        text-decoration: none; 
-        font-size: 0.75rem; 
-        cursor: pointer; 
-        transition: all 0.3s ease;
-        margin-top: 5px;
-    }
-
-    .btn-share:hover {
-        background: #D4AF37;
-        color: #000;
-        border-style: solid;
-        transform: scale(1.03);
-    }
-
-    /* تحسين شكل الأيقونة داخل الزر */
-    .share-icon {
-        font-size: 1rem;
-    }
-</style>
-
-<script>
-    function shareProduct(productName) {
-        const shareData = {
-            title: 'متجر عزوة - ' + productName,
-            text: 'شوف هذا المنتج الرهيب من عزوة: ' + productName,
-            url: window.location.href
-        };
-
-        if (navigator.share) {
-            navigator.share(shareData)
-                .then(() => console.log('تمت المشاركة بنجاح'))
-                .catch((err) => console.log('خطأ في المشاركة: ', err));
-        } else {
-            // حل بديل للمتصفحات التي لا تدعم المشاركة (مثل الكمبيوتر)
-            navigator.clipboard.writeText(window.location.href);
-            
-            // إظهار تنبيه أنيق بدلاً من الـ alert التقليدي
-            const btn = event.target;
-            const originalText = btn.innerHTML;
-            btn.innerHTML = "✅ تم النسخ!";
-            setTimeout(() => { btn.innerHTML = originalText; }, 2000);
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EZWA Official Store</title>
+    <style>
+        /* التنسيقات الأساسية */
+        body { background-color: #000; color: #fff; text-align: center; font-family: sans-serif; margin: 0; padding: 10px; }
+        .brand-header { font-size: 3rem; color: #D4AF37; letter-spacing: -3px; margin: 25px 0; font-weight: bold; }
+        
+        /* الحاوية */
+        .container { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; max-width: 600px; margin: auto; padding: 10px; }
+        
+        /* كرت المنتج */
+        .card { 
+            background: #0a0a0a; 
+            border: 1px solid #1a1a1a; 
+            border-radius: 15px; 
+            padding: 15px; 
+            display: flex; 
+            flex-direction: column; 
+            justify-content: space-between;
+            transition: all 0.3s ease;
         }
-    }
-</script>
+        
+        .card:hover { transform: translateY(-5px); border-color: #D4AF37; }
+
+        .card img { width: 100%; height: 180px; object-fit: cover; border-radius: 10px; margin-bottom: 12px; background: #111; }
+        
+        .price { color: #D4AF37; font-weight: bold; margin-bottom: 15px; font-size: 1.1rem; }
+        
+        /* الأزرار */
+        .btns { display: flex; flex-direction: column; gap: 10px; }
+        
+        .btn-wa { background: #D4AF37; color: #000; padding: 12px; border-radius: 8px; text-decoration: none; font-size: 0.8rem; font-weight: bold; }
+        
+        .btn-tiktok { border: 1px solid #333; color: #D4AF37; padding: 8px; border-radius: 8px; text-decoration: none; font-size: 0.7rem; }
+        
+        /* زر المشاركة المطور */
+        .btn-share { 
+            background: rgba(212, 175, 55, 0.05); 
+            border: 1px dashed #D4AF37; 
+            color: #D4AF37; 
+            padding: 8px; 
+            border-radius: 8px; 
+            font-size: 0.7rem; 
+            cursor: pointer; 
+            transition: 0.3s;
+        }
+        .btn-share:hover { background: #D4AF37; color: #000; }
+    </style>
+</head>
+<body>
+
+    <div class="brand-header">EZWA</div>
+
+    <div class="container" id="products-grid">
+        </div>
+
+    <script>
+        const baseURL = "https://raw.githubusercontent.com/yusefna30-lgtm/ezwa-official/main/";
+        const videoLink = "https://vt.tiktok.com/ZSxRBGRQT/";
+
+        const products = [
+            { name: "RAW Box", img: "تيشرت%20بوكس%20RAW.png" },
+            { name: "Persist White", img: "new%20tshirt%2001.jpg" },
+            { name: "RAW Box 2", img: "تيشرت%20بوكس%20RAW%20(2).png" },
+            { name: "RAW Box 3", img: "تيشرت%20بوكس%20RAW%20(3).png" },
+            { name: "RAW Box 4", img: "تيشرت%20بوكس%20RAW%20(4).png" },
+            { name: "Oversize", img: "تيشرت%20اوفر%20سايز.png" }
+        ];
+
+        const grid = document.getElementById('products-grid');
+
+        products.forEach((p) => {
+            const fullImgPath = baseURL + p.img;
+            grid.innerHTML += `
+                <div class="card">
+                    <img src="${fullImgPath}" alt="${p.name}" onerror="this.src='https://via.placeholder.com/180?text=EZWA'">
+                    <div class="price">89 ر.س</div>
+                    <div class="btns">
+                        <a href="https://wa.me/966502777884" target="_blank" class="btn-wa">واتساب مباشر</a>
+                        <a href="${videoLink}" target="_blank" class="btn-tiktok">مشاهدة الفيديو</a>
+                        <button onclick="shareMe(this)" class="btn-share">🔗 مشاركة المنتج</button>
+                    </div>
+                </div>
+            `;
+        });
+
+        function shareMe(btn) {
+            if (navigator.share) {
+                navigator.share({ title: 'عزوة', url: window.location.href });
+            } else {
+                navigator.clipboard.writeText(window.location.href);
+                const oldText = btn.innerText;
+                btn.innerText = "✅ تم النسخ";
+                setTimeout(() => { btn.innerText = oldText; }, 2000);
+            }
+        }
+    </script>
+
+</body>
+</html>
