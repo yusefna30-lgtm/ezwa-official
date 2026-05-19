@@ -12,12 +12,12 @@
         .card { background: #0a0a0a; border: 1px solid #1a1a1a; border-radius: 15px; padding: 12px; display: flex; flex-direction: column; justify-content: space-between; transition: 0.3s; }
         .card img { width: 100%; height: 180px; object-fit: cover; border-radius: 10px; margin-bottom: 10px; }
         .price { color: #D4AF37; font-weight: bold; margin-bottom: 10px; font-size: 1rem; }
-        .product-title { font-size: 0.8rem; margin-bottom: 8px; color: #ccc; }
+        .product-title { font-size: 0.85rem; margin-bottom: 8px; color: #eee; }
         
         .btns { display: flex; flex-direction: column; gap: 8px; }
         .btn-add { background: #D4AF37; color: #000; padding: 10px; border-radius: 6px; border: none; font-weight: bold; cursor: pointer; font-size: 0.75rem; }
-        .btn-info { border: 1px solid #444; color: #fff; padding: 7px; border-radius: 6px; cursor: pointer; background: none; font-size: 0.65rem; }
-        .btn-vid { border: 1px solid #333; color: #D4AF37; padding: 7px; border-radius: 6px; text-decoration: none; font-size: 0.65rem; }
+        .btn-info { border: 1px solid #333; color: #fff; padding: 7px; border-radius: 6px; cursor: pointer; background: none; font-size: 0.65rem; }
+        .btn-vid { border: 1px solid #222; color: #D4AF37; padding: 7px; border-radius: 6px; text-decoration: none; font-size: 0.65rem; }
 
         /* النافذة المنبثقة */
         #details-modal {
@@ -30,14 +30,21 @@
         }
         .close-btn { background: #D4AF37; color: #000; padding: 10px; border-radius: 5px; border: none; cursor: pointer; margin-top: 20px; width: 100%; font-weight: bold; }
 
-        /* شريط السلة */
-        #cart-bar { position: fixed; bottom: 0; left: 0; right: 0; background: #D4AF37; color: #000; padding: 15px 20px; display: none; justify-content: space-between; align-items: center; font-weight: bold; z-index: 1000; border-radius: 20px 20px 0 0; }
+        /* شريط السلة السفلي */
+        #cart-bar {
+            position: fixed; bottom: 0; left: 0; right: 0;
+            background: #D4AF37; color: #000; padding: 15px 20px;
+            display: none; justify-content: space-between; align-items: center;
+            font-weight: bold; z-index: 1000; border-radius: 20px 20px 0 0;
+            box-shadow: 0 -5px 15px rgba(0,0,0,0.5);
+        }
         .btn-order { background: #000; color: #D4AF37; padding: 10px 20px; border-radius: 8px; text-decoration: none; font-size: 0.9rem; }
     </style>
 </head>
 <body>
 
     <div class="brand-header">EZWA</div>
+
     <div class="container" id="products-grid"></div>
 
     <div id="details-modal">
@@ -59,14 +66,12 @@
         const baseURL = "https://raw.githubusercontent.com/yusefna30-lgtm/ezwa-official/main/";
         const videoLink = "https://vt.tiktok.com/ZSxRBGRQT/";
 
-        // هنا قائمة كل الصور (الستة) التي كانت لديك
+        // المنتجات بالسعر الموحد 115 ريال
         const products = [
-            { id: 1, name: "Persist White", img: "new%20tshirt%2001.jpg", price: 89, desc: "قطن طبيعي فاخر - مريح جداً" },
-            { id: 2, name: "RAW Box", img: "تيشرت%20بوكس%20RAW.png", price: 89, desc: "قطن ثقيل عالي الجودة - طباعة ثابتة" },
-            { id: 3, name: "RAW Box 2", img: "تيشرت%20بوكس%20RAW%20(2).png", price: 89, desc: "تصميم عصري - قصة واسعة" },
-            { id: 4, name: "RAW Box 3", img: "تيشرت%20بوكس%20RAW%20(3).png", price: 89, desc: "نسيج معالج ضد الانكماش" },
-            { id: 5, name: "RAW Box 4", img: "تيشرت%20بوكس%20RAW%20(4).png", price: 89, desc: "إصدار خاص - جودة استثنائية" },
-            { id: 6, name: "EZWA Collection", img: "تيشرت%20اوفر%20سايز.png", price: 89, desc: "التيشيرت الأكثر مبيعاً - قصة أوفراسايز" }
+            { id: 1, name: "PURE", img: "pure.png", price: 115, desc: "قطن فاخر 100% - تطريز يدوي دقيق" },
+            { id: 2, name: "GHOST", img: "ghost.png", price: 115, desc: "لون رملي - تصميم عصري مريح" },
+            { id: 3, name: "FLOW", img: "flow.png", price: 115, desc: "قصة واسعة - خيوط معالجة ضد الانكماش" },
+            { id: 4, name: "MIND", img: "mind.png", price: 115, desc: "إصدار خاص - تفاصيل فنية مميزة" }
         ];
 
         let cart = [];
@@ -80,7 +85,7 @@
                     <div class="price">${p.price} ر.س</div>
                     <div class="btns">
                         <button class="btn-add" onclick="addToCart(${p.id})">➕ أضف للطلب</button>
-                        <button class="btn-info" onclick="showDetails('${p.name}', '${p.desc}')">ℹ️ تفاصيل ومقاسات</button>
+                        <button class="btn-info" onclick="showDetails('${p.name}', '${p.desc}')">ℹ️ التفاصيل</button>
                         <a href="${videoLink}" target="_blank" class="btn-vid">🎬 فيديو</a>
                     </div>
                 </div>
@@ -111,7 +116,7 @@
             let message = "أهلاً عزوة، أرغب في طلب:\n\n";
             cart.forEach((p, i) => { message += `${i + 1}- ${p.name}\n`; });
             const total = cart.reduce((sum, p) => sum + p.price, 0);
-            message += `\n💰 المجموع: ${total} ر.س`;
+            message += `\n💰 المجموع الإجمالي: ${total} ر.س`;
             window.open(`https://wa.me/966502777884?text=${encodeURIComponent(message)}`, '_blank');
         }
     </script>
