@@ -608,84 +608,224 @@
 
     <script>
         // ==========================================================
-        // 🛡️ جدول التحكم بالمنتجات لـ "عِزْوَة"
-        // قمنا بربط كل منتج من منتجاتك الخمسة بالملفات الفعلية التي رفعتها 
-        // لحل مشكلة عدم العثور عليها وتنشيطها فوراً على موقعك المباشر!
+        // 🛡️ جدول التحكم بالمنتجات الـ 17 المحدثة يدوياً بالكامل لـ "عِزْوَة"
+        // ربطنا كل منتج بملف صورته المرفوع بجيت هاب (سواء صيغة مكررة .png.png أو مفردة)
         // ==========================================================
         const productsConfig = [
             {
-                id: "box",
-                name: "T-SHIRT BOX",
+                id: "box_raw",
+                name: "BOX RAW (الأساسي)",
                 colors: "4 الوان",        
                 sizes: "M. L. XL. 2XL",   
                 shadd: "16 حبة",         
                 price: "30 ﷼ للحبة",     
                 rawShaddNum: 16,         
                 rawPriceNum: 30,         
-                image: "TSHIRT BOX RAW.png.png", // صورتك للبوكس (الـ 3 منيكانات)
+                image: "TSHIRT BOX RAW.png.png", 
                 svgType: "box"
             },
             {
-                id: "pure",
-                name: "PURE",
-                colors: "4 ألوان",        
-                sizes: "S. M. L. XL",     
+                id: "box_raw1",
+                name: "BOX RAW 1",
+                colors: "4 الوان",        
+                sizes: "M. L. XL. 2XL",   
                 shadd: "16 حبة",         
                 price: "30 ﷼ للحبة",     
                 rawShaddNum: 16,         
                 rawPriceNum: 30,         
-                image: "TSHIRT BOX RAW1.png.png", // صورتك المرفوعة للـ Pure (الرقم التسلسلي 1 في ملفاتك)
-                svgType: "pure"
+                image: "TSHIRT BOX RAW1.png.png", 
+                svgType: "box"
             },
             {
-                id: "ghost",
-                name: "GHOST",
-                colors: "4 ألوان",
-                sizes: "S. M. L. XL",
-                shadd: "16 حبة",
-                price: "30 ﷼ للحبة",
-                rawShaddNum: 16,
-                rawPriceNum: 30,
-                image: "TSHIRT BOX RAW10.png.png", // صورتك المرفوعة للـ Ghost (الرقم التسلسلي 10 في ملفاتك)
-                svgType: "ghost"
+                id: "box_raw2",
+                name: "BOX RAW 2",
+                colors: "4 الوان",        
+                sizes: "M. L. XL. 2XL",   
+                shadd: "16 حبة",         
+                price: "30 ﷼ للحبة",     
+                rawShaddNum: 16,         
+                rawPriceNum: 30,         
+                image: "TSHIRT BOX RAW2.png.png", 
+                svgType: "box"
             },
             {
-                id: "flow",
-                name: "FLOW",
-                colors: "ألوان متعددة",         
-                sizes: "S. M. L. XL",
-                shadd: "12 حبة",         
-                price: "30 ﷼ للحبة",
-                rawShaddNum: 12,
-                rawPriceNum: 30,
-                image: "TSHIRT BOX RAW11.png.png",  // صورتك المرفوعة للـ Flow (الرقم التسلسلي 11 في ملفاتك)
-                svgType: "flow"
+                id: "box_raw3",
+                name: "BOX RAW 3",
+                colors: "4 الوان",        
+                sizes: "M. L. XL. 2XL",   
+                shadd: "16 حبة",         
+                price: "30 ﷼ للحبة",     
+                rawShaddNum: 16,         
+                rawPriceNum: 30,         
+                image: "TSHIRT BOX RAW3.png.png", 
+                svgType: "box"
             },
             {
-                id: "mind",
-                name: "MIND",
-                colors: "لون واحد",       
-                sizes: "S. M. L. XL",
-                shadd: "5 حبة",          
-                price: "30 ﷼ للحبة",
-                rawShaddNum: 5,
-                rawPriceNum: 30,
-                image: "TSHIRT BOX RAW12.png.png", // صورتك المرفوعة للـ Mind (الرقم التسلسلي 12 في ملفاتك)
-                svgType: "mind"
+                id: "box_raw4",
+                name: "BOX RAW 4",
+                colors: "4 الوان",        
+                sizes: "M. L. XL. 2XL",   
+                shadd: "16 حبة",         
+                price: "30 ﷼ للحبة",     
+                rawShaddNum: 16,         
+                rawPriceNum: 30,         
+                image: "TSHIRT BOX RAW4.png.png", 
+                svgType: "box"
+            },
+            {
+                id: "box_raw5",
+                name: "BOX RAW 5",
+                colors: "4 الوان",        
+                sizes: "M. L. XL. 2XL",   
+                shadd: "16 حبة",         
+                price: "30 ﷼ للحبة",     
+                rawShaddNum: 16,         
+                rawPriceNum: 30,         
+                image: "TSHIRT BOX RAW5.png.png", 
+                svgType: "box"
+            },
+            {
+                id: "box_raw6",
+                name: "BOX RAW 6",
+                colors: "4 الوان",        
+                sizes: "M. L. XL. 2XL",   
+                shadd: "16 حبة",         
+                price: "30 ﷼ للحبة",     
+                rawShaddNum: 16,         
+                rawPriceNum: 30,         
+                image: "TSHIRT BOX RAW6.png.png", 
+                svgType: "box"
+            },
+            {
+                id: "box_raw7",
+                name: "BOX RAW 7",
+                colors: "4 الوان",        
+                sizes: "M. L. XL. 2XL",   
+                shadd: "16 حبة",         
+                price: "30 ﷼ للحبة",     
+                rawShaddNum: 16,         
+                rawPriceNum: 30,         
+                image: "TSHIRT BOX RAW7.png.png", 
+                svgType: "box"
+            },
+            {
+                id: "box_raw8",
+                name: "BOX RAW 8",
+                colors: "4 الوان",        
+                sizes: "M. L. XL. 2XL",   
+                shadd: "16 حبة",         
+                price: "30 ﷼ للحبة",     
+                rawShaddNum: 16,         
+                rawPriceNum: 30,         
+                image: "TSHIRT BOX RAW8.png.png", 
+                svgType: "box"
+            },
+            {
+                id: "box_raw9",
+                name: "BOX RAW 9",
+                colors: "4 الوان",        
+                sizes: "M. L. XL. 2XL",   
+                shadd: "16 حبة",         
+                price: "30 ﷼ للحبة",     
+                rawShaddNum: 16,         
+                rawPriceNum: 30,         
+                image: "TSHIRT BOX RAW9.png.png", 
+                svgType: "box"
+            },
+            {
+                id: "box_raw10",
+                name: "BOX RAW 10",
+                colors: "4 الوان",        
+                sizes: "M. L. XL. 2XL",   
+                shadd: "16 حبة",         
+                price: "30 ﷼ للحبة",     
+                rawShaddNum: 16,         
+                rawPriceNum: 30,         
+                image: "TSHIRT BOX RAW10.png.png", 
+                svgType: "box"
+            },
+            {
+                id: "box_raw11",
+                name: "BOX RAW 11",
+                colors: "4 الوان",        
+                sizes: "M. L. XL. 2XL",   
+                shadd: "16 حبة",         
+                price: "30 ﷼ للحبة",     
+                rawShaddNum: 16,         
+                rawPriceNum: 30,         
+                image: "TSHIRT BOX RAW11.png.png", 
+                svgType: "box"
+            },
+            {
+                id: "box_raw12",
+                name: "BOX RAW 12",
+                colors: "4 الوان",        
+                sizes: "M. L. XL. 2XL",   
+                shadd: "16 حبة",         
+                price: "30 ﷼ للحبة",     
+                rawShaddNum: 16,         
+                rawPriceNum: 30,         
+                image: "TSHIRT BOX RAW12.png.png", 
+                svgType: "box"
+            },
+            {
+                id: "box_raw13",
+                name: "BOX RAW 13",
+                colors: "4 الوان",        
+                sizes: "M. L. XL. 2XL",   
+                shadd: "16 حبة",         
+                price: "30 ﷼ للحبة",     
+                rawShaddNum: 16,         
+                rawPriceNum: 30,         
+                image: "TSHIRT BOX RAW13.png.png", 
+                svgType: "box"
+            },
+            {
+                id: "box_raw14",
+                name: "BOX RAW 14",
+                colors: "4 الوان",        
+                sizes: "M. L. XL. 2XL",   
+                shadd: "16 حبة",         
+                price: "30 ﷼ للحبة",     
+                rawShaddNum: 16,         
+                rawPriceNum: 30,         
+                image: "TSHIRT BOX RAW14.png.png", 
+                svgType: "box"
+            },
+            {
+                id: "box_raw15",
+                name: "BOX RAW 15",
+                colors: "4 الوان",        
+                sizes: "M. L. XL. 2XL",   
+                shadd: "16 حبة",         
+                price: "30 ﷼ للحبة",     
+                rawShaddNum: 16,         
+                rawPriceNum: 30,         
+                image: "TSHIRT BOX RAW15.png.png", 
+                svgType: "box"
+            },
+            {
+                id: "box_raw16",
+                name: "BOX RAW 16",
+                colors: "4 الوان",        
+                sizes: "M. L. XL. 2XL",   
+                shadd: "16 حبة",         
+                price: "30 ﷼ للحبة",     
+                rawShaddNum: 16,         
+                rawPriceNum: 30,         
+                image: "TSHIRT BOX RAW16.png.png", 
+                svgType: "box"
             }
         ];
 
         // 🎯 رقم الواتساب الرسمي لمبيعات عزوة
         const WHATSAPP_PHONE = "966502777884"; 
 
-        // تخزين عدد الشدات التي اختارها الزبون لكل منتج
-        const wholesaleSelected = {
-            box: 0,
-            pure: 0,
-            ghost: 0,
-            flow: 0,
-            mind: 0
-        };
+        // تخزين سلة المشتريات بشكل ديناميكي ومرن لجميع المنتجات الـ 17 المحددة
+        const wholesaleSelected = {};
+        productsConfig.forEach(p => {
+            wholesaleSelected[p.id] = 0;
+        });
 
         let selectedProductKey = null;
         let localShaddSelection = 0;
@@ -722,12 +862,12 @@
                     </div>
                     <div class="image-container">
                         ${product.image ? 
-                            `<img src="${safeImagePath}" alt="تيشيرت ${product.name}" onerror="applyFallback(this, '${product.id}')">` : 
+                            `<img src="${safeImagePath}" alt="تيشيرت ${product.name}" onerror="handleImgError(this, '${product.id}', '${product.image}')">` : 
                             generateSVGMarkup(product.svgType, product.name)
                         }
                         <div class="circle-overlay-preview">
                             ${product.image ? 
-                                `<img src="${safeImagePath}" alt="تفاصيل ${product.name}" onerror="this.parentElement.innerHTML = generateSVGOverlay('${product.svgType}', '${product.name}')">` : 
+                                `<img src="${safeImagePath}" alt="تفاصيل ${product.name}" onerror="handleOverlayImgError(this, '${product.id}', '${product.image}')">` : 
                                 generateSVGOverlay(product.svgType, product.name)
                             }
                         </div>
@@ -749,6 +889,33 @@
             });
         }
 
+        // كود حماية ذكي مزدوج لإصلاح الصور في حال تم رفعها بصيغة .png أحادية بدلاً من .png.png الثنائية
+        function handleImgError(img, id, originalSrc) {
+            const cacheBuster = Date.now();
+            if (originalSrc.endsWith('.png.png')) {
+                const fallbackSrc = originalSrc.substring(0, originalSrc.length - 4);
+                img.onerror = function() {
+                    applyFallback(this, id); // في حال فشل الحل البديل، يعرض الرسم التوضيحي SVG الفخم
+                };
+                img.src = `${encodeURIComponent(fallbackSrc)}?v=${cacheBuster}`;
+            } else {
+                applyFallback(img, id);
+            }
+        }
+
+        function handleOverlayImgError(img, id, originalSrc) {
+            const cacheBuster = Date.now();
+            if (originalSrc.endsWith('.png.png')) {
+                const fallbackSrc = originalSrc.substring(0, originalSrc.length - 4);
+                img.onerror = function() {
+                    this.parentElement.innerHTML = generateSVGOverlay('box', id);
+                };
+                img.src = `${encodeURIComponent(fallbackSrc)}?v=${cacheBuster}`;
+            } else {
+                this.parentElement.innerHTML = generateSVGOverlay('box', id);
+            }
+        }
+
         // فتح نافذة الشدّات - يقرأ القيم بدقة من جدول البيانات بالأعلى
         function openShaddModal(productKey) {
             selectedProductKey = productKey;
@@ -762,17 +929,7 @@
             document.getElementById('shadd-modal-label').textContent = `شدّة (${product.shadd})`;
             
             // تحديد وصف مقاسات الشدة بناءً على نوع الصنف
-            let distributionText = 'توزيع المقاسات متوازن وعادل بالكامل';
-            
-            if (product.id === 'box') {
-                if (product.rawShaddNum === 16) distributionText = 'التوزيع: 4M / 4L / 4XL / 4(2XL)';
-                else if (product.rawShaddNum === 12) distributionText = 'التوزيع: 3M / 3L / 3XL / 3(2XL)';
-                else if (product.rawShaddNum === 5) distributionText = 'التوزيع: 1M / 2L / 1XL / 1(2XL)';
-            } else {
-                if (product.rawShaddNum === 16) distributionText = 'التوزيع: 3S / 5M / 5L / 3XL';
-                else if (product.rawShaddNum === 12) distributionText = 'التوزيع: 2S / 4M / 4L / 2XL';
-                else if (product.rawShaddNum === 5) distributionText = 'التوزيع: 1S / 2M / 1L / 1XL';
-            }
+            let distributionText = 'التوزيع: 4M / 4L / 4XL / 4(2XL)';
             
             document.getElementById('shadd-modal-desc').textContent = distributionText;
             document.getElementById('shadd-modal-price').textContent = `${product.rawPriceNum * product.rawShaddNum} ﷼ للشدة كاملة`;
@@ -879,64 +1036,30 @@
         // بديل لصور الموديلات عند فشل التحميل
         function applyFallback(img, text) {
             const parent = img.parentElement;
-            parent.innerHTML = generateSVGMarkup(text.toLowerCase(), text.toUpperCase());
+            parent.innerHTML = generateSVGMarkup('box', text);
         }
 
         // بناء جرافيكس رقمية للتيشيرتات لتعمل في المعاينة وبشكل جذاب
         function generateSVGMarkup(type, name) {
-            let innerGraphic = '';
-            let shirtColor = '#101012';
-            
-            if (type === 'pure') {
-                shirtColor = '#ffffff';
-                innerGraphic = `
-                    <circle cx="160" cy="160" r="30" fill="none" stroke="#7f1d1d" stroke-width="2"/>
-                    <path d="M140 180 Q 160 140, 180 180" stroke="#000000" stroke-width="2" fill="none"/>
-                `;
-            } else if (type === 'ghost') {
-                shirtColor = '#d6c3b0';
-                innerGraphic = `
-                    <path d="M130 180 C 130 120, 190 120, 190 180 C 180 190, 140 190, 130 180 Z" fill="#2d2219" opacity="0.85"/>
-                `;
-            } else if (type === 'mind') {
-                shirtColor = '#0c0c0e';
-                innerGraphic = `
-                    <circle cx="160" cy="155" r="25" fill="#27272a" stroke="#dfb43f" stroke-width="1.5"/>
-                    <path d="M150 175 Q 160 190, 170 175" stroke="#dfb43f" stroke-width="2" fill="none"/>
-                `;
-            } else if (type === 'flow') {
-                shirtColor = '#050505';
-                innerGraphic = `
-                    <rect x="130" y="130" width="60" height="70" rx="4" fill="none" stroke="#ffffff" stroke-width="2"/>
-                    <line x1="130" y1="165" x2="190" y2="165" stroke="#ffffff" stroke-width="2"/>
-                `;
-            } else if (type === 'box') {
-                shirtColor = '#111115';
-                innerGraphic = `
+            return `
+                <svg viewBox="0 0 320 400" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="100%" height="100%" fill="#0a0a0b"/>
+                    <path d="M60 80 L100 40 L160 55 L220 40 L260 80 L290 150 L240 170 L230 130 L230 360 L90 360 L90 130 L80 150 Z" fill="#111115" stroke="#1f1f23" stroke-width="2"/>
                     <g transform="translate(100, 115)" stroke="#dfb43f" stroke-width="2.5" fill="none">
                         <path d="M10 30 L60 10 L110 30 L60 50 Z" />
                         <path d="M10 30 L10 80 L60 100 L60 50" />
                         <path d="M110 30 L110 80 L60 100" />
                         <path d="M35 20 L85 40" stroke-dasharray="3 3" />
                     </g>
-                `;
-            }
-
-            return `
-                <svg viewBox="0 0 320 400" xmlns="http://www.w3.org/2000/svg">
-                    <rect width="100%" height="100%" fill="#0a0a0b"/>
-                    <path d="M60 80 L100 40 L160 55 L220 40 L260 80 L290 150 L240 170 L230 130 L230 360 L90 360 L90 130 L80 150 Z" fill="${shirtColor}" stroke="#1f1f23" stroke-width="2"/>
-                    ${innerGraphic}
                 </svg>
             `;
         }
 
         // بناء جرافيكس الدائرة المداخلة بالزاوية
         function generateSVGOverlay(type, name) {
-            let color = (type === 'pure') ? '#ffffff' : (type === 'ghost' ? '#d6c3b0' : '#050505');
             return `
                 <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                    <rect width="100%" height="100%" fill="${color}"/>
+                    <rect width="100%" height="100%" fill="#050505"/>
                     <circle cx="50" cy="50" r="35" stroke="#dfb43f" stroke-width="1.5" fill="none"/>
                 </svg>
             `;
