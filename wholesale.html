@@ -595,8 +595,7 @@
     <script>
         // ==========================================================
         // 🛡️ جدول التحكم بالمنتجات (صافي ويدوي بالكامل)
-        // قمنا بتصفية مسارات الصور لمنع استدعاء الصور القديمة لكتالوج عزوة
-        // وبقيت صورة "تيشيرت بوكس" فقط لتعمل برابطها الفعلي المرفوع على مستودعك.
+        // قمنا بربط كل منتج باسم صورته الحقيقية التي رفعتها في جيت هاب بالضبط!
         // ==========================================================
         const productsConfig = [
             {
@@ -608,7 +607,7 @@
                 price: "30 ﷼ للحبة",     
                 rawShaddNum: 16,         
                 rawPriceNum: 30,         
-                image: "TSHIRT BOX RAW.png", // تم ربطه مباشرة بملف البوكس المرفوع بجيت هاب الخاص بك!
+                image: "TSHIRT BOX RAW.png", // صورتك المرفوعة للبوكس
                 svgType: "box"
             },
             {
@@ -620,7 +619,7 @@
                 price: "30 ﷼ للحبة",     
                 rawShaddNum: 16,         
                 rawPriceNum: 30,         
-                image: "", // فارغة لمنع سحب الصور القديمة وعرض رسم الـ SVG المذهب بدلاً منها
+                image: "TSHIRT PURE.png", // صورتك المرفوعة للـ Pure
                 svgType: "pure"
             },
             {
@@ -632,7 +631,7 @@
                 price: "30 ﷼ للحبة",
                 rawShaddNum: 16,
                 rawPriceNum: 30,
-                image: "", // فارغة لمنع سحب الصور القديمة وعرض رسم الـ SVG المذهب بدلاً منها
+                image: "TSHIRT GHOST.png", // صورتك المرفوعة للـ Ghost (الموديل بقميص الخيل الأسود المذهب)
                 svgType: "ghost"
             },
             {
@@ -644,7 +643,7 @@
                 price: "30 ﷼ للحبة",
                 rawShaddNum: 12,
                 rawPriceNum: 30,
-                image: "",  // فارغة لمنع سحب الصور القديمة وعرض رسم الـ SVG المذهب بدلاً منها
+                image: "TSHIRT FLOW.png",  // صورتك المرفوعة للـ Flow
                 svgType: "flow"
             },
             {
@@ -656,12 +655,12 @@
                 price: "30 ﷼ للحبة",
                 rawShaddNum: 5,
                 rawPriceNum: 30,
-                image: "", // فارغة لمنع سحب الصور القديمة وعرض رسم الـ SVG المذهب بدلاً منها
+                image: "TSHIRT DATA.png", // صورتك المرفوعة للـ Mind
                 svgType: "mind"
             }
         ];
 
-        // 🎯 رقم الواتساب الرسمي والمباشر لـ عزوة
+        // 🎯 رقم الواتساب الرسمي لمبيعات عزوة
         const WHATSAPP_PHONE = "966502777884"; 
 
         // تخزين عدد الشدات التي اختارها الزبون لكل منتج
@@ -770,6 +769,7 @@
             document.getElementById('shadd-sheet').classList.add('open');
         }
 
+        // إغلاق المودال
         function closeShaddModal() {
             document.getElementById('shadd-sheet').classList.remove('open');
             selectedProductKey = null;
