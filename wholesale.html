@@ -453,7 +453,7 @@
             cursor: not-allowed;
         }
 
-        /* قائمة التفاصيل الفنية المخصصة في المودال - نسخة طبق الأصل بالملي من لقطة شاشتك الثانية */
+        /* قائمة التفاصيل الفنية المخصصة في المودال - نسخة طبق الأصل بالملي من لقطة شاشتك تماماً */
         .details-sheet {
             display: flex;
             flex-direction: column;
@@ -550,7 +550,7 @@
         </div>
     </div>
 
-    <!-- النافذة المنبثقة للتفاصيل الفنية (ℹ️ التفاصيل) - نسخة طبق الأصل من لقطة شاشتك الثانية بالملي -->
+    <!-- النافذة المنبثقة للتفاصيل الفنية (ℹ️ التفاصيل) - نسخة طبق الأصل من لقطة شاشتك تماماً -->
     <div class="bottom-sheet" id="details-sheet" onclick="closeSheetOutside(event, 'details-sheet')">
         <div class="sheet-container" style="max-height: 85vh; overflow-y: auto;">
             <div class="sheet-header" style="border-bottom: none; margin-bottom: 10px;">
@@ -607,10 +607,11 @@
     <div class="toast" id="system-toast">تم التحديث بنجاح</div>
 
     <script>
-        // ==========================================
+        // ==========================================================
         // 🛡️ جدول التحكم بالمنتجات لـ "عِزْوَة"
-        // قمنا بربط كل منتج باسم صورته الحقيقية التي رفعتها في جيت هاب بالضبط!
-        // ==========================================
+        // ربطنا كل منتج باسم صورته الحقيقية التي رفعتها في جيت هاب بالضبط!
+        // تم تصحيح اسم صورة تيشيرت بوكس لتشير لملف "TSHIRT BOX RAW.png.png" الجديد!
+        // ==========================================================
         const productsConfig = [
             {
                 id: "box",
@@ -621,7 +622,7 @@
                 price: "30 ﷼ للحبة",     
                 rawShaddNum: 16,         
                 rawPriceNum: 30,         
-                image: "TSHIRT BOX RAW.png", // صورتك المرفوعة للبوكس
+                image: "TSHIRT BOX RAW.png.png", // تم الربط مع صورتكم الجديدة المرفوعة أمس مباشرة!
                 svgType: "box"
             },
             {
@@ -699,19 +700,19 @@
             }, 2500);
         }
 
-        // دالة لبناء الكروت ديناميكياً مع ميزة كسر الكاش الذكي
+        // دالة لبناء الكروت ديناميكياً مع حماية كسر الكاش الذكي لضمان تحديث الصور
         function renderProductCards() {
             const gridContainer = document.getElementById('catalog-grid-container');
             gridContainer.innerHTML = '';
 
-            // كسر كاش المتصفح باستخدام طابع زمني فريد لكل عملية تحميل
+            // كود كسر الكاش لمنع المتصفح من إظهار الصور القديمة
             const cacheBuster = Date.now();
 
             productsConfig.forEach(product => {
                 const totalShaddCount = wholesaleSelected[product.id] || 0;
-
-                // ترميز المسار ليكون خالياً من الفراغات لضمان قراءته بشكل سليم بالمتصفح
-                const safeImagePath = product.image ? `${product.image.replace(/ /g, "%20")}?v=${cacheBuster}` : '';
+                
+                // تحويل مسار الصورة ليكون متوافقاً مع روابط الويب
+                const safeImagePath = product.image ? `${encodeURIComponent(product.image)}?v=${cacheBuster}` : '';
 
                 const card = document.createElement('div');
                 card.className = 'product-card';
