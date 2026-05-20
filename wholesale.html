@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
     <style>
-        /* نظام الألوان والتصاميم الدقيق والمطابق تماماً للقطة الشاشة الخاصة بك */
+        /* نظام الألوان والتصاميم الدقيق والمطابق تماماً لهوية عِزْوَة الفخمة */
         :root {
             --bg-black: #000000;
             --bg-card: #0c0c0e;
@@ -98,7 +98,7 @@
             }
         }
 
-        /* صورة المنتج الكبيرة المستديرة */
+        /* صورة المنتج الكبيرة المستديرة مع ميزة المحاذاة العلوية لحماية الموديل من القص */
         .image-container {
             width: 100%;
             aspect-ratio: 3.2 / 4; /* أبعاد مطابقة تماماً للقطة الشاشة */
@@ -108,13 +108,20 @@
             position: relative;
         }
 
-        .image-container img, .image-container svg {
+        .image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: top; /* يضمن إظهار تيشيرتاتك الجديدة ووجوه الموديلات كاملة بدلاً من البنطلون والخصر */
+        }
+
+        .image-container svg {
             width: 100%;
             height: 100%;
             object-fit: cover;
         }
 
-        /* الدائرة البديلة المستديرة بالزاوية اليمنى بالأسفل */
+        /* الدائرة البديلة المستديرة بالزاوية اليمنى بالأسفل مع محاذاة علوية دقيقة لتصميم الصدر */
         .circle-overlay-preview {
             position: absolute;
             bottom: 8px;
@@ -131,7 +138,14 @@
             justify-content: center;
         }
 
-        .circle-overlay-preview img, .circle-overlay-preview svg {
+        .circle-overlay-preview img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: top; /* يضمن إظهار ياقة وتصميم التيشيرت بشكل مذهب فخم داخل الدائرة */
+        }
+
+        .circle-overlay-preview svg {
             width: 100%;
             height: 100%;
             object-fit: cover;
@@ -595,6 +609,7 @@
     <script>
         // ==========================================
         // 🛡️ جدول التحكم بالمنتجات لـ "عِزْوَة"
+        // قمنا بربط كل منتج باسم صورته الحقيقية التي رفعتها في جيت هاب بالضبط!
         // ==========================================
         const productsConfig = [
             {
@@ -606,7 +621,7 @@
                 price: "30 ﷼ للحبة",     
                 rawShaddNum: 16,         
                 rawPriceNum: 30,         
-                image: "TSHIRT BOX RAW.png", 
+                image: "TSHIRT BOX RAW.png", // صورتك المرفوعة للبوكس
                 svgType: "box"
             },
             {
@@ -618,7 +633,7 @@
                 price: "30 ﷼ للحبة",     
                 rawShaddNum: 16,         
                 rawPriceNum: 30,         
-                image: "TSHIRT PURE.png", 
+                image: "TSHIRT PURE.png", // صورتك المرفوعة للـ Pure
                 svgType: "pure"
             },
             {
@@ -630,7 +645,7 @@
                 price: "30 ﷼ للحبة",
                 rawShaddNum: 16,
                 rawPriceNum: 30,
-                image: "TSHIRT GHOST.png", 
+                image: "TSHIRT GHOST.png", // صورتك المرفوعة للـ Ghost
                 svgType: "ghost"
             },
             {
@@ -642,7 +657,7 @@
                 price: "30 ﷼ للحبة",
                 rawShaddNum: 12,
                 rawPriceNum: 30,
-                image: "TSHIRT FLOW.png",  
+                image: "TSHIRT FLOW.png",  // صورتك المرفوعة للـ Flow
                 svgType: "flow"
             },
             {
@@ -654,12 +669,12 @@
                 price: "30 ﷼ للحبة",
                 rawShaddNum: 5,
                 rawPriceNum: 30,
-                image: "TSHIRT DATA.png", 
+                image: "TSHIRT DATA.png", // صورتك المرفوعة للـ Mind
                 svgType: "mind"
             }
         ];
 
-        // 🎯 رقم الواتساب الرسمي لـ عزوة
+        // 🎯 رقم الواتساب الرسمي لمبيعات عزوة
         const WHATSAPP_PHONE = "966502777884"; 
 
         // تخزين عدد الشدات التي اختارها الزبون لكل منتج
@@ -711,7 +726,7 @@
                         }
                         <div class="circle-overlay-preview">
                             ${product.image ? 
-                                `<img src="${safeImagePath}" alt="تفاصيل ${product.name}" style="transform: scale(2.2); transform-origin: center;" onerror="this.parentElement.innerHTML = generateSVGOverlay('${product.svgType}', '${product.name}')">` : 
+                                `<img src="${safeImagePath}" alt="تفاصيل ${product.name}" onerror="this.parentElement.innerHTML = generateSVGOverlay('${product.svgType}', '${product.name}')">` : 
                                 generateSVGOverlay(product.svgType, product.name)
                             }
                         </div>
