@@ -593,21 +593,22 @@
     <div class="toast" id="system-toast">تم التحديث بنجاح</div>
 
     <script>
-        // ==========================================
+        // ==========================================================
         // 🛡️ جدول التحكم بالمنتجات (صافي ويدوي بالكامل)
-        // ربطنا الأسماء بملفات الصور المرفوعة بمستودعك على جيت هاب لتظهر فوراً!
-        // ==========================================
+        // قمنا بتصفية مسارات الصور لمنع استدعاء الصور القديمة لكتالوج عزوة
+        // وبقيت صورة "تيشيرت بوكس" فقط لتعمل برابطها الفعلي المرفوع على مستودعك.
+        // ==========================================================
         const productsConfig = [
             {
                 id: "box",
                 name: "T-SHIRT BOX",
-                colors: "4 الوان",        // تم التعديل إلى "4 الوان" كما حددتها أنت يدوياً بالملي
-                sizes: "M. L. XL. 2XL",   // تم التعديل يدوياً لإلغاء المقاس S
+                colors: "4 الوان",        
+                sizes: "M. L. XL. 2XL",   
                 shadd: "16 حبة",         
                 price: "30 ﷼ للحبة",     
                 rawShaddNum: 16,         
                 rawPriceNum: 30,         
-                image: "TSHIRT BOX RAW.png", // اسم الصورة الفعلي في مستودع جيت هاب الخاص بك
+                image: "TSHIRT BOX RAW.png", // تم ربطه مباشرة بملف البوكس المرفوع بجيت هاب الخاص بك!
                 svgType: "box"
             },
             {
@@ -619,7 +620,7 @@
                 price: "30 ﷼ للحبة",     
                 rawShaddNum: 16,         
                 rawPriceNum: 30,         
-                image: "TSHIRT PURE.png", 
+                image: "", // فارغة لمنع سحب الصور القديمة وعرض رسم الـ SVG المذهب بدلاً منها
                 svgType: "pure"
             },
             {
@@ -631,36 +632,36 @@
                 price: "30 ﷼ للحبة",
                 rawShaddNum: 16,
                 rawPriceNum: 30,
-                image: "TSHIRT GHOST.png", 
+                image: "", // فارغة لمنع سحب الصور القديمة وعرض رسم الـ SVG المذهب بدلاً منها
                 svgType: "ghost"
             },
             {
                 id: "flow",
                 name: "FLOW",
-                colors: "ألوان متعددة",   // استبدال الكلمة بـ "ألوان متعددة" لمنع اللبس البصري تماماً
+                colors: "ألوان متعددة",         
                 sizes: "S. M. L. XL",
                 shadd: "12 حبة",         
                 price: "30 ﷼ للحبة",
                 rawShaddNum: 12,
                 rawPriceNum: 30,
-                image: "TSHIRT FLOW.png",  
+                image: "",  // فارغة لمنع سحب الصور القديمة وعرض رسم الـ SVG المذهب بدلاً منها
                 svgType: "flow"
             },
             {
                 id: "mind",
                 name: "MIND",
-                colors: "لون واحد",       // يظهر يدوياً "لون واحد" لأن الشد 5 حبات
+                colors: "لون واحد",       
                 sizes: "S. M. L. XL",
                 shadd: "5 حبة",          
                 price: "30 ﷼ للحبة",
                 rawShaddNum: 5,
                 rawPriceNum: 30,
-                image: "TSHIRT DATA.png", 
+                image: "", // فارغة لمنع سحب الصور القديمة وعرض رسم الـ SVG المذهب بدلاً منها
                 svgType: "mind"
             }
         ];
 
-        // 🎯 تم تحديث رقم الواتساب الرسمي والمباشر لـ عزوة
+        // 🎯 رقم الواتساب الرسمي والمباشر لـ عزوة
         const WHATSAPP_PHONE = "966502777884"; 
 
         // تخزين عدد الشدات التي اختارها الزبون لكل منتج
@@ -706,7 +707,7 @@
                         }
                         <div class="circle-overlay-preview">
                             ${product.image ? 
-                                `<img src="${product.image}" alt="تفاصيل ${product.name}" style="transform: scale(2.2); transform-origin: center;">` : 
+                                `<img src="${product.image}" alt="تفاصيل ${product.name}" style="transform: scale(2.2); transform-origin: center;" onerror="this.parentElement.innerHTML = generateSVGOverlay('${product.svgType}', '${product.name}')">` : 
                                 generateSVGOverlay(product.svgType, product.name)
                             }
                         </div>
