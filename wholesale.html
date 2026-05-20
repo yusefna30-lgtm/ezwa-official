@@ -284,32 +284,6 @@
             cursor: pointer;
         }
 
-        /* نماذج الإدخال بداخل المودالات */
-        .modal-form-group {
-            margin-bottom: 16px;
-            text-align: right;
-        }
-
-        .modal-label {
-            display: block;
-            font-size: 0.9rem;
-            font-weight: 600;
-            color: var(--text-grey);
-            margin-bottom: 8px;
-        }
-
-        .modal-select {
-            width: 100%;
-            background-color: #000;
-            border: 1px solid rgba(255,255,255,0.1);
-            border-radius: 8px;
-            padding: 12px;
-            color: var(--text-white);
-            font-size: 0.95rem;
-            outline: none;
-            text-align: right;
-        }
-
         /* صف الشدّة التفاعلي الموحد */
         .shadd-item {
             display: flex;
@@ -625,15 +599,27 @@
         // ==========================================
         const productsConfig = [
             {
+                id: "box",
+                name: "T-SHIRT BOX",
+                colors: "4 الوان",        // تم التعديل إلى "4 الوان" كما حددتها أنت يدوياً بالملي
+                sizes: "M. L. XL. 2XL",   // تم التعديل يدوياً لإلغاء المقاس S
+                shadd: "16 حبة",         
+                price: "30 ﷼ للحبة",     
+                rawShaddNum: 16,         
+                rawPriceNum: 30,         
+                image: "TSHIRT BOX RAW.png", // اسم الصورة الفعلي في مستودع جيت هاب الخاص بك
+                svgType: "box"
+            },
+            {
                 id: "pure",
                 name: "PURE",
-                colors: "4 ألوان",        // تظهر كما هي بالضبط في ألالوان
-                sizes: "S. M. L. XL",     // تظهر كما هي بالضبط في المقاس
-                shadd: "16 حبة",         // تظهر كما هي بالضبط في الشد
-                price: "30 ﷼ للحبة",     // تظهر كما هي بالضبط في السعر
-                rawShaddNum: 16,         // العدد الرياضي لحساب سلة الشراء بالخلفية
-                rawPriceNum: 30,         // السعر الرياضي
-                image: "TSHIRT PURE.png", // اسم الصورة الفعلي في مستودع جيت هاب الخاص بك
+                colors: "4 ألوان",        
+                sizes: "S. M. L. XL",     
+                shadd: "16 حبة",         
+                price: "30 ﷼ للحبة",     
+                rawShaddNum: 16,         
+                rawPriceNum: 30,         
+                image: "TSHIRT PURE.png", 
                 svgType: "pure"
             },
             {
@@ -645,40 +631,41 @@
                 price: "30 ﷼ للحبة",
                 rawShaddNum: 16,
                 rawPriceNum: 30,
-                image: "TSHIRT GHOST.png", // اسم الصورة الفعلي في مستودع جيت هاب الخاص بك
+                image: "TSHIRT GHOST.png", 
                 svgType: "ghost"
             },
             {
                 id: "flow",
                 name: "FLOW",
-                colors: "لونين",         // تظهر "لونين" يدوياً
+                colors: "ألوان متعددة",   // استبدال الكلمة بـ "ألوان متعددة" لمنع اللبس البصري تماماً
                 sizes: "S. M. L. XL",
-                shadd: "12 حبة",         // تظهر "12 حبة" يدوياً
+                shadd: "12 حبة",         
                 price: "30 ﷼ للحبة",
                 rawShaddNum: 12,
                 rawPriceNum: 30,
-                image: "TSHIRT FLOW.png",  // اسم الصورة الفعلي في مستودع جيت هاب الخاص بك
+                image: "TSHIRT FLOW.png",  
                 svgType: "flow"
             },
             {
                 id: "mind",
                 name: "MIND",
-                colors: "لون واحد",       // تظهر "لون واحد" لأنك كتبتها كذا يدوياً
+                colors: "لون واحد",       // يظهر يدوياً "لون واحد" لأن الشد 5 حبات
                 sizes: "S. M. L. XL",
-                shadd: "5 حبة",          // تظهر "5 حبة" يدوياً
+                shadd: "5 حبة",          
                 price: "30 ﷼ للحبة",
                 rawShaddNum: 5,
                 rawPriceNum: 30,
-                image: "TSHIRT DATA.png", // اسم الصورة الفعلي في مستودع جيت هاب الخاص بك
+                image: "TSHIRT DATA.png", 
                 svgType: "mind"
             }
         ];
 
-        // 🎯 تم تحديث رقم الواتساب الرسمي لمبيعات عزوة بناءً على طلبك
+        // 🎯 تم تحديث رقم الواتساب الرسمي والمباشر لـ عزوة
         const WHATSAPP_PHONE = "966502777884"; 
 
         // تخزين عدد الشدات التي اختارها الزبون لكل منتج
         const wholesaleSelected = {
+            box: 0,
             pure: 0,
             ghost: 0,
             flow: 0,
@@ -753,11 +740,19 @@
             document.getElementById('shadd-sheet-title').textContent = `شدّات تيشيرت ${product.name}`;
             document.getElementById('shadd-modal-label').textContent = `شدّة (${product.shadd})`;
             
-            // تحديد وصف مقاسات الشدة بناءً على الرقم المدخل
+            // تحديد وصف مقاسات الشدة بناءً على نوع الصنف
             let distributionText = 'توزيع المقاسات متوازن وعادل بالكامل';
-            if (product.rawShaddNum === 16) distributionText = 'التوزيع: 3S / 5M / 5L / 3XL';
-            else if (product.rawShaddNum === 12) distributionText = 'التوزيع: 2S / 4M / 4L / 2XL';
-            else if (product.rawShaddNum === 5) distributionText = 'التوزيع: 1S / 2M / 1L / 1XL';
+            
+            // ميزة التوزيع البرمجي المخصص لتيشرت بوكس لأنه يبدأ من ميديوم M
+            if (product.id === 'box') {
+                if (product.rawShaddNum === 16) distributionText = 'التوزيع: 4M / 4L / 4XL / 4(2XL)';
+                else if (product.rawShaddNum === 12) distributionText = 'التوزيع: 3M / 3L / 3XL / 3(2XL)';
+                else if (product.rawShaddNum === 5) distributionText = 'التوزيع: 1M / 2L / 1XL / 1(2XL)';
+            } else {
+                if (product.rawShaddNum === 16) distributionText = 'التوزيع: 3S / 5M / 5L / 3XL';
+                else if (product.rawShaddNum === 12) distributionText = 'التوزيع: 2S / 4M / 4L / 2XL';
+                else if (product.rawShaddNum === 5) distributionText = 'التوزيع: 1S / 2M / 1L / 1XL';
+            }
             
             document.getElementById('shadd-modal-desc').textContent = distributionText;
             document.getElementById('shadd-modal-price').textContent = `${product.rawPriceNum * product.rawShaddNum} ﷼ للشدة كاملة`;
@@ -861,7 +856,7 @@
             }
         }
 
-        // بديل لصور الموديلات لحماية المظهر الفاخر للمتجر عند المعاينة
+        // بديل لصور الموديلات عند فشل التحميل
         function applyFallback(img, text) {
             const parent = img.parentElement;
             parent.innerHTML = generateSVGMarkup(text.toLowerCase(), text.toUpperCase());
@@ -894,6 +889,16 @@
                 innerGraphic = `
                     <rect x="130" y="130" width="60" height="70" rx="4" fill="none" stroke="#ffffff" stroke-width="2"/>
                     <line x1="130" y1="165" x2="190" y2="165" stroke="#ffffff" stroke-width="2"/>
+                `;
+            } else if (type === 'box') {
+                shirtColor = '#111115';
+                innerGraphic = `
+                    <g transform="translate(100, 115)" stroke="#dfb43f" stroke-width="2.5" fill="none">
+                        <path d="M10 30 L60 10 L110 30 L60 50 Z" />
+                        <path d="M10 30 L10 80 L60 100 L60 50" />
+                        <path d="M110 30 L110 80 L60 100" />
+                        <path d="M35 20 L85 40" stroke-dasharray="3 3" />
+                    </g>
                 `;
             }
 
