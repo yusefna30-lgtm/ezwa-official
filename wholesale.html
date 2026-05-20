@@ -593,10 +593,9 @@
     <div class="toast" id="system-toast">تم التحديث بنجاح</div>
 
     <script>
-        // ==========================================================
-        // 🛡️ جدول التحكم بالمنتجات (صافي ويدوي بالكامل)
-        // ربطنا الموديلات بملفات صورك الحقيقية التي رفعتها في مستودعك بالضبط!
-        // ==========================================================
+        // ==========================================
+        // 🛡️ جدول التحكم بالمنتجات لـ "عِزْوَة"
+        // ==========================================
         const productsConfig = [
             {
                 id: "box",
@@ -607,7 +606,7 @@
                 price: "30 ﷼ للحبة",     
                 rawShaddNum: 16,         
                 rawPriceNum: 30,         
-                image: "TSHIRT BOX RAW.png", // صورتك المرفوعة للبوكس
+                image: "TSHIRT BOX RAW.png", 
                 svgType: "box"
             },
             {
@@ -619,7 +618,7 @@
                 price: "30 ﷼ للحبة",     
                 rawShaddNum: 16,         
                 rawPriceNum: 30,         
-                image: "TSHIRT PURE.png", // صورتك المرفوعة للـ Pure
+                image: "TSHIRT PURE.png", 
                 svgType: "pure"
             },
             {
@@ -631,7 +630,7 @@
                 price: "30 ﷼ للحبة",
                 rawShaddNum: 16,
                 rawPriceNum: 30,
-                image: "TSHIRT GHOST.png", // صورتك المرفوعة للـ Ghost
+                image: "TSHIRT GHOST.png", 
                 svgType: "ghost"
             },
             {
@@ -643,7 +642,7 @@
                 price: "30 ﷼ للحبة",
                 rawShaddNum: 12,
                 rawPriceNum: 30,
-                image: "TSHIRT FLOW.png",  // صورتك المرفوعة للـ Flow
+                image: "TSHIRT FLOW.png",  
                 svgType: "flow"
             },
             {
@@ -655,12 +654,12 @@
                 price: "30 ﷼ للحبة",
                 rawShaddNum: 5,
                 rawPriceNum: 30,
-                image: "TSHIRT DATA.png", // صورتك المرفوعة للـ Mind
+                image: "TSHIRT DATA.png", 
                 svgType: "mind"
             }
         ];
 
-        // 🎯 رقم الواتساب الرسمي لمبيعات عزوة
+        // 🎯 رقم الواتساب الرسمي لـ عزوة
         const WHATSAPP_PHONE = "966502777884"; 
 
         // تخزين عدد الشدات التي اختارها الزبون لكل منتج
@@ -685,13 +684,19 @@
             }, 2500);
         }
 
-        // دالة لبناء الكروت ديناميكياً بناءً على جدول البيانات بالأعلى
+        // دالة لبناء الكروت ديناميكياً مع ميزة كسر الكاش الذكي
         function renderProductCards() {
             const gridContainer = document.getElementById('catalog-grid-container');
             gridContainer.innerHTML = '';
 
+            // كسر كاش المتصفح باستخدام طابع زمني فريد لكل عملية تحميل
+            const cacheBuster = Date.now();
+
             productsConfig.forEach(product => {
                 const totalShaddCount = wholesaleSelected[product.id] || 0;
+
+                // ترميز المسار ليكون خالياً من الفراغات لضمان قراءته بشكل سليم بالمتصفح
+                const safeImagePath = product.image ? `${product.image.replace(/ /g, "%20")}?v=${cacheBuster}` : '';
 
                 const card = document.createElement('div');
                 card.className = 'product-card';
@@ -701,12 +706,12 @@
                     </div>
                     <div class="image-container">
                         ${product.image ? 
-                            `<img src="${product.image}" alt="تيشيرت ${product.name}" onerror="applyFallback(this, '${product.id}')">` : 
+                            `<img src="${safeImagePath}" alt="تيشيرت ${product.name}" onerror="applyFallback(this, '${product.id}')">` : 
                             generateSVGMarkup(product.svgType, product.name)
                         }
                         <div class="circle-overlay-preview">
                             ${product.image ? 
-                                `<img src="${product.image}" alt="تفاصيل ${product.name}" style="transform: scale(2.2); transform-origin: center;" onerror="this.parentElement.innerHTML = generateSVGOverlay('${product.svgType}', '${product.name}')">` : 
+                                `<img src="${safeImagePath}" alt="تفاصيل ${product.name}" style="transform: scale(2.2); transform-origin: center;" onerror="this.parentElement.innerHTML = generateSVGOverlay('${product.svgType}', '${product.name}')">` : 
                                 generateSVGOverlay(product.svgType, product.name)
                             }
                         </div>
@@ -743,7 +748,6 @@
             // تحديد وصف مقاسات الشدة بناءً على نوع الصنف
             let distributionText = 'توزيع المقاسات متوازن وعادل بالكامل';
             
-            // ميزة التوزيع البرمجي المخصص لتيشرت بوكس لأنه يبدأ من ميديوم M
             if (product.id === 'box') {
                 if (product.rawShaddNum === 16) distributionText = 'التوزيع: 4M / 4L / 4XL / 4(2XL)';
                 else if (product.rawShaddNum === 12) distributionText = 'التوزيع: 3M / 3L / 3XL / 3(2XL)';
@@ -769,7 +773,6 @@
             document.getElementById('shadd-sheet').classList.add('open');
         }
 
-        // إغلاق المودال
         function closeShaddModal() {
             document.getElementById('shadd-sheet').classList.remove('open');
             selectedProductKey = null;
@@ -830,7 +833,7 @@
             }
         }
 
-        // فتح نافذة التفاصيل الفنية وقراءة التفاصيل المحددة يدوياً في جدول البيانات دون زيادة أو نقصان حرف
+        // فتح نافذة التفاصيل الفنية وقراءة التفاصيل المحددة يدوياً في جدول البيانات
         function openDetailsModal(productKey) {
             const product = productsConfig.find(p => p.id === productKey);
             if (!product) return;
@@ -863,7 +866,7 @@
             parent.innerHTML = generateSVGMarkup(text.toLowerCase(), text.toUpperCase());
         }
 
-        // بناء جرافيكس رقمية للتيشيرتات لتعمل فوراً في المعاينة وبشكل جذاب
+        // بناء جرافيكس رقمية للتيشيرتات لتعمل في المعاينة وبشكل جذاب
         function generateSVGMarkup(type, name) {
             let innerGraphic = '';
             let shirtColor = '#101012';
