@@ -284,6 +284,32 @@
             cursor: pointer;
         }
 
+        /* نماذج الإدخال بداخل المودالات */
+        .modal-form-group {
+            margin-bottom: 16px;
+            text-align: right;
+        }
+
+        .modal-label {
+            display: block;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text-grey);
+            margin-bottom: 8px;
+        }
+
+        .modal-select {
+            width: 100%;
+            background-color: #000;
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 8px;
+            padding: 12px;
+            color: var(--text-white);
+            font-size: 0.95rem;
+            outline: none;
+            text-align: right;
+        }
+
         /* صف الشدّة التفاعلي الموحد */
         .shadd-item {
             display: flex;
@@ -593,10 +619,10 @@
     <div class="toast" id="system-toast">تم التحديث بنجاح</div>
 
     <script>
-        // ==========================================================
+        // ==========================================
         // 🛡️ جدول التحكم بالمنتجات (صافي ويدوي بالكامل)
         // ربطنا الأسماء بملفات الصور المرفوعة بمستودعك على جيت هاب لتظهر فوراً!
-        // ==========================================================
+        // ==========================================
         const productsConfig = [
             {
                 id: "pure",
@@ -648,8 +674,8 @@
             }
         ];
 
-        // ضع هنا رقم مبيعات واتساب عزوة الفعلي لتأكيد طلبيات الجملة
-        const WHATSAPP_PHONE = "966500000000"; 
+        // 🎯 تم تحديث رقم الواتساب الرسمي لمبيعات عزوة بناءً على طلبك
+        const WHATSAPP_PHONE = "966502777884"; 
 
         // تخزين عدد الشدات التي اختارها الزبون لكل منتج
         const wholesaleSelected = {
