@@ -5,19 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>عزوة | بوابة مبيعات الجملة الرسمية</title>
     
-    <!-- خطوط عربية وأيقونات مطابقة لمتجر عزوة تماماً -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
     <style>
-        /* نظام الألوان والتصاميم الدقيق والمطابق تماماً لهوية عِزْوَة الفخمة */
         :root {
             --bg-black: #000000;
             --bg-card: #0c0c0e;
             --border-card: rgba(255, 255, 255, 0.04);
-            --gold-primary: #dfb43f; /* لون الذهب المطابق للزر الرئيسي والسعر */
+            --gold-primary: #dfb43f;
             --gold-hover: #FFF7D6;
             --text-white: #ffffff;
             --text-grey: #8e8e93;
@@ -36,10 +34,10 @@
             background-color: var(--bg-black);
             color: var(--text-white);
             line-height: 1.5;
-            padding-bottom: 140px; /* مساحة لحماية شريط الحساب السفلي */
+            padding-bottom: 160px;
         }
 
-        /* هيدر متقن وبسيط يبرز هوية براند عزوة */
+        /* تنسيق الهيدر */
         .brand-header {
             background-color: var(--bg-black);
             border-bottom: 1px solid rgba(255, 255, 255, 0.05);
@@ -55,15 +53,7 @@
             text-transform: uppercase;
         }
 
-        .brand-tagline {
-            font-size: 0.8rem;
-            color: var(--text-grey);
-            margin-top: 5px;
-            letter-spacing: 2px;
-            font-weight: 600;
-        }
-
-        /* شبكة المنتجات الثنائية (2-Column Grid) المطابقة للقطة الشاشة الأولى بالضبط */
+        /* شبكة المنتجات */
         .catalog-grid {
             max-width: 950px;
             margin: 25px auto;
@@ -73,14 +63,6 @@
             padding: 0 12px;
         }
 
-        @media (max-width: 500px) {
-            .catalog-grid {
-                gap: 10px;
-                padding: 0 5px;
-            }
-        }
-
-        /* كرت المنتج - نسخة طبق الأصل بالملي */
         .product-card {
             background-color: var(--bg-card);
             border: 1px solid var(--border-card);
@@ -91,17 +73,9 @@
             position: relative;
         }
 
-        @media (max-width: 500px) {
-            .product-card {
-                padding: 8px;
-                border-radius: 14px;
-            }
-        }
-
-        /* صورة المنتج الكبيرة المستديرة مع ميزة المحاذاة العلوية لحماية الموديل من القص */
         .image-container {
             width: 100%;
-            aspect-ratio: 3.2 / 4; /* أبعاد مطابقة تماماً للقطة الشاشة */
+            aspect-ratio: 3.2 / 4;
             background-color: #111;
             border-radius: 16px;
             overflow: hidden;
@@ -109,999 +83,223 @@
         }
 
         .image-container img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            object-position: top; /* يضمن إظهار تيشيرتاتك الجديدة ووجوه الموديلات كاملة بدلاً من البنطلون والخصر */
-        }
-
-        .image-container svg {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        /* الدائرة البديلة المستديرة بالزاوية اليمنى بالأسفل مع محاذاة علوية دقيقة لتصميم الصدر */
-        .circle-overlay-preview {
-            position: absolute;
-            bottom: 8px;
-            right: 8px;
-            width: 52px;
-            height: 52px;
-            border-radius: 50%;
-            border: 1.5px solid var(--gold-primary);
-            overflow: hidden;
-            background-color: #000;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.6);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .circle-overlay-preview img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            object-position: top; /* يضمن إظهار ياقة وتصميم التيشيرت بشكل مذهب فخم داخل الدائرة */
-        }
-
-        .circle-overlay-preview svg {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        /* معلومات ونصوص المنتج */
-        .product-info {
-            text-align: center;
-            padding-top: 15px;
+            width: 100%; height: 100%; object-fit: cover; object-position: top;
         }
 
         .product-name {
-            font-size: 1.15rem;
-            font-weight: 700;
-            color: var(--text-white);
-            text-transform: uppercase;
-            margin-bottom: 12px;
+            font-size: 1.15rem; font-weight: 700; margin: 12px 0; text-align: center;
         }
 
-        /* شارات الشد المختارة مسبقاً */
-        .selection-badge {
-            position: absolute;
-            top: 22px;
-            left: 22px;
-            background-color: var(--gold-primary);
-            color: #000;
-            padding: 3px 12px;
-            border-radius: 12px;
-            font-size: 0.75rem;
-            font-weight: 900;
-            z-index: 10;
-            display: none;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.5);
-            max-width: calc(100% - 44px);
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-        }
-
-        /* أزرار الإجراء الثنائية المحدثة */
-        .actions-group {
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-            width: 100%;
-        }
-
-        /* 1. زر أضف للطلب المصمت الذهبي */
         .btn-add-order {
             background-color: var(--gold-primary);
-            color: #000000;
-            border: none;
-            border-radius: 8px;
-            padding: 11px;
-            font-weight: 700;
-            font-size: 0.95rem;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 4px;
-            transition: background-color 0.2s;
+            color: #000; border: none; border-radius: 8px;
+            padding: 11px; font-weight: 700; cursor: pointer;
         }
 
-        .btn-add-order:hover {
-            background-color: var(--gold-hover);
-        }
-
-        /* 2. زر التفاصيل المفرغ ذو الحدود الناعمة */
-        .btn-details {
-            background-color: transparent;
-            color: var(--text-white);
-            border: 1px solid var(--border-btn);
-            border-radius: 8px;
-            padding: 10px;
-            font-weight: 600;
-            font-size: 0.88rem;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 6px;
-            transition: background-color 0.2s;
-        }
-
-        .btn-details:hover {
-            background-color: rgba(255, 255, 255, 0.05);
-        }
-
-        /* النافذة المنبثقة للشدّات (Bottom Sheet) */
-        .bottom-sheet {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-color: rgba(0, 0, 0, 0.85);
-            backdrop-filter: blur(8px);
-            z-index: 2000;
-            display: flex;
-            align-items: flex-end;
-            justify-content: center;
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity 0.3s ease;
-        }
-
-        .bottom-sheet.open {
-            opacity: 1;
-            pointer-events: auto;
-        }
-
-        .sheet-container {
-            background-color: #0c0c0e;
-            border-top: 2px solid var(--gold-primary);
-            border-radius: 20px 20px 0 0;
-            width: 100%;
-            max-width: 500px;
-            padding: 24px;
-            transform: translateY(100%);
-            transition: transform 0.3s cubic-bezier(0.1, 0.8, 0.2, 1);
-            max-height: 90vh;
-            overflow-y: auto;
-        }
-
-        .bottom-sheet.open .sheet-container {
-            transform: translateY(0);
-        }
-
-        .sheet-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 20px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-            padding-bottom: 12px;
-        }
-
-        .sheet-title {
-            font-size: 1.25rem;
-            font-weight: 700;
-            color: var(--gold-primary);
-        }
-
-        .btn-close {
-            background: none;
-            border: none;
-            color: var(--text-grey);
-            font-size: 1.4rem;
-            cursor: pointer;
-        }
-
-        /* صف الشدّة التفاعلي الموحد */
-        .shadd-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background-color: rgba(255, 255, 255, 0.02);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            border-radius: 10px;
-            padding: 16px;
-            margin-bottom: 15px;
-            transition: border-color 0.2s;
-        }
-
-        .shadd-item.active {
-            border-color: var(--gold-primary);
-            background-color: rgba(212, 175, 55, 0.03);
-        }
-
-        .shadd-details {
-            text-align: right;
-        }
-
-        .shadd-label {
-            font-weight: 700;
-            font-size: 1rem;
-        }
-
-        .shadd-desc {
-            font-size: 0.8rem;
-            color: var(--text-grey);
-            margin-top: 4px;
-        }
-
-        /* عداد الشدات التفاعلي والسهل */
-        .counter-controls {
-            display: flex;
-            align-items: center;
-            background-color: #000;
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 6px;
-            padding: 4px;
-        }
-
-        .ctrl-btn {
-            background: none;
-            border: none;
-            color: var(--text-white);
-            width: 28px;
-            height: 28px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            border-radius: 4px;
-        }
-
-        .ctrl-btn:hover {
-            background-color: rgba(212, 175, 55, 0.1);
-            color: var(--gold-primary);
-        }
-
-        .ctrl-value {
-            font-weight: 700;
-            min-width: 35px;
-            text-align: center;
-            font-size: 0.95rem;
-        }
-
-        /* زر التأكيد والحفظ */
-        .btn-save {
-            background-color: var(--gold-primary);
-            color: #000;
-            border: none;
-            width: 100%;
-            padding: 12px;
-            border-radius: 8px;
-            font-weight: 700;
-            font-size: 1rem;
-            cursor: pointer;
-            margin-top: 10px;
-        }
-
-        /* شريط الحساب وتأكيد طلب الجملة الملتصق بالأسفل */
+        /* شريط الحساب السفلي المطور */
         .checkout-footer {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background-color: #09090b;
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
-            padding: 15px 25px;
-            box-shadow: 0 -10px 30px rgba(0,0,0,0.8);
-            z-index: 1000;
+            position: fixed; bottom: 0; left: 0; right: 0;
+            background-color: #09090b; padding: 15px 20px;
+            border-top: 1px solid var(--gold-primary); z-index: 1000;
         }
 
-        .footer-content {
-            max-width: 950px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+        .footer-btns {
+            display: flex; gap: 10px; margin-top: 10px;
         }
 
-        @media (max-width: 650px) {
-            .footer-content {
-                flex-direction: column;
-                gap: 12px;
-                text-align: center;
-            }
+        .btn-invoice {
+            background-color: #27272a; color: #fff; border: 1px solid var(--gold-primary);
+            flex: 1; padding: 12px; border-radius: 8px; font-weight: 700; cursor: pointer;
+            display: flex; align-items: center; justify-content: center; gap: 8px;
         }
 
-        .summary-info {
-            display: flex;
-            flex-direction: column;
-            text-align: right;
-            gap: 2px;
-        }
-
-        .summary-label {
-            font-size: 0.78rem;
-            color: var(--text-grey);
-        }
-
-        .summary-total {
-            font-size: 1.3rem;
-            font-weight: 800;
-            color: var(--gold-primary);
-        }
-
-        /* زر الواتساب الفخم والمماثل لأسلوب متجرك */
         .btn-whatsapp-submit {
-            background-color: var(--gold-primary);
-            color: #000000;
-            border: none;
-            padding: 12px 28px;
-            border-radius: 8px;
-            font-size: 0.95rem;
-            font-weight: 800;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            transition: background-color 0.2s;
+            background-color: var(--gold-primary); color: #000;
+            flex: 1; padding: 12px; border-radius: 8px; font-weight: 800; cursor: pointer;
+            display: flex; align-items: center; justify-content: center; gap: 8px;
         }
 
-        .btn-whatsapp-submit:hover:not(:disabled) {
-            background-color: var(--gold-hover);
+        /* نافذة عرض السعر (Print Mode) */
+        #quotation-modal {
+            display: none; position: fixed; top:0; left:0; width:100%; height:100%;
+            background: #fff; color: #000; z-index: 9999; padding: 40px; overflow-y: auto;
         }
 
-        .btn-whatsapp-submit:disabled {
-            background-color: #1e1e24;
-            color: #4a4a52;
-            cursor: not-allowed;
+        @media print {
+            body * { visibility: hidden; }
+            #quotation-modal, #quotation-modal * { visibility: visible; }
+            #quotation-modal { position: absolute; left: 0; top: 0; }
+            .no-print { display: none !important; }
         }
 
-        /* قائمة التفاصيل الفنية المخصصة في المودال - نسخة طبق الأصل بالملي من لقطة شاشتك تماماً */
-        .details-sheet {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-            text-align: right;
-            font-size: 0.98rem;
+        .invoice-table {
+            width: 100%; border-collapse: collapse; margin-top: 20px;
         }
-
-        .details-sheet ul {
-            padding: 0;
-            margin: 10px 0;
+        .invoice-table th, .invoice-table td {
+            border: 1px solid #ddd; padding: 12px; text-align: right;
         }
-
-        .details-sheet li {
-            list-style: none;
-            margin-bottom: 20px;
-            display: flex;
-            align-items: center;
-            gap: 14px;
-            border-bottom: 1px dashed rgba(255,255,255,0.06);
-            padding-bottom: 14px;
-        }
-
-        .details-sheet li span.emoji-icon {
-            font-size: 1.25rem;
-            width: 24px;
-            text-align: center;
-        }
-
-        .details-sheet li strong {
-            color: var(--text-white);
-            font-weight: 700;
-        }
-
-        .details-highlight {
-            color: var(--text-white);
-            font-weight: 700;
-            margin-right: 4px;
-        }
-
-        /* توست التنبيهات */
-        .toast {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            background-color: #111;
-            border: 1.5px solid var(--gold-primary);
-            color: #fff;
-            padding: 14px 20px;
-            border-radius: 10px;
-            z-index: 3000;
-            font-size: 0.9rem;
-            display: none;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+        .invoice-header {
+            display: flex; justify-content: space-between; align-items: center;
+            border-bottom: 2px solid var(--gold-primary); padding-bottom: 20px;
         }
     </style>
 </head>
 <body>
 
-    <!-- هيدر متجر عزوة الفاخر -->
     <header class="brand-header">
         <div class="brand-logo">عِزْوَة</div>
-        <div class="brand-tagline">WHOLESALE | كتالوج مبيعات الجملة الفاخر</div>
+        <p style="color:var(--text-grey); font-size: 0.8rem;">WHOLESALE PORTAL</p>
     </header>
 
-    <!-- شبكة مبيعات متجر عزوة المطابقة للقطة الشاشة بالملي -->
-    <main class="catalog-grid" id="catalog-grid-container">
-        <!-- يتم بناء الكروت ديناميكياً هنا عبر الجافا سكريبت بناء على تفاصيلك المحددة -->
-    </main>
+    <main class="catalog-grid" id="catalog-grid-container"></main>
 
-    <!-- النافذة المنبثقة التفاعلية للشدّات والمقاسات (Modal) -->
-    <div class="bottom-sheet" id="shadd-sheet" onclick="closeSheetOutside(event, 'shadd-sheet')">
-        <div class="sheet-container">
-            <div class="sheet-header">
-                <span class="sheet-title" id="shadd-sheet-title">تحديد الشدّات المطلوبة</span>
-                <button class="btn-close" onclick="closeShaddModal()"><i class="fa-solid fa-xmark"></i></button>
-            </div>
-
-            <!-- خيار الشد التفاعلي الموحد والديناميكي تماماً بناءً على الشد المحدد في بيانات الصنف -->
-            <div class="shadd-item active" id="item-shadd-row">
-                <div class="shadd-details">
-                    <span class="shadd-label" id="shadd-modal-label">شدّة</span>
-                    <p class="shadd-desc" id="shadd-modal-desc">توزيع المقاسات المعتمد للشدة</p>
-                    <p class="shadd-desc" id="shadd-modal-price" style="color: var(--gold-primary); font-weight: bold; margin-top: 4px;">-- ريال للشدة</p>
-                </div>
-                <div class="counter-controls">
-                    <button class="ctrl-btn" onclick="modifyShaddQty(-1)"><i class="fa-solid fa-minus"></i></button>
-                    <span class="ctrl-value" id="val-counter">0</span>
-                    <button class="ctrl-btn" onclick="modifyShaddQty(1)"><i class="fa-solid fa-plus"></i></button>
-                </div>
-            </div>
-
-            <button class="btn-save" onclick="saveShaddSelection()">حفظ وتأكيد للطلب</button>
-        </div>
-    </div>
-
-    <!-- النافذة المنبثقة للتفاصيل الفنية (ℹ️ التفاصيل) - نسخة طبق الأصل من لقطة شاشتك تماماً -->
-    <div class="bottom-sheet" id="details-sheet" onclick="closeSheetOutside(event, 'details-sheet')">
-        <div class="sheet-container" style="max-height: 85vh; overflow-y: auto;">
-            <div class="sheet-header" style="border-bottom: none; margin-bottom: 10px;">
-                <span class="sheet-title" id="details-sheet-title" style="font-weight: 700;">مواصفات تيشيرت</span>
-                <button class="btn-close" onclick="closeDetailsModal()"><i class="fa-solid fa-xmark"></i></button>
-            </div>
-            
-            <div class="details-sheet">
-                <ul>
-                    <li>
-                        <span class="emoji-icon">🎨</span>
-                        <div>
-                            <strong>ألالوان :</strong> <span class="details-highlight" id="detail-val-colors">--</span>
-                        </div>
-                    </li>
-                    <li>
-                        <span class="emoji-icon">↔️</span>
-                        <div>
-                            <strong>المقاس :</strong> <span class="details-highlight" id="detail-val-sizes">--</span>
-                        </div>
-                    </li>
-                    <li>
-                        <span class="emoji-icon">🎁</span>
-                        <div>
-                            <strong>الشد :</strong> <span class="details-highlight" id="detail-val-shadd">--</span>
-                        </div>
-                    </li>
-                    <li>
-                        <span class="emoji-icon">🏷️</span>
-                        <div>
-                            <strong>السعر :</strong> <span class="details-highlight" id="detail-val-price" style="color: #25D366; font-weight: 700;">--</span>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </div>
-
-    <!-- شريط الحساب وتأكيد طلب الجملة الملتصق بالأسفل -->
     <div class="checkout-footer">
-        <div class="footer-content">
-            <div class="summary-info">
-                <span class="summary-label">إجمالي القطع المضافة للطلب:</span>
-                <span class="summary-total" id="footer-total-pieces">0 قطعة</span>
-            </div>
+        <div style="display:flex; justify-content:space-between; align-items:center;">
+            <span style="color:var(--text-grey);">إجمالي القطع:</span>
+            <span id="footer-total-pieces" style="color:var(--gold-primary); font-weight:800; font-size:1.3rem;">0 قطعة</span>
+        </div>
+        <div class="footer-btns">
+            <button class="btn-invoice" id="btn-quote" disabled onclick="generateQuotation()">
+                <i class="fa-solid fa-file-invoice"></i> عرض سعر
+            </button>
             <button class="btn-whatsapp-submit" id="btn-submit-order" disabled onclick="sendOrderToWhatsapp()">
-                <span>إرسال الطلب للواتساب</span>
-                <i class="fa-brands fa-whatsapp"></i>
+                <i class="fa-brands fa-whatsapp"></i> واتساب
             </button>
         </div>
     </div>
 
-    <!-- توست التنبيهات المخصص -->
-    <div class="toast" id="system-toast">تم التحديث بنجاح</div>
+    <div id="quotation-modal">
+        <div class="no-print" style="display:flex; justify-content:space-between; margin-bottom:20px;">
+            <button onclick="window.print()" style="padding:10px 20px; background:var(--gold-primary); border:none; cursor:pointer; font-weight:bold;">طباعة / حفظ PDF</button>
+            <button onclick="document.getElementById('quotation-modal').style.display='none'" style="padding:10px 20px; background:#eee; border:none; cursor:pointer;">إغلاق</button>
+        </div>
+
+        <div class="invoice-header">
+            <div>
+                <h1 style="color:var(--gold-primary); font-size: 2.5rem;">عِزْوَة</h1>
+                <p>مؤسسة عزوة للملابس الجاهزة</p>
+                <p>الرياض - المملكة العربية السعودية</p>
+            </div>
+            <div style="text-align:left;">
+                <h2>عرض سعر جملة</h2>
+                <p id="quote-date"></p>
+            </div>
+        </div>
+
+        <table class="invoice-table">
+            <thead>
+                <tr style="background:#f9f9f9;">
+                    <th>المنتج</th>
+                    <th>الشدة</th>
+                    <th>عدد الشدات</th>
+                    <th>إجمالي القطع</th>
+                    <th>السعر للحبة</th>
+                    <th>المجموع</th>
+                </tr>
+            </thead>
+            <tbody id="invoice-items"></tbody>
+        </table>
+
+        <div style="margin-top:30px; text-align:left;">
+            <h3 id="invoice-grand-total" style="font-size:1.5rem; color:var(--gold-primary);"></h3>
+        </div>
+
+        <div style="margin-top:50px; border-top:1px solid #eee; padding-top:20px; font-size:0.9rem; color:#666;">
+            <p>* ملاحظة: عرض السعر صالح لمدة 3 أيام من تاريخه.</p>
+            <p>* الأسعار لا تشمل ضريبة القيمة المضافة إلا إذا ذكر خلاف ذلك.</p>
+        </div>
+    </div>
 
     <script>
-        // ==========================================================
-        // 🛡️ جدول التحكم بالمنتجات الـ 17 المحدثة يدوياً بالكامل لـ "عِزْوَة"
-        // ربطنا كل منتج بملف صورته المرفوع بجيت هاب (سواء صيغة مكررة .png.png أو مفردة)
-        // ==========================================================
         const productsConfig = [
-            {
-                id: "box_raw",
-                name: "BOX RAW (الأساسي)",
-                colors: "4 الوان",        
-                sizes: "M. L. XL. 2XL",   
-                shadd: "16 حبة",         
-                price: "30 ﷼ للحبة",     
-                rawShaddNum: 16,         
-                rawPriceNum: 30,         
-                image: "TSHIRT BOX RAW.png.png", 
-                svgType: "box"
-            },
-            {
-                id: "box_raw1",
-                name: "BOX RAW 1",
-                colors: "4 الوان",        
-                sizes: "M. L. XL. 2XL",   
-                shadd: "16 حبة",         
-                price: "30 ﷼ للحبة",     
-                rawShaddNum: 16,         
-                rawPriceNum: 30,         
-                image: "TSHIRT BOX RAW1.png.png", 
-                svgType: "box"
-            },
-            {
-                id: "box_raw2",
-                name: "BOX RAW 2",
-                colors: "4 الوان",        
-                sizes: "M. L. XL. 2XL",   
-                shadd: "16 حبة",         
-                price: "30 ﷼ للحبة",     
-                rawShaddNum: 16,         
-                rawPriceNum: 30,         
-                image: "TSHIRT BOX RAW2.png.png", 
-                svgType: "box"
-            },
-            {
-                id: "box_raw3",
-                name: "BOX RAW 3",
-                colors: "4 الوان",        
-                sizes: "M. L. XL. 2XL",   
-                shadd: "16 حبة",         
-                price: "30 ﷼ للحبة",     
-                rawShaddNum: 16,         
-                rawPriceNum: 30,         
-                image: "TSHIRT BOX RAW3.png.png", 
-                svgType: "box"
-            },
-            {
-                id: "box_raw4",
-                name: "BOX RAW 4",
-                colors: "4 الوان",        
-                sizes: "M. L. XL. 2XL",   
-                shadd: "16 حبة",         
-                price: "30 ﷼ للحبة",     
-                rawShaddNum: 16,         
-                rawPriceNum: 30,         
-                image: "TSHIRT BOX RAW4.png.png", 
-                svgType: "box"
-            },
-            {
-                id: "box_raw5",
-                name: "BOX RAW 5",
-                colors: "4 الوان",        
-                sizes: "M. L. XL. 2XL",   
-                shadd: "16 حبة",         
-                price: "30 ﷼ للحبة",     
-                rawShaddNum: 16,         
-                rawPriceNum: 30,         
-                image: "TSHIRT BOX RAW5.png.png", 
-                svgType: "box"
-            },
-            {
-                id: "box_raw6",
-                name: "BOX RAW 6",
-                colors: "4 الوان",        
-                sizes: "M. L. XL. 2XL",   
-                shadd: "16 حبة",         
-                price: "30 ﷼ للحبة",     
-                rawShaddNum: 16,         
-                rawPriceNum: 30,         
-                image: "TSHIRT BOX RAW6.png.png", 
-                svgType: "box"
-            },
-            {
-                id: "box_raw7",
-                name: "BOX RAW 7",
-                colors: "4 الوان",        
-                sizes: "M. L. XL. 2XL",   
-                shadd: "16 حبة",         
-                price: "30 ﷼ للحبة",     
-                rawShaddNum: 16,         
-                rawPriceNum: 30,         
-                image: "TSHIRT BOX RAW7.png.png", 
-                svgType: "box"
-            },
-            {
-                id: "box_raw8",
-                name: "BOX RAW 8",
-                colors: "4 الوان",        
-                sizes: "M. L. XL. 2XL",   
-                shadd: "16 حبة",         
-                price: "30 ﷼ للحبة",     
-                rawShaddNum: 16,         
-                rawPriceNum: 30,         
-                image: "TSHIRT BOX RAW8.png.png", 
-                svgType: "box"
-            },
-            {
-                id: "box_raw9",
-                name: "BOX RAW 9",
-                colors: "4 الوان",        
-                sizes: "M. L. XL. 2XL",   
-                shadd: "16 حبة",         
-                price: "30 ﷼ للحبة",     
-                rawShaddNum: 16,         
-                rawPriceNum: 30,         
-                image: "TSHIRT BOX RAW9.png.png", 
-                svgType: "box"
-            },
-            {
-                id: "box_raw10",
-                name: "BOX RAW 10",
-                colors: "4 الوان",        
-                sizes: "M. L. XL. 2XL",   
-                shadd: "16 حبة",         
-                price: "30 ﷼ للحبة",     
-                rawShaddNum: 16,         
-                rawPriceNum: 30,         
-                image: "TSHIRT BOX RAW10.png.png", 
-                svgType: "box"
-            },
-            {
-                id: "box_raw11",
-                name: "BOX RAW 11",
-                colors: "4 الوان",        
-                sizes: "M. L. XL. 2XL",   
-                shadd: "16 حبة",         
-                price: "30 ﷼ للحبة",     
-                rawShaddNum: 16,         
-                rawPriceNum: 30,         
-                image: "TSHIRT BOX RAW11.png.png", 
-                svgType: "box"
-            },
-            {
-                id: "box_raw12",
-                name: "BOX RAW 12",
-                colors: "4 الوان",        
-                sizes: "M. L. XL. 2XL",   
-                shadd: "16 حبة",         
-                price: "30 ﷼ للحبة",     
-                rawShaddNum: 16,         
-                rawPriceNum: 30,         
-                image: "TSHIRT BOX RAW12.png.png", 
-                svgType: "box"
-            },
-            {
-                id: "box_raw13",
-                name: "BOX RAW 13",
-                colors: "4 الوان",        
-                sizes: "M. L. XL. 2XL",   
-                shadd: "16 حبة",         
-                price: "30 ﷼ للحبة",     
-                rawShaddNum: 16,         
-                rawPriceNum: 30,         
-                image: "TSHIRT BOX RAW13.png.png", 
-                svgType: "box"
-            },
-            {
-                id: "box_raw14",
-                name: "BOX RAW 14",
-                colors: "4 الوان",        
-                sizes: "M. L. XL. 2XL",   
-                shadd: "16 حبة",         
-                price: "30 ﷼ للحبة",     
-                rawShaddNum: 16,         
-                rawPriceNum: 30,         
-                image: "TSHIRT BOX RAW14.png.png", 
-                svgType: "box"
-            },
-            {
-                id: "box_raw15",
-                name: "BOX RAW 15",
-                colors: "4 الوان",        
-                sizes: "M. L. XL. 2XL",   
-                shadd: "16 حبة",         
-                price: "30 ﷼ للحبة",     
-                rawShaddNum: 16,         
-                rawPriceNum: 30,         
-                image: "TSHIRT BOX RAW15.png.png", 
-                svgType: "box"
-            },
-            {
-                id: "box_raw16",
-                name: "BOX RAW 16",
-                colors: "4 الوان",        
-                sizes: "M. L. XL. 2XL",   
-                shadd: "16 حبة",         
-                price: "30 ﷼ للحبة",     
-                rawShaddNum: 16,         
-                rawPriceNum: 30,         
-                image: "TSHIRT BOX RAW16.png.png", 
-                svgType: "box"
-            }
+            { id: "box", name: "T-SHIRT BOX", image: "TSHIRT BOX RAW.png.png", price: 30, shadd: 16 },
+            { id: "pure", name: "PURE", image: "TSHIRT BOX RAW1.png.png", price: 30, shadd: 16 },
+            { id: "ghost", name: "GHOST", image: "TSHIRT BOX RAW10.png.png", price: 30, shadd: 16 },
+            { id: "flow", name: "FLOW", image: "TSHIRT BOX RAW11.png.png", price: 30, shadd: 12 },
+            { id: "mind", name: "MIND", image: "TSHIRT BOX RAW12.png.png", price: 30, shadd: 5 }
         ];
 
-        // 🎯 رقم الواتساب الرسمي لمبيعات عزوة
-        const WHATSAPP_PHONE = "966502777884"; 
+        let selectedItems = {};
 
-        // تخزين سلة المشتريات بشكل ديناميكي ومرن لجميع المنتجات الـ 17 المحددة
-        const wholesaleSelected = {};
-        productsConfig.forEach(p => {
-            wholesaleSelected[p.id] = 0;
-        });
-
-        let selectedProductKey = null;
-        let localShaddSelection = 0;
-
-        // دالة لعرض التوست التنبيهي
-        function triggerToast(message) {
-            const toast = document.getElementById('system-toast');
-            toast.textContent = message;
-            toast.style.display = 'block';
-            setTimeout(() => {
-                toast.style.display = 'none';
-            }, 2500);
-        }
-
-        // دالة لبناء الكروت ديناميكياً مع حماية كسر الكاش الذكي لضمان تحديث الصور
-        function renderProductCards() {
-            const gridContainer = document.getElementById('catalog-grid-container');
-            gridContainer.innerHTML = '';
-
-            // كود كسر الكاش لمنع المتصفح من إظهار الصور القديمة
-            const cacheBuster = Date.now();
-
-            productsConfig.forEach(product => {
-                const totalShaddCount = wholesaleSelected[product.id] || 0;
-                
-                // تحويل مسار الصورة ليكون متوافقاً مع روابط الويب
-                const safeImagePath = product.image ? `${encodeURIComponent(product.image)}?v=${cacheBuster}` : '';
-
+        function renderCards() {
+            const container = document.getElementById('catalog-grid-container');
+            productsConfig.forEach(p => {
                 const card = document.createElement('div');
                 card.className = 'product-card';
                 card.innerHTML = `
-                    <div class="selection-badge" id="badge-${product.id}" style="display: ${totalShaddCount > 0 ? 'block' : 'none'};">
-                        ${totalShaddCount > 0 ? `${totalShaddCount} شدّة (${product.shadd})` : ''}
+                    <div class="image-container"><img src="${p.image}?v=${Date.now()}"></div>
+                    <h3 class="product-name">${p.name}</h3>
+                    <div style="text-align:center; margin-bottom:10px; color:var(--gold-primary); font-weight:bold;">${p.price} ريال / حبة</div>
+                    <div style="display:flex; align-items:center; justify-content:center; gap:10px;">
+                        <button onclick="updateQty('${p.id}', -1)" style="width:30px; height:30px;">-</button>
+                        <span id="qty-${p.id}">0</span>
+                        <button onclick="updateQty('${p.id}', 1)" style="width:30px; height:30px;">+</button>
                     </div>
-                    <div class="image-container">
-                        ${product.image ? 
-                            `<img src="${safeImagePath}" alt="تيشيرت ${product.name}" onerror="handleImgError(this, '${product.id}', '${product.image}')">` : 
-                            generateSVGMarkup(product.svgType, product.name)
-                        }
-                        <div class="circle-overlay-preview">
-                            ${product.image ? 
-                                `<img src="${safeImagePath}" alt="تفاصيل ${product.name}" onerror="handleOverlayImgError(this, '${product.id}', '${product.image}')">` : 
-                                generateSVGOverlay(product.svgType, product.name)
-                            }
-                        </div>
-                    </div>
-                    
-                    <div class="product-info">
-                        <h3 class="product-name">${product.name}</h3>
-                        <div class="actions-group">
-                            <button class="btn-add-order" onclick="openShaddModal('${product.id}')">
-                                <i class="fa-solid fa-plus"></i> أضف للطلب
-                            </button>
-                            <button class="btn-details" onclick="openDetailsModal('${product.id}')">
-                                ℹ️ التفاصيل
-                            </button>
-                        </div>
-                    </div>
+                    <p style="font-size:0.7rem; text-align:center; color:var(--text-grey); margin-top:5px;">شدة ${p.shadd} حبة</p>
                 `;
-                gridContainer.appendChild(card);
+                container.appendChild(card);
             });
         }
 
-        // كود حماية ذكي مزدوج لإصلاح الصور في حال تم رفعها بصيغة .png أحادية بدلاً من .png.png الثنائية
-        function handleImgError(img, id, originalSrc) {
-            const cacheBuster = Date.now();
-            if (originalSrc.endsWith('.png.png')) {
-                const fallbackSrc = originalSrc.substring(0, originalSrc.length - 4);
-                img.onerror = function() {
-                    applyFallback(this, id); // في حال فشل الحل البديل، يعرض الرسم التوضيحي SVG الفخم
-                };
-                img.src = `${encodeURIComponent(fallbackSrc)}?v=${cacheBuster}`;
-            } else {
-                applyFallback(img, id);
+        function updateQty(id, delta) {
+            selectedItems[id] = Math.max(0, (selectedItems[id] || 0) + delta);
+            document.getElementById(`qty-${id}`).textContent = selectedItems[id];
+            calculateTotal();
+        }
+
+        function calculateTotal() {
+            let total = 0;
+            for(let id in selectedItems) {
+                const p = productsConfig.find(x => x.id === id);
+                total += selectedItems[id] * p.shadd;
             }
+            document.getElementById('footer-total-pieces').textContent = total + " قطعة";
+            document.getElementById('btn-submit-order').disabled = total === 0;
+            document.getElementById('btn-quote').disabled = total === 0;
         }
 
-        function handleOverlayImgError(img, id, originalSrc) {
-            const cacheBuster = Date.now();
-            if (originalSrc.endsWith('.png.png')) {
-                const fallbackSrc = originalSrc.substring(0, originalSrc.length - 4);
-                img.onerror = function() {
-                    this.parentElement.innerHTML = generateSVGOverlay('box', id);
-                };
-                img.src = `${encodeURIComponent(fallbackSrc)}?v=${cacheBuster}`;
-            } else {
-                this.parentElement.innerHTML = generateSVGOverlay('box', id);
-            }
-        }
+        function generateQuotation() {
+            const tbody = document.getElementById('invoice-items');
+            tbody.innerHTML = '';
+            let grandTotal = 0;
+            const now = new Date();
+            document.getElementById('quote-date').textContent = "التاريخ: " + now.toLocaleDateString('ar-SA');
 
-        // فتح نافذة الشدّات - يقرأ القيم بدقة من جدول البيانات بالأعلى
-        function openShaddModal(productKey) {
-            selectedProductKey = productKey;
-            const product = productsConfig.find(p => p.id === productKey);
-            if (!product) return;
+            for(let id in selectedItems) {
+                if(selectedItems[id] > 0) {
+                    const p = productsConfig.find(x => x.id === id);
+                    const pieces = selectedItems[id] * p.shadd;
+                    const subtotal = pieces * p.price;
+                    grandTotal += subtotal;
 
-            // الحصول على الشدات المختارة حالياً
-            localShaddSelection = wholesaleSelected[productKey];
-
-            document.getElementById('shadd-sheet-title').textContent = `شدّات تيشيرت ${product.name}`;
-            document.getElementById('shadd-modal-label').textContent = `شدّة (${product.shadd})`;
-            
-            // تحديد وصف مقاسات الشدة بناءً على نوع الصنف
-            let distributionText = 'التوزيع: 4M / 4L / 4XL / 4(2XL)';
-            
-            document.getElementById('shadd-modal-desc').textContent = distributionText;
-            document.getElementById('shadd-modal-price').textContent = `${product.rawPriceNum * product.rawShaddNum} ﷼ للشدة كاملة`;
-            document.getElementById('val-counter').textContent = localShaddSelection;
-
-            // تحديث التحديد البصري للصف
-            const item = document.getElementById('item-shadd-row');
-            if (localShaddSelection > 0) {
-                item.classList.add('active');
-            } else {
-                item.classList.remove('active');
-            }
-
-            document.getElementById('shadd-sheet').classList.add('open');
-        }
-
-        function closeShaddModal() {
-            document.getElementById('shadd-sheet').classList.remove('open');
-            selectedProductKey = null;
-        }
-
-        // زيادة ونقصان الشدات في المودال التفاعلي
-        function modifyShaddQty(direction) {
-            localShaddSelection = Math.max(0, localShaddSelection + direction);
-            document.getElementById('val-counter').textContent = localShaddSelection;
-            
-            const item = document.getElementById('item-shadd-row');
-            if (localShaddSelection > 0) {
-                item.classList.add('active');
-            } else {
-                item.classList.remove('active');
-            }
-        }
-
-        // حفظ وتحديث كمية الشدات المختارة على الواجهة
-        function saveShaddSelection() {
-            if (!selectedProductKey) return;
-
-            wholesaleSelected[selectedProductKey] = localShaddSelection;
-            const product = productsConfig.find(p => p.id === selectedProductKey);
-
-            // تحديث الشارة الذهبية الصغيرة على الكرت لمعرفة عدد الشدات المحجوزة
-            const badge = document.getElementById(`badge-${selectedProductKey}`);
-            
-            if (localShaddSelection > 0) {
-                badge.textContent = `${localShaddSelection} شدّة (${product.shadd})`;
-                badge.style.display = "block";
-            } else {
-                badge.style.display = "none";
-            }
-
-            closeShaddModal();
-            triggerToast('تم تحديث كمية الطلب بنجاح');
-            recalculateGrandTotals();
-        }
-
-        // حساب القطع الإجمالية للطلب وتنشيط زر مبيعات الجملة للواتساب
-        function recalculateGrandTotals() {
-            let totalPieces = 0;
-
-            for (const productKey in wholesaleSelected) {
-                const product = productsConfig.find(p => p.id === productKey);
-                const countOfPacks = wholesaleSelected[productKey];
-                totalPieces += countOfPacks * product.rawShaddNum;
-            }
-
-            document.getElementById('footer-total-pieces').textContent = `${totalPieces} قطعة`;
-
-            const btn = document.getElementById('btn-submit-order');
-            if (totalPieces > 0) {
-                btn.removeAttribute('disabled');
-            } else {
-                btn.setAttribute('disabled', 'true');
-            }
-        }
-
-        // فتح نافذة التفاصيل الفنية وقراءة التفاصيل المحددة يدوياً في جدول البيانات
-        function openDetailsModal(productKey) {
-            const product = productsConfig.find(p => p.id === productKey);
-            if (!product) return;
-
-            document.getElementById('details-sheet-title').textContent = `مواصفات تيشيرت ${product.name}`;
-            
-            // تعبئة البيانات المحددة يدوياً من المصفوفة بالكامل دون تدخل برمجي تلقائي
-            document.getElementById('detail-val-colors').textContent = product.colors;
-            document.getElementById('detail-val-sizes').textContent = product.sizes;
-            document.getElementById('detail-val-shadd').textContent = product.shadd;
-            document.getElementById('detail-val-price').textContent = product.price;
-
-            document.getElementById('details-sheet').classList.add('open');
-        }
-
-        function closeDetailsModal() {
-            document.getElementById('details-sheet').classList.remove('open');
-        }
-
-        // إغلاق المودال في حال الضغط بالخارج
-        function closeSheetOutside(e, elementId) {
-            if (e.target.id === elementId) {
-                document.getElementById(elementId).classList.remove('open');
-            }
-        }
-
-        // بديل لصور الموديلات عند فشل التحميل
-        function applyFallback(img, text) {
-            const parent = img.parentElement;
-            parent.innerHTML = generateSVGMarkup('box', text);
-        }
-
-        // بناء جرافيكس رقمية للتيشيرتات لتعمل في المعاينة وبشكل جذاب
-        function generateSVGMarkup(type, name) {
-            return `
-                <svg viewBox="0 0 320 400" xmlns="http://www.w3.org/2000/svg">
-                    <rect width="100%" height="100%" fill="#0a0a0b"/>
-                    <path d="M60 80 L100 40 L160 55 L220 40 L260 80 L290 150 L240 170 L230 130 L230 360 L90 360 L90 130 L80 150 Z" fill="#111115" stroke="#1f1f23" stroke-width="2"/>
-                    <g transform="translate(100, 115)" stroke="#dfb43f" stroke-width="2.5" fill="none">
-                        <path d="M10 30 L60 10 L110 30 L60 50 Z" />
-                        <path d="M10 30 L10 80 L60 100 L60 50" />
-                        <path d="M110 30 L110 80 L60 100" />
-                        <path d="M35 20 L85 40" stroke-dasharray="3 3" />
-                    </g>
-                </svg>
-            `;
-        }
-
-        // بناء جرافيكس الدائرة المداخلة بالزاوية
-        function generateSVGOverlay(type, name) {
-            return `
-                <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                    <rect width="100%" height="100%" fill="#050505"/>
-                    <circle cx="50" cy="50" r="35" stroke="#dfb43f" stroke-width="1.5" fill="none"/>
-                </svg>
-            `;
-        }
-
-        // إرسال الطلب وحساب الأسعار تلقائياً وفقاً للشدود والأسعار التي حددتها أنت لكل منتج على حدة
-        function sendOrderToWhatsapp() {
-            let orderMessage = `🛡️ *طلب حجز شدّات جملة جديد - براند عِزْوَة*\n\n`;
-            let totalPieces = 0;
-            let totalCost = 0;
-
-            for (const productKey in wholesaleSelected) {
-                const count = wholesaleSelected[productKey];
-                if (count > 0) {
-                    const product = productsConfig.find(p => p.id === productKey);
-                    const pieces = count * product.rawShaddNum;
-                    const costOfProduct = pieces * product.rawPriceNum;
-
-                    totalPieces += pieces;
-                    totalCost += costOfProduct;
-
-                    orderMessage += `🔹 *${product.name}:*\n`;
-                    orderMessage += `   👈 عدد الشدّات: [ ${count} شدة ] (فئة ${product.shadd})\n`;
-                    orderMessage += `   👈 إجمالي القطع: [ ${pieces} قطعة ]\n\n`;
+                    tbody.innerHTML += `
+                        <tr>
+                            <td>${p.name}</td>
+                            <td>${p.shadd} حبة</td>
+                            <td>${selectedItems[id]} شدة</td>
+                            <td>${pieces} حبة</td>
+                            <td>${p.price} ريال</td>
+                            <td>${subtotal} ريال</td>
+                        </tr>
+                    `;
                 }
             }
-
-            orderMessage += `----------------------------------------\n`;
-            orderMessage += `📈 *ملخص الحساب الجاري للتجار:*\n`;
-            orderMessage += `🔸 *القطع الكلية:* ${totalPieces} قطعة\n`;
-            orderMessage += `💰 *القيمة الإجمالية:* *${totalCost} ريال سعودي*\n\n`;
-            orderMessage += `🎯 يرجى تأكيد توفر الكمية المطلوبة وإرسال الفاتورة لبدء الشحن فوراً.`;
-
-            const url = `https://api.whatsapp.com/send?phone=${WHATSAPP_PHONE}&text=${encodeURIComponent(orderMessage)}`;
-            window.open(url, '_blank');
+            document.getElementById('invoice-grand-total').textContent = "الإجمالي النهائي: " + grandTotal + " ريال سعودي";
+            document.getElementById('quotation-modal').style.display = 'block';
         }
 
-        // تشغيل الواجهة الفورية عند التحميل
-        window.onload = function() {
-            renderProductCards();
-            recalculateGrandTotals();
-        };
+        function sendOrderToWhatsapp() {
+            let msg = "🛡️ *طلب جملة جديد - عِزْوَة*\n\n";
+            for(let id in selectedItems) {
+                if(selectedItems[id] > 0) {
+                    const p = productsConfig.find(x => x.id === id);
+                    msg += `🔹 *${p.name}*: ${selectedItems[id]} شدة (${selectedItems[id] * p.shadd} حبة)\n`;
+                }
+            }
+            window.open(`https://api.whatsapp.com/send?phone=966502777884&text=${encodeURIComponent(msg)}`);
+        }
+
+        window.onload = renderCards;
     </script>
 </body>
 </html>
