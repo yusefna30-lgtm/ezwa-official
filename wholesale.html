@@ -79,7 +79,7 @@
             background-color: rgba(223, 180, 63, 0.05);
         }
 
-        /* شبكة المنتجات */
+        /* شبكة المنتجات الـ 17 الفاخرة */
         .catalog-grid {
             max-width: 950px;
             margin: 25px auto;
@@ -484,6 +484,10 @@
                     <input type="text" id="admin-client-name" class="admin-panel-input" placeholder="مثال: متجر الهيبة للملابس">
                 </div>
                 <div class="admin-form-group">
+                    <label class="admin-label">رقم جوال العميل (إختياري - للإرسال المباشر)</label>
+                    <input type="tel" id="admin-client-phone" class="admin-panel-input" placeholder="مثال: 966500000000">
+                </div>
+                <div class="admin-form-group">
                     <label class="admin-label">رقم عرض السعر المرجعي *</label>
                     <input type="text" id="admin-invoice-id" class="admin-panel-input" placeholder="مثال: EZW-Q-4829">
                 </div>
@@ -491,7 +495,7 @@
                     <label class="admin-label">قيمة الخصم المالي المباشر (﷼)</label>
                     <input type="number" id="admin-discount" class="admin-panel-input" value="0">
                 </div>
-                <div class="admin-form-group">
+                <div class="admin-form-group" style="grid-column: span 2;">
                     <label class="admin-label">رسوم التوصيل وشحن الطلب (﷼)</label>
                     <input type="number" id="admin-shipping" class="admin-panel-input" value="0">
                 </div>
@@ -546,8 +550,17 @@
 
             <!-- أزرار التحكم بالفاتورة للإدارة -->
             <div class="action-bar-modal no-print">
+                <!-- الميزة الجديدة: نسخ نص عرض السعر للواتساب مباشرة دون كتابة أرقام -->
+                <button class="btn-modal-action" style="background-color: var(--gold-primary); color: #000;" onclick="copyQuotationToClipboard()">
+                    <span id="copy-btn-text">نسخ نص عرض السعر للعميل</span>
+                    <i class="fa-solid fa-copy"></i>
+                </button>
+                <button class="btn-modal-action btn-modal-whatsapp" onclick="sendQuotationToClientWhatsapp()">
+                    <span>إرسال عبر واتساب (مباشر)</span>
+                    <i class="fa-brands fa-whatsapp"></i>
+                </button>
                 <button class="btn-modal-action btn-modal-print" onclick="window.print()">
-                    <span>حفظ كـ PDF / طباعة عرض السعر</span>
+                    <span>حفظ كـ PDF / طباعة</span>
                     <i class="fa-solid fa-print"></i>
                 </button>
                 <button class="btn-modal-action btn-modal-close" style="background-color: #f1f1f1; color: #333;" onclick="closePrintInvoiceModal()">
@@ -557,14 +570,29 @@
         </div>
     </div>
 
+    <!-- توست التنبيهات المخصص للنسخ والحفظ -->
+    <div class="toast" id="system-toast">تم التحديث بنجاح</div>
+
     <script>
-        // المنتجات المعتمدة لبراند عزوة والمربوطة بالصور الصحيحة
+        // المنتجات الـ 17 المعتمدة لبراند عزوة والمربوطة بالصور الصحيحة والمحاذاة للأعلى
         const productsConfig = [
             { id: "box", name: "T-SHIRT BOX", image: "TSHIRT BOX RAW.png.png", price: 30, shadd: 16 },
             { id: "pure", name: "PURE", image: "TSHIRT BOX RAW1.png.png", price: 30, shadd: 16 },
             { id: "ghost", name: "GHOST", image: "TSHIRT BOX RAW10.png.png", price: 30, shadd: 16 },
             { id: "flow", name: "FLOW", image: "TSHIRT BOX RAW11.png.png", price: 30, shadd: 12 },
-            { id: "mind", name: "MIND", image: "TSHIRT BOX RAW12.png.png", price: 30, shadd: 5 }
+            { id: "mind", name: "MIND", image: "TSHIRT BOX RAW12.png.png", price: 30, shadd: 5 },
+            { id: "raw2", name: "BOX RAW 2", image: "TSHIRT BOX RAW2.png.png", price: 30, shadd: 16 },
+            { id: "raw3", name: "BOX RAW 3", image: "TSHIRT BOX RAW3.png.png", price: 30, shadd: 16 },
+            { id: "raw4", name: "BOX RAW 4", image: "TSHIRT BOX RAW4.png.png", price: 30, shadd: 16 },
+            { id: "raw5", name: "BOX RAW 5", image: "TSHIRT BOX RAW5.png.png", price: 30, shadd: 16 },
+            { id: "raw6", name: "BOX RAW 6", image: "TSHIRT BOX RAW6.png.png", price: 30, shadd: 16 },
+            { id: "raw7", name: "BOX RAW 7", image: "TSHIRT BOX RAW7.png.png", price: 30, shadd: 16 },
+            { id: "raw8", name: "BOX RAW 8", image: "TSHIRT BOX RAW8.png.png", price: 30, shadd: 16 },
+            { id: "raw9", name: "BOX RAW 9", image: "TSHIRT BOX RAW9.png.png", price: 30, shadd: 16 },
+            { id: "raw13", name: "BOX RAW 13", image: "TSHIRT BOX RAW13.png.png", price: 30, shadd: 16 },
+            { id: "raw14", name: "BOX RAW 14", image: "TSHIRT BOX RAW14.png.png", price: 30, shadd: 16 },
+            { id: "raw15", name: "BOX RAW 15", image: "TSHIRT BOX RAW15.png.png", price: 30, shadd: 16 },
+            { id: "raw16", name: "BOX RAW 16", image: "TSHIRT BOX RAW16.png.png", price: 30, shadd: 16 }
         ];
 
         let selectedItems = {};
@@ -658,10 +686,9 @@
             }
         }
 
-        // التحقق من الرقم السري وفتح لوحة الفواتير
         function submitAdminAuth() {
             const passwordInput = document.getElementById('admin-password-input').value;
-            if (passwordInput === '1234') { // الرقم السري المعتمد للإدارة هو 1234
+            if (passwordInput === '1234') { 
                 closeAdminAuthModal();
                 openAdminPanel();
             } else {
@@ -669,17 +696,16 @@
             }
         }
 
-        // فتح لوحة تحكم الإدارة وتعبئتها بالقيم تلقائياً
         function openAdminPanel() {
             document.getElementById('admin-client-name').value = '';
-            document.getElementById('admin-invoice-id').value = "EZW-Q-" + Math.floor(1000 + Math.random() * 9000); // رقم عرض سعر تلقائي
+            document.getElementById('admin-client-phone').value = '';
+            document.getElementById('admin-invoice-id').value = "EZW-Q-" + Math.floor(1000 + Math.random() * 9000); 
             document.getElementById('admin-discount').value = 0;
             document.getElementById('admin-shipping').value = 0;
 
             const listContainer = document.getElementById('admin-product-quantities-list');
             listContainer.innerHTML = '';
 
-            // بناء عدادات التعديل للإدارة المربوطة تلقائياً بالقيم الحالية
             productsConfig.forEach(p => {
                 const currentQty = selectedItems[p.id] || 0;
                 const row = document.createElement('div');
@@ -712,12 +738,10 @@
             document.getElementById('admin-panel-modal').style.display = 'none';
         }
 
-        // تعديل الكميات داخل لوحة الإدارة
         function updateAdminPanelQty(id, delta) {
             selectedItems[id] = Math.max(0, (selectedItems[id] || 0) + delta);
             document.getElementById(`admin-qty-val-${id}`).textContent = selectedItems[id];
             
-            // مزامنة أرقام الواجهة الرئيسية في الخلفية
             const qtyDisplayOnMain = document.getElementById(`qty-${id}`);
             if (qtyDisplayOnMain) {
                 qtyDisplayOnMain.textContent = selectedItems[id];
@@ -725,7 +749,17 @@
             calculateTotal();
         }
 
-        // بناء الفاتورة المعتمدة باسم "عزوة" للطباعة أو الـ PDF
+        function triggerToast(message) {
+            const toast = document.getElementById('system-toast');
+            if (toast) {
+                toast.textContent = message;
+                toast.style.display = 'block';
+                setTimeout(() => {
+                    toast.style.display = 'none';
+                }, 2500);
+            }
+        }
+
         function buildAndShowOfficialInvoice() {
             const discount = parseFloat(document.getElementById('admin-discount').value) || 0;
             const shipping = parseFloat(document.getElementById('admin-shipping').value) || 0;
@@ -735,7 +769,6 @@
             
             let subtotal = 0;
 
-            // بناء جدول الفاتورة
             for (let id in selectedItems) {
                 if (selectedItems[id] > 0) {
                     const p = productsConfig.find(x => x.id === id);
@@ -756,7 +789,6 @@
                 }
             }
 
-            // في حال كانت الفاتورة فارغة تماماً
             if (subtotal === 0) {
                 tbody.innerHTML = `<tr><td colspan="6" style="text-align: center; color: #ff0000; font-weight: bold;">يرجى إضافة شدّات أولاً لإصدار الفاتورة!</td></tr>`;
             }
@@ -764,12 +796,108 @@
             const grandTotal = Math.max(0, subtotal - discount + shipping);
             document.getElementById('print-grand-total').textContent = "الإجمالي النهائي: " + grandTotal + " ريال سعودي";
 
-            // فتح نافذة الطباعة وحفظ PDF
             document.getElementById('invoice-print-modal').style.display = 'flex';
         }
 
         function closePrintInvoiceModal() {
             document.getElementById('invoice-print-modal').style.display = 'none';
+        }
+
+        // دالة توليد نص عرض السعر الكامل والمرتب بطريقة فخمة
+        function getQuotationText() {
+            const clientName = document.getElementById('admin-client-name').value.trim() || "شريك نجاح عِزْوَة";
+            const invoiceId = document.getElementById('admin-invoice-id').value.trim();
+            const discount = parseFloat(document.getElementById('admin-discount').value) || 0;
+            const shipping = parseFloat(document.getElementById('admin-shipping').value) || 0;
+
+            let msg = `📄 *عَرْض سِعْر مَبْدَئِي - عِزْوَة (EZWA)*\n\n`;
+            msg += `👤 *العميل:* ${clientName}\n`;
+            msg += `🏷️ *رقم عرض السعر المرجعي:* ${invoiceId}\n`;
+            msg += `📅 *التاريخ:* ${new Date().toLocaleDateString('ar-SA')}\n`;
+            msg += `----------------------------------------\n\n`;
+            msg += `📦 *تفاصيل الشدّات والمقاسات:*\n\n`;
+
+            let subtotal = 0;
+            let totalPieces = 0;
+            
+            for (let id in selectedItems) {
+                if (selectedItems[id] > 0) {
+                    const p = productsConfig.find(x => x.id === id);
+                    const pieces = selectedItems[id] * p.shadd;
+                    const itemTotal = pieces * p.price;
+                    subtotal += itemTotal;
+                    totalPieces += pieces;
+
+                    msg += `🔹 *${p.name}:*\n`;
+                    msg += `   👈 عدد الشدّات: [ ${selectedItems[id]} شدّة ] (شدّة ${p.shadd} حبة)\n`;
+                    msg += `   👈 إجمالي القطع: [ ${pieces} قطعة ]\n`;
+                    msg += `   👈 المجموع: ${itemTotal} ريال سعودي\n\n`;
+                }
+            }
+
+            msg += `----------------------------------------\n`;
+            msg += `📈 *ملخص الحساب الجاري:*\n`;
+            msg += `🔸 *إجمالي القطع:* ${totalPieces} قطعة\n`;
+            msg += `🔸 *المجموع الفرعي:* ${subtotal} ريال\n`;
+            
+            if (discount > 0) {
+                msg += `🔻 *الخصم المباشر:* -${discount} ريال\n`;
+            }
+            if (shipping > 0) {
+                msg += `➕ *رسوم وتوصيل الشحنة:* ${shipping} ريال\n`;
+            }
+
+            const grandTotal = Math.max(0, subtotal - discount + shipping);
+            msg += `💰 *الإجمالي النهائي:* *${grandTotal} ريال سعودي*\n\n`;
+            msg += `⚠️ *الأسعار غير شاملة الضريبة*\n\n`;
+            msg += `🛡️ _يسعدنا دعمكم ونتطلع لشراكة تجارية مستمرة ومثمرة_`;
+            return msg;
+        }
+
+        // دالة سحرية لنسخ الفاتورة للحافظة فوراً لتسهيل لصقها في محادثة الزبون دون كتابة رقمه
+        function copyQuotationToClipboard() {
+            const text = getQuotationText();
+            
+            const textarea = document.createElement('textarea');
+            textarea.value = text;
+            textarea.style.position = 'fixed'; 
+            document.body.appendChild(textarea);
+            textarea.select();
+            
+            try {
+                document.execCommand('copy');
+                triggerToast('تم نسخ عرض السعر بنجاح! الصقه الآن في شات العميل بالواتساب.');
+                const btnText = document.getElementById('copy-btn-text');
+                btnText.textContent = "تم النسخ!";
+                setTimeout(() => {
+                    btnText.textContent = "نسخ نص عرض السعر للعميل";
+                }, 2000);
+            } catch (err) {
+                triggerToast('فشل النسخ التلقائي، يرجى نسخه يدوياً.');
+            }
+            
+            document.body.removeChild(textarea);
+        }
+
+        // دالة إرسال عرض السعر للعميل عبر الواتساب للإدارة (اختياري بالرقم)
+        function sendQuotationToClientWhatsapp() {
+            const clientPhone = document.getElementById('admin-client-phone').value.trim();
+
+            if (!clientPhone) {
+                triggerToast("يرجى إدخال رقم جوال العميل في لوحة التحكم للفتح المباشر، أو استخدم زر النسخ!");
+                return;
+            }
+
+            let cleanPhone = clientPhone.replace(/\D/g, '');
+            if (cleanPhone.startsWith('05')) {
+                cleanPhone = '966' + cleanPhone.substring(1);
+            } else if (cleanPhone.startsWith('5')) {
+                cleanPhone = '966' + cleanPhone;
+            }
+
+            const msg = getQuotationText();
+            const whatsappUrl = `https://api.whatsapp.com/send?phone=${cleanPhone}&text=${encodeURIComponent(msg)}`;
+            window.open(whatsappUrl, '_blank');
         }
 
         window.onload = renderCards;
