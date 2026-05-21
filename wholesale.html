@@ -63,6 +63,13 @@
             padding: 0 12px;
         }
 
+        @media (max-width: 500px) {
+            .catalog-grid {
+                gap: 10px;
+                padding: 0 5px;
+            }
+        }
+
         .product-card {
             background-color: var(--bg-card);
             border: 1px solid var(--border-card);
@@ -71,6 +78,13 @@
             display: flex;
             flex-direction: column;
             position: relative;
+        }
+
+        @media (max-width: 500px) {
+            .product-card {
+                padding: 8px;
+                border-radius: 14px;
+            }
         }
 
         .image-container {
@@ -90,57 +104,202 @@
             font-size: 1.15rem; font-weight: 700; margin: 12px 0; text-align: center;
         }
 
-        .btn-add-order {
-            background-color: var(--gold-primary);
-            color: #000; border: none; border-radius: 8px;
-            padding: 11px; font-weight: 700; cursor: pointer;
+        /* أزرار التحكم بالكمية المحدثة */
+        .counter-group {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 5px;
         }
 
-        /* شريط الحساب السفلي المطور */
+        .qty-btn {
+            background-color: transparent;
+            border: 1.5px solid var(--gold-primary);
+            color: var(--gold-primary);
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s;
+        }
+
+        .qty-btn:hover {
+            background-color: var(--gold-primary);
+            color: #000;
+        }
+
+        .qty-val {
+            font-size: 1.25rem;
+            font-weight: 700;
+            min-width: 30px;
+            text-align: center;
+        }
+
+        /* شريط الحساب السفلي المطور وزر موحد */
         .checkout-footer {
             position: fixed; bottom: 0; left: 0; right: 0;
             background-color: #09090b; padding: 15px 20px;
             border-top: 1px solid var(--gold-primary); z-index: 1000;
+            box-shadow: 0 -10px 30px rgba(0,0,0,0.8);
         }
 
-        .footer-btns {
-            display: flex; gap: 10px; margin-top: 10px;
+        .footer-content {
+            max-width: 950px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
 
-        .btn-invoice {
-            background-color: #27272a; color: #fff; border: 1px solid var(--gold-primary);
-            flex: 1; padding: 12px; border-radius: 8px; font-weight: 700; cursor: pointer;
-            display: flex; align-items: center; justify-content: center; gap: 8px;
+        @media (max-width: 650px) {
+            .footer-content {
+                flex-direction: column;
+                gap: 12px;
+                text-align: center;
+            }
         }
 
         .btn-whatsapp-submit {
-            background-color: var(--gold-primary); color: #000;
-            flex: 1; padding: 12px; border-radius: 8px; font-weight: 800; cursor: pointer;
-            display: flex; align-items: center; justify-content: center; gap: 8px;
+            background: linear-gradient(135deg, #FFF7D6 0%, #dfb43f 50%, #AA7C11 100%);
+            color: #000;
+            border: none;
+            padding: 14px 40px;
+            border-radius: 12px;
+            font-weight: 800;
+            font-size: 1.05rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            transition: transform 0.2s, box-shadow 0.2s;
+            box-shadow: 0 4px 15px rgba(223, 180, 63, 0.2);
         }
 
-        /* نافذة عرض السعر (Print Mode) */
+        .btn-whatsapp-submit:hover:not(:disabled) {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(223, 180, 63, 0.4);
+        }
+
+        .btn-whatsapp-submit:disabled {
+            background: #222;
+            color: #555;
+            box-shadow: none;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        /* نافذة الفاتورة بعد تأكيد الشراء */
         #quotation-modal {
-            display: none; position: fixed; top:0; left:0; width:100%; height:100%;
-            background: #fff; color: #000; z-index: 9999; padding: 40px; overflow-y: auto;
+            display: none;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 9999;
+            padding: 20px;
+            overflow-y: auto;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .invoice-paper {
+            background: #ffffff;
+            color: #000000;
+            max-width: 750px;
+            width: 100%;
+            margin: 20px auto;
+            padding: 40px;
+            border-radius: 16px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.6);
+            position: relative;
+        }
+
+        @media (max-width: 600px) {
+            .invoice-paper {
+                padding: 20px;
+            }
+        }
+
+        .invoice-table {
+            width: 100%; border-collapse: collapse; margin-top: 25px;
+        }
+        
+        .invoice-table th, .invoice-table td {
+            border: 1px solid #e0e0e0; padding: 12px; text-align: right;
+            font-size: 0.95rem;
+        }
+
+        .invoice-table th {
+            background-color: #f8f9fa;
+            font-weight: 700;
+        }
+
+        .invoice-header {
+            display: flex; justify-content: space-between; align-items: center;
+            border-bottom: 2px solid var(--gold-primary); padding-bottom: 20px;
+        }
+
+        @media (max-width: 600px) {
+            .invoice-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 15px;
+            }
+        }
+
+        .action-bar-modal {
+            display: flex;
+            gap: 12px;
+            justify-content: flex-end;
+            margin-top: 30px;
+        }
+
+        @media (max-width: 500px) {
+            .action-bar-modal {
+                flex-direction: column;
+            }
+        }
+
+        .btn-modal-action {
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-weight: 700;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            border: none;
+            font-size: 0.95rem;
+        }
+
+        .btn-modal-whatsapp {
+            background-color: #25D366;
+            color: #fff;
+        }
+
+        .btn-modal-print {
+            background-color: #000;
+            color: #fff;
+        }
+
+        .btn-modal-close {
+            background-color: #f1f1f1;
+            color: #333;
         }
 
         @media print {
             body * { visibility: hidden; }
             #quotation-modal, #quotation-modal * { visibility: visible; }
-            #quotation-modal { position: absolute; left: 0; top: 0; }
+            #quotation-modal { position: absolute; left: 0; top: 0; background: none; display: block !important; padding: 0; }
+            .invoice-paper { box-shadow: none; margin: 0; padding: 0; width: 100%; max-width: 100%; border-radius: 0; }
             .no-print { display: none !important; }
-        }
-
-        .invoice-table {
-            width: 100%; border-collapse: collapse; margin-top: 20px;
-        }
-        .invoice-table th, .invoice-table td {
-            border: 1px solid #ddd; padding: 12px; text-align: right;
-        }
-        .invoice-header {
-            display: flex; justify-content: space-between; align-items: center;
-            border-bottom: 2px solid var(--gold-primary); padding-bottom: 20px;
         }
     </style>
 </head>
@@ -148,65 +307,80 @@
 
     <header class="brand-header">
         <div class="brand-logo">عِزْوَة</div>
-        <p style="color:var(--text-grey); font-size: 0.8rem;">WHOLESALE PORTAL</p>
+        <p style="color:var(--text-grey); font-size: 0.8rem; letter-spacing: 2px; font-weight: 600;">WHOLESALE PORTAL</p>
     </header>
 
     <main class="catalog-grid" id="catalog-grid-container"></main>
 
+    <!-- شريط الحساب -->
     <div class="checkout-footer">
-        <div style="display:flex; justify-content:space-between; align-items:center;">
-            <span style="color:var(--text-grey);">إجمالي القطع:</span>
-            <span id="footer-total-pieces" style="color:var(--gold-primary); font-weight:800; font-size:1.3rem;">0 قطعة</span>
-        </div>
-        <div class="footer-btns">
-            <button class="btn-invoice" id="btn-quote" disabled onclick="generateQuotation()">
-                <i class="fa-solid fa-file-invoice"></i> عرض سعر
-            </button>
-            <button class="btn-whatsapp-submit" id="btn-submit-order" disabled onclick="sendOrderToWhatsapp()">
-                <i class="fa-brands fa-whatsapp"></i> واتساب
-            </button>
+        <div class="footer-content">
+            <div style="display:flex; flex-direction:column; text-align:right;">
+                <span class="summary-label">إجمالي القطع المحجوزة:</span>
+                <span id="footer-total-pieces" style="color:var(--gold-primary); font-weight:900; font-size:1.5rem;">0 قطعة</span>
+            </div>
+            <div class="footer-btns">
+                <button class="btn-whatsapp-submit" id="btn-submit-order" disabled onclick="completePurchaseAndShowInvoice()">
+                    <span>تأكيد الطلب وإصدار الفاتورة</span>
+                    <i class="fa-solid fa-file-invoice"></i>
+                </button>
+            </div>
         </div>
     </div>
 
+    <!-- نافذة إصدار عرض السعر الاحترافية الفخمة -->
     <div id="quotation-modal">
-        <div class="no-print" style="display:flex; justify-content:space-between; margin-bottom:20px;">
-            <button onclick="window.print()" style="padding:10px 20px; background:var(--gold-primary); border:none; cursor:pointer; font-weight:bold;">طباعة / حفظ PDF</button>
-            <button onclick="document.getElementById('quotation-modal').style.display='none'" style="padding:10px 20px; background:#eee; border:none; cursor:pointer;">إغلاق</button>
-        </div>
-
-        <div class="invoice-header">
-            <div>
-                <h1 style="color:var(--gold-primary); font-size: 2.5rem;">عِزْوَة</h1>
-                <p>مؤسسة عزوة للملابس الجاهزة</p>
-                <p>الرياض - المملكة العربية السعودية</p>
+        <div class="invoice-paper">
+            <div class="invoice-header">
+                <div>
+                    <h1 style="color:#000; font-size: 2.5rem; font-weight: 900; letter-spacing: 3px; font-family: 'Cairo', sans-serif;">عِزْوَة</h1>
+                    <p style="color: #666; font-size: 0.9rem;">الرياض - المملكة العربية السعودية</p>
+                    <p style="color: #666; font-size: 0.9rem;">بوابة مبيعات الجملة الإلكترونية</p>
+                </div>
+                <div style="text-align:left;">
+                    <h2 style="font-weight: 800; font-size: 1.6rem; color: #dfb43f; margin-bottom: 5px;">فاتورة طلب جملة</h2>
+                    <p id="quote-date" style="color:#555; font-size:0.9rem;"></p>
+                    <p id="quote-id" style="color:#555; font-size:0.9rem;"></p>
+                </div>
             </div>
-            <div style="text-align:left;">
-                <h2>عرض سعر جملة</h2>
-                <p id="quote-date"></p>
+
+            <table class="invoice-table">
+                <thead>
+                    <tr>
+                        <th>المنتج</th>
+                        <th>الشدة</th>
+                        <th>عدد الشدات</th>
+                        <th>إجمالي القطع</th>
+                        <th>السعر للحبة</th>
+                        <th>المجموع</th>
+                    </tr>
+                </thead>
+                <tbody id="invoice-items"></tbody>
+            </table>
+
+            <div style="margin-top:30px; text-align:left; border-bottom: 2px solid #e0e0e0; padding-bottom: 15px;">
+                <h3 id="invoice-grand-total" style="font-size:1.6rem; font-weight: 900; color: #dfb43f;"></h3>
             </div>
-        </div>
 
-        <table class="invoice-table">
-            <thead>
-                <tr style="background:#f9f9f9;">
-                    <th>المنتج</th>
-                    <th>الشدة</th>
-                    <th>عدد الشدات</th>
-                    <th>إجمالي القطع</th>
-                    <th>السعر للحبة</th>
-                    <th>المجموع</th>
-                </tr>
-            </thead>
-            <tbody id="invoice-items"></tbody>
-        </table>
+            <div style="margin-top:25px; font-size:0.85rem; color:#666; text-align: right; line-height: 1.6;">
+                <p>* ملاحظة: تعتبر هذه الفاتورة سارية لحين مراجعة الكميات وتأكيد الشحن.</p>
+                <p>* الأسعار لا تشمل ضريبة القيمة المضافة ما لم يتم توضيح ذلك لاحقاً.</p>
+            </div>
 
-        <div style="margin-top:30px; text-align:left;">
-            <h3 id="invoice-grand-total" style="font-size:1.5rem; color:var(--gold-primary);"></h3>
-        </div>
-
-        <div style="margin-top:50px; border-top:1px solid #eee; padding-top:20px; font-size:0.9rem; color:#666;">
-            <p>* ملاحظة: عرض السعر صالح لمدة 3 أيام من تاريخه.</p>
-            <p>* الأسعار لا تشمل ضريبة القيمة المضافة إلا إذا ذكر خلاف ذلك.</p>
+            <!-- أزرار الإجراء بداخل الفاتورة المعتمدة -->
+            <div class="action-bar-modal no-print">
+                <button class="btn-modal-action btn-modal-whatsapp" onclick="sendOrderToWhatsapp()">
+                    <span>إرسال الطلب للواتساب</span>
+                    <i class="fa-brands fa-whatsapp"></i>
+                </button>
+                <button class="btn-modal-action btn-modal-print" onclick="window.print()">
+                    <span>حفظ كـ PDF / طباعة</span>
+                    <i class="fa-solid fa-print"></i>
+                </button>
+                <button class="btn-modal-action btn-modal-close" onclick="closeQuotationModal()">
+                    <span>تعديل الطلب</span>
+                </button>
+            </div>
         </div>
     </div>
 
@@ -229,13 +403,13 @@
                 card.innerHTML = `
                     <div class="image-container"><img src="${p.image}?v=${Date.now()}"></div>
                     <h3 class="product-name">${p.name}</h3>
-                    <div style="text-align:center; margin-bottom:10px; color:var(--gold-primary); font-weight:bold;">${p.price} ريال / حبة</div>
-                    <div style="display:flex; align-items:center; justify-content:center; gap:10px;">
-                        <button onclick="updateQty('${p.id}', -1)" style="width:30px; height:30px;">-</button>
-                        <span id="qty-${p.id}">0</span>
-                        <button onclick="updateQty('${p.id}', 1)" style="width:30px; height:30px;">+</button>
+                    <div style="text-align:center; margin-bottom:12px; color:var(--gold-primary); font-weight:700;">${p.price} ريال / حبة</div>
+                    <div class="counter-group">
+                        <button class="qty-btn" onclick="updateQty('${p.id}', -1)">-</button>
+                        <span class="qty-val" id="qty-${p.id}">0</span>
+                        <button class="qty-btn" onclick="updateQty('${p.id}', 1)">+</button>
                     </div>
-                    <p style="font-size:0.7rem; text-align:center; color:var(--text-grey); margin-top:5px;">شدة ${p.shadd} حبة</p>
+                    <p style="font-size:0.8rem; text-align:center; color:var(--text-grey); margin-top:8px;">شدة ${p.shadd} حبة</p>
                 `;
                 container.appendChild(card);
             });
@@ -255,15 +429,17 @@
             }
             document.getElementById('footer-total-pieces').textContent = total + " قطعة";
             document.getElementById('btn-submit-order').disabled = total === 0;
-            document.getElementById('btn-quote').disabled = total === 0;
         }
 
-        function generateQuotation() {
+        function completePurchaseAndShowInvoice() {
             const tbody = document.getElementById('invoice-items');
             tbody.innerHTML = '';
             let grandTotal = 0;
             const now = new Date();
+            
+            // تعبئة تاريخ اليوم ورقم الفاتورة العشوائي
             document.getElementById('quote-date').textContent = "التاريخ: " + now.toLocaleDateString('ar-SA');
+            document.getElementById('quote-id').textContent = "رقم الفاتورة: EZW-" + Math.floor(1000 + Math.random() * 9000);
 
             for(let id in selectedItems) {
                 if(selectedItems[id] > 0) {
@@ -274,28 +450,49 @@
 
                     tbody.innerHTML += `
                         <tr>
-                            <td>${p.name}</td>
+                            <td style="font-weight: 700;">${p.name}</td>
                             <td>${p.shadd} حبة</td>
-                            <td>${selectedItems[id]} شدة</td>
+                            <td style="font-weight: 700;">${selectedItems[id]} شدة</td>
                             <td>${pieces} حبة</td>
                             <td>${p.price} ريال</td>
-                            <td>${subtotal} ريال</td>
+                            <td style="font-weight: 700; color: #000;">${subtotal} ريال</td>
                         </tr>
                     `;
                 }
             }
             document.getElementById('invoice-grand-total').textContent = "الإجمالي النهائي: " + grandTotal + " ريال سعودي";
-            document.getElementById('quotation-modal').style.display = 'block';
+            document.getElementById('quotation-modal').style.display = 'flex';
+        }
+
+        function closeQuotationModal() {
+            document.getElementById('quotation-modal').style.display = 'none';
         }
 
         function sendOrderToWhatsapp() {
-            let msg = "🛡️ *طلب جملة جديد - عِزْوَة*\n\n";
+            let msg = "🛡️ *طلب حجز شدّات جملة جديد - براند عِزْوَة*\n\n";
+            let totalPieces = 0;
+            let totalPrice = 0;
+
             for(let id in selectedItems) {
                 if(selectedItems[id] > 0) {
                     const p = productsConfig.find(x => x.id === id);
-                    msg += `🔹 *${p.name}*: ${selectedItems[id]} شدة (${selectedItems[id] * p.shadd} حبة)\n`;
+                    const pieces = selectedItems[id] * p.shadd;
+                    const cost = pieces * p.price;
+                    totalPieces += pieces;
+                    totalPrice += cost;
+
+                    msg += `🔹 *${p.name}:*\n`;
+                    msg += `   👈 عدد الشدّات: [ ${selectedItems[id]} شدة ] (شدّة ${p.shadd} حبة)\n`;
+                    msg += `   👈 إجمالي القطع: [ ${pieces} قطعة ]\n\n`;
                 }
             }
+
+            msg += `----------------------------------------\n`;
+            msg += `📈 *ملخص الحساب الجاري للتجار:*\n`;
+            msg += `🔸 *القطع الكلية:* ${totalPieces} قطعة\n`;
+            msg += `💰 *القيمة الإجمالية:* *${totalPrice} ريال سعودي*\n\n`;
+            msg += `🎯 يرجى تأكيد توفر الكمية المطلوبة وإرسال الفاتورة لبدء الشحن فوراً.`;
+
             window.open(`https://api.whatsapp.com/send?phone=966502777884&text=${encodeURIComponent(msg)}`);
         }
 
