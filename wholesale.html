@@ -44,6 +44,9 @@
             padding: 25px 20px;
             text-align: center;
             position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
         .brand-logo {
@@ -54,20 +57,18 @@
             text-transform: uppercase;
         }
 
-        /* زر الإدارة السري */
+        /* زر الإدارة السري الموضع تحت العنوان الفرعي */
         .admin-trigger-btn {
-            position: absolute;
-            top: 25px;
-            left: 20px;
+            display: inline-flex;
+            margin-top: 15px;
             background-color: rgba(255, 255, 255, 0.02);
             border: 1px solid rgba(255, 255, 255, 0.08);
             color: var(--text-grey);
-            padding: 6px 12px;
+            padding: 6px 16px;
             border-radius: 20px;
             font-size: 0.8rem;
             font-weight: 600;
             cursor: pointer;
-            display: flex;
             align-items: center;
             gap: 6px;
             transition: all 0.2s;
@@ -428,13 +429,13 @@
 <body>
 
     <header class="brand-header">
-        <!-- زر الإدارة السري الحصري لمراجعة الطلبات وإصدار الفواتير -->
+        <div class="brand-logo">عِزْوَة</div>
+        <p style="color:var(--text-grey); font-size: 0.8rem; letter-spacing: 2px; font-weight: 600;">WHOLESALE PORTAL</p>
+        <!-- زر الإدارة السري المتموضع بنعومة تحت شعار "عزوة" -->
         <div class="admin-trigger-btn" onclick="openAdminAuthModal()">
             <i class="fa-solid fa-lock"></i>
             <span>بوابة الإدارة</span>
         </div>
-        <div class="brand-logo">عِزْوَة</div>
-        <p style="color:var(--text-grey); font-size: 0.8rem; letter-spacing: 2px; font-weight: 600;">WHOLESALE PORTAL</p>
     </header>
 
     <main class="catalog-grid" id="catalog-grid-container"></main>
@@ -688,7 +689,7 @@
 
         function submitAdminAuth() {
             const passwordInput = document.getElementById('admin-password-input').value;
-            if (passwordInput === '1234') { 
+            if (passwordInput === '2132') { // تم تحديث كلمة المرور بالملي لتطابق الرقم الجديد
                 closeAdminAuthModal();
                 openAdminPanel();
             } else {
