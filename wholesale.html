@@ -43,6 +43,7 @@
             border-bottom: 1px solid rgba(255, 255, 255, 0.05);
             padding: 25px 20px;
             text-align: center;
+            position: relative;
         }
 
         .brand-logo {
@@ -51,6 +52,31 @@
             letter-spacing: 5px;
             color: var(--gold-primary);
             text-transform: uppercase;
+        }
+
+        /* زر الإدارة السري */
+        .admin-trigger-btn {
+            position: absolute;
+            top: 25px;
+            left: 20px;
+            background-color: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            color: var(--text-grey);
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            transition: all 0.2s;
+        }
+
+        .admin-trigger-btn:hover {
+            color: var(--gold-primary);
+            border-color: var(--gold-primary);
+            background-color: rgba(223, 180, 63, 0.05);
         }
 
         /* شبكة المنتجات */
@@ -195,13 +221,116 @@
             transform: none;
         }
 
-        /* نافذة الفاتورة بعد تأكيد الشراء */
-        #quotation-modal {
+        /* نافذة تسجيل دخول الإدارة */
+        .admin-modal {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(8px);
+            z-index: 10000;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .admin-auth-card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--gold-primary);
+            padding: 30px;
+            border-radius: 16px;
+            max-width: 400px;
+            width: 100%;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        .admin-input {
+            width: 100%;
+            background-color: #000;
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 8px;
+            padding: 12px;
+            color: #fff;
+            font-size: 1.1rem;
+            text-align: center;
+            margin: 20px 0 15px 0;
+            outline: none;
+        }
+
+        .admin-input:focus {
+            border-color: var(--gold-primary);
+        }
+
+        /* نافذة لوحة تحكم الإدارة لإصدار الفواتير */
+        #admin-panel-modal {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 9999;
+            padding: 20px;
+            overflow-y: auto;
+        }
+
+        .admin-panel-container {
+            max-width: 800px;
+            margin: 30px auto;
+            background-color: var(--bg-card);
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 16px;
+            padding: 30px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.5);
+        }
+
+        .admin-form-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        @media (max-width: 600px) {
+            .admin-form-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .admin-form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            text-align: right;
+        }
+
+        .admin-label {
+            font-size: 0.85rem;
+            color: var(--text-grey);
+            font-weight: 600;
+        }
+
+        .admin-panel-input {
+            width: 100%;
+            background-color: #000;
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 8px;
+            padding: 10px 14px;
+            color: #fff;
+            outline: none;
+            font-size: 0.95rem;
+        }
+
+        .admin-panel-input:focus {
+            border-color: var(--gold-primary);
+        }
+
+        /* نافذة الفاتورة المخصصة للطباعة */
+        #invoice-print-modal {
             display: none;
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
             background: rgba(0, 0, 0, 0.9);
-            z-index: 9999;
+            z-index: 10001;
             padding: 20px;
             overflow-y: auto;
             align-items: center;
@@ -282,7 +411,11 @@
         .btn-modal-whatsapp {
             background-color: #25D366;
             color: #fff;
-            width: 100%;
+        }
+
+        .btn-modal-print {
+            background-color: #000;
+            color: #fff;
         }
 
         .btn-modal-close {
@@ -292,8 +425,8 @@
 
         @media print {
             body * { visibility: hidden; }
-            #quotation-modal, #quotation-modal * { visibility: visible; }
-            #quotation-modal { position: absolute; left: 0; top: 0; background: none; display: block !important; padding: 0; }
+            #invoice-print-modal, #invoice-print-modal * { visibility: visible; }
+            #invoice-print-modal { position: absolute; left: 0; top: 0; background: none; display: block !important; padding: 0; }
             .invoice-paper { box-shadow: none; margin: 0; padding: 0; width: 100%; max-width: 100%; border-radius: 0; }
             .no-print { display: none !important; }
         }
@@ -302,13 +435,18 @@
 <body>
 
     <header class="brand-header">
+        <!-- زر الإدارة المخفي والذكي -->
+        <div class="admin-trigger-btn" onclick="openAdminAuthModal()">
+            <i class="fa-solid fa-lock"></i>
+            <span>بوابة الإدارة</span>
+        </div>
         <div class="brand-logo">عِزْوَة</div>
         <p style="color:var(--text-grey); font-size: 0.8rem; letter-spacing: 2px; font-weight: 600;">WHOLESALE PORTAL</p>
     </header>
 
     <main class="catalog-grid" id="catalog-grid-container"></main>
 
-    <!-- شريط الحساب السفلي للتأكيد والمراجعة -->
+    <!-- شريط الحساب السفلي المباشر للعميل -->
     <div class="checkout-footer">
         <div class="footer-content">
             <div style="display:flex; flex-direction:column; text-align:right;">
@@ -316,27 +454,86 @@
                 <span id="footer-total-pieces" style="color:var(--gold-primary); font-weight:900; font-size:1.5rem;">0 قطعة</span>
             </div>
             <div class="footer-btns">
-                <button class="btn-whatsapp-submit" id="btn-submit-order" disabled onclick="completePurchaseAndShowInvoice()">
-                    <span>مراجعة وتأكيد طلب الحجز</span>
-                    <i class="fa-solid fa-file-invoice"></i>
+                <button class="btn-whatsapp-submit" id="btn-submit-order" disabled onclick="sendOrderToWhatsappDirectly()">
+                    <span>إرسال طلب الحجز للواتساب</span>
+                    <i class="fa-brands fa-whatsapp"></i>
                 </button>
             </div>
         </div>
     </div>
 
-    <!-- نافذة مراجعة طلب حجز الجملة (غير قابلة للحفظ أو الطباعة من العميل) -->
-    <div id="quotation-modal">
+    <!-- نافذة تسجيل دخول الإدارة -->
+    <div id="admin-auth-modal" class="admin-modal" onclick="closeAdminAuthModal()">
+        <div class="admin-auth-card" onclick="event.stopPropagation()">
+            <h3 style="color: var(--gold-primary); font-weight: 700;">دخول الإدارة</h3>
+            <p style="color: var(--text-grey); font-size: 0.85rem; margin-top: 5px;">خاص بإدارة براند عزوة فقط لإصدار الفواتير للعملاء</p>
+            <input type="password" id="admin-password-input" class="admin-input" placeholder="أدخل كلمة المرور" onkeypress="checkAdminPasswordKey(event)">
+            <p id="auth-error-msg" style="color: #d9534f; font-size: 0.85rem; display: none; margin-bottom: 10px;">❌ كلمة المرور غير صحيحة!</p>
+            <div style="display: flex; gap: 10px;">
+                <button class="btn-save" style="margin: 0; flex: 1;" onclick="submitAdminAuth()">دخول</button>
+                <button class="btn-save" style="margin: 0; flex: 1; background: #222; color: #aaa;" onclick="closeAdminAuthModal()">إلغاء</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- لوحة تحكم الإدارة السريعة لإصدار فواتير عِزْوَة للعملاء -->
+    <div id="admin-panel-modal">
+        <div class="admin-panel-container">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px; border-bottom: 1px solid rgba(255,255,255,0.06); padding-bottom: 15px;">
+                <h2 style="color: var(--gold-primary); font-weight: 800;"><i class="fa-solid fa-file-invoice"></i> لوحة تحكم وإصدار فواتير عِزْوَة</h2>
+                <button class="btn-close" style="color: #ff4d4d; font-size: 1.8rem;" onclick="closeAdminPanelModal()">&times;</button>
+            </div>
+
+            <!-- تفاصيل العميل والتحكم بالبيانات -->
+            <div class="admin-form-grid">
+                <div class="admin-form-group">
+                    <label class="admin-label">اسم العميل الموزع *</label>
+                    <input type="text" id="admin-client-name" class="admin-panel-input" placeholder="مثال: متجر الهيبة للملابس">
+                </div>
+                <div class="admin-form-group">
+                    <label class="admin-label">رقم الفاتورة *</label>
+                    <input type="text" id="admin-invoice-id" class="admin-panel-input" placeholder="مثال: EZW-4892">
+                </div>
+                <div class="admin-form-group">
+                    <label class="admin-label">قيمة الخصم المالي المباشر (﷼)</label>
+                    <input type="number" id="admin-discount" class="admin-panel-input" value="0">
+                </div>
+                <div class="admin-form-group">
+                    <label class="admin-label">رسوم شحن وتوصيل الطلب (﷼)</label>
+                    <input type="number" id="admin-shipping" class="admin-panel-input" value="0">
+                </div>
+            </div>
+
+            <!-- قائمة تعديل الكميات مباشرة من قبل الإدارة (محملة تلقائياً بطلب العميل) -->
+            <h4 style="color: var(--text-white); font-weight: 700; margin-bottom: 15px; border-bottom: 1px dashed rgba(255,255,255,0.05); padding-bottom: 8px;">مراجعة وتعديل شدّات الطلب:</h4>
+            <div id="admin-product-quantities-list" style="display: flex; flex-direction: column; gap: 12px; margin-bottom: 25px;">
+                <!-- يتم تعبئة المنتجات وعداداتها تلقائياً عبر الجافا سكريبت -->
+            </div>
+
+            <div style="display: flex; gap: 15px; justify-content: flex-end;">
+                <button class="btn-save" style="background-color: var(--gold-primary); color: #000; width: auto; padding: 12px 35px;" onclick="buildAndShowOfficialInvoice()">
+                    <span>عرض وإصدار الفاتورة للطباعة / PDF</span>
+                    <i class="fa-solid fa-print"></i>
+                </button>
+                <button class="btn-save" style="background-color: #222; color: #aaa; width: auto; padding: 12px 25px;" onclick="closeAdminPanelModal()">إلغاء</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- الفاتورة الرسمية النهائية للطباعة (لا تظهر للعميل إطلاقاً) -->
+    <div id="invoice-print-modal">
         <div class="invoice-paper">
             <div class="invoice-header">
                 <div>
-                    <h1 style="color:#000; font-size: 2.5rem; font-weight: 900; letter-spacing: 3px; font-family: 'Cairo', sans-serif;">عِزْوَة</h1>
-                    <p style="color: #666; font-size: 0.9rem;">الرياض - المملكة العربية السعودية</p>
-                    <p style="color: #666; font-size: 0.9rem;">بوابة مبيعات الجملة الإلكترونية</p>
+                    <h1 style="color:#000; font-size: 2.8rem; font-weight: 900; letter-spacing: 3px; font-family: 'Cairo', sans-serif; margin: 0;">عِزْوَة</h1>
+                    <p style="color: #666; font-size: 0.9rem; margin-top: 5px;">الرياض - المملكة العربية السعودية</p>
+                    <p style="color: #666; font-size: 0.9rem;">بوابة مبيعات الجملة المعتمدة</p>
                 </div>
                 <div style="text-align:left;">
-                    <h2 style="font-weight: 800; font-size: 1.5rem; color: #dfb43f; margin-bottom: 5px;">ملخص طلب حجز الجملة</h2>
-                    <p id="quote-date" style="color:#555; font-size:0.9rem;"></p>
-                    <p id="quote-id" style="color:#555; font-size:0.9rem;"></p>
+                    <h2 style="font-weight: 800; font-size: 1.6rem; color: #dfb43f; margin-bottom: 5px;">فاتورة مبيعات جملة</h2>
+                    <p id="print-date" style="color:#555; font-size:0.9rem;"></p>
+                    <p id="print-invoice-id" style="color:#555; font-size:0.9rem; font-weight: bold;"></p>
+                    <p id="print-client-name" style="color:#222; font-size:0.95rem; font-weight: bold; margin-top: 5px;"></p>
                 </div>
             </div>
 
@@ -351,33 +548,37 @@
                         <th>المجموع</th>
                     </tr>
                 </thead>
-                <tbody id="invoice-items"></tbody>
+                <tbody id="print-invoice-items"></tbody>
             </table>
 
-            <div style="margin-top:30px; text-align:left; border-bottom: 2px solid #e0e0e0; padding-bottom: 15px;">
-                <h3 id="invoice-grand-total" style="font-size:1.6rem; font-weight: 900; color: #dfb43f;"></h3>
+            <!-- تفاصيل المجاميع والشحن والخصومات -->
+            <div style="margin-top: 20px; display: flex; flex-direction: column; align-items: flex-end; gap: 8px; border-bottom: 2px solid #e0e0e0; padding-bottom: 15px;">
+                <p style="font-size: 0.95rem; color: #555;">المجموع الفرعي: <span id="print-subtotal" style="font-weight: 700; color: #000;">-- ريال</span></p>
+                <p id="print-discount-row" style="font-size: 0.95rem; color: #d9534f; display: none;">الخصم التجاري المباشر: <span id="print-discount-val" style="font-weight: 700;">-- ريال</span></p>
+                <p id="print-shipping-row" style="font-size: 0.95rem; color: #555; display: none;">رسوم وتوصيل الشحنة: <span id="print-shipping-val" style="font-weight: 700; color: #000;">-- ريال</span></p>
+                <h3 id="print-grand-total" style="font-size:1.7rem; font-weight: 900; color: #dfb43f; margin-top: 5px;"></h3>
             </div>
 
-            <!-- تنبيه رسمي يوضح أن هذا ملخص حجز فقط، والفاتورة الحقيقية تصدر من الإدارة -->
-            <div style="margin-top:25px; font-size:0.88rem; color:#d9534f; text-align: right; line-height: 1.6; background-color: #fdf7f7; padding: 15px; border-right: 4px solid #d9534f; border-radius: 4px;">
-                <p style="font-weight: 700; margin-bottom: 4px;">⚠️ تنبيه هام لشركائنا الموزعين:</p>
-                <p style="color: #555;">هذا مستند مبدئي ومؤقت لتأكيد حجز المقاسات فقط. **الفاتورة الضريبية الرسمية المعتمدة للتحصيل والشحن تصدر وتُرسل لكم حصرياً من قِبل إدارة عِزْوَة** بعد التحقق من المخازن وتأكيد استلام الطلب عبر الواتساب.</p>
+            <div style="margin-top:25px; font-size:0.85rem; color:#666; text-align: right; line-height: 1.6;">
+                <p>* هذه الفاتورة تم إصدارها واعتمادها من قبل إدارة عِزْوَة فور مراجعة المستودعات وتأكيد جاهزية الشحن.</p>
+                <p>* الشحن يبدأ مباشرة فور تسوية المديونيات أو تحويل قيم الفاتورة.</p>
             </div>
 
-            <!-- خيارات الإجراء (تم حذف أزرار الطباعة تماماً لحفظ تحكمك الإداري) -->
+            <!-- أزرار التحكم بالفاتورة للإدارة -->
             <div class="action-bar-modal no-print">
-                <button class="btn-modal-action btn-modal-whatsapp" onclick="sendOrderToWhatsapp()">
-                    <span>إرسال الطلب للواتساب لاعتماد الحجز وإصدار الفاتورة</span>
-                    <i class="fa-brands fa-whatsapp"></i>
+                <button class="btn-modal-action btn-modal-print" onclick="window.print()">
+                    <span>حفظ كـ PDF / طباعة الفاتورة</span>
+                    <i class="fa-solid fa-print"></i>
                 </button>
-                <button class="btn-modal-action btn-modal-close" onclick="closeQuotationModal()">
-                    <span>تعديل الكميات</span>
+                <button class="btn-modal-action btn-modal-close" style="background-color: #f1f1f1; color: #333;" onclick="closePrintInvoiceModal()">
+                    <span>تعديل التفاصيل</span>
                 </button>
             </div>
         </div>
     </div>
 
     <script>
+        // المنتجات المعتمدة لبراند عزوة
         const productsConfig = [
             { id: "box", name: "T-SHIRT BOX", image: "TSHIRT BOX RAW.png.png", price: 30, shadd: 16 },
             { id: "pure", name: "PURE", image: "TSHIRT BOX RAW1.png.png", price: 30, shadd: 16 },
@@ -388,8 +589,10 @@
 
         let selectedItems = {};
 
+        // بناء بطاقات المنتجات للعميل فوراً عند التحميل
         function renderCards() {
             const container = document.getElementById('catalog-grid-container');
+            container.innerHTML = '';
             productsConfig.forEach(p => {
                 const card = document.createElement('div');
                 card.className = 'product-card';
@@ -408,12 +611,14 @@
             });
         }
 
+        // تحديث الكميات في السلة المحلية للعميل
         function updateQty(id, delta) {
             selectedItems[id] = Math.max(0, (selectedItems[id] || 0) + delta);
             document.getElementById(`qty-${id}`).textContent = selectedItems[id];
             calculateTotal();
         }
 
+        // حساب القطع الكلية لتنشيط زر الواتساب للعميل
         function calculateTotal() {
             let total = 0;
             for(let id in selectedItems) {
@@ -424,45 +629,9 @@
             document.getElementById('btn-submit-order').disabled = total === 0;
         }
 
-        function completePurchaseAndShowInvoice() {
-            const tbody = document.getElementById('invoice-items');
-            tbody.innerHTML = '';
-            let grandTotal = 0;
-            const now = new Date();
-            
-            // تعبئة تاريخ اليوم ورقم الطلب العشوائي غير المالي
-            document.getElementById('quote-date').textContent = "تاريخ الطلب: " + now.toLocaleDateString('ar-SA');
-            document.getElementById('quote-id').textContent = "رقم حجز الطلب المؤقت: EZW-" + Math.floor(1000 + Math.random() * 9000);
-
-            for(let id in selectedItems) {
-                if(selectedItems[id] > 0) {
-                    const p = productsConfig.find(x => x.id === id);
-                    const pieces = selectedItems[id] * p.shadd;
-                    const subtotal = pieces * p.price;
-                    grandTotal += subtotal;
-
-                    tbody.innerHTML += `
-                        <tr>
-                            <td style="font-weight: 700;">${p.name}</td>
-                            <td>${p.shadd} حبة</td>
-                            <td style="font-weight: 700;">${selectedItems[id]} شدة</td>
-                            <td>${pieces} حبة</td>
-                            <td>${p.price} ريال</td>
-                            <td style="font-weight: 700; color: #000;">${subtotal} ريال</td>
-                        </tr>
-                    `;
-                }
-            }
-            document.getElementById('invoice-grand-total').textContent = "الإجمالي التقريبي: " + grandTotal + " ريال سعودي";
-            document.getElementById('quotation-modal').style.display = 'flex';
-        }
-
-        function closeQuotationModal() {
-            document.getElementById('quotation-modal').style.display = 'none';
-        }
-
-        function sendOrderToWhatsapp() {
-            let msg = "🛡 *طلب حجز شدّات جملة جديد - براند عِزْوَة*\n\n";
+        // إرسال طلب الحجز المباشر والسريع للواتساب دون إظهار أي فواتير أو عروض للعميل
+        function sendOrderToWhatsappDirectly() {
+            let msg = "🛡️ *طلب حجز شدّات جملة جديد - براند عِزْوَة*\n\n";
             let totalPieces = 0;
             let totalPrice = 0;
 
@@ -487,6 +656,166 @@
             msg += `🎯 يرجى مراجعة وتأكيد توفر المقاسات، وإرسال الفاتورة الرسمية المعتمدة لبدء عملية الشحن والتحصيل الفوري.`;
 
             window.open(`https://api.whatsapp.com/send?phone=966502777884&text=${encodeURIComponent(msg)}`);
+        }
+
+        // ==========================================
+        // 🔒 وظائف نظام الإدارة السري (لوحة إصدار الفواتير)
+        // ==========================================
+
+        function openAdminAuthModal() {
+            document.getElementById('admin-password-input').value = '';
+            document.getElementById('auth-error-msg').style.display = 'none';
+            document.getElementById('admin-auth-modal').style.display = 'flex';
+            document.getElementById('admin-password-input').focus();
+        }
+
+        function closeAdminAuthModal() {
+            document.getElementById('admin-auth-modal').style.display = 'none';
+        }
+
+        function checkAdminPasswordKey(event) {
+            if (event.key === 'Enter') {
+                submitAdminAuth();
+            }
+        }
+
+        // التحقق من الرقم السري وفتح لوحة الفواتير
+        function submitAdminAuth() {
+            const passwordInput = document.getElementById('admin-password-input').value;
+            if (passwordInput === '1234') { // الرقم السري المعتمد للإدارة هو 1234
+                closeAdminAuthModal();
+                openAdminPanel();
+            } else {
+                document.getElementById('auth-error-msg').style.display = 'block';
+            }
+        }
+
+        // فتح لوحة تحكم الإدارة وتعبئتها بالقيم تلقائياً
+        function openAdminPanel() {
+            document.getElementById('admin-client-name').value = '';
+            document.getElementById('admin-invoice-id').value = "EZW-" + Math.floor(1000 + Math.random() * 9000);
+            document.getElementById('admin-discount').value = 0;
+            document.getElementById('admin-shipping').value = 0;
+
+            const listContainer = document.getElementById('admin-product-quantities-list');
+            listContainer.innerHTML = '';
+
+            // بناء عدادات التعديل للإدارة المربوطة تلقائياً بالقيم الحالية
+            productsConfig.forEach(p => {
+                const currentQty = selectedItems[p.id] || 0;
+                const row = document.createElement('div');
+                row.style.display = 'flex';
+                row.style.justify = 'space-between';
+                row.style.alignItems = 'center';
+                row.style.background = 'rgba(255,255,255,0.02)';
+                row.style.padding = '10px 15px';
+                row.style.borderRadius = '8px';
+                row.style.border = '1px solid rgba(255,255,255,0.05)';
+                
+                row.innerHTML = `
+                    <div style="text-align: right;">
+                        <span style="font-weight: 700; color: #fff;">${p.name}</span>
+                        <p style="font-size: 0.75rem; color: var(--text-grey);">فئة شدة ${p.shadd} حبة | ${p.price} ريال للحبة</p>
+                    </div>
+                    <div class="counter-group">
+                        <button class="qty-btn" style="width: 28px; height: 28px;" onclick="updateAdminPanelQty('${p.id}', -1)">-</button>
+                        <span class="qty-val" style="font-size: 1.1rem; min-width: 24px;" id="admin-qty-val-${p.id}">${currentQty}</span>
+                        <button class="qty-btn" style="width: 28px; height: 28px;" onclick="updateAdminPanelQty('${p.id}', 1)">+</button>
+                    </div>
+                `;
+                listContainer.appendChild(row);
+            });
+
+            document.getElementById('admin-panel-modal').style.display = 'block';
+        }
+
+        function closeAdminPanelModal() {
+            document.getElementById('admin-panel-modal').style.display = 'none';
+        }
+
+        // تعديل الكميات داخل لوحة الإدارة
+        function updateAdminPanelQty(id, delta) {
+            selectedItems[id] = Math.max(0, (selectedItems[id] || 0) + delta);
+            document.getElementById(`admin-qty-val-${id}`).textContent = selectedItems[id];
+            
+            // مزامنة أرقام الواجهة الرئيسية في الخلفية
+            const qtyDisplayOnMain = document.getElementById(`qty-${id}`);
+            if (qtyDisplayOnMain) {
+                qtyDisplayOnMain.textContent = selectedItems[id];
+            }
+            calculateTotal();
+        }
+
+        // بناء الفاتورة المعتمدة باسم "عزوة" للطباعة أو الـ PDF
+        function buildAndShowOfficialInvoice() {
+            const clientNameInput = document.getElementById('admin-client-name').value.trim();
+            const clientName = clientNameInput ? "السادة / " + clientNameInput : "شريك نجاح عِزْوَة";
+            const invoiceId = document.getElementById('admin-invoice-id').value.trim();
+            const discount = parseFloat(document.getElementById('admin-discount').value) || 0;
+            const shipping = parseFloat(document.getElementById('admin-shipping').value) || 0;
+
+            const tbody = document.getElementById('print-invoice-items');
+            tbody.innerHTML = '';
+            
+            let subtotal = 0;
+            const now = new Date();
+
+            document.getElementById('print-date').textContent = "تاريخ الإصدار: " + now.toLocaleDateString('ar-SA');
+            document.getElementById('print-invoice-id').textContent = "رقم الفاتورة: " + invoiceId;
+            document.getElementById('print-client-name').textContent = clientName;
+
+            // بناء جدول الفاتورة
+            for (let id in selectedItems) {
+                if (selectedItems[id] > 0) {
+                    const p = productsConfig.find(x => x.id === id);
+                    const pieces = selectedItems[id] * p.shadd;
+                    const itemTotal = pieces * p.price;
+                    subtotal += itemTotal;
+
+                    tbody.innerHTML += `
+                        <tr>
+                            <td style="font-weight: 700;">${p.name}</td>
+                            <td>${p.shadd} حبة</td>
+                            <td style="font-weight: 700;">${selectedItems[id]} شدة</td>
+                            <td>${pieces} حبة</td>
+                            <td>${p.price} ريال</td>
+                            <td style="font-weight: 700; color: #000;">${itemTotal} ريال</td>
+                        </tr>
+                    `;
+                }
+            }
+
+            // في حال كانت الفاتورة فارغة تماماً
+            if (subtotal === 0) {
+                tbody.innerHTML = `<tr><td colspan="6" style="text-align: center; color: #ff0000; font-weight: bold;">يرجى إضافة شدّات أولاً لإصدار الفاتورة!</td></tr>`;
+            }
+
+            // التحكم بظهور تفاصيل الشحن والخصومات
+            document.getElementById('print-subtotal').textContent = subtotal + " ريال";
+            
+            if (discount > 0) {
+                document.getElementById('print-discount-row').style.display = 'flex';
+                document.getElementById('print-discount-val').textContent = "-" + discount + " ريال";
+            } else {
+                document.getElementById('print-discount-row').style.display = 'none';
+            }
+
+            if (shipping > 0) {
+                document.getElementById('print-shipping-row').style.display = 'flex';
+                document.getElementById('print-shipping-val').textContent = shipping + " ريال";
+            } else {
+                document.getElementById('print-shipping-row').style.display = 'none';
+            }
+
+            const grandTotal = Math.max(0, subtotal - discount + shipping);
+            document.getElementById('print-grand-total').textContent = "الإجمالي النهائي: " + grandTotal + " ريال سعودي";
+
+            // فتح نافذة الطباعة
+            document.getElementById('invoice-print-modal').style.display = 'flex';
+        }
+
+        function closePrintInvoiceModal() {
+            document.getElementById('invoice-print-modal').style.display = 'none';
         }
 
         window.onload = renderCards;
