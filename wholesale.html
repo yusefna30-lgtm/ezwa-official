@@ -370,16 +370,9 @@
         }
 
         .invoice-header {
-            display: flex; justify-content: space-between; align-items: center;
-            border-bottom: 2px solid var(--gold-primary); padding-bottom: 20px;
-        }
-
-        @media (max-width: 600px) {
-            .invoice-header {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 15px;
-            }
+            display: flex; justify-content: center; align-items: center;
+            border-bottom: 2px solid var(--gold-primary); padding-bottom: 15px;
+            margin-bottom: 20px;
         }
 
         .action-bar-modal {
@@ -524,17 +517,7 @@
     <div id="invoice-print-modal">
         <div class="invoice-paper">
             <div class="invoice-header">
-                <div>
-                    <h1 style="color:#000; font-size: 2.8rem; font-weight: 900; letter-spacing: 3px; font-family: 'Cairo', sans-serif; margin: 0;">عِزْوَة</h1>
-                    <p style="color: #666; font-size: 0.9rem; margin-top: 5px;">الرياض - المملكة العربية السعودية</p>
-                    <p style="color: #666; font-size: 0.9rem;">بوابة مبيعات الجملة المعتمدة</p>
-                </div>
-                <div style="text-align:left;">
-                    <h2 style="font-weight: 800; font-size: 1.6rem; color: #dfb43f; margin-bottom: 5px;">فاتورة عرض سعر جملة</h2>
-                    <p id="print-date" style="color:#555; font-size:0.9rem;"></p>
-                    <p id="print-invoice-id" style="color:#555; font-size:0.9rem; font-weight: bold;"></p>
-                    <p id="print-client-name" style="color:#222; font-size:0.95rem; font-weight: bold; margin-top: 5px;"></p>
-                </div>
+                <h1 style="color:#000; font-size: 2.8rem; font-weight: 900; letter-spacing: 3px; font-family: 'Cairo', sans-serif; margin: 0; text-align: center; width: 100%;">عرض سعر</h1>
             </div>
 
             <table class="invoice-table">
@@ -553,24 +536,12 @@
 
             <!-- تفاصيل المجاميع والشحن والخصومات لعرض السعر -->
             <div style="margin-top: 20px; display: flex; flex-direction: column; align-items: flex-end; gap: 8px; border-bottom: 2px solid #e0e0e0; padding-bottom: 15px;">
-                <p style="font-size: 0.95rem; color: #555;">المجموع الفرعي: <span id="print-subtotal" style="font-weight: 700; color: #000;">-- ريال</span></p>
-                <p id="print-discount-row" style="font-size: 0.95rem; color: #d9534f; display: none;">الخصم الممنوح: <span id="print-discount-val" style="font-weight: 700;">-- ريال</span></p>
-                <p id="print-shipping-row" style="font-size: 0.95rem; color: #555; display: none;">أجور التوصيل والشحن: <span id="print-shipping-val" style="font-weight: 700; color: #000;">-- ريال</span></p>
                 <h3 id="print-grand-total" style="font-size:1.7rem; font-weight: 900; color: #dfb43f; margin-top: 5px;"></h3>
             </div>
 
-            <!-- معلومات توضيحية واعتماد رسمي للإدارة لتعزيز ثقة العميل وجديّة المعاملة -->
-            <div style="margin-top: 30px; display: flex; justify-content: space-between; align-items: flex-start;">
-                <div style="font-size: 0.85rem; color: #666; line-height: 1.6; text-align: right; max-width: 450px;">
-                    <p style="font-weight: bold; color: #333; margin-bottom: 4px;">⚠️ شروط وملاحظات عرض السعر:</p>
-                    <p>* هذا المستند يعتبر عرض سعر مبدئي (مؤقت لحفظ كميات الحجز).</p>
-                    <p>* يرجى تحويل إجمالي المبلغ وتأكيد التحويل لبدء شحن الطلبية وتجهيزها.</p>
-                    <p>* الفاتورة الضريبية الرسمية المعتمدة للتحصيل والشحن تصدر وتُرسل لكم من إدارة عِزْوَة عند انطلاق الشحنة.</p>
-                </div>
-                <div style="text-align: center; border: 1.5px dashed var(--gold-primary); padding: 15px 25px; border-radius: 8px;">
-                    <p style="font-size: 0.85rem; font-weight: bold; margin-bottom: 30px; color: #000;">توقيع واعتماد عِزْوَة</p>
-                    <div style="width: 100px; height: 35px; border-bottom: 1.5px solid #ccc; margin: auto;"></div>
-                </div>
+            <!-- معلومات توضيحية لتعزيز ثقة العميل وجديّة المعاملة -->
+            <div style="margin-top: 25px; font-size:0.95rem; color:#d9534f; text-align: right; font-weight: bold; line-height: 1.6;">
+                <p>* الأسعار غير شاملة الضريبة</p>
             </div>
 
             <!-- أزرار التحكم بالفاتورة للإدارة -->
@@ -661,8 +632,7 @@
             msg += `----------------------------------------\n`;
             msg += `📈 *ملخص الحساب الجاري للتجار:*\n`;
             msg += `🔸 *القطع الكلية:* ${totalPieces} قطعة\n`;
-            msg += `💰 *القيمة الإجمالية المقدرة:* *${totalPrice} ريال سعودي*\n\n`;
-            msg += `🎯 يرجى مراجعة وتأكيد توفر المقاسات، وإرسال الفاتورة الرسمية المعتمدة لبدء عملية الشحن والتحصيل الفوري.`;
+            msg += `💰 *القيمة الإجمالية المقدرة:* *${totalPrice} ريال سعودي*`;
 
             window.open(`https://api.whatsapp.com/send?phone=966502777884&text=${encodeURIComponent(msg)}`);
         }
@@ -757,9 +727,6 @@
 
         // بناء الفاتورة المعتمدة باسم "عزوة" للطباعة أو الـ PDF
         function buildAndShowOfficialInvoice() {
-            const clientNameInput = document.getElementById('admin-client-name').value.trim();
-            const clientName = clientNameInput ? "السادة / " + clientNameInput : "شريك نجاح عِزْوَة";
-            const invoiceId = document.getElementById('admin-invoice-id').value.trim();
             const discount = parseFloat(document.getElementById('admin-discount').value) || 0;
             const shipping = parseFloat(document.getElementById('admin-shipping').value) || 0;
 
@@ -767,11 +734,6 @@
             tbody.innerHTML = '';
             
             let subtotal = 0;
-            const now = new Date();
-
-            document.getElementById('print-date').textContent = "تاريخ الإصدار: " + now.toLocaleDateString('ar-SA');
-            document.getElementById('print-invoice-id').textContent = "رقم عرض السعر: " + invoiceId;
-            document.getElementById('print-client-name').textContent = clientName;
 
             // بناء جدول الفاتورة
             for (let id in selectedItems) {
@@ -799,25 +761,8 @@
                 tbody.innerHTML = `<tr><td colspan="6" style="text-align: center; color: #ff0000; font-weight: bold;">يرجى إضافة شدّات أولاً لإصدار الفاتورة!</td></tr>`;
             }
 
-            // التحكم بظهور تفاصيل الشحن والخصومات
-            document.getElementById('print-subtotal').textContent = subtotal + " ريال";
-            
-            if (discount > 0) {
-                document.getElementById('print-discount-row').style.display = 'flex';
-                document.getElementById('print-discount-val').textContent = "-" + discount + " ريال";
-            } else {
-                document.getElementById('print-discount-row').style.display = 'none';
-            }
-
-            if (shipping > 0) {
-                document.getElementById('print-shipping-row').style.display = 'flex';
-                document.getElementById('print-shipping-val').textContent = shipping + " ريال";
-            } else {
-                document.getElementById('print-shipping-row').style.display = 'none';
-            }
-
             const grandTotal = Math.max(0, subtotal - discount + shipping);
-            document.getElementById('print-grand-total').textContent = "إجمالي عرض السعر: " + grandTotal + " ريال سعودي";
+            document.getElementById('print-grand-total').textContent = "الإجمالي النهائي: " + grandTotal + " ريال سعودي";
 
             // فتح نافذة الطباعة وحفظ PDF
             document.getElementById('invoice-print-modal').style.display = 'flex';
