@@ -282,11 +282,7 @@
         .btn-modal-whatsapp {
             background-color: #25D366;
             color: #fff;
-        }
-
-        .btn-modal-print {
-            background-color: #000;
-            color: #fff;
+            width: 100%;
         }
 
         .btn-modal-close {
@@ -312,7 +308,7 @@
 
     <main class="catalog-grid" id="catalog-grid-container"></main>
 
-    <!-- شريط الحساب -->
+    <!-- شريط الحساب السفلي للتأكيد والمراجعة -->
     <div class="checkout-footer">
         <div class="footer-content">
             <div style="display:flex; flex-direction:column; text-align:right;">
@@ -321,14 +317,14 @@
             </div>
             <div class="footer-btns">
                 <button class="btn-whatsapp-submit" id="btn-submit-order" disabled onclick="completePurchaseAndShowInvoice()">
-                    <span>تأكيد الطلب وإصدار الفاتورة</span>
+                    <span>مراجعة وتأكيد طلب الحجز</span>
                     <i class="fa-solid fa-file-invoice"></i>
                 </button>
             </div>
         </div>
     </div>
 
-    <!-- نافذة إصدار عرض السعر الاحترافية الفخمة -->
+    <!-- نافذة مراجعة طلب حجز الجملة (غير قابلة للحفظ أو الطباعة من العميل) -->
     <div id="quotation-modal">
         <div class="invoice-paper">
             <div class="invoice-header">
@@ -338,7 +334,7 @@
                     <p style="color: #666; font-size: 0.9rem;">بوابة مبيعات الجملة الإلكترونية</p>
                 </div>
                 <div style="text-align:left;">
-                    <h2 style="font-weight: 800; font-size: 1.6rem; color: #dfb43f; margin-bottom: 5px;">فاتورة طلب جملة</h2>
+                    <h2 style="font-weight: 800; font-size: 1.5rem; color: #dfb43f; margin-bottom: 5px;">ملخص طلب حجز الجملة</h2>
                     <p id="quote-date" style="color:#555; font-size:0.9rem;"></p>
                     <p id="quote-id" style="color:#555; font-size:0.9rem;"></p>
                 </div>
@@ -362,23 +358,20 @@
                 <h3 id="invoice-grand-total" style="font-size:1.6rem; font-weight: 900; color: #dfb43f;"></h3>
             </div>
 
-            <div style="margin-top:25px; font-size:0.85rem; color:#666; text-align: right; line-height: 1.6;">
-                <p>* ملاحظة: تعتبر هذه الفاتورة سارية لحين مراجعة الكميات وتأكيد الشحن.</p>
-                <p>* الأسعار لا تشمل ضريبة القيمة المضافة ما لم يتم توضيح ذلك لاحقاً.</p>
+            <!-- تنبيه رسمي يوضح أن هذا ملخص حجز فقط، والفاتورة الحقيقية تصدر من الإدارة -->
+            <div style="margin-top:25px; font-size:0.88rem; color:#d9534f; text-align: right; line-height: 1.6; background-color: #fdf7f7; padding: 15px; border-right: 4px solid #d9534f; border-radius: 4px;">
+                <p style="font-weight: 700; margin-bottom: 4px;">⚠️ تنبيه هام لشركائنا الموزعين:</p>
+                <p style="color: #555;">هذا مستند مبدئي ومؤقت لتأكيد حجز المقاسات فقط. **الفاتورة الضريبية الرسمية المعتمدة للتحصيل والشحن تصدر وتُرسل لكم حصرياً من قِبل إدارة عِزْوَة** بعد التحقق من المخازن وتأكيد استلام الطلب عبر الواتساب.</p>
             </div>
 
-            <!-- أزرار الإجراء بداخل الفاتورة المعتمدة -->
+            <!-- خيارات الإجراء (تم حذف أزرار الطباعة تماماً لحفظ تحكمك الإداري) -->
             <div class="action-bar-modal no-print">
                 <button class="btn-modal-action btn-modal-whatsapp" onclick="sendOrderToWhatsapp()">
-                    <span>إرسال الطلب للواتساب</span>
+                    <span>إرسال الطلب للواتساب لاعتماد الحجز وإصدار الفاتورة</span>
                     <i class="fa-brands fa-whatsapp"></i>
                 </button>
-                <button class="btn-modal-action btn-modal-print" onclick="window.print()">
-                    <span>حفظ كـ PDF / طباعة</span>
-                    <i class="fa-solid fa-print"></i>
-                </button>
                 <button class="btn-modal-action btn-modal-close" onclick="closeQuotationModal()">
-                    <span>تعديل الطلب</span>
+                    <span>تعديل الكميات</span>
                 </button>
             </div>
         </div>
@@ -437,9 +430,9 @@
             let grandTotal = 0;
             const now = new Date();
             
-            // تعبئة تاريخ اليوم ورقم الفاتورة العشوائي
-            document.getElementById('quote-date').textContent = "التاريخ: " + now.toLocaleDateString('ar-SA');
-            document.getElementById('quote-id').textContent = "رقم الفاتورة: EZW-" + Math.floor(1000 + Math.random() * 9000);
+            // تعبئة تاريخ اليوم ورقم الطلب العشوائي غير المالي
+            document.getElementById('quote-date').textContent = "تاريخ الطلب: " + now.toLocaleDateString('ar-SA');
+            document.getElementById('quote-id').textContent = "رقم حجز الطلب المؤقت: EZW-" + Math.floor(1000 + Math.random() * 9000);
 
             for(let id in selectedItems) {
                 if(selectedItems[id] > 0) {
@@ -460,7 +453,7 @@
                     `;
                 }
             }
-            document.getElementById('invoice-grand-total').textContent = "الإجمالي النهائي: " + grandTotal + " ريال سعودي";
+            document.getElementById('invoice-grand-total').textContent = "الإجمالي التقريبي: " + grandTotal + " ريال سعودي";
             document.getElementById('quotation-modal').style.display = 'flex';
         }
 
@@ -469,7 +462,7 @@
         }
 
         function sendOrderToWhatsapp() {
-            let msg = "🛡️ *طلب حجز شدّات جملة جديد - براند عِزْوَة*\n\n";
+            let msg = "🛡 *طلب حجز شدّات جملة جديد - براند عِزْوَة*\n\n";
             let totalPieces = 0;
             let totalPrice = 0;
 
@@ -490,8 +483,8 @@
             msg += `----------------------------------------\n`;
             msg += `📈 *ملخص الحساب الجاري للتجار:*\n`;
             msg += `🔸 *القطع الكلية:* ${totalPieces} قطعة\n`;
-            msg += `💰 *القيمة الإجمالية:* *${totalPrice} ريال سعودي*\n\n`;
-            msg += `🎯 يرجى تأكيد توفر الكمية المطلوبة وإرسال الفاتورة لبدء الشحن فوراً.`;
+            msg += `💰 *القيمة الإجمالية المقدرة:* *${totalPrice} ريال سعودي*\n\n`;
+            msg += `🎯 يرجى مراجعة وتأكيد توفر المقاسات، وإرسال الفاتورة الرسمية المعتمدة لبدء عملية الشحن والتحصيل الفوري.`;
 
             window.open(`https://api.whatsapp.com/send?phone=966502777884&text=${encodeURIComponent(msg)}`);
         }
