@@ -1,58 +1,170 @@
-<div class="ezwa-wrapper">
+<div class="ezwa-product-pro">
     <style>
-        .ezwa-wrapper { --gold: #dfb43f; --card-bg: #0c0c0e; text-align: center; font-family: 'Cairo', sans-serif; color: #fff; direction: rtl; }
-        .product-box { background: var(--card-bg); border: 1px solid rgba(255,255,255,0.04); border-radius: 15px; padding: 20px; max-width: 350px; margin: 20px auto; }
+        @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;700&display=swap');
         
-        /* تأثير الزوم */
-        .img-container { overflow: hidden; border-radius: 10px; position: relative; cursor: zoom-in; background: #000; min-height: 300px; display: flex; align-items: center; justify-content: center; }
-        .img-container img { width: 100%; transition: 0.5s; display: block; }
-        .img-container:hover img { transform: scale(1.2); }
+        .ezwa-product-pro { 
+            --gold: #dfb43f; 
+            --bg: #0c0c0e; 
+            --card: #151518;
+            font-family: 'Cairo', sans-serif; 
+            color: #fff; 
+            direction: rtl;
+            max-width: 450px;
+            margin: 20px auto;
+        }
+
+        .product-card {
+            background: var(--card);
+            border: 1px solid rgba(255,255,255,0.05);
+            border-radius: 20px;
+            padding: 25px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        /* 1. منطقة العرض (صورة + زوم) */
+        .main-view {
+            width: 100%;
+            height: 400px;
+            overflow: hidden;
+            border-radius: 15px;
+            background: #000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .main-view img {
+            width: 100%;
+            transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+            cursor: zoom-in;
+        }
+
+        .main-view:hover img {
+            transform: scale(1.3);
+        }
+
+        /* 2. معرض الصور المصغر (لتبديل الـ 4 ألوان) */
+        .thumb-gallery {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .thumb {
+            aspect-ratio: 1/1;
+            border-radius: 8px;
+            border: 2px solid transparent;
+            cursor: pointer;
+            overflow: hidden;
+            background: #000;
+            transition: 0.3s;
+            opacity: 0.6;
+        }
+
+        .thumb img { width: 100%; height: 100%; object-fit: cover; }
+        .thumb:hover, .thumb.active { border-color: var(--gold); opacity: 1; }
+
+        /* 3. دوائر الألوان */
+        .color-selector {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .dot {
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            cursor: pointer;
+            border: 2px solid #333;
+            transition: 0.3s;
+        }
+
+        .dot.active { border-color: var(--gold); transform: scale(1.2); }
         
-        /* تبديل الألوان */
-        .swatches { display: flex; justify-content: center; gap: 10px; margin: 15px 0; }
-        .swatch { width: 22px; height: 22px; border-radius: 50%; cursor: pointer; border: 2px solid transparent; transition: 0.3s; }
-        .swatch.active { border-color: var(--gold); }
-        .black { background: #000; }
-        .brown { background: #4b3621; }
-        
-        #ezwaVideo { width: 100%; border-radius: 10px; display: none; }
+        /* ألوان الأربعة بناءً على تصاميم Streetwear المعتادة */
+        .c1 { background: #000; }      /* RAW1 - أسود */
+        .c2 { background: #3d3d3d; }   /* RAW2 - رمادي غامق */
+        .c3 { background: #4b3621; }   /* RAW3 - بني */
+        .c4 { background: #e0e0e0; }   /* RAW4 - أوف وايت/أبيض */
+
+        .product-info h2 { margin: 10px 0 5px; font-size: 1.4rem; }
+        .price { color: var(--gold); font-weight: bold; font-size: 1.2rem; }
+
+        .action-btns { display: flex; gap: 10px; margin-top: 15px; }
+        .btn-vid { 
+            flex: 1; background: none; border: 1px solid #444; color: #aaa; 
+            padding: 10px; border-radius: 8px; cursor: pointer; font-size: 0.8rem;
+        }
+
+        #videoElement { width: 100%; border-radius: 15px; display: none; }
     </style>
 
-    <div class="product-box">
-        <div class="img-container" id="mediaBox">
-            <img src="TSHIRT BOX RAW1.png.png" id="ezwaImg">
-            <video id="ezwaVideo" loop muted playsinline>
+    <div class="product-card">
+        <div class="main-view" id="mediaContainer">
+            <img src="TSHIRT BOX RAW1.png.png" id="mainImg">
+            <video id="videoElement" loop muted playsinline>
                 <source src="product.mp4" type="video/mp4">
             </video>
         </div>
 
-        <h3 style="margin:15px 0 5px;">تيشيرت عزوة - الخامة الثقيلة</h3>
-        <p style="color:var(--gold); margin-bottom:15px;">249 SAR</p>
-
-        <div class="swatches">
-            <div class="swatch black active" onclick="updateEzwa('TSHIRT BOX RAW1.png.png', this)"></div>
-            <div class="swatch brown" onclick="updateEzwa('TSHIRT BOX RAW2.png.png', this)"></div>
+        <div class="thumb-gallery">
+            <div class="thumb active" onclick="updateView('TSHIRT BOX RAW1.png.png', this)">
+                <img src="TSHIRT BOX RAW1.png.png">
+            </div>
+            <div class="thumb" onclick="updateView('TSHIRT BOX RAW2.png.png', this)">
+                <img src="TSHIRT BOX RAW2.png.png">
+            </div>
+            <div class="thumb" onclick="updateView('TSHIRT BOX RAW3.png.png', this)">
+                <img src="TSHIRT BOX RAW3.png.png">
+            </div>
+            <div class="thumb" onclick="updateView('TSHIRT BOX RAW4.png.png', this)">
+                <img src="TSHIRT BOX RAW4.png.png">
+            </div>
         </div>
 
-        <button onclick="playEzwaVideo()" style="background:none; color:#8e8e93; border:1px solid #333; padding:8px 15px; cursor:pointer; border-radius:5px; font-size:12px;">
-             عرض الفيديو
-        </button>
+        <div class="product-info">
+            <h2>تيشيرت عزوة - مجموعة RAW</h2>
+            <div class="price">249.00 SAR</div>
+        </div>
+
+        <div class="color-selector">
+            <div class="dot c1 active" onclick="updateView('TSHIRT BOX RAW1.png.png', this)"></div>
+            <div class="dot c2" onclick="updateView('TSHIRT BOX RAW2.png.png', this)"></div>
+            <div class="dot c3" onclick="updateView('TSHIRT BOX RAW3.png.png', this)"></div>
+            <div class="dot c4" onclick="updateView('TSHIRT BOX RAW4.png.png', this)"></div>
+        </div>
+
+        <div class="action-btns">
+            <button class="btn-vid" onclick="playVideo()">
+                 عرض الفيديو التفاعلي
+            </button>
+        </div>
     </div>
 
     <script>
-        function updateEzwa(imgPath, el) {
-            document.getElementById('ezwaImg').src = imgPath;
-            document.querySelectorAll('.swatch').forEach(s => s.classList.remove('active'));
-            el.classList.add('active');
-            document.getElementById('ezwaVideo').style.display = "none";
-            document.getElementById('ezwaImg').style.display = "block";
+        function updateView(imgSrc, element) {
+            // تحديث الصورة الكبيرة
+            const mainImg = document.getElementById('mainImg');
+            const video = document.getElementById('videoElement');
+            
+            mainImg.src = imgSrc;
+            mainImg.style.display = "block";
+            video.style.display = "none";
+
+            // تحديث الشكل النشط في المعرض والدوائر
+            document.querySelectorAll('.thumb, .dot').forEach(el => el.classList.remove('active'));
+            element.classList.add('active');
         }
 
-        function playEzwaVideo() {
-            let v = document.getElementById('ezwaVideo');
-            let i = document.getElementById('ezwaImg');
-            v.style.display = "block";
+        function playVideo() {
+            const v = document.getElementById('videoElement');
+            const i = document.getElementById('mainImg');
             i.style.display = "none";
+            v.style.display = "block";
             v.play();
         }
     </script>
