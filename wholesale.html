@@ -1,97 +1,70 @@
-<div class="ezwa-tshirt-section">
+<div id="ezwa-store-section">
     <style>
-        .ezwa-tshirt-section { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 25px; padding: 20px; background: #000; direction: rtl; }
-        .tshirt-card { background: #0c0c0e; border: 1px solid rgba(255,255,255,0.05); border-radius: 15px; padding: 15px; transition: 0.3s; }
-        .tshirt-card:hover { border-color: #dfb43f; transform: translateY(-5px); }
-        .img-area { width: 100%; aspect-ratio: 1/1; overflow: hidden; border-radius: 10px; background: #151518; }
-        .img-area img { width: 100%; height: 100%; object-fit: contain; transition: 0.6s; }
-        .img-area:hover img { transform: scale(1.2); }
-        .tshirt-info { text-align: center; margin-top: 15px; color: #fff; font-family: 'Cairo', sans-serif; }
+        /* تنسيقات الهوية والبنية التحتية */
+        #ezwa-store-section { background: #000; color: #fff; font-family: 'Cairo', sans-serif; padding: 40px 20px; direction: rtl; }
+        .product-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 30px; max-width: 1200px; margin: 0 auto; }
+        
+        /* تصميم كارت المنتج */
+        .p-card { background: #0c0c0e; border: 1px solid rgba(255,255,255,0.05); border-radius: 15px; padding: 20px; transition: 0.4s; text-align: center; }
+        .p-card:hover { border-color: #dfb43f; transform: translateY(-5px); }
+        
+        /* حاوية الصورة والزوم */
+        .p-img-box { width: 100%; aspect-ratio: 1/1; overflow: hidden; border-radius: 10px; background: #151518; margin-bottom: 15px; }
+        .p-img-box img { width: 100%; height: 100%; object-fit: contain; transition: 0.6s; cursor: zoom-in; }
+        .p-img-box:hover img { transform: scale(1.2); }
+        
+        /* أزرار الألوان */
+        .swatches { display: flex; justify-content: center; gap: 10px; margin: 15px 0; }
+        .swatch { width: 18px; height: 18px; border-radius: 50%; cursor: pointer; border: 2px solid #333; transition: 0.3s; }
+        .swatch.active { border-color: #dfb43f; transform: scale(1.2); }
+        
+        .p-name { font-weight: bold; font-size: 1.1rem; margin-bottom: 5px; letter-spacing: 1px; }
+        .p-price { color: #dfb43f; font-size: 0.9rem; font-weight: bold; }
     </style>
 
-    <div class="tshirt-card">
-        <div class="img-area"><img src="TSHIRT BOX RAW1.png.png"></div>
-        <div class="tshirt-info"><div>RAW SERIES 01</div><div style="color:#dfb43f">249 SAR</div></div>
-    </div>
+    <div class="product-grid">
+        <div class="p-card">
+            <div class="p-img-box">
+                <img src="تيشرت بوكس RAW (3).png" id="img-raw">
+            </div>
+            <div class="p-name">سلسلة RAW - PERSIST</div>
+            <div class="p-price">249 ريال سعودي</div>
+            <div class="swatches">
+                <div class="swatch active" style="background:#000" onclick="updateP('img-raw', 'تيشرت بوكس RAW (3).png', this)"></div>
+                <div class="swatch" style="background:#1b4d3e" onclick="updateP('img-raw', 'تيشرت بوكس RAW (2).png', this)"></div>
+                <div class="swatch" style="background:#fff" onclick="updateP('img-raw', 'تيشرت بوكس RAW (4).png', this)"></div>
+                <div class="swatch" style="background:#f3e5ab" onclick="updateP('img-raw', 'تيشرت بوكس RAW.png', this)"></div>
+            </div>
+        </div>
 
-    <div class="tshirt-card">
-        <div class="img-area"><img src="TSHIRT BOX RAW2.png.png"></div>
-        <div class="tshirt-info"><div>RAW SERIES 02</div><div style="color:#dfb43f">249 SAR</div></div>
-    </div>
+        <div class="p-card">
+            <div class="p-img-box"><img src="87a0ca0a-64b2-4b2f-9abd-b0442b471d5e_aZiEtjGkf.jpg"></div>
+            <div class="p-name">MOMENT BACKPRINT</div>
+            <div class="p-price">259 ريال سعودي</div>
+        </div>
 
-    <div class="tshirt-card">
-        <div class="img-area"><img src="TSHIRT BOX RAW3.png.png"></div>
-        <div class="tshirt-info"><div>RAW SERIES 03</div><div style="color:#dfb43f">249 SAR</div></div>
-    </div>
+        <div class="p-card">
+            <div class="p-img-box"><img src="1779118253452-019e50a5-3f3b-7339-8433-dbc6310d5380.png"></div>
+            <div class="p-name">ARTISTIC FACE TEE</div>
+            <div class="p-price">269 ريال سعودي</div>
+        </div>
 
-    <div class="tshirt-card">
-        <div class="img-area"><img src="TSHIRT BOX RAW4.png.png"></div>
-        <div class="tshirt-info"><div>RAW SERIES 04</div><div style="color:#dfb43f">249 SAR</div></div>
-    </div>
+        <div class="p-card">
+            <div class="p-img-box"><img src="Gemini_Generated_Image_2d2ny92d2ny92d2n.png"></div>
+            <div class="p-name">BEIGE HOOD PRINT</div>
+            <div class="p-price">249 ريال سعودي</div>
+        </div>
 
-    <div class="tshirt-card">
-        <div class="img-area"><img src="TSHIRT BOX RAW8.png.png"></div>
-        <div class="tshirt-info"><div>RAW SERIES 08</div><div style="color:#dfb43f">249 SAR</div></div>
-    </div>
+        </div>
 
-    <div class="tshirt-card">
-        <div class="img-area"><img src="TSHIRT BOX RAW9.png.png"></div>
-        <div class="tshirt-info"><div>RAW SERIES 09</div><div style="color:#dfb43f">249 SAR</div></div>
-    </div>
-
-    <div class="tshirt-card">
-        <div class="img-area"><img src="TSHIRT PURE.png"></div>
-        <div class="tshirt-info"><div>PURE MINIMALIST</div><div style="color:#dfb43f">269 SAR</div></div>
-    </div>
-
-    <div class="tshirt-card">
-        <div class="img-area"><img src="TSHIRT GHOST.png"></div>
-        <div class="tshirt-info"><div>GHOST EDITION</div><div style="color:#dfb43f">269 SAR</div></div>
-    </div>
-
-    <div class="tshirt-card">
-        <div class="img-area"><img src="TSHIRT FLOW.png"></div>
-        <div class="tshirt-info"><div>FLOW OVERSIZED</div><div style="color:#dfb43f">249 SAR</div></div>
-    </div>
-
-    <div class="tshirt-card">
-        <div class="img-area"><img src="TSHIRT DATA.png"></div>
-        <div class="tshirt-info"><div>DATA MATRIX</div><div style="color:#dfb43f">249 SAR</div></div>
-    </div>
-
-    <div class="tshirt-card">
-        <div class="img-area"><img src="تيشرت بوكس.png"></div>
-        <div class="tshirt-info"><div>BOX CLASSIC</div><div style="color:#dfb43f">249 SAR</div></div>
-    </div>
-
-    <div class="tshirt-card">
-        <div class="img-area"><img src="تيشرت اوفر سايز.png"></div>
-        <div class="tshirt-info"><div>OVERSIZED BASIC</div><div style="color:#dfb43f">219 SAR</div></div>
-    </div>
-
-    <div class="tshirt-card">
-        <div class="img-area"><img src="تيشرت بوكس RAW (2).png"></div>
-        <div class="tshirt-info"><div>RAW V2</div><div style="color:#dfb43f">249 SAR</div></div>
-    </div>
-
-    <div class="tshirt-card">
-        <div class="img-area"><img src="تيشرت بوكس RAW (3).png"></div>
-        <div class="tshirt-info"><div>RAW V3</div><div style="color:#dfb43f">249 SAR</div></div>
-    </div>
-
-    <div class="tshirt-card">
-        <div class="img-area"><img src="تيشرت بوكس RAW (4).png"></div>
-        <div class="tshirt-info"><div>RAW V4</div><div style="color:#dfb43f">249 SAR</div></div>
-    </div>
-
-    <div class="tshirt-card">
-        <div class="img-area"><img src="new tshirt 01.jpg"></div>
-        <div class="tshirt-info"><div>NEW ARRIVAL 01</div><div style="color:#dfb43f">279 SAR</div></div>
-    </div>
-
-    <div class="tshirt-card">
-        <div class="img-area"><img src="TSHIRT BOX RAW.png"></div>
-        <div class="tshirt-info"><div>RAW CORE</div><div style="color:#dfb43f">249 SAR</div></div>
-    </div>
-
+    <script>
+        function updateP(imgId, newSrc, el) {
+            // تغيير الصورة
+            document.getElementById(imgId).src = newSrc;
+            // تحديث الأزرار
+            const parent = el.parentElement;
+            parent.querySelectorAll('.swatch').forEach(s => s.classList.remove('active'));
+            el.classList.add('active');
+        }
+    </script>
 </div>
