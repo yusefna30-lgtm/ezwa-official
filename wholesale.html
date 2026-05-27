@@ -1,120 +1,97 @@
 <div class="ezwa-tshirt-section">
     <style>
-        .ezwa-tshirt-section {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 30px;
-            padding: 40px 20px;
-            background: #000;
-            direction: rtl;
-        }
-
-        /* كارت الموديل الواحد */
-        .tshirt-card {
-            background: #0c0c0e;
-            border-radius: 12px;
-            padding: 15px;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            transition: 0.4s ease;
-            position: relative;
-        }
-
-        .tshirt-card:hover {
-            border-color: #dfb43f;
-            transform: translateY(-5px);
-        }
-
-        /* حاوية الصورة مع ميزة الزوم */
-        .img-area {
-            width: 100%;
-            aspect-ratio: 1/1;
-            overflow: hidden;
-            border-radius: 8px;
-            background: #151518;
-        }
-
-        .img-area img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-            transition: 0.6s;
-        }
-
-        .img-area:hover img {
-            transform: scale(1.2);
-        }
-
-        .tshirt-info {
-            margin-top: 15px;
-            text-align: center;
-        }
-
-        .tshirt-name {
-            color: #fff;
-            font-weight: bold;
-            font-size: 1.1rem;
-            margin-bottom: 5px;
-            letter-spacing: 1px;
-        }
-
-        .tshirt-price {
-            color: #dfb43f;
-            font-size: 0.9rem;
-        }
-
-        /* أزرار اختيار الألوان داخل الكارت */
-        .color-swatches {
-            display: flex;
-            justify-content: center;
-            gap: 8px;
-            margin-top: 12px;
-        }
-
-        .swatch {
-            width: 15px;
-            height: 15px;
-            border-radius: 50%;
-            cursor: pointer;
-            border: 1px solid #333;
-        }
+        .ezwa-tshirt-section { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 25px; padding: 20px; background: #000; direction: rtl; }
+        .tshirt-card { background: #0c0c0e; border: 1px solid rgba(255,255,255,0.05); border-radius: 15px; padding: 15px; transition: 0.3s; }
+        .tshirt-card:hover { border-color: #dfb43f; transform: translateY(-5px); }
+        .img-area { width: 100%; aspect-ratio: 1/1; overflow: hidden; border-radius: 10px; background: #151518; }
+        .img-area img { width: 100%; height: 100%; object-fit: contain; transition: 0.6s; }
+        .img-area:hover img { transform: scale(1.2); }
+        .tshirt-info { text-align: center; margin-top: 15px; color: #fff; font-family: 'Cairo', sans-serif; }
     </style>
 
     <div class="tshirt-card">
-        <div class="img-area">
-            <img src="TSHIRT BOX RAW1.png.png" id="img1">
-        </div>
-        <div class="tshirt-info">
-            <div class="tshirt-name">RAW SERIES 01</div>
-            <div class="tshirt-price">249 SAR</div>
-            <div class="color-swatches">
-                <div class="swatch" style="background:#000" onclick="document.getElementById('img1').src='TSHIRT BOX RAW1.png.png'"></div>
-                <div class="swatch" style="background:#4b3621" onclick="document.getElementById('img1').src='TSHIRT BOX RAW2.png.png'"></div>
-            </div>
-        </div>
+        <div class="img-area"><img src="TSHIRT BOX RAW1.png.png"></div>
+        <div class="tshirt-info"><div>RAW SERIES 01</div><div style="color:#dfb43f">249 SAR</div></div>
     </div>
 
     <div class="tshirt-card">
-        <div class="img-area">
-            <img src="TSHIRT PURE.png" id="img2">
-        </div>
-        <div class="tshirt-info">
-            <div class="tshirt-name">PURE MINIMALIST</div>
-            <div class="tshirt-price">269 SAR</div>
-            <div class="color-swatches">
-                <div class="swatch" style="background:#fff" onclick="document.getElementById('img2').src='TSHIRT PURE.png'"></div>
-                <div class="swatch" style="background:#000" onclick="document.getElementById('img2').src='TSHIRT GHOST.png'"></div>
-            </div>
-        </div>
+        <div class="img-area"><img src="TSHIRT BOX RAW2.png.png"></div>
+        <div class="tshirt-info"><div>RAW SERIES 02</div><div style="color:#dfb43f">249 SAR</div></div>
     </div>
 
     <div class="tshirt-card">
-        <div class="img-area">
-            <img src="TSHIRT FLOW.png" id="img3">
-        </div>
-        <div class="tshirt-info">
-            <div class="tshirt-name">FLOW OVERSIZED</div>
-            <div class="tshirt-price">249 SAR</div>
-        </div>
+        <div class="img-area"><img src="TSHIRT BOX RAW3.png.png"></div>
+        <div class="tshirt-info"><div>RAW SERIES 03</div><div style="color:#dfb43f">249 SAR</div></div>
     </div>
 
+    <div class="tshirt-card">
+        <div class="img-area"><img src="TSHIRT BOX RAW4.png.png"></div>
+        <div class="tshirt-info"><div>RAW SERIES 04</div><div style="color:#dfb43f">249 SAR</div></div>
     </div>
+
+    <div class="tshirt-card">
+        <div class="img-area"><img src="TSHIRT BOX RAW8.png.png"></div>
+        <div class="tshirt-info"><div>RAW SERIES 08</div><div style="color:#dfb43f">249 SAR</div></div>
+    </div>
+
+    <div class="tshirt-card">
+        <div class="img-area"><img src="TSHIRT BOX RAW9.png.png"></div>
+        <div class="tshirt-info"><div>RAW SERIES 09</div><div style="color:#dfb43f">249 SAR</div></div>
+    </div>
+
+    <div class="tshirt-card">
+        <div class="img-area"><img src="TSHIRT PURE.png"></div>
+        <div class="tshirt-info"><div>PURE MINIMALIST</div><div style="color:#dfb43f">269 SAR</div></div>
+    </div>
+
+    <div class="tshirt-card">
+        <div class="img-area"><img src="TSHIRT GHOST.png"></div>
+        <div class="tshirt-info"><div>GHOST EDITION</div><div style="color:#dfb43f">269 SAR</div></div>
+    </div>
+
+    <div class="tshirt-card">
+        <div class="img-area"><img src="TSHIRT FLOW.png"></div>
+        <div class="tshirt-info"><div>FLOW OVERSIZED</div><div style="color:#dfb43f">249 SAR</div></div>
+    </div>
+
+    <div class="tshirt-card">
+        <div class="img-area"><img src="TSHIRT DATA.png"></div>
+        <div class="tshirt-info"><div>DATA MATRIX</div><div style="color:#dfb43f">249 SAR</div></div>
+    </div>
+
+    <div class="tshirt-card">
+        <div class="img-area"><img src="تيشرت بوكس.png"></div>
+        <div class="tshirt-info"><div>BOX CLASSIC</div><div style="color:#dfb43f">249 SAR</div></div>
+    </div>
+
+    <div class="tshirt-card">
+        <div class="img-area"><img src="تيشرت اوفر سايز.png"></div>
+        <div class="tshirt-info"><div>OVERSIZED BASIC</div><div style="color:#dfb43f">219 SAR</div></div>
+    </div>
+
+    <div class="tshirt-card">
+        <div class="img-area"><img src="تيشرت بوكس RAW (2).png"></div>
+        <div class="tshirt-info"><div>RAW V2</div><div style="color:#dfb43f">249 SAR</div></div>
+    </div>
+
+    <div class="tshirt-card">
+        <div class="img-area"><img src="تيشرت بوكس RAW (3).png"></div>
+        <div class="tshirt-info"><div>RAW V3</div><div style="color:#dfb43f">249 SAR</div></div>
+    </div>
+
+    <div class="tshirt-card">
+        <div class="img-area"><img src="تيشرت بوكس RAW (4).png"></div>
+        <div class="tshirt-info"><div>RAW V4</div><div style="color:#dfb43f">249 SAR</div></div>
+    </div>
+
+    <div class="tshirt-card">
+        <div class="img-area"><img src="new tshirt 01.jpg"></div>
+        <div class="tshirt-info"><div>NEW ARRIVAL 01</div><div style="color:#dfb43f">279 SAR</div></div>
+    </div>
+
+    <div class="tshirt-card">
+        <div class="img-area"><img src="TSHIRT BOX RAW.png"></div>
+        <div class="tshirt-info"><div>RAW CORE</div><div style="color:#dfb43f">249 SAR</div></div>
+    </div>
+
+</div>
