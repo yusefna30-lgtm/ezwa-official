@@ -1,67 +1,54 @@
-<div id="ezwa-store-section">
+<div id="ezwa-final-store">
     <style>
-        /* تنسيقات الهوية والبنية التحتية */
-        #ezwa-store-section { background: #000; color: #fff; font-family: 'Cairo', sans-serif; padding: 40px 20px; direction: rtl; }
-        .product-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 30px; max-width: 1200px; margin: 0 auto; }
-        
-        /* تصميم كارت المنتج */
-        .p-card { background: #0c0c0e; border: 1px solid rgba(255,255,255,0.05); border-radius: 15px; padding: 20px; transition: 0.4s; text-align: center; }
-        .p-card:hover { border-color: #dfb43f; transform: translateY(-5px); }
-        
-        /* حاوية الصورة والزوم */
-        .p-img-box { width: 100%; aspect-ratio: 1/1; overflow: hidden; border-radius: 10px; background: #151518; margin-bottom: 15px; }
-        .p-img-box img { width: 100%; height: 100%; object-fit: contain; transition: 0.6s; cursor: zoom-in; }
-        .p-img-box:hover img { transform: scale(1.2); }
-        
-        /* أزرار الألوان */
-        .swatches { display: flex; justify-content: center; gap: 10px; margin: 15px 0; }
-        .swatch { width: 18px; height: 18px; border-radius: 50%; cursor: pointer; border: 2px solid #333; transition: 0.3s; }
-        .swatch.active { border-color: #dfb43f; transform: scale(1.2); }
-        
-        .p-name { font-weight: bold; font-size: 1.1rem; margin-bottom: 5px; letter-spacing: 1px; }
-        .p-price { color: #dfb43f; font-size: 0.9rem; font-weight: bold; }
+        #ezwa-final-store { background: #000; color: #fff; font-family: 'Cairo', sans-serif; padding: 20px; direction: rtl; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 20px; }
+        .card { background: #0c0c0e; border: 1px solid #1a1a1a; border-radius: 12px; padding: 15px; text-align: center; }
+        .img-box { width: 100%; aspect-ratio: 1/1; overflow: hidden; border-radius: 8px; background: #111; margin-bottom: 10px; }
+        .img-box img { width: 100%; height: 100%; object-fit: contain; transition: 0.5s; }
+        .img-box:hover img { transform: scale(1.1); }
+        .swatches { display: flex; justify-content: center; gap: 8px; margin: 10px 0; }
+        .swatch { width: 16px; height: 16px; border-radius: 50%; cursor: pointer; border: 1px solid #333; }
+        .swatch.active { border: 2px solid #dfb43f; }
+        .name { font-size: 0.9rem; font-weight: bold; margin-bottom: 5px; }
+        .price { color: #dfb43f; font-size: 0.8rem; }
     </style>
 
-    <div class="product-grid">
-        <div class="p-card">
-            <div class="p-img-box">
-                <img src="تيشرت بوكس RAW (3).png" id="img-raw">
-            </div>
-            <div class="p-name">سلسلة RAW - PERSIST</div>
-            <div class="p-price">249 ريال سعودي</div>
+    <div class="grid">
+        <div class="card">
+            <div class="img-box"><img src="تيشرت بوكس RAW (3).png" id="main-raw"></div>
+            <div class="name">تيشيرت RAW PERSIST</div>
+            <div class="price">249 SAR</div>
             <div class="swatches">
-                <div class="swatch active" style="background:#000" onclick="updateP('img-raw', 'تيشرت بوكس RAW (3).png', this)"></div>
-                <div class="swatch" style="background:#1b4d3e" onclick="updateP('img-raw', 'تيشرت بوكس RAW (2).png', this)"></div>
-                <div class="swatch" style="background:#fff" onclick="updateP('img-raw', 'تيشرت بوكس RAW (4).png', this)"></div>
-                <div class="swatch" style="background:#f3e5ab" onclick="updateP('img-raw', 'تيشرت بوكس RAW.png', this)"></div>
+                <div class="swatch active" style="background:#000" onclick="update('main-raw','تيشرت بوكس RAW (3).png',this)"></div>
+                <div class="swatch" style="background:#1b4d3e" onclick="update('main-raw','تيشرت بوكس RAW (2).png',this)"></div>
+                <div class="swatch" style="background:#fff" onclick="update('main-raw','تيشرت بوكس RAW (4).png',this)"></div>
+                <div class="swatch" style="background:#f3e5ab" onclick="update('main-raw','تيشرت بوكس RAW.png',this)"></div>
             </div>
         </div>
 
-        <div class="p-card">
-            <div class="p-img-box"><img src="87a0ca0a-64b2-4b2f-9abd-b0442b471d5e_aZiEtjGkf.jpg"></div>
-            <div class="p-name">MOMENT BACKPRINT</div>
-            <div class="p-price">259 ريال سعودي</div>
+        <div class="card">
+            <div class="img-box"><img src="87a0ca0a-64b2-4b2f-9abd-b0442b471d5e_aZiEtjGkf.jpg"></div>
+            <div class="name">MOMENT TEE</div>
+            <div class="price">259 SAR</div>
         </div>
 
-        <div class="p-card">
-            <div class="p-img-box"><img src="1779118253452-019e50a5-3f3b-7339-8433-dbc6310d5380.png"></div>
-            <div class="p-name">ARTISTIC FACE TEE</div>
-            <div class="p-price">269 ريال سعودي</div>
+        <div class="card">
+            <div class="img-box"><img src="1779118253452-019e3bb5-3f3b-7339-8433-dbc6310d5380.png"></div>
+            <div class="name">ARTISTIC TEE</div>
+            <div class="price">269 SAR</div>
         </div>
 
-        <div class="p-card">
-            <div class="p-img-box"><img src="Gemini_Generated_Image_2d2ny92d2ny92d2n.png"></div>
-            <div class="p-name">BEIGE HOOD PRINT</div>
-            <div class="p-price">249 ريال سعودي</div>
+        <div class="card">
+            <div class="img-box"><img src="new tshirt 01.jpg"></div>
+            <div class="name">NEW ARRIVAL</div>
+            <div class="price">279 SAR</div>
         </div>
 
         </div>
 
     <script>
-        function updateP(imgId, newSrc, el) {
-            // تغيير الصورة
-            document.getElementById(imgId).src = newSrc;
-            // تحديث الأزرار
+        function update(id, src, el) {
+            document.getElementById(id).src = src;
             const parent = el.parentElement;
             parent.querySelectorAll('.swatch').forEach(s => s.classList.remove('active'));
             el.classList.add('active');
