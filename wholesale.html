@@ -1,171 +1,120 @@
-<div class="ezwa-product-pro">
+<div class="ezwa-tshirt-section">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;700&display=swap');
-        
-        .ezwa-product-pro { 
-            --gold: #dfb43f; 
-            --bg: #0c0c0e; 
-            --card: #151518;
-            font-family: 'Cairo', sans-serif; 
-            color: #fff; 
-            direction: rtl;
-            max-width: 450px;
-            margin: 20px auto;
-        }
-
-        .product-card {
-            background: var(--card);
-            border: 1px solid rgba(255,255,255,0.05);
-            border-radius: 20px;
-            padding: 25px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-        }
-
-        /* 1. منطقة العرض (صورة + زوم) */
-        .main-view {
-            width: 100%;
-            height: 400px;
-            overflow: hidden;
-            border-radius: 15px;
+        .ezwa-tshirt-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 30px;
+            padding: 40px 20px;
             background: #000;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            direction: rtl;
+        }
+
+        /* كارت الموديل الواحد */
+        .tshirt-card {
+            background: #0c0c0e;
+            border-radius: 12px;
+            padding: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: 0.4s ease;
             position: relative;
         }
 
-        .main-view img {
+        .tshirt-card:hover {
+            border-color: #dfb43f;
+            transform: translateY(-5px);
+        }
+
+        /* حاوية الصورة مع ميزة الزوم */
+        .img-area {
             width: 100%;
-            transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
-            cursor: zoom-in;
-        }
-
-        .main-view:hover img {
-            transform: scale(1.3);
-        }
-
-        /* 2. معرض الصور المصغر (لتبديل الـ 4 ألوان) */
-        .thumb-gallery {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 10px;
-            margin-top: 15px;
-        }
-
-        .thumb {
             aspect-ratio: 1/1;
-            border-radius: 8px;
-            border: 2px solid transparent;
-            cursor: pointer;
             overflow: hidden;
-            background: #000;
-            transition: 0.3s;
-            opacity: 0.6;
+            border-radius: 8px;
+            background: #151518;
         }
 
-        .thumb img { width: 100%; height: 100%; object-fit: cover; }
-        .thumb:hover, .thumb.active { border-color: var(--gold); opacity: 1; }
+        .img-area img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            transition: 0.6s;
+        }
 
-        /* 3. دوائر الألوان */
-        .color-selector {
+        .img-area:hover img {
+            transform: scale(1.2);
+        }
+
+        .tshirt-info {
+            margin-top: 15px;
+            text-align: center;
+        }
+
+        .tshirt-name {
+            color: #fff;
+            font-weight: bold;
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+            letter-spacing: 1px;
+        }
+
+        .tshirt-price {
+            color: #dfb43f;
+            font-size: 0.9rem;
+        }
+
+        /* أزرار اختيار الألوان داخل الكارت */
+        .color-swatches {
             display: flex;
             justify-content: center;
-            gap: 15px;
-            margin: 20px 0;
+            gap: 8px;
+            margin-top: 12px;
         }
 
-        .dot {
-            width: 25px;
-            height: 25px;
+        .swatch {
+            width: 15px;
+            height: 15px;
             border-radius: 50%;
             cursor: pointer;
-            border: 2px solid #333;
-            transition: 0.3s;
+            border: 1px solid #333;
         }
-
-        .dot.active { border-color: var(--gold); transform: scale(1.2); }
-        
-        /* ألوان الأربعة بناءً على تصاميم Streetwear المعتادة */
-        .c1 { background: #000; }      /* RAW1 - أسود */
-        .c2 { background: #3d3d3d; }   /* RAW2 - رمادي غامق */
-        .c3 { background: #4b3621; }   /* RAW3 - بني */
-        .c4 { background: #e0e0e0; }   /* RAW4 - أوف وايت/أبيض */
-
-        .product-info h2 { margin: 10px 0 5px; font-size: 1.4rem; }
-        .price { color: var(--gold); font-weight: bold; font-size: 1.2rem; }
-
-        .action-btns { display: flex; gap: 10px; margin-top: 15px; }
-        .btn-vid { 
-            flex: 1; background: none; border: 1px solid #444; color: #aaa; 
-            padding: 10px; border-radius: 8px; cursor: pointer; font-size: 0.8rem;
-        }
-
-        #videoElement { width: 100%; border-radius: 15px; display: none; }
     </style>
 
-    <div class="product-card">
-        <div class="main-view" id="mediaContainer">
-            <img src="TSHIRT BOX RAW1.png.png" id="mainImg">
-            <video id="videoElement" loop muted playsinline>
-                <source src="product.mp4" type="video/mp4">
-            </video>
+    <div class="tshirt-card">
+        <div class="img-area">
+            <img src="TSHIRT BOX RAW1.png.png" id="img1">
         </div>
-
-        <div class="thumb-gallery">
-            <div class="thumb active" onclick="updateView('TSHIRT BOX RAW1.png.png', this)">
-                <img src="TSHIRT BOX RAW1.png.png">
+        <div class="tshirt-info">
+            <div class="tshirt-name">RAW SERIES 01</div>
+            <div class="tshirt-price">249 SAR</div>
+            <div class="color-swatches">
+                <div class="swatch" style="background:#000" onclick="document.getElementById('img1').src='TSHIRT BOX RAW1.png.png'"></div>
+                <div class="swatch" style="background:#4b3621" onclick="document.getElementById('img1').src='TSHIRT BOX RAW2.png.png'"></div>
             </div>
-            <div class="thumb" onclick="updateView('TSHIRT BOX RAW2.png.png', this)">
-                <img src="TSHIRT BOX RAW2.png.png">
-            </div>
-            <div class="thumb" onclick="updateView('TSHIRT BOX RAW3.png.png', this)">
-                <img src="TSHIRT BOX RAW3.png.png">
-            </div>
-            <div class="thumb" onclick="updateView('TSHIRT BOX RAW4.png.png', this)">
-                <img src="TSHIRT BOX RAW4.png.png">
-            </div>
-        </div>
-
-        <div class="product-info">
-            <h2>تيشيرت عزوة - مجموعة RAW</h2>
-            <div class="price">249.00 SAR</div>
-        </div>
-
-        <div class="color-selector">
-            <div class="dot c1 active" onclick="updateView('TSHIRT BOX RAW1.png.png', this)"></div>
-            <div class="dot c2" onclick="updateView('TSHIRT BOX RAW2.png.png', this)"></div>
-            <div class="dot c3" onclick="updateView('TSHIRT BOX RAW3.png.png', this)"></div>
-            <div class="dot c4" onclick="updateView('TSHIRT BOX RAW4.png.png', this)"></div>
-        </div>
-
-        <div class="action-btns">
-            <button class="btn-vid" onclick="playVideo()">
-                 عرض الفيديو التفاعلي
-            </button>
         </div>
     </div>
 
-    <script>
-        function updateView(imgSrc, element) {
-            // تحديث الصورة الكبيرة
-            const mainImg = document.getElementById('mainImg');
-            const video = document.getElementById('videoElement');
-            
-            mainImg.src = imgSrc;
-            mainImg.style.display = "block";
-            video.style.display = "none";
+    <div class="tshirt-card">
+        <div class="img-area">
+            <img src="TSHIRT PURE.png" id="img2">
+        </div>
+        <div class="tshirt-info">
+            <div class="tshirt-name">PURE MINIMALIST</div>
+            <div class="tshirt-price">269 SAR</div>
+            <div class="color-swatches">
+                <div class="swatch" style="background:#fff" onclick="document.getElementById('img2').src='TSHIRT PURE.png'"></div>
+                <div class="swatch" style="background:#000" onclick="document.getElementById('img2').src='TSHIRT GHOST.png'"></div>
+            </div>
+        </div>
+    </div>
 
-            // تحديث الشكل النشط في المعرض والدوائر
-            document.querySelectorAll('.thumb, .dot').forEach(el => el.classList.remove('active'));
-            element.classList.add('active');
-        }
+    <div class="tshirt-card">
+        <div class="img-area">
+            <img src="TSHIRT FLOW.png" id="img3">
+        </div>
+        <div class="tshirt-info">
+            <div class="tshirt-name">FLOW OVERSIZED</div>
+            <div class="tshirt-price">249 SAR</div>
+        </div>
+    </div>
 
-        function playVideo() {
-            const v = document.getElementById('videoElement');
-            const i = document.getElementById('mainImg');
-            i.style.display = "none";
-            v.style.display = "block";
-            v.play();
-        }
-    </script>
-</div>
+    </div>
