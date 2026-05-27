@@ -1,31 +1,66 @@
-<div id="ezwa-re-styled" style="background: #000; color: #fff; font-family: 'Cairo', sans-serif; padding: 40px 20px; direction: rtl;">
+<div id="ezwa-complete-store" style="background:#000; color:#fff; font-family:'Cairo',sans-serif; padding:40px 10px; direction:rtl;">
     
-    <h2 style="color: #dfb43f; text-align: center; margin-bottom: 40px; font-weight: bold; font-size: 1.8rem;">
-        وصل حديثاً / المجموعات الجديدة
-    </h2>
+    <style>
+        /* التنسيقات مدمجة لضمان عدم اللخبطة */
+        .ezwa-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 25px; max-width: 1300px; margin: 0 auto; }
+        .ezwa-card { background: #0c0c0e; border: 1px solid #1a1a1a; border-radius: 20px; padding: 20px; text-align: center; transition: 0.3s; }
+        .ezwa-card:hover { border-color: #dfb43f; transform: translateY(-5px); }
+        .ezwa-img-box { width: 100%; aspect-ratio: 1/1; overflow: hidden; border-radius: 15px; background: #111; margin-bottom: 15px; cursor: zoom-in; }
+        .ezwa-img-box img { width: 100%; height: 100%; object-fit: contain; transition: 0.6s; }
+        .ezwa-img-box:hover img { transform: scale(1.2); }
+        .ezwa-name { font-weight: bold; font-size: 1.1rem; margin-bottom: 8px; }
+        .ezwa-price { color: #dfb43f; font-weight: bold; font-size: 0.9rem; }
+        .ezwa-swatches { display: flex; justify-content: center; gap: 10px; margin-top: 15px; }
+        .ezwa-swatch { width: 18px; height: 18px; border-radius: 50%; cursor: pointer; border: 2px solid #333; transition: 0.3s; }
+        .ezwa-swatch.active { border-color: #dfb43f; transform: scale(1.2); }
+        .ezwa-title { color:#dfb43f; text-align:center; font-size:2rem; margin-bottom:40px; }
+    </style>
 
-    <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 30px; max-width: 1200px; margin: 0 auto;">
-        
-        <div style="background: #0c0c0e; border: 2px dashed #222; border-radius: 20px; display: flex; flex-direction: column; justify-content: center; align-items: center; min-height: 400px; order: 1;">
-            <div style="font-size: 3rem; color: #dfb43f; margin-bottom: 10px;">+</div>
-            <div style="color: #8e8e93; font-size: 1rem;">أضف موديل جديد</div>
-        </div>
+    <h2 class="ezwa-title">وصل حديثاً / المجموعات الجديدة</h2>
 
-        <div style="background: #0c0c0e; border: 1px solid #1a1a1a; border-radius: 20px; padding: 20px; text-align: center; order: 2;">
-            <div style="width: 100%; aspect-ratio: 1/1; overflow: hidden; border-radius: 15px; background: #111; margin-bottom: 20px;">
-                <img src="1779118253452-019e3bb5-3f3b-7339-8433-dbc6310d5380.png" style="width: 100%; height: 100%; object-fit: cover;">
+    <div class="ezwa-grid">
+        <div class="ezwa-card">
+            <div class="ezwa-img-box"><img src="TSHIRT BOX RAW3.png.png" id="main-raw-view"></div>
+            <div class="ezwa-name">سلسلة RAW - PERSIST</div>
+            <div class="ezwa-price">249 ريال سعودي</div>
+            <div class="ezwa-swatches">
+                <div class="ezwa-swatch active" style="background:#000" onclick="ezUpdate('main-raw-view','TSHIRT BOX RAW3.png.png',this)"></div>
+                <div class="ezwa-swatch" style="background:#1b4d3e" onclick="ezUpdate('main-raw-view','TSHIRT BOX RAW2.png.png',this)"></div>
+                <div class="ezwa-swatch" style="background:#fff" onclick="ezUpdate('main-raw-view','TSHIRT BOX RAW4.png.png',this)"></div>
+                <div class="ezwa-swatch" style="background:#dfb43f" onclick="ezUpdate('main-raw-view','TSHIRT BOX RAW1.png.png',this)"></div>
             </div>
-            <div style="font-weight: bold; font-size: 1.1rem; margin-bottom: 10px;">ARTISTIC FACE TEE</div>
-            <div style="color: #dfb43f; font-weight: bold;">269 ريال سعودي</div>
         </div>
 
-        <div style="background: #0c0c0e; border: 1px solid #1a1a1a; border-radius: 20px; padding: 20px; text-align: center; order: 3;">
-            <div style="width: 100%; aspect-ratio: 1/1; overflow: hidden; border-radius: 15px; background: #111; margin-bottom: 20px;">
-                <img src="Gemini_Generated_Image_2d2ny92d2ny92d2n.png" style="width: 100%; height: 100%; object-fit: cover;">
-            </div>
-            <div style="font-weight: bold; font-size: 1.1rem; margin-bottom: 10px;">BEIGE HOOD PRINT TEE</div>
-            <div style="color: #dfb43f; font-weight: bold;">249 ريال سعودي</div>
+        <div class="ezwa-card">
+            <div class="ezwa-img-box"><img src="1779118253452-019e3bb5-3f3b-7339-8433-dbc6310d5380.png"></div>
+            <div class="ezwa-name">ARTISTIC FACE TEE</div>
+            <div class="ezwa-price">269 ريال سعودي</div>
         </div>
 
+        <div class="ezwa-card">
+            <div class="ezwa-img-box"><img src="Gemini_Generated_Image_2d2ny92d2ny92d2n.png"></div>
+            <div class="ezwa-name">BEIGE HOOD PRINT</div>
+            <div class="ezwa-price">249 ريال سعودي</div>
+        </div>
+
+        <div class="ezwa-card">
+            <div class="ezwa-img-box"><img src="87a0ca0a-64b2-4b2f-9abd-b0442b471d5e_aZiEtjGkf.jpg"></div>
+            <div class="ezwa-name">MOMENT BACKPRINT</div>
+            <div class="ezwa-price">259 ريال سعودي</div>
+        </div>
+
+        <div class="ezwa-card" style="border: 2px dashed #333; display:flex; flex-direction:column; justify-content:center; align-items:center; min-height:400px;">
+            <div style="font-size:3rem; color:#dfb43f;">+</div>
+            <div style="color:#8e8e93;">أضف موديل جديد</div>
+        </div>
     </div>
+
+    <script>
+        function ezUpdate(imgId, newSrc, el) {
+            document.getElementById(imgId).src = newSrc;
+            const parent = el.parentElement;
+            parent.querySelectorAll('.ezwa-swatch').forEach(s => s.classList.remove('active'));
+            el.classList.add('active');
+        }
+    </script>
 </div>
