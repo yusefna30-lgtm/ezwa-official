@@ -1,40 +1,41 @@
 <div class="ezwa-wrapper">
     <style>
-        .ezwa-wrapper { --gold: #dfb43f; --card-bg: #0c0c0e; text-align: center; font-family: sans-serif; color: #fff; }
-        .product-box { background: var(--card-bg); border: 1px solid rgba(255,255,255,0.04); border-radius: 15px; padding: 20px; max-width: 350px; margin: auto; }
+        .ezwa-wrapper { --gold: #dfb43f; --card-bg: #0c0c0e; text-align: center; font-family: 'Cairo', sans-serif; color: #fff; direction: rtl; }
+        .product-box { background: var(--card-bg); border: 1px solid rgba(255,255,255,0.04); border-radius: 15px; padding: 20px; max-width: 350px; margin: 20px auto; }
         
-        /* 1. تأثير الزوم */
-        .img-container { overflow: hidden; border-radius: 10px; position: relative; cursor: zoom-in; background: #000; }
+        /* تأثير الزوم */
+        .img-container { overflow: hidden; border-radius: 10px; position: relative; cursor: zoom-in; background: #000; min-height: 300px; display: flex; align-items: center; justify-content: center; }
         .img-container img { width: 100%; transition: 0.5s; display: block; }
         .img-container:hover img { transform: scale(1.2); }
         
-        /* 2. تبديل الألوان */
+        /* تبديل الألوان */
         .swatches { display: flex; justify-content: center; gap: 10px; margin: 15px 0; }
         .swatch { width: 22px; height: 22px; border-radius: 50%; cursor: pointer; border: 2px solid transparent; transition: 0.3s; }
         .swatch.active { border-color: var(--gold); }
         .black { background: #000; }
         .brown { background: #4b3621; }
         
-        /* 3. الفيديو */
-        video { width: 100%; border-radius: 10px; display: none; margin-top: -100%; position: relative; }
+        #ezwaVideo { width: 100%; border-radius: 10px; display: none; }
     </style>
 
     <div class="product-box">
         <div class="img-container" id="mediaBox">
-            <img src="TSHIRT-BOX-RAW1.png" id="ezwaImg">
-            <video id="ezwaVideo" loop muted playsinline><source src="product.mp4" type="video/mp4"></video>
+            <img src="TSHIRT BOX RAW1.png.png" id="ezwaImg">
+            <video id="ezwaVideo" loop muted playsinline>
+                <source src="product.mp4" type="video/mp4">
+            </video>
         </div>
 
-        <h3 style="margin:15px 0 5px;">تيشيرت عزوة</h3>
+        <h3 style="margin:15px 0 5px;">تيشيرت عزوة - الخامة الثقيلة</h3>
         <p style="color:var(--gold); margin-bottom:15px;">249 SAR</p>
 
         <div class="swatches">
-            <div class="swatch black active" onclick="updateEzwa('TSHIRT-BOX-RAW1.png', this)"></div>
-            <div class="swatch brown" onclick="updateEzwa('TSHIRT-BOX-RAW2.png', this)"></div>
+            <div class="swatch black active" onclick="updateEzwa('TSHIRT BOX RAW1.png.png', this)"></div>
+            <div class="swatch brown" onclick="updateEzwa('TSHIRT BOX RAW2.png.png', this)"></div>
         </div>
 
-        <button onclick="playEzwaVideo()" style="background:none; color:#8e8e93; border:1px solid #333; padding:5px 10px; cursor:pointer; border-radius:5px; font-size:12px;">
-            <i class="fas fa-play"></i> عرض الفيديو
+        <button onclick="playEzwaVideo()" style="background:none; color:#8e8e93; border:1px solid #333; padding:8px 15px; cursor:pointer; border-radius:5px; font-size:12px;">
+             عرض الفيديو
         </button>
     </div>
 
@@ -43,10 +44,10 @@
             document.getElementById('ezwaImg').src = imgPath;
             document.querySelectorAll('.swatch').forEach(s => s.classList.remove('active'));
             el.classList.add('active');
-            // إخفاء الفيديو لو كان شغال عند تغيير اللون
             document.getElementById('ezwaVideo').style.display = "none";
             document.getElementById('ezwaImg').style.display = "block";
         }
+
         function playEzwaVideo() {
             let v = document.getElementById('ezwaVideo');
             let i = document.getElementById('ezwaImg');
