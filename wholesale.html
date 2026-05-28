@@ -8,54 +8,30 @@
     <style>
         :root { --gold: #D4AF37; --black: #000; --card: #0c0c0e; }
         body { font-family: 'Cairo', sans-serif; background: var(--black); color: #fff; text-align: center; margin: 0; padding: 10px; }
-        
-        .brand { font-size: 2.2rem; color: var(--gold); margin: 20px 0; font-weight: 900; letter-spacing: 4px; }
-
-        /* قسم مميزات الجملة */
-        .features { display: flex; justify-content: center; gap: 15px; margin-bottom: 25px; flex-wrap: wrap; }
-        .feature-item { font-size: 0.75rem; color: #888; border: 1px solid #222; padding: 5px 10px; border-radius: 20px; }
-        .feature-item span { color: var(--gold); margin-left: 5px; }
-
+        .brand { font-size: 2rem; color: var(--gold); margin: 20px 0; font-weight: 900; letter-spacing: 3px; }
         .grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; max-width: 1000px; margin: auto; }
-
-        .card { 
-            background: var(--card); padding: 12px; border-radius: 20px; 
-            border: 1px solid rgba(212,175,55,0.15); transition: 0.3s; 
-            display: flex; flex-direction: column; position: relative;
-        }
-
+        .card { background: var(--card); padding: 12px; border-radius: 20px; border: 1px solid rgba(212,175,55,0.15); display: flex; flex-direction: column; position: relative; }
+        
         .img-wrapper { width: 100%; height: 230px; border-radius: 12px; overflow: hidden; background: #111; margin-bottom: 10px; }
         .product-img { width: 100%; height: 100%; object-fit: cover; object-position: top; }
 
-        .model-title { color: var(--gold); font-size: 0.9rem; font-weight: 700; margin-bottom: 5px; }
-        .price { font-size: 1.1rem; font-weight: 900; margin-bottom: 10px; }
+        .qty-box { display: flex; align-items: center; justify-content: center; gap: 8px; margin: 10px 0; background: #1a1a1a; padding: 5px; border-radius: 8px; }
+        .qty-btn { background: #333; color: #fff; border: none; width: 28px; height: 28px; border-radius: 5px; cursor: pointer; }
+        .qty-val { font-weight: bold; font-size: 1rem; color: var(--gold); }
+        .step-info { font-size: 0.6rem; color: #888; margin-top: 2px; }
 
-        /* عداد الكمية */
-        .qty-box { 
-            display: flex; align-items: center; justify-content: center; 
-            gap: 10px; margin: 10px 0; background: #1a1a1a; padding: 5px; border-radius: 8px;
-        }
-        .qty-btn { 
-            background: #333; color: #fff; border: none; width: 25px; height: 25px; 
-            border-radius: 5px; cursor: pointer; font-weight: bold; 
-        }
-        .qty-val { font-weight: bold; font-size: 0.9rem; color: var(--gold); }
+        .color-options { display: flex; justify-content: center; gap: 8px; margin: 15px 0; }
+        .dot { width: 22px; height: 22px; border-radius: 50%; cursor: pointer; border: 2px solid #333; }
+        .dot.active { border-color: #fff; transform: scale(1.15); box-shadow: 0 0 8px var(--gold); }
 
-        .color-options { display: flex; justify-content: center; gap: 8px; margin: 10px 0; }
-        .dot { width: 22px; height: 22px; border-radius: 50%; cursor: pointer; border: 2px solid #222; }
-        .dot.active { border-color: var(--gold); transform: scale(1.1); }
-
-        .btn { 
-            display: block; background: var(--gold); color: #000; padding: 10px; 
-            border-radius: 10px; text-decoration: none; font-weight: 900; font-size: 0.85rem; 
-        }
+        .btn { display: block; background: var(--gold); color: #000; padding: 10px; border-radius: 10px; text-decoration: none; font-weight: 900; font-size: 0.85rem; }
+        
+        /* شارة التوضيح الجديدة */
+        .info-tag { font-size: 0.65rem; color: #eee; margin-bottom: 8px; background: rgba(212,175,55,0.2); padding: 4px; border-radius: 5px; border: 1px solid var(--gold); }
 
         @media (min-width: 768px) {
             .grid { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
             .img-wrapper { height: 400px; }
-            .brand { font-size: 3.5rem; }
-            .qty-btn { width: 35px; height: 35px; }
-            .qty-val { font-size: 1.2rem; }
         }
     </style>
 </head>
@@ -63,75 +39,85 @@
 
     <div class="brand">EZWA</div>
 
-    <div class="features">
-        <div class="feature-item"><span>✔</span> جودة مضمونة</div>
-        <div class="feature-item"><span>✔</span> أسعار جملة</div>
-        <div class="feature-item"><span>✔</span> شحن لجميع المناطق</div>
-    </div>
-
     <div class="grid">
         
-        <div class="card" id="card-raw">
-            <div class="model-title">RAW Persist</div>
+        <div class="card">
+            <div class="info-tag">المجموعة الكاملة (4 ألوان إجباري)</div>
+            <div style="color:var(--gold); font-weight:bold; margin-bottom:5px;">RAW Persist Pack</div>
             <div class="img-wrapper"><img id="img-raw" class="product-img" src="تيشرت بوكس RAW.png"></div>
-            <div class="price">89 ر.س</div>
+            <div style="font-weight:bold; margin-bottom:10px;">89 ر.س</div>
             
             <div class="qty-box">
-                <button class="qty-btn" onclick="changeQty('qty-raw', -1)">-</button>
-                <span id="qty-raw" class="qty-val">12</span> <button class="qty-btn" onclick="changeQty('qty-raw', 1)">+</button>
+                <button class="qty-btn" onclick="changeQty('qty-raw', -16, 16)">-</button>
+                <div><span id="qty-raw" class="qty-val">16</span><div class="step-info">مضاعفات 16 حبة</div></div>
+                <button class="qty-btn" onclick="changeQty('qty-raw', 16, 16)">+</button>
             </div>
 
+            <p style="font-size: 0.65rem; color: #666; margin-bottom: 5px;">استعراض ألوان المجموعة:</p>
             <div class="color-options">
-                <div class="dot active" style="background: #e1c879;" onclick="update('img-raw', 'تيشرت بوكس RAW.png', this)"></div>
-                <div class="dot" style="background: #2d4f3c;" onclick="update('img-raw', 'تيشرت بوكس RAW (2).png', this)"></div>
+                <div class="dot active" style="background-color: #e1c879;" onclick="updateImg('img-raw', 'تيشرت بوكس RAW.png', this)"></div>
+                <div class="dot" style="background-color: #2d4f3c;" onclick="updateImg('img-raw', 'تيشرت بوكس RAW (2).png', this)"></div>
+                <div class="dot" style="background-color: #111;" onclick="updateImg('img-raw', 'تيشرت بوكس RAW (3).png', this)"></div>
+                <div class="dot" style="background-color: #fff;" onclick="updateImg('img-raw', 'تيشرت بوكس RAW (4).png', this)"></div>
             </div>
-            
-            <a href="javascript:void(0)" class="btn" onclick="sendOrder('RAW Persist', 'qty-raw')">اطلب بالجملة</a>
+            <a href="javascript:void(0)" class="btn" onclick="sendRawOrder()">طلب المجموعة الكاملة</a>
         </div>
 
-        <div class="card" id="card-sada">
-            <div class="model-title">Oversize Plain</div>
+        <div class="card">
+            <div class="info-tag">اختيار لون محدد (بمضاعفات 5)</div>
+            <div style="color:var(--gold); font-weight:bold; margin-bottom:5px;">Oversize Plain</div>
             <div class="img-wrapper"><img id="img-sada" class="product-img" src="sada02.png"></div>
-            <div class="price">89 ر.س</div>
+            <div style="font-weight:bold; margin-bottom:10px;">89 ر.س</div>
 
             <div class="qty-box">
-                <button class="qty-btn" onclick="changeQty('qty-sada', -1)">-</button>
-                <span id="qty-sada" class="qty-val">12</span>
-                <button class="qty-btn" onclick="changeQty('qty-sada', 1)">+</button>
+                <button class="qty-btn" onclick="changeQty('qty-sada', -5, 5)">-</button>
+                <div><span id="qty-sada" class="qty-val">5</span><div class="step-info">مضاعفات 5 حبات</div></div>
+                <button class="qty-btn" onclick="changeQty('qty-sada', 5, 5)">+</button>
             </div>
 
+            <p style="font-size: 0.65rem; color: #666; margin-bottom: 5px;">اختر اللون المطلوب:</p>
             <div class="color-options">
-                <div class="dot active" style="background: #005a43;" onclick="update('img-sada', 'sada02.png', this)"></div>
-                <div class="dot" style="background: #5a57d6;" onclick="update('img-sada', 'sada01.png', this)"></div>
+                <div class="dot active" style="background-color: #005a43;" onclick="updateSada('img-sada', 'sada02.png', 'أخضر', this)"></div>
+                <div class="dot" style="background-color: #5a57d6;" onclick="updateSada('img-sada', 'sada01.png', 'أزرق', this)"></div>
+                <div class="dot" style="background-color: #e69b73;" onclick="updateSada('img-sada', 'sada03.png', 'مشمشي', this)"></div>
             </div>
-            
-            <a href="javascript:void(0)" class="btn" onclick="sendOrder('السادة أوفر سايز', 'qty-sada')">اطلب بالجملة</a>
+            <a href="javascript:void(0)" class="btn" onclick="sendSadaOrder()">طلب اللون المختار</a>
         </div>
 
     </div>
 
     <script>
-        // تبديل الصور
-        function update(id, src, el) {
+        let currentSadaColor = "أخضر";
+
+        function updateImg(id, src, el) {
             document.getElementById(id).src = src;
             const dots = el.parentElement.querySelectorAll('.dot');
             dots.forEach(d => d.classList.remove('active'));
             el.classList.add('active');
         }
 
-        // تغيير الكمية
-        function changeQty(id, delta) {
+        function updateSada(id, src, name, el) {
+            updateImg(id, src, el);
+            currentSadaColor = name;
+        }
+
+        function changeQty(id, step, min) {
             const el = document.getElementById(id);
             let val = parseInt(el.innerText);
-            val += delta;
-            if (val < 1) val = 1; // منع النزول عن 1
+            val += step;
+            if (val < min) val = min;
             el.innerText = val;
         }
 
-        // إرسال الطلب للواتساب
-        function sendOrder(model, qtyId) {
-            const qty = document.getElementById(qtyId).innerText;
-            const message = `أهلاً عزوة، أرغب في طلب موديل (${model}) كمية: ${qty} قطعة.`;
+        function sendRawOrder() {
+            const qty = document.getElementById('qty-raw').innerText;
+            const message = `أهلاً عزوة، أرغب في طلب المجموعة الكاملة (4 ألوان) من موديل RAW Persist، الكمية: ${qty} حبة.`;
+            window.location.href = `https://wa.me/966502777884?text=${encodeURIComponent(message)}`;
+        }
+
+        function sendSadaOrder() {
+            const qty = document.getElementById('qty-sada').innerText;
+            const message = `أهلاً عزوة، أرغب في طلب تيشيرت سادة، لون: (${currentSadaColor})، الكمية: ${qty} حبة.`;
             window.location.href = `https://wa.me/966502777884?text=${encodeURIComponent(message)}`;
         }
     </script>
