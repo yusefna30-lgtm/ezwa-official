@@ -14,11 +14,11 @@
         .img-wrapper { width: 100%; height: 450px; border-radius: 20px; overflow: hidden; background: #1a1a1a; margin-bottom: 20px; }
         .product-img { width: 100%; height: 100%; object-fit: cover; transition: 0.3s; }
         .model-title { color: var(--gold); font-size: 1.5rem; font-weight: bold; margin-bottom: 10px; }
-        .price { font-size: 2rem; color: #fff; font-weight: bold; margin-bottom: 20px; }
+        .price { font-size: 2rem; font-weight: bold; margin-bottom: 20px; }
         .color-options { display: flex; justify-content: center; gap: 15px; margin: 20px 0; }
-        .dot { width: 35px; height: 35px; border-radius: 50%; cursor: pointer; border: 3px solid #333; transition: 0.3s; }
-        .dot.active { border-color: var(--gold); transform: scale(1.1); box-shadow: 0 0 10px var(--gold); }
-        .btn { display: block; background: var(--gold); color: #000; padding: 18px; border-radius: 15px; text-decoration: none; font-weight: 700; font-size: 1.2rem; }
+        .dot { width: 35px; height: 35px; border-radius: 50%; cursor: pointer; border: 3px solid #333; }
+        .dot.active { border-color: var(--gold); transform: scale(1.1); }
+        .btn { display: block; background: var(--gold); color: #000; padding: 18px; border-radius: 15px; text-decoration: none; font-weight: 700; }
     </style>
 </head>
 <body>
@@ -30,14 +30,14 @@
         <div class="card">
             <div class="model-title">تيشيرت RAW Persist</div>
             <div class="img-wrapper">
-                <img id="img-raw" class="product-img" src="تيشرت بوكس RAW.png">
+                <img id="img-raw" class="product-img" src="./%D8%AA%D9%8A%D8%B4%D8%B1%D8%AA%20%D8%A8%D9%88%D9%83%D8%B3%20RAW.png">
             </div>
             <div class="price">89 ر.س</div>
             <div class="color-options">
-                <div class="dot active" style="background: #e1c879;" onclick="update('img-raw', 'تيشرت بوكس RAW.png', this)"></div>
-                <div class="dot" style="background: #2d4f3c;" onclick="update('img-raw', 'تيشرت بوكس RAW (2).png', this)"></div>
-                <div class="dot" style="background: #111;" onclick="update('img-raw', 'تيشرت بوكس RAW (3).png', this)"></div>
-                <div class="dot" style="background: #fff;" onclick="update('img-raw', 'تيشرت بوكس RAW (4).png', this)"></div>
+                <div class="dot active" style="background: #e1c879;" onclick="update('img-raw', './%D8%AA%D9%8A%D8%B4%D8%B1%D8%AA%20%D8%A8%D9%88%D9%83%D8%B3%20RAW.png', this)"></div>
+                <div class="dot" style="background: #2d4f3c;" onclick="update('img-raw', './%D8%AA%D9%8A%D8%B4%D8%B1%D8%AA%20%D8%A8%D9%88%D9%83%D8%B3%20RAW%20(2).png', this)"></div>
+                <div class="dot" style="background: #111;" onclick="update('img-raw', './%D8%AA%D9%8A%D8%B4%D8%B1%D8%AA%20%D8%A8%D9%88%D9%83%D8%B3%20RAW%20(3).png', this)"></div>
+                <div class="dot" style="background: #fff;" onclick="update('img-raw', './%D8%AA%D9%8A%D8%B4%D8%B1%D8%AA%20%D8%A8%D9%88%D9%83%D8%B3%20RAW%20(4).png', this)"></div>
             </div>
             <a href="https://wa.me/966502777884" class="btn">طلب موديل RAW</a>
         </div>
@@ -45,13 +45,13 @@
         <div class="card">
             <div class="model-title">تيشيرت أوفر سايز سادة</div>
             <div class="img-wrapper">
-                <img id="img-sada" class="product-img" src="sada03.png">
+                <img id="img-sada" class="product-img" src="./sada03.png">
             </div>
             <div class="price">89 ر.س</div>
             <div class="color-options">
-                <div class="dot active" style="background: #e69b73;" onclick="update('img-sada', 'sada03.png', this)"></div>
-                <div class="dot" style="background: #5a57d6;" onclick="update('img-sada', 'sada01.png', this)"></div>
-                <div class="dot" style="background: #005a43;" onclick="update('img-sada', 'sada02.png', this)"></div>
+                <div class="dot active" style="background: #e69b73;" onclick="update('img-sada', './sada03.png', this)"></div>
+                <div class="dot" style="background: #5a57d6;" onclick="update('img-sada', './sada01.png', this)"></div>
+                <div class="dot" style="background: #005a43;" onclick="update('img-sada', './sada02.png', this)"></div>
             </div>
             <a href="https://wa.me/966502777884" class="btn">طلب موديل سادة</a>
         </div>
