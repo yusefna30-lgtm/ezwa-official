@@ -4,79 +4,60 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EZWA Official Store</title>
-    
-    <!-- خط تجول المتناسق مع الواجهات الرقمية الحديثة -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
-<style>
-<style>
-    html, body { background-color: #050505 !important; margin: 0; padding: 0; overflow-x: hidden; }
-    body { 
-        background: radial-gradient(circle at 50% 0%, #1a1a2e 0%, #050505 80%) no-repeat fixed !important;
-        color: #ffffff; text-align: center; font-family: 'Tajawal', sans-serif; padding: 40px 10px 150px 10px; min-height: 100vh;
-    }
-    .brand-header { 
-        font-size: 3.5rem; font-weight: 900; background: linear-gradient(180deg, #ffffff 40%, #777777 100%);
-        -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 50px; letter-spacing: 5px;
-    }
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        html, body { background-color: #050505 !important; margin: 0; padding: 0; overflow-x: hidden; }
+        body { 
+            background: radial-gradient(circle at 50% 0%, #1a1a2e 0%, #050505 80%) no-repeat fixed !important;
+            color: #ffffff; text-align: center; font-family: 'Tajawal', sans-serif; padding: 40px 10px 150px 10px; min-height: 100vh;
+        }
+        .brand-header { 
+            font-size: 3.5rem; font-weight: 900; background: linear-gradient(180deg, #ffffff 40%, #777777 100%);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 50px; letter-spacing: 5px;
+        }
+        .container { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; max-width: 500px; margin: auto; }
+        
+        .card { 
+            background: #0a0a0a; border: 1px solid #1a1a1a; border-radius: 25px; padding: 15px; 
+            display: flex; flex-direction: column; justify-content: space-between;
+            transition: 0.3s; box-shadow: 0 0 15px rgba(0, 229, 255, 0.05);
+        }
+        .card:hover { border-color: #00e5ff; box-shadow: 0 0 25px rgba(0, 229, 255, 0.2); transform: translateY(-5px); }
+        .card img { width: 100%; height: 170px; object-fit: cover; border-radius: 18px; margin-bottom: 15px; }
+        
+        .product-title { font-size: 1rem; font-weight: 700; color: #ffffff !important; margin-bottom: 8px; }
+        .price { color: #00e5ff; font-weight: 800; font-size: 1.2rem; margin-bottom: 15px; text-shadow: 0 0 12px rgba(0, 229, 255, 0.6); }
+        
+        .btns { display: flex; flex-direction: column; gap: 8px; }
+        .btn-add { background: #00e5ff; color: #000; border: none; padding: 14px; border-radius: 15px; font-weight: 900; cursor: pointer; box-shadow: 0 0 15px rgba(0, 229, 255, 0.4); }
+        .btn-info, .btn-vid { background: rgba(255,255,255,0.02); color: #555; border: 1px solid #1a1a1a; padding: 10px; border-radius: 12px; font-size: 0.75rem; text-decoration: none; cursor: pointer; }
 
-    .container { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; max-width: 500px; margin: auto; }
+        #details-modal { 
+            display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
+            background: rgba(0, 0, 0, 0.9); z-index: 9999; justify-content: center; align-items: center; backdrop-filter: blur(10px);
+        }
+        .modal-content { background: #111; border: 1px solid #00e5ff; padding: 30px; border-radius: 25px; width: 80%; max-width: 350px; text-align: right; }
+        .close-btn { background: #00e5ff; color: #000; border: none; padding: 10px 20px; border-radius: 10px; cursor: pointer; font-weight: bold; width: 100%; margin-top: 20px; }
 
-    .card { 
-        background: #0a0a0a; border: 1px solid #1a1a1a; border-radius: 25px; padding: 15px; 
-        display: flex; flex-direction: column; justify-content: space-between;
-        transition: 0.3s; box-shadow: 0 0 15px rgba(0, 229, 255, 0.05); /* وهج خفيف جداً */
-    }
-
-    /* تأثير التوهج عند لمس البطاقة */
-    .card:hover { 
-        border-color: #00e5ff; 
-        box-shadow: 0 0 25px rgba(0, 229, 255, 0.2); 
-        transform: translateY(-5px); 
-    }
-
-    .card img { width: 100%; height: 170px; object-fit: cover; border-radius: 18px; margin-bottom: 15px; }
-
-    .product-title { font-size: 1rem; font-weight: 700; color: #ffffff !important; margin-bottom: 8px; }
-
-    .price { 
-        color: #00e5ff; font-weight: 800; font-size: 1.2rem; margin-bottom: 15px;
-        text-shadow: 0 0 12px rgba(0, 229, 255, 0.6); /* توهج السعر */
-    }
-
-    .btn-add { 
-        background: #00e5ff; color: #000; border: none; padding: 14px; border-radius: 15px; 
-        font-weight: 900; cursor: pointer; box-shadow: 0 0 15px rgba(0, 229, 255, 0.4); /* توهج الزر */
-    }
-
-    /* تنسيق النافذة المنبثقة (التفاصيل) لضمان ظهورها */
-    #details-modal { 
-        display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
-        background: rgba(0, 0, 0, 0.9); z-index: 9999; justify-content: center; align-items: center; 
-        backdrop-filter: blur(10px);
-    }
-    .modal-content { 
-        background: #111; border: 1px solid #00e5ff; padding: 30px; border-radius: 25px; 
-        width: 80%; max-width: 350px; text-align: right; box-shadow: 0 0 30px rgba(0, 229, 255, 0.2);
-    }
-    .close-btn { background: #00e5ff; color: #000; border: none; padding: 10px 20px; border-radius: 10px; cursor: pointer; font-weight: bold; width: 100%; margin-top: 20px; }
-</style>
-</style>
+        #cart-bar { 
+            position: fixed; bottom: 0; left: 0; right: 0; background: rgba(0, 229, 255, 0.95); 
+            backdrop-filter: blur(15px); color: #000; padding: 20px; display: none; justify-content: space-between; align-items: center; z-index: 1000; border-radius: 30px 30px 0 0; 
+        }
+        .btn-order { background: #000; color: #00e5ff; padding: 10px 20px; border-radius: 12px; text-decoration: none; font-size: 0.9rem; font-weight: bold; }
+    </style>
 </head>
 <body>
 
     <div class="brand-header">EZWA</div>
     
-    <div class="container" id="products-grid"></div>
+    <div class="container" id="products-grid">
+        </div>
 
     <div id="details-modal">
         <div class="modal-content">
-            <h3 id="m-title" style="color: #00e5ff;"></h3>
-            <p id="m-desc"></p>
-            <p><strong>🧼 التعليمات:</strong> غسيل بارد - تجنب المبيض.</p>
-            <p><strong>📏 المقاسات:</strong> S, M, L, XL, XXL (Oversize).</p>
-            <button class="close-btn" onclick="closeModal()">إغلاق</button>
+            <h3 id="m-title" style="color: #00e5ff; margin-top:0;"></h3>
+            <p id="m-desc" style="line-height:1.6;"></p>
+            <button class="close-btn" onclick="closeModal()">فهمت</button>
         </div>
     </div>
 
@@ -84,68 +65,64 @@
         <div id="cart-info">القطع: 0 | المجموع: 0 ر.س</div>
         <a href="#" onclick="sendWhatsApp()" class="btn-order">إرسال الطلب ✅</a>
     </div>
+
     <script>
-       <script>
-    const baseURL = "https://raw.githubusercontent.com/yusefna30-lgtm/ezwa-official/main/";
-    const videoLink = "https://vt.tiktok.com/ZSxRBGRQT/";
+        const baseURL = "https://raw.githubusercontent.com/yusefna30-lgtm/ezwa-official/main/";
+        const videoLink = "https://vt.tiktok.com/ZSxRBGRQT/";
 
-    const products = [
-        { id: 1, name: "GHOST", img: "TSHIRT BOX RAW10.png.png", price: 115, desc: "خامة قطنية فاخرة - قصة أوفر سايز - طباعة عالية الدقة تبرز ملامح التصميم الغامض." },
-        { id: 2, name: "PURE", img: "TSHIRT BOX RAW.png.png", price: 115, desc: "تصميم نقي يعبر عن البساطة والفخامة - ملمس ناعم وراحة تدوم طوال اليوم." },
-        { id: 3, name: "FLOW", img: "TSHIRT BOX RAW11.png.png", price: 115, desc: "انسيابية في التصميم والأداء - قطعة فنية تمزج بين الروح العصرية والهوية الكلاسيكية." },
-        { id: 4, name: "MIND", img: "TSHIRT BOX RAW12.png.png", price: 115, desc: "لأصحاب الفكر المختلف - تصميم فريد يحاكي الإبداع والتركيز في كل تفاصيله." }
-    ];
+        const products = [
+            { id: 1, name: "GHOST", img: "TSHIRT BOX RAW10.png.png", price: 115, desc: "قطعة فنية تجسد الغموض. قماش فاخر مع طباعة نيون متوهجة تبرز في الإضاءة الخافتة." },
+            { id: 2, name: "PURE", img: "TSHIRT BOX RAW.png.png", price: 115, desc: "النقاء في أبهى صوره. تصميم بسيط وأنيق يناسب عشاق الفخامة الهادئة." },
+            { id: 3, name: "FLOW", img: "TSHIRT BOX RAW11.png.png", price: 115, desc: "انسيابية لا مثيل لها. تصميم عصري يعطيك الثقة في كل حركة." },
+            { id: 4, name: "MIND", img: "TSHIRT BOX RAW12.png.png", price: 115, desc: "لأصحاب العقول المبدعة. تصميم فريد يحاكي الذكاء والتميز." }
+        ];
 
-    const grid = document.getElementById('products-grid');
-
-    products.forEach((p) => {
-        grid.innerHTML += `
-            <div class="card">
-                <img src="${baseURL + encodeURIComponent(p.img)}" alt="${p.name}">
-                <div class="product-title">${p.name}</div>
-                <div class="price">${p.price} ر.س</div>
-                <div class="btns">
-                    <button class="btn-add" onclick="addToCart(${p.id})">➕ أضف للطلب</button>
-                    <button class="btn-info" onclick="showDetails('${p.name}', '${p.desc}')">ℹ️ التفاصيل</button>
-                    <a href="${videoLink}" target="_blank" class="btn-vid" style="text-align:center; display:block;">🎬 فيديو</a>
+        const grid = document.getElementById('products-grid');
+        products.forEach((p) => {
+            grid.innerHTML += `
+                <div class="card">
+                    <img src="${baseURL + encodeURIComponent(p.img)}" alt="${p.name}">
+                    <div class="product-title">${p.name}</div>
+                    <div class="price">${p.price} ر.س</div>
+                    <div class="btns">
+                        <button class="btn-add" onclick="addToCart(${p.id})">➕ أضف للطلب</button>
+                        <button class="btn-info" onclick="showDetails('${p.name}', '${p.desc}')">ℹ️ التفاصيل</button>
+                        <a href="${videoLink}" target="_blank" class="btn-vid" style="text-align:center; line-height:2;">🎬 فيديو</a>
+                    </div>
                 </div>
-            </div>
-        `;
-    });
+            `;
+        });
 
-    // وظيفة فتح النافذة (التفاصيل)
-    function showDetails(name, desc) {
-        document.getElementById('m-title').innerText = name;
-        document.getElementById('m-desc').innerHTML = "<strong>الوصف:</strong><br>" + desc;
-        document.getElementById('details-modal').style.display = 'flex';
-    }
+        function showDetails(name, desc) {
+            document.getElementById('m-title').innerText = name;
+            document.getElementById('m-desc').innerText = desc;
+            document.getElementById('details-modal').style.display = 'flex';
+        }
 
-    // وظيفة إغلاق النافذة
-    function closeModal() {
-        document.getElementById('details-modal').style.display = 'none';
-    }
+        function closeModal() {
+            document.getElementById('details-modal').style.display = 'none';
+        }
 
-    // باقي وظائف السلة...
-    let cart = [];
-    function addToCart(productId) {
-        const product = products.find(p => p.id === productId);
-        cart.push(product);
-        updateCartBar();
-    }
-    function updateCartBar() {
-        const total = cart.reduce((sum, p) => sum + p.price, 0);
-        const bar = document.getElementById('cart-bar');
-        bar.style.display = 'flex';
-        document.getElementById('cart-info').innerText = `القطع: ${cart.length} | المجموع: ${total} ر.س`;
-    }
-    function sendWhatsApp() {
-        let message = "أهلاً عزوة، أرغب في طلب:\n";
-        cart.forEach((p, i) => { message += `${i + 1}- ${p.name}\n`; });
-        const total = cart.reduce((sum, p) => sum + p.price, 0);
-        message += `\n💰 الإجمالي: ${total} ر.س`;
-        window.open(`https://wa.me/966502777884?text=${encodeURIComponent(message)}`, '_blank');
-    }
-</script>
+        let cart = [];
+        function addToCart(productId) {
+            const product = products.find(p => p.id === productId);
+            cart.push(product);
+            document.getElementById('cart-bar').style.display = 'flex';
+            updateCartBar();
+        }
+
+        function updateCartBar() {
+            const total = cart.reduce((sum, p) => sum + p.price, 0);
+            document.getElementById('cart-info').innerText = `القطع: ${cart.length} | المجموع: ${total} ر.س`;
+        }
+
+        function sendWhatsApp() {
+            let message = "أهلاً عزوة، أرغب في طلب:\n";
+            cart.forEach((p, i) => { message += `${i + 1}- ${p.name}\n`; });
+            const total = cart.reduce((sum, p) => sum + p.price, 0);
+            message += `\n💰 الإجمالي: ${total} ر.س`;
+            window.open(`https://wa.me/966502777884?text=${encodeURIComponent(message)}`, '_blank');
+        }
     </script>
 </body>
 </html>
