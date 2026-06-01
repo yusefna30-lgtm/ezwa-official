@@ -10,77 +10,84 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
     <style>
-   body { 
-            background: radial-gradient(circle at top, #1a144e 0%, #07051a 100%);
-            color: #ffffff; 
-            text-align: center; 
-            font-family: 'Tajawal', sans-serif; 
-            margin: 0; 
-            padding: 10px; 
-            padding-bottom: 120px; 
-            min-height: 100vh;
-        }
-        
-        .brand-header { 
-            font-size: 2.8rem; 
-            font-weight: 700;
-            background: linear-gradient(to bottom, #ffffff, #8b90af);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin: 30px 0; 
-        } 
-     .container { 
-            display: grid; grid-template-columns: 1fr 1fr; gap: 15px; 
-            max-width: 600px; margin: auto; padding: 10px; 
-        }
-        
-        .card { 
-            background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 24px; 
-            padding: 15px; display: flex; flex-direction: column; 
-            justify-content: space-between; transition: 0.3s;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-        }
+ <style>
+    body { 
+        /* الخلفية المتدرجة العميقة لبنك فيجن */
+        background: radial-gradient(circle at 50% 0%, #1a144e 0%, #07051a 100%) no-repeat fixed;
+        color: #ffffff; 
+        text-align: center; 
+        font-family: 'Tajawal', sans-serif; 
+        margin: 0; 
+        padding: 10px 10px 120px 10px; 
+        min-height: 100vh;
+    }
+    
+    .brand-header { 
+        font-size: 3rem; 
+        font-weight: 700;
+        background: linear-gradient(180deg, #ffffff 0%, #8b90af 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        margin: 40px 0; 
+        letter-spacing: 2px;
+    }
+    
+    .container { 
+        display: grid; grid-template-columns: 1fr 1fr; gap: 15px; 
+        max-width: 600px; margin: auto; 
+    }
+    
+    .card { 
+        /* تأثير الزجاج المتجمد الفاخر */
+        background: rgba(255, 255, 255, 0.03); 
+        backdrop-filter: blur(15px);
+        -webkit-backdrop-filter: blur(15px);
+        border: 1px solid rgba(255, 255, 255, 0.1); 
+        border-radius: 28px; 
+        padding: 15px; 
+        transition: 0.4s ease;
+        box-shadow: 0 15px 35px rgba(0,0,0,0.4);
+    }
 
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(0, 229, 255, 0.15);
-        }
-        
-        .card img { 
-            width: 100%; height: 180px; object-fit: cover; border-radius: 18px; margin-bottom: 12px; 
-        }
-        
-        .price { 
-            color: #00e5ff; font-weight: 700; font-size: 1.2rem; text-shadow: 0 0 10px rgba(0, 229, 255, 0.4);
-        }
-        
-        .product-title { font-size: 0.9rem; color: #ffffff; font-weight: bold; margin-bottom: 10px; }
+    .card:hover {
+        transform: translateY(-8px);
+        border-color: rgba(0, 229, 255, 0.4);
+        box-shadow: 0 20px 40px rgba(0, 229, 255, 0.1);
+    }
+    
+    .card img { 
+        width: 100%; height: 180px; object-fit: cover; border-radius: 20px; margin-bottom: 15px; 
+    }
+    
+    .price { 
+        color: #00e5ff; font-weight: 700; font-size: 1.3rem; 
+        text-shadow: 0 0 15px rgba(0, 229, 255, 0.5);
+        margin-bottom: 12px;
+    }
+    
+    .product-title { font-size: 1rem; color: #ffffff; font-weight: bold; margin-bottom: 12px; }
 
-        .btns { display: flex; flex-direction: column; gap: 8px; }
-        
-        .btn-add { 
-            background: linear-gradient(45deg, #00e5ff, #0097ff);
-            color: #0c0827; padding: 12px; border-radius: 14px; border: none; font-weight: bold; 
-            cursor: pointer; font-family: 'Tajawal', sans-serif; box-shadow: 0 4px 15px rgba(0, 229, 255, 0.3);
-        }
-        
-        .btn-info, .btn-vid { 
-            background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1);
-            color: #ffffff; padding: 8px; border-radius: 12px; text-decoration: none; font-size: 0.75rem;
-        }
+    .btns { display: flex; flex-direction: column; gap: 10px; }
+    
+    .btn-add { 
+        background: linear-gradient(90deg, #00e5ff 0%, #0080ff 100%);
+        color: #0c0827; padding: 14px; border-radius: 16px; border: none; font-weight: bold; 
+        cursor: pointer; font-family: 'Tajawal', sans-serif;
+        box-shadow: 0 5px 15px rgba(0, 229, 255, 0.3);
+    }
+    
+    .btn-info, .btn-vid { 
+        background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1);
+        color: #ffffff; padding: 10px; border-radius: 12px; text-decoration: none; font-size: 0.8rem;
+    }
 
-        #cart-bar { 
-            position: fixed; bottom: 0; left: 0; right: 0; 
-            background: rgba(0, 229, 255, 0.85); backdrop-filter: blur(15px);
-            color: #0c0827; padding: 15px 20px; display: none; justify-content: space-between; 
-            align-items: center; font-weight: bold; z-index: 1000; border-radius: 25px 25px 0 0; 
-        }
-        
-        .btn-order { 
-            background: #0c0827; color: #00e5ff; padding: 10px 20px; border-radius: 12px; 
-            text-decoration: none; font-size: 0.9rem; 
-        }
+    #cart-bar { 
+        position: fixed; bottom: 0; left: 0; right: 0; 
+        background: rgba(0, 229, 255, 0.9); backdrop-filter: blur(20px);
+        color: #0c0827; padding: 18px 25px; display: none; justify-content: space-between; 
+        align-items: center; font-weight: bold; z-index: 1000; border-radius: 30px 30px 0 0; 
+    }
+</style>
     </style>
 </head>
 <body>
