@@ -4,14 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EZWA Official Store</title>
-    <!-- استدعاء خط تجول العصري المناسب للهوية الرقمية البنكية -->
+    
+    <!-- خط تجول المتناسق مع الواجهات الرقمية الحديثة -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
-    
     <style>
         body { 
-            background-color: #030a16; /* أزرق داكن جداً ومطفي مستوحى من خلفيات التطبيقات البنكية */
+            background-color: #0c0827; /* البنفسجي الداكن لبنك فيجن */
             color: #ffffff; 
             text-align: center; 
             font-family: 'Tajawal', sans-serif; 
@@ -27,7 +27,6 @@
             margin: 25px 0; 
             font-weight: bold; 
         }
-        
         .container { 
             display: grid; 
             grid-template-columns: 1fr 1fr; 
@@ -38,9 +37,9 @@
         }
         
         .card { 
-            background: #091528; /* أزرق ملكي داكن للبطاقات */
-            border: 1px solid #142847; /* حدود ناعمة متناسقة */
-            border-radius: 16px; /* زوايا منحنية عصرية (FinTech Style) */
+            background: #17103f; /* درجة البنفسجي لبطاقات المنتجات */
+            border: 1px solid #281d62; 
+            border-radius: 16px; 
             padding: 12px; 
             display: flex; 
             flex-direction: column; 
@@ -54,11 +53,11 @@
             object-fit: cover; 
             border-radius: 12px; 
             margin-bottom: 10px; 
-            background: #030a16; 
+            background: #0c0827; 
         }
         
         .price { 
-            color: #00ff87; /* الأخضر الفسفوري الرقمي الخاص ببنك فيجن */
+            color: #00e5ff; /* السماوي المضيء للأسعار */
             font-weight: bold; 
             margin-bottom: 10px; 
             font-size: 1.1rem; 
@@ -70,7 +69,6 @@
             color: #ffffff; 
             font-weight: bold; 
         }
-        
         .btns { 
             display: flex; 
             flex-direction: column; 
@@ -78,8 +76,8 @@
         }
         
         .btn-add { 
-            background: #00ff87; /* زر الإضافة بالأخضر الفسفوري الذكي */
-            color: #030a16; 
+            background: #00e5ff; /* زر الإضافة بالسماوي المضيء */
+            color: #0c0827; 
             padding: 10px; 
             border-radius: 8px; 
             border: none; 
@@ -90,8 +88,8 @@
         }
         
         .btn-info { 
-            border: 1px solid #142847; 
-            color: #a4b8d4; 
+            border: 1px solid #281d62; 
+            color: #b7aee2; 
             padding: 7px; 
             border-radius: 8px; 
             cursor: pointer; 
@@ -101,15 +99,14 @@
         }
         
         .btn-vid { 
-            border: 1px solid #142847; 
-            color: #00ff87; 
+            border: 1px solid #281d62; 
+            color: #00e5ff; 
             padding: 7px; 
             border-radius: 8px; 
             text-decoration: none; 
             font-size: 0.7rem; 
             display: block; 
         }
-
         #details-modal { 
             display: none; 
             position: fixed; 
@@ -117,15 +114,15 @@
             left: 0; 
             width: 100%; 
             height: 100%; 
-            background: rgba(3, 10, 22, 0.95); 
+            background: rgba(12, 8, 39, 0.95); 
             z-index: 2000; 
             justify-content: center; 
             align-items: center; 
         }
         
         .modal-content { 
-            background: #091528; 
-            border: 1px solid #00ff87; 
+            background: #17103f; 
+            border: 1px solid #00e5ff; 
             padding: 25px; 
             border-radius: 20px; 
             width: 85%; 
@@ -135,8 +132,8 @@
         }
         
         .close-btn { 
-            background: #00ff87; 
-            color: #030a16; 
+            background: #00e5ff; 
+            color: #0c0827; 
             padding: 10px; 
             border-radius: 8px; 
             border: none; 
@@ -152,8 +149,8 @@
             bottom: 0; 
             left: 0; 
             right: 0; 
-            background: #00ff87; /* شريط السلة السفلي بلون فيجن المميز */
-            color: #030a16; 
+            background: #00e5ff; 
+            color: #0c0827; 
             padding: 15px 20px; 
             display: none; 
             justify-content: space-between; 
@@ -164,8 +161,8 @@
         }
         
         .btn-order { 
-            background: #030a16; 
-            color: #00ff87; 
+            background: #0c0827; 
+            color: #00e5ff; 
             padding: 10px 20px; 
             border-radius: 10px; 
             text-decoration: none; 
@@ -181,7 +178,7 @@
 
     <div id="details-modal">
         <div class="modal-content">
-            <h3 id="m-title" style="color: #00ff87;"></h3>
+            <h3 id="m-title" style="color: #00e5ff;"></h3>
             <p id="m-desc"></p>
             <p><strong>🧼 التعليمات:</strong> غسيل بارد - تجنب المبيض.</p>
             <p><strong>📏 المقاسات:</strong> S, M, L, XL, XXL (Oversize).</p>
@@ -193,7 +190,6 @@
         <div id="cart-info">القطع: 0 | المجموع: 0 ر.س</div>
         <a href="#" onclick="sendWhatsApp()" class="btn-order">إرسال الطلب ✅</a>
     </div>
-
     <script>
         const baseURL = "https://raw.githubusercontent.com/yusefna30-lgtm/ezwa-official/main/";
         const videoLink = "https://vt.tiktok.com/ZSxRBGRQT/";
@@ -208,7 +204,6 @@
         let cart = [];
         const grid = document.getElementById('products-grid');
 
-        // بناء بطاقات المنتجات
         products.forEach((p) => {
             grid.innerHTML += `
                 <div class="card">
@@ -245,7 +240,7 @@
         }
 
         function sendWhatsApp() {
-            let message = "أهلاً عزوة، أرغب في طلب المنتجات التالية (هوية فيجن):\n\n";
+            let message = "أهلاً عزوة، أرغب في طلب هذه المنتجات (هوية فيجن):\n\n";
             cart.forEach((p, i) => { message += `${i + 1}- ${p.name}\n`; });
             const total = cart.reduce((sum, p) => sum + p.price, 0);
             message += `\n💰 المجموع الإجمالي: ${total} ر.س`;
