@@ -10,68 +10,97 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
 <style>
+  <style>
     body { 
-        /* أسود ملكي عميق جداً */
         background: #050505 !important; 
-        background: radial-gradient(circle at 50% 0%, #0f1225 0%, #050505 100%) no-repeat fixed !important;
+        background: radial-gradient(circle at 50% 0%, #11142a 0%, #050505 100%) no-repeat fixed !important;
         color: #ffffff; 
         text-align: center; 
         font-family: 'Tajawal', sans-serif; 
         margin: 0; 
-        padding: 0 10px 120px 10px; 
-        min-height: 100vh;
+        padding: 0 10px 140px 10px; 
+        overflow-x: hidden; /* لمنع التمدد الجانبي */
     }
-    
+
     .brand-header { 
-        font-size: 3.5rem; 
+        font-size: 3rem; 
         font-weight: 900;
-        /* تدرج فضي تيتانيوم للنص */
         background: linear-gradient(180deg, #ffffff 30%, #a1a1a1 100%);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
-        margin: 50px 0; 
-        letter-spacing: 4px;
-    }
-    
-    .card { 
-        /* رمادي تيتانيوم غامق جداً مع شفافية بسيطة */
-        background: #0f0f0f; 
-        border: 1px solid #1f1f1f; 
-        border-radius: 30px; 
-        padding: 20px; 
-        transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+        margin: 40px 0; 
+        letter-spacing: 2px;
     }
 
-    .card:hover {
-        transform: translateY(-10px);
-        border-color: #00e5ff; /* لمعة سماوية عند المرور بالماوس */
-        box-shadow: 0 15px 45px rgba(0, 229, 255, 0.1);
+    .container { 
+        display: grid; 
+        grid-template-columns: 1fr 1fr; /* تقسيم الشاشة لنصفين */
+        gap: 12px; 
+        max-width: 500px; /* تحديد عرض المتجر لمنع التضخم */
+        margin: auto; 
     }
-    
+
+    .card { 
+        background: #0f0f0f; 
+        border: 1px solid #1f1f1f; 
+        border-radius: 20px; 
+        padding: 10px; 
+        display: flex; 
+        flex-direction: column; 
+        justify-content: space-between;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    }
+
+    .card img { 
+        width: 100%; 
+        height: 160px; /* تحديد طول ثابت للصورة */
+        object-fit: cover; /* لضمان عدم تمطط الصورة */
+        border-radius: 14px; 
+        margin-bottom: 10px;
+    }
+
+    .product-title { 
+        font-size: 0.85rem; 
+        font-weight: bold; 
+        margin-bottom: 5px; 
+    }
+
     .price { 
         color: #00e5ff; 
         font-weight: 800; 
-        font-size: 1.4rem; 
-        text-shadow: 0 0 20px rgba(0, 229, 255, 0.3);
+        font-size: 1.1rem; 
+        margin-bottom: 10px;
     }
-    
+
+    .btns { display: flex; flex-direction: column; gap: 6px; }
+
     .btn-add { 
-        /* أزرق سماوي مضيء جداً */
-        background: #00e5ff;
-        color: #000000; 
-        padding: 15px; 
-        border-radius: 18px; 
-        font-weight: 900;
-        box-shadow: 0 8px 20px rgba(0, 229, 255, 0.4);
+        background: #00e5ff; 
+        color: #000; 
+        border: none; 
+        padding: 10px; 
+        border-radius: 10px; 
+        font-weight: bold; 
+        font-size: 0.8rem;
     }
 
     .btn-info, .btn-vid { 
-        background: transparent; 
-        border: 1px solid #333;
+        background: rgba(255,255,255,0.05); 
         color: #888; 
-        padding: 10px; 
-        border-radius: 14px;
+        border: 1px solid #222; 
+        padding: 6px; 
+        border-radius: 8px; 
+        font-size: 0.7rem; 
+        text-decoration: none;
+    }
+
+    #cart-bar { 
+        position: fixed; bottom: 0; left: 0; right: 0; 
+        background: rgba(0, 229, 255, 0.9); 
+        backdrop-filter: blur(10px);
+        color: #000; padding: 15px; 
+        display: none; justify-content: space-between; align-items: center; 
+        z-index: 1000; border-radius: 20px 20px 0 0; 
     }
 </style>
 </head>
