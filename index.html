@@ -3,216 +3,226 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TOP GIVING | VISION IDENTITY</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;800&display=swap" rel="stylesheet">
+    <title>TOP GIVING | Wholesale</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
     <style>
-        /* --- الهوية البصرية (ألوان وتنسيقات بنكية) --- */
-        :root { 
-            --vision-gold: #D4AF37; 
-            --deep-black: #050505; 
-            --panel-bg: #111111;
-            --border-color: #222222;
-            --glass: rgba(255, 255, 255, 0.03);
-        }
-
-        body { 
-            font-family: 'Cairo', sans-serif; 
-            background: var(--deep-black); 
-            color: #ffffff; 
-            margin: 0; 
-            padding-bottom: 120px; 
-            letter-spacing: 0.5px;
-        }
-
-        /* رأس الصفحة - فخامة هادئة */
-        .brand-header { 
-            padding: 40px 0; 
-            border-bottom: 1px solid var(--border-color);
-            margin-bottom: 30px;
-        }
-        .brand-name { 
-            font-size: 2.5rem; 
-            font-weight: 800; 
-            color: var(--vision-gold); 
-            text-transform: uppercase;
-            margin: 0;
-        }
-
-        /* الشبكة العامة */
-        .main-container { max-width: 1200px; margin: 0 auto; padding: 0 15px; }
-        .product-grid { 
-            display: grid; 
-            grid-template-columns: repeat(2, 1fr); 
-            gap: 20px; 
-        }
-
-        /* بطاقة المنتج - تصميم هندسي */
-        .vision-card { 
-            background: var(--panel-bg); 
-            border: 1px solid var(--border-color);
-            border-radius: 4px; /* زوايا بنكية حادة قليلاً */
-            padding: 20px;
-            transition: all 0.4s ease;
-            position: relative;
-        }
-        .vision-card:hover {
-            border-color: var(--vision-gold);
-            background: #161616;
-        }
-
-        /* إطار الصورة - مساحة عرض نظيفة */
-        .image-frame { 
-            width: 100%; 
-            height: 220px; 
-            background: #ffffff; 
-            margin-bottom: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 2px;
-        }
-        .item-img { max-width: 85%; max-height: 85%; object-fit: contain; }
-
-        /* التحكم بالألوان - دوائر محددة */
-        .color-selector { display: flex; justify-content: center; gap: 10px; margin-bottom: 15px; }
-        .color-option { 
-            width: 20px; height: 20px; border-radius: 50%; 
-            border: 2px solid #333; cursor: pointer; transition: 0.3s;
-        }
-        .color-option.active { 
-            border-color: var(--vision-gold); 
-            transform: scale(1.2); 
-            box-shadow: 0 0 10px rgba(212, 175, 55, 0.4);
-        }
-
-        .item-title { 
-            font-size: 0.85rem; 
-            color: #888; 
-            text-transform: uppercase; 
-            margin-bottom: 15px; 
-            font-weight: 600;
-        }
-
-        /* لوحة التحكم بالكمية - تصميم بنكي منظم */
-        .transaction-box { 
-            display: flex; 
-            align-items: center; 
-            justify-content: space-between; 
-            background: var(--glass);
-            border: 1px solid var(--border-color);
-            padding: 8px 12px;
-            margin-bottom: 15px;
-        }
-        .action-btn { 
-            background: none; border: none; color: var(--vision-gold); 
-            font-size: 1.5rem; cursor: pointer; width: 30px; font-weight: 800;
-        }
-        .qty-display { font-size: 1.2rem; font-weight: 800; color: #fff; }
-
-        /* أزرار العمليات */
-        .order-btn { 
-            background: var(--vision-gold); 
-            color: #000; 
-            border: none; 
-            width: 100%; 
-            padding: 14px; 
-            font-weight: 800; 
-            font-size: 0.9rem;
-            cursor: pointer;
-            transition: 0.3s;
-            text-transform: uppercase;
-        }
-        .order-btn:hover { background: #b8972f; }
-
-        /* شريط الطلب السفلي */
-        .footer-bar { 
-            position: fixed; bottom: 0; left: 0; right: 0; 
-            background: rgba(5, 5, 5, 0.95); 
-            border-top: 1px solid var(--vision-gold); 
-            padding: 20px; display: none; z-index: 1000;
-            backdrop-filter: blur(10px);
-        }
-
-        @media (min-width: 992px) { .product-grid { grid-template-columns: repeat(4, 1fr); } }
+        /* المتغيرات البصرية الأساسية للمتجر */
+        :root { --gold: #D4AF37; --black: #000; --card-bg: #0c0c0e; --accent: #1a1a1a; }
+        
+        body { font-family: 'Cairo', sans-serif; background: var(--black); color: #fff; text-align: center; margin: 0; padding-bottom: 140px; }
+        .brand { font-size: 2.2rem; color: var(--gold); margin: 25px 0; font-weight: 900; letter-spacing: 3px; }
+        
+        /* تنسيق عناوين الأقسام */
+        .section-header { margin: 40px 0 25px; display: flex; align-items: center; justify-content: center; }
+        .section-header::before, .section-header::after { content: ""; height: 2px; width: 40px; background: var(--gold); margin: 0 15px; border-radius: 2px; }
+        .section-title { color: var(--gold); font-size: 1.2rem; font-weight: 700; }
+        
+        /* شبكة العرض والبطاقات (الهيكل الأصلي) */
+        .grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; max-width: 1400px; margin: 0 auto; padding: 0 10px; }
+        .card { background: var(--card-bg); padding: 12px; border-radius: 15px; border: 1px solid var(--accent); display: flex; flex-direction: column; justify-content: space-between; min-height: 430px; }
+        
+        /* الحفاظ على المربعات البيضاء الأصلية للصور وحجمها */
+        .img-box { width: 100%; height: 180px; border-radius: 12px; overflow: hidden; background: #fff; margin-bottom: 10px; display: flex; align-items: center; justify-content: center; }
+        .product-img { max-width: 100%; max-height: 100%; object-fit: contain; }
+        
+        /* دوائر اختيار الألوان وتوهج اللون النشط */
+        .color-dots { display: flex; justify-content: center; gap: 8px; margin-bottom: 10px; height: 35px; align-items: center; }
+        .dot { width: 22px; height: 22px; border-radius: 50%; border: 2px solid #333; cursor: pointer; transition: 0.2s; }
+        .dot.active { border-color: var(--gold); transform: scale(1.1); box-shadow: 0 0 6px var(--gold); }
+        
+        /* تنسيق لوحة التحكم بالكمية للجملة (+ و - و الرقم) */
+        .qty-control { display: flex; align-items: center; justify-content: center; gap: 15px; margin-bottom: 12px; background: #151515; padding: 8px; border-radius: 10px; }
+        .btn-q { background: #252525; color: var(--gold); border: none; width: 32px; height: 32px; border-radius: 8px; cursor: pointer; font-size: 1.2rem; font-weight: bold; }
+        .q-val { color: #fff; font-weight: 900; min-width: 32px; font-size: 1.1rem; }
+        
+        /* أزرار الطلب والسلة السفلي */
+        .btn-add { background: linear-gradient(135deg, #D4AF37, #8A6D3B); color: #000; padding: 12px; border-radius: 10px; font-weight: 900; border: none; width: 100%; cursor: pointer; }
+        @media (min-width: 992px) { .grid { grid-template-columns: repeat(4, 1fr); gap: 20px; } .img-box { height: 220px; } }
+        .cart-bar { position: fixed; bottom: 0; left: 0; right: 0; background: rgba(10, 10, 10, 0.95); border-top: 2px solid var(--gold); padding: 15px; display: none; z-index: 1000; }
     </style>
 </head>
-<body>
+<body onload="initDefaults()">
 
-    <header class="brand-header">
-        <h1 class="brand-name">TOP GIVING</h1>
-    </header>
+    <div class="brand">TOP GIVING</div>
 
-    <div class="main-container">
-        <div class="product-grid" id="vision-grid">
-            </div>
-    </div>
-
-    <div id="footer-bar" class="footer-bar">
-        <button class="order-btn" onclick="checkout()" style="max-width: 400px; margin: 0 auto; display: block; background: #fff;">إرسال ملف الطلب عبر واتساب</button>
-    </div>
-
-<script>
-    // بيانات المنتجات بنفس ترتيبك الأصلي
-    const data = [
-        { id: '01', name: 'MODEL 01 / OVERSYZE', img: 't1-white.png', colors: [{n:'أبيض', h:'#fff', i:'t1-white.png'}, {n:'أسود', h:'#000', i:'t1-black.png'}, {n:'أزرق', h:'#00f', i:'t1-blue.png'}] },
-        { id: '02', name: 'MODEL 02 / OVERSYZE', img: 't2-purple.png.png', colors: [{n:'بنفسجي', h:'#A020F0', i:'t2-purple.png.png'}, {n:'أبيض', h:'#fff', i:'t2-white.png.png'}, {n:'أسود', h:'#000', i:'t2-black.png.png'}] },
-        { id: '03', name: 'MODEL 03 / OVERSYZE', img: 'te3-beige.png.png', colors: [{n:'بيج', h:'#F5F5DC', i:'te3-beige.png.png'}, {n:'أسود', h:'#000', i:'te1-black.png.png'}] },
-        { id: '04', name: 'MODEL 04 / OVERSYZE', img: 'tr1-red.png.png', colors: [{n:'أحمر', h:'#BA1313', i:'tr1-red.png.png'}, {n:'أسود', h:'#000', i:'tr2-black.png.png'}] },
-        { id: '05', name: 'MODEL 05 / OVERSYZE', img: 'n5-white.png.png', colors: [{n:'أبيض', h:'#fff', i:'n5-white.png.png'}, {n:'أسود', h:'#000', i:'n5-black.png.png'}] },
-        { id: 'sm', name: 'PREMIUM SET / SM', img: 'Picsart_26-05-28_16-28-24-642.jpg', colors: [{n:'أسود', h:'#000', i:'Picsart_26-05-28_16-28-24-642.jpg'}, {n:'سكري', h:'#FFFDD0', i:'Picsart_26-05-28_16-26-55-580.jpg'}] }
-    ];
-
-    let basket = {}; let currentSpecs = {};
-
-    const grid = document.getElementById('vision-grid');
-    data.forEach(p => {
-        currentSpecs[p.id] = { color: p.colors[0].n, qty: 16 };
+    <!-- ================= تيشيرتات OVERSYZE ================= -->
+    <div class="section-header"><div class="section-title">تيشيرتات OVERSYZE</div></div>
+    <div class="grid">
         
-        const card = document.createElement('div');
-        card.className = 'vision-card';
-        card.innerHTML = `
-            <div class="image-frame"><img src="${p.img}" id="view-${p.id}" class="item-img"></div>
-            <div class="color-selector">${p.colors.map(c => `<div class="color-option" style="background:${c.h}" onclick="changeVariant('${p.id}','${c.i}','${c.n}',this)"></div>`).join('')}</div>
-            <div class="item-title">${p.name}</div>
-            <div class="transaction-box">
-                <button class="action-btn" onclick="updateAmount('${p.id}',-16)">-</button>
-                <span class="qty-display" id="num-${p.id}">16</span>
-                <button class="action-btn" onclick="updateAmount('${p.id}',16)">+</button>
+        <!-- موديل 01 -->
+        <div class="card">
+            <div class="img-box"><img src="t1-white.png" id="img-01" class="product-img"></div>
+            <div class="color-dots">
+                <div class="dot active" style="background: #fff;" onclick="upd('01','t1-white.png','أبيض',this)"></div>
+                <div class="dot" style="background: #000;" onclick="upd('01','t1-black.png','أسود',this)"></div>
+                <div class="dot" style="background: #0000FF;" onclick="upd('01','t1-blue.png','أزرق',this)"></div>
+                <div class="dot" style="background: #DAA520;" onclick="upd('01','t1-yellow.png','خردلي',this)"></div>
             </div>
-            <button class="order-btn" onclick="addToBasket('${p.id}', '${p.name}')">إضافة للمحفظة</button>
-        `;
-        grid.appendChild(card);
-    });
+            <div class="model-name">موديل 01</div>
+            <div class="qty-control">
+                <button class="btn-q" onclick="chg('q01',-16)">-</button>
+                <span id="q01" class="q-val">16</span>
+                <button class="btn-q" onclick="chg('q01',16)">+</button>
+            </div>
+            <button class="btn-add" onclick="buy('01','موديل 01','q01')">إضافة للطلب</button>
+        </div>
 
-    function changeVariant(id, img, cName, el) {
-        document.getElementById('view-'+id).src = img;
-        el.parentElement.querySelectorAll('.color-option').forEach(o => o.classList.remove('active'));
-        el.classList.add('active');
-        currentSpecs[id].color = cName;
-    }
+        <!-- موديل 02 -->
+        <div class="card">
+            <div class="img-box"><img src="t2-purple.png.png" id="img-02" class="product-img"></div>
+            <div class="color-dots">
+                <div class="dot active" style="background: #A020F0;" onclick="upd('02','t2-purple.png.png','بنفسجي',this)"></div>
+                <div class="dot" style="background: #fff;" onclick="upd('02','t2-white.png.png','أبيض',this)"></div>
+                <div class="dot" style="background: #000;" onclick="upd('02','t2-black.png.png','أسود',this)"></div>
+                <div class="dot" style="background: #808080;" onclick="upd('02','t1-white.png','رصاصي',this)"></div>
+            </div>
+            <div class="model-name">موديل 02</div>
+            <div class="qty-control">
+                <button class="btn-q" onclick="chg('q02',-16)">-</button>
+                <span id="q02" class="q-val">16</span>
+                <button class="btn-q" onclick="chg('q02',16)">+</button>
+            </div>
+            <button class="btn-add" onclick="buy('02','موديل 02','q02')">إضافة للطلب</button>
+        </div>
 
-    function updateAmount(id, val) {
-        let n = currentSpecs[id].qty + val;
-        if (n < 16) n = 16;
-        currentSpecs[id].qty = n;
-        document.getElementById('num-'+id).innerText = n;
-    }
+        <!-- موديل 03 -->
+        <div class="card">
+            <div class="img-box"><img src="te3-beige.png.png" id="img-03" class="product-img"></div>
+            <div class="color-dots">
+                <div class="dot active" style="background: #F5F5DC;" onclick="upd('03','te3-beige.png.png','بيج',this)"></div>
+                <div class="dot" style="background: #000;" onclick="upd('03','te1-black.png.png','أسود',this)"></div>
+                <div class="dot" style="background: #fff;" onclick="upd('03','te4-white.png.png','أبيض',this)"></div>
+                <div class="dot" style="background: #87CEEB;" onclick="upd('03','te2-blue.png.png','سماوي',this)"></div>
+            </div>
+            <div class="model-name">موديل 03</div>
+            <div class="qty-control">
+                <button class="btn-q" onclick="chg('q03',-16)">-</button>
+                <span id="q03" class="q-val">16</span>
+                <button class="btn-q" onclick="chg('q03',16)">+</button>
+            </div>
+            <button class="btn-add" onclick="buy('03','موديل 03','q03')">إضافة للطلب</button>
+        </div>
 
-    function addToBasket(id, name) {
-        const spec = currentSpecs[id];
-        basket[`${id}_${spec.color}`] = { name: name, color: spec.color, qty: spec.qty };
-        document.getElementById('footer-bar').style.display = 'block';
-        alert("تم التجهيز بنجاح");
-    }
+        <!-- موديل 04 -->
+        <div class="card">
+            <div class="img-box"><img src="tr1-red.png.png" id="img-04" class="product-img"></div>
+            <div class="color-dots">
+                <div class="dot active" style="background: #BA1313;" onclick="upd('04','tr1-red.png.png','أحمر',this)"></div>
+                <div class="dot" style="background: #000;" onclick="upd('04','tr2-black.png.png','أسود',this)"></div>
+                <div class="dot" style="background: #fff;" onclick="upd('04','tr4-white.png.png','أبيض',this)"></div>
+                <div class="dot" style="background: #808080;" onclick="upd('04','tr3-grey.png.png','رصاصي',this)"></div>
+            </div>
+            <div class="model-name">موديل 04</div>
+            <div class="qty-control">
+                <button class="btn-q" onclick="chg('q04',-16)">-</button>
+                <span id="q04" class="q-val">16</span>
+                <button class="btn-q" onclick="chg('q04',16)">+</button>
+            </div>
+            <button class="btn-add" onclick="buy('04','موديل 04','q04')">إضافة للطلب</button>
+        </div>
 
-    function checkout() {
-        let text = "🏛️ طلب توريد جديد - TOP GIVING\n";
-        text += "==========================\n";
-        for (let k in basket) {
-            text += `🔹 ${basket[k].name}\n   اللون: ${basket[k].color} | الكمية: ${basket[k].qty}\n`;
+        <!-- موديل 05 -->
+        <div class="card">
+            <div class="img-box"><img src="n5-white.png.png" id="img-05" class="product-img"></div>
+            <div class="color-dots">
+                <div class="dot active" style="background: #fff;" onclick="upd('05','n5-white.png.png','أبيض',this)"></div>
+                <div class="dot" style="background: #000;" onclick="upd('05','n5-black.png.png','أسود',this)"></div>
+                <div class="dot" style="background: #A020F0;" onclick="upd('05','n5-purple.png.png','بنفسجي',this)"></div>
+                <div class="dot" style="background: #808080;" onclick="upd('05','n6-grey.png.png','رصاصي',this)"></div>
+            </div>
+            <div class="model-name">موديل 05</div>
+            <div class="qty-control">
+                <button class="btn-q" onclick="chg('q05',-16)">-</button>
+                <span id="q05" class="q-val">16</span>
+                <button class="btn-q" onclick="chg('q05',16)">+</button>
+            </div>
+            <button class="btn-add" onclick="buy('05','موديل 05','q05')">إضافة للطلب</button>
+        </div>
+
+    </div>
+
+    <!-- ================= الأطقم الرجالية ================= -->
+    <div class="section-header"><div class="section-title">الأطقم الرجالية</div></div>
+    <div class="grid">
+        
+        <!-- طقم SM0242 -->
+        <div class="card">
+            <div class="img-box"><img src="Picsart_26-05-28_16-28-24-642.jpg" id="img-sm" class="product-img"></div>
+            <div class="color-dots">
+                <div class="dot active" style="background: #000;" onclick="upd('sm','Picsart_26-05-28_16-28-24-642.jpg','أسود',this)"></div>
+                <div class="dot" style="background: #FFFDD0;" onclick="upd('sm','Picsart_26-05-28_16-26-55-580.jpg','سكري',this)"></div>
+                <div class="dot" style="background: #0000FF;" onclick="upd('sm','Picsart_26-05-28_16-26-21-567.jpg','أزرق',this)"></div>
+                <div class="dot" style="background: #808080;" onclick="upd('sm','Picsart_26-05-28_16-27-32-471.jpg','رصاصي',this)"></div>
+            </div>
+            <div class="model-name">طقم رجالي طويل SM0242</div>
+            <div class="qty-control">
+                <button class="btn-q" onclick="chg('qsm',-16)">-</button>
+                <span id="qsm" class="q-val">16</span>
+                <button class="btn-q" onclick="chg('qsm',16)">+</button>
+            </div>
+            <button class="btn-add" onclick="buy('sm','طقم رجالي طويل SM0242','qsm')">إضافة للطلب</button>
+        </div>
+
+    </div>
+
+    <!-- شريط السلة السفلي -->
+    <div id="cart-bar" class="cart-bar">
+        <button class="btn-add" onclick="sendWA()" style="background:#fff; color:#000;">إرسال عبر واتساب</button>
+    </div>
+
+    <!-- ================= العمليات البرمجية JavaScript ================= -->
+    <script>
+        let cart = {}; 
+        let selColors = {};
+
+        // تهيئة الألوان الافتراضية لكل منتج عند فتح الصفحة لمنع تداخل ألوان الموديلات
+        function initDefaults() { 
+            selColors['01']='أبيض'; 
+            selColors['02']='بنفسجي'; 
+            selColors['03']='بيج'; 
+            selColors['04']='أحمر'; 
+            selColors['05']='أبيض'; 
+            selColors['sm']='أسود'; 
         }
-        window.open(`https://wa.me/966560564719?text=${encodeURIComponent(text)}`);
-    }
-</script>
+
+        // دالة تغيير الصورة واللون المختار عند الضغط على الدائرة الملونة
+        function upd(id, src, colorName, el) {
+            let img = document.getElementById('img-' + id);
+            if(img) img.src = src;
+            
+            // إزالة كلاس التنشيط عن باقي الأزرار وإضافته للزر الحالي
+            el.parentElement.querySelectorAll('.dot').forEach(d => d.classList.remove('active'));
+            el.classList.add('active'); 
+            selColors[id] = colorName;
+        }
+
+        // دالة الزيادة والنقصان بمقدار 16 حبة لشد الجملة
+        function chg(id, v) {
+            let q = document.getElementById(id); 
+            let res = parseInt(q.innerText) + v;
+            if(res < 16) res = 16; // التأكد من عدم النزول عن الحد الأدنى للشد وهو 16
+            q.innerText = res;
+        }
+
+        // دالة حفظ خيارات العميل داخل السلة وإظهار الشريط السفلي للطلب
+        function buy(id, name, qId) {
+            let color = selColors[id] || "أساسي";
+            let qty = document.getElementById(qId).innerText;
+            
+            // دمج المعرف واللون لإنشاء عنصر فريد بالطلب
+            cart[id + '_' + color] = { name: name, color: color, qty: qty };
+            document.getElementById('cart-bar').style.display = 'block';
+            alert("تمت إضافة الموديل إلى قائمة طلبك بنجاح");
+        }
+
+        // دالة توليد نص الطلب وإرساله منسقاً بالكامل لتبسيط القراءة على الواتساب
+        function sendWA() {
+            let lines = []; 
+            for (let k in cart) { 
+                lines.push(`• ${cart[k].name} (${cart[k].color}) x${cart[k].qty}`); 
+            }
+            window.location.href = "https://wa.me/966560564719?text=" + encodeURIComponent("طلب جملة جديد:\n" + lines.join("\n"));
+        }
+    </script>
 </body>
 </html>
