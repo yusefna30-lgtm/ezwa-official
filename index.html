@@ -3,105 +3,216 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EZWA Official Store</title>
+    <title>TOP GIVING | VISION IDENTITY</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;800&display=swap" rel="stylesheet">
     <style>
-        body { background-color: #000; color: #fff; text-align: center; font-family: sans-serif; margin: 0; padding: 10px; padding-bottom: 120px; }
-        .brand-header { font-size: 3rem; color: #D4AF37; letter-spacing: -3px; margin: 25px 0; font-weight: bold; }
-        .container { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; max-width: 600px; margin: auto; padding: 10px; }
-        .card { background: #0a0a0a; border: 1px solid #1a1a1a; border-radius: 15px; padding: 12px; display: flex; flex-direction: column; justify-content: space-between; transition: 0.3s; }
-        .card img { width: 100%; height: 180px; object-fit: cover; border-radius: 10px; margin-bottom: 10px; background: #111; }
-        .price { color: #D4AF37; font-weight: bold; margin-bottom: 10px; font-size: 1rem; }
-        .product-title { font-size: 0.85rem; margin-bottom: 8px; color: #eee; font-weight: bold; }
-        
-        .btns { display: flex; flex-direction: column; gap: 8px; }
-        .btn-add { background: #D4AF37; color: #000; padding: 10px; border-radius: 6px; border: none; font-weight: bold; cursor: pointer; font-size: 0.75rem; }
-        .btn-info { border: 1px solid #333; color: #fff; padding: 7px; border-radius: 6px; cursor: pointer; background: none; font-size: 0.65rem; }
-        .btn-vid { border: 1px solid #222; color: #D4AF37; padding: 7px; border-radius: 6px; text-decoration: none; font-size: 0.65rem; display: block; }
+        /* --- الهوية البصرية (ألوان وتنسيقات بنكية) --- */
+        :root { 
+            --vision-gold: #D4AF37; 
+            --deep-black: #050505; 
+            --panel-bg: #111111;
+            --border-color: #222222;
+            --glass: rgba(255, 255, 255, 0.03);
+        }
 
-        #details-modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); z-index: 2000; justify-content: center; align-items: center; }
-        .modal-content { background: #111; border: 1px solid #D4AF37; padding: 25px; border-radius: 20px; width: 85%; max-width: 400px; text-align: right; line-height: 1.6; }
-        .close-btn { background: #D4AF37; color: #000; padding: 10px; border-radius: 5px; border: none; cursor: pointer; margin-top: 20px; width: 100%; font-weight: bold; }
-        
-        #cart-bar { position: fixed; bottom: 0; left: 0; right: 0; background: #D4AF37; color: #000; padding: 15px 20px; display: none; justify-content: space-between; align-items: center; font-weight: bold; z-index: 1000; border-radius: 20px 20px 0 0; }
-        .btn-order { background: #000; color: #D4AF37; padding: 10px 20px; border-radius: 8px; text-decoration: none; font-size: 0.9rem; }
+        body { 
+            font-family: 'Cairo', sans-serif; 
+            background: var(--deep-black); 
+            color: #ffffff; 
+            margin: 0; 
+            padding-bottom: 120px; 
+            letter-spacing: 0.5px;
+        }
+
+        /* رأس الصفحة - فخامة هادئة */
+        .brand-header { 
+            padding: 40px 0; 
+            border-bottom: 1px solid var(--border-color);
+            margin-bottom: 30px;
+        }
+        .brand-name { 
+            font-size: 2.5rem; 
+            font-weight: 800; 
+            color: var(--vision-gold); 
+            text-transform: uppercase;
+            margin: 0;
+        }
+
+        /* الشبكة العامة */
+        .main-container { max-width: 1200px; margin: 0 auto; padding: 0 15px; }
+        .product-grid { 
+            display: grid; 
+            grid-template-columns: repeat(2, 1fr); 
+            gap: 20px; 
+        }
+
+        /* بطاقة المنتج - تصميم هندسي */
+        .vision-card { 
+            background: var(--panel-bg); 
+            border: 1px solid var(--border-color);
+            border-radius: 4px; /* زوايا بنكية حادة قليلاً */
+            padding: 20px;
+            transition: all 0.4s ease;
+            position: relative;
+        }
+        .vision-card:hover {
+            border-color: var(--vision-gold);
+            background: #161616;
+        }
+
+        /* إطار الصورة - مساحة عرض نظيفة */
+        .image-frame { 
+            width: 100%; 
+            height: 220px; 
+            background: #ffffff; 
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 2px;
+        }
+        .item-img { max-width: 85%; max-height: 85%; object-fit: contain; }
+
+        /* التحكم بالألوان - دوائر محددة */
+        .color-selector { display: flex; justify-content: center; gap: 10px; margin-bottom: 15px; }
+        .color-option { 
+            width: 20px; height: 20px; border-radius: 50%; 
+            border: 2px solid #333; cursor: pointer; transition: 0.3s;
+        }
+        .color-option.active { 
+            border-color: var(--vision-gold); 
+            transform: scale(1.2); 
+            box-shadow: 0 0 10px rgba(212, 175, 55, 0.4);
+        }
+
+        .item-title { 
+            font-size: 0.85rem; 
+            color: #888; 
+            text-transform: uppercase; 
+            margin-bottom: 15px; 
+            font-weight: 600;
+        }
+
+        /* لوحة التحكم بالكمية - تصميم بنكي منظم */
+        .transaction-box { 
+            display: flex; 
+            align-items: center; 
+            justify-content: space-between; 
+            background: var(--glass);
+            border: 1px solid var(--border-color);
+            padding: 8px 12px;
+            margin-bottom: 15px;
+        }
+        .action-btn { 
+            background: none; border: none; color: var(--vision-gold); 
+            font-size: 1.5rem; cursor: pointer; width: 30px; font-weight: 800;
+        }
+        .qty-display { font-size: 1.2rem; font-weight: 800; color: #fff; }
+
+        /* أزرار العمليات */
+        .order-btn { 
+            background: var(--vision-gold); 
+            color: #000; 
+            border: none; 
+            width: 100%; 
+            padding: 14px; 
+            font-weight: 800; 
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: 0.3s;
+            text-transform: uppercase;
+        }
+        .order-btn:hover { background: #b8972f; }
+
+        /* شريط الطلب السفلي */
+        .footer-bar { 
+            position: fixed; bottom: 0; left: 0; right: 0; 
+            background: rgba(5, 5, 5, 0.95); 
+            border-top: 1px solid var(--vision-gold); 
+            padding: 20px; display: none; z-index: 1000;
+            backdrop-filter: blur(10px);
+        }
+
+        @media (min-width: 992px) { .product-grid { grid-template-columns: repeat(4, 1fr); } }
     </style>
 </head>
 <body>
 
-    <div class="brand-header">EZWA</div>
-    <div class="container" id="products-grid"></div>
+    <header class="brand-header">
+        <h1 class="brand-name">TOP GIVING</h1>
+    </header>
 
-    <div id="details-modal">
-        <div class="modal-content">
-            <h3 id="m-title" style="color: #D4AF37;"></h3>
-            <p id="m-desc"></p>
-            <p><strong>🧼 التعليمات:</strong> غسيل بارد - تجنب المبيض.</p>
-            <p><strong>📏 المقاسات:</strong> S, M, L, XL, XXL (Oversize).</p>
-            <button class="close-btn" onclick="closeModal()">إغلاق</button>
-        </div>
+    <div class="main-container">
+        <div class="product-grid" id="vision-grid">
+            </div>
     </div>
 
-    <div id="cart-bar">
-        <div id="cart-info">القطع: 0 | المجموع: 0 ر.س</div>
-        <a href="#" onclick="sendWhatsApp()" class="btn-order">إرسال الطلب ✅</a>
+    <div id="footer-bar" class="footer-bar">
+        <button class="order-btn" onclick="checkout()" style="max-width: 400px; margin: 0 auto; display: block; background: #fff;">إرسال ملف الطلب عبر واتساب</button>
     </div>
 
-    <script>
-        const baseURL = "https://raw.githubusercontent.com/yusefna30-lgtm/ezwa-official/main/";
-        const videoLink = "https://vt.tiktok.com/ZSxRBGRQT/"; // ضع رابط تيك توك هنا
+<script>
+    // بيانات المنتجات بنفس ترتيبك الأصلي
+    const data = [
+        { id: '01', name: 'MODEL 01 / OVERSYZE', img: 't1-white.png', colors: [{n:'أبيض', h:'#fff', i:'t1-white.png'}, {n:'أسود', h:'#000', i:'t1-black.png'}, {n:'أزرق', h:'#00f', i:'t1-blue.png'}] },
+        { id: '02', name: 'MODEL 02 / OVERSYZE', img: 't2-purple.png.png', colors: [{n:'بنفسجي', h:'#A020F0', i:'t2-purple.png.png'}, {n:'أبيض', h:'#fff', i:'t2-white.png.png'}, {n:'أسود', h:'#000', i:'t2-black.png.png'}] },
+        { id: '03', name: 'MODEL 03 / OVERSYZE', img: 'te3-beige.png.png', colors: [{n:'بيج', h:'#F5F5DC', i:'te3-beige.png.png'}, {n:'أسود', h:'#000', i:'te1-black.png.png'}] },
+        { id: '04', name: 'MODEL 04 / OVERSYZE', img: 'tr1-red.png.png', colors: [{n:'أحمر', h:'#BA1313', i:'tr1-red.png.png'}, {n:'أسود', h:'#000', i:'tr2-black.png.png'}] },
+        { id: '05', name: 'MODEL 05 / OVERSYZE', img: 'n5-white.png.png', colors: [{n:'أبيض', h:'#fff', i:'n5-white.png.png'}, {n:'أسود', h:'#000', i:'n5-black.png.png'}] },
+        { id: 'sm', name: 'PREMIUM SET / SM', img: 'Picsart_26-05-28_16-28-24-642.jpg', colors: [{n:'أسود', h:'#000', i:'Picsart_26-05-28_16-28-24-642.jpg'}, {n:'سكري', h:'#FFFDD0', i:'Picsart_26-05-28_16-26-55-580.jpg'}] }
+    ];
 
-        const products = [
-            { id: 1, name: "GHOST", img: "TSHIRT GHOST.png", price: 115, desc: "لون رملي مميز - قصة واسعة مريحة" },
-            { id: 2, name: "PURE", img: "TSHIRT PURE.png", price: 115, desc: "قطن فاخر 100% - رسم تجريدي على الظهر" },
-            { id: 3, name: "FLOW", img: "TSHIRT FLOW.png", price: 115, desc: "ضربة فرشاة فنية - قماش معالج" },
-            { id: 4, name: "MIND", img: "TSHIRT DATA.png", price: 115, desc: "تصميم فني عصري - إصدار محدود" }
-        ];
+    let basket = {}; let currentSpecs = {};
 
-        let cart = [];
-        const grid = document.getElementById('products-grid');
+    const grid = document.getElementById('vision-grid');
+    data.forEach(p => {
+        currentSpecs[p.id] = { color: p.colors[0].n, qty: 16 };
+        
+        const card = document.createElement('div');
+        card.className = 'vision-card';
+        card.innerHTML = `
+            <div class="image-frame"><img src="${p.img}" id="view-${p.id}" class="item-img"></div>
+            <div class="color-selector">${p.colors.map(c => `<div class="color-option" style="background:${c.h}" onclick="changeVariant('${p.id}','${c.i}','${c.n}',this)"></div>`).join('')}</div>
+            <div class="item-title">${p.name}</div>
+            <div class="transaction-box">
+                <button class="action-btn" onclick="updateAmount('${p.id}',-16)">-</button>
+                <span class="qty-display" id="num-${p.id}">16</span>
+                <button class="action-btn" onclick="updateAmount('${p.id}',16)">+</button>
+            </div>
+            <button class="order-btn" onclick="addToBasket('${p.id}', '${p.name}')">إضافة للمحفظة</button>
+        `;
+        grid.appendChild(card);
+    });
 
-        products.forEach((p) => {
-            grid.innerHTML += `
-                <div class="card">
-                    <img src="${baseURL + encodeURIComponent(p.img)}" alt="${p.name}">
-                    <div class="product-title">${p.name}</div>
-                    <div class="price">${p.price} ر.س</div>
-                    <div class="btns">
-                        <button class="btn-add" onclick="addToCart(${p.id})">➕ أضف للطلب</button>
-                        <button class="btn-info" onclick="showDetails('${p.name}', '${p.desc}')">ℹ️ التفاصيل</button>
-                        <a href="${videoLink}" target="_blank" class="btn-vid">🎬 مشاهدة فيديو</a>
-                    </div>
-                </div>
-            `;
-        });
+    function changeVariant(id, img, cName, el) {
+        document.getElementById('view-'+id).src = img;
+        el.parentElement.querySelectorAll('.color-option').forEach(o => o.classList.remove('active'));
+        el.classList.add('active');
+        currentSpecs[id].color = cName;
+    }
 
-        function showDetails(name, desc) {
-            document.getElementById('m-title').innerText = name;
-            document.getElementById('m-desc').innerHTML = "<strong>🧶 الوصف:</strong> " + desc;
-            document.getElementById('details-modal').style.display = 'flex';
+    function updateAmount(id, val) {
+        let n = currentSpecs[id].qty + val;
+        if (n < 16) n = 16;
+        currentSpecs[id].qty = n;
+        document.getElementById('num-'+id).innerText = n;
+    }
+
+    function addToBasket(id, name) {
+        const spec = currentSpecs[id];
+        basket[`${id}_${spec.color}`] = { name: name, color: spec.color, qty: spec.qty };
+        document.getElementById('footer-bar').style.display = 'block';
+        alert("تم التجهيز بنجاح");
+    }
+
+    function checkout() {
+        let text = "🏛️ طلب توريد جديد - TOP GIVING\n";
+        text += "==========================\n";
+        for (let k in basket) {
+            text += `🔹 ${basket[k].name}\n   اللون: ${basket[k].color} | الكمية: ${basket[k].qty}\n`;
         }
-
-        function closeModal() { document.getElementById('details-modal').style.display = 'none'; }
-
-        function addToCart(productId) {
-            const product = products.find(p => p.id === productId);
-            cart.push(product);
-            document.getElementById('cart-bar').style.display = 'flex';
-            updateCartBar();
-        }
-
-        function updateCartBar() {
-            const total = cart.reduce((sum, p) => sum + p.price, 0);
-            document.getElementById('cart-info').innerText = `القطع: ${cart.length} | المجموع: ${total} ر.س`;
-        }
-
-        function sendWhatsApp() {
-            let message = "أهلاً عزوة، أرغب في طلب:\n\n";
-            cart.forEach((p, i) => { message += `${i + 1}- ${p.name}\n`; });
-            const total = cart.reduce((sum, p) => sum + p.price, 0);
-            message += `\n💰 المجموع الإجمالي: ${total} ر.س`;
-            window.open(`https://wa.me/966502777884?text=${encodeURIComponent(message)}`, '_blank');
-        }
-    </script>
+        window.open(`https://wa.me/966560564719?text=${encodeURIComponent(text)}`);
+    }
+</script>
 </body>
 </html>
