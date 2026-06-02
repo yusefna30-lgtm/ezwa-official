@@ -12,10 +12,10 @@
             color: #ffffff; text-align: center; font-family: 'Tajawal', sans-serif; padding: 20px 10px 150px 10px; min-height: 100vh;
         }
         
-        /* حركة الخلفية المتحركة */
-        @keyframes shadow-move {
+        /* حركة التوهج خلف الصور */
+        @keyframes glow-pulse {
             0% { box-shadow: 0 0 20px rgba(0, 229, 255, 0.1); }
-            50% { box-shadow: 0 0 40px rgba(0, 151, 255, 0.2); }
+            50% { box-shadow: 0 0 45px rgba(0, 151, 255, 0.25); }
             100% { box-shadow: 0 0 20px rgba(0, 229, 255, 0.1); }
         }
 
@@ -27,19 +27,19 @@
             background: #0a0a0a; border: 1px solid #1a1a1a; border-radius: 25px; padding: 12px; 
             display: flex; flex-direction: column; justify-content: space-between;
             transition: 0.3s; 
-            animation: shadow-move 4s infinite ease-in-out; /* الظل المتحرك */
+            animation: glow-pulse 4s infinite ease-in-out;
         }
         
-        .card:hover { border-color: #00e5ff; box-shadow: 0 0 30px rgba(0, 229, 255, 0.5) !important; transform: translateY(-5px); }
+        .card:hover { border-color: #00e5ff; box-shadow: 0 0 35px rgba(0, 229, 255, 0.5) !important; transform: translateY(-5px); }
 
         .img-container { position: relative; width: 100%; height: 170px; margin-bottom: 12px; overflow: hidden; border-radius: 18px; }
         
-        /* تدرج لوني متحرك خلف الصورة مباشرة */
+        /* الشادو المتحرك الدوار خلف التيشيرت */
         .img-container::before {
             content: ""; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%;
-            background: conic-gradient(from 180deg, #00e5ff, #001eff, #00e5ff);
-            animation: rotate-bg 6s linear infinite;
-            opacity: 0.1; z-index: 0;
+            background: conic-gradient(from 180deg, transparent, #00e5ff, transparent, #001eff, transparent);
+            animation: rotate-bg 8s linear infinite;
+            opacity: 0.15; z-index: 0;
         }
         @keyframes rotate-bg { 100% { transform: rotate(360deg); } }
 
@@ -47,10 +47,10 @@
         
         .zoom-icon { position: absolute; top: 8px; right: 8px; background: rgba(0,0,0,0.6); color: #00e5ff; padding: 5px; border-radius: 50%; cursor: pointer; font-size: 12px; border: 1px solid #00e5ff; z-index: 5; }
 
-        .product-title { font-size: 0.9rem; font-weight: 700; color: #ffffff; margin-bottom: 5px; }
-        .price { color: #00e5ff; font-weight: 800; font-size: 1.1rem; margin-bottom: 10px; text-shadow: 0 0 10px rgba(0, 229, 255, 0.5); }
+        .product-title { font-size: 0.95rem; font-weight: 700; color: #ffffff; margin-bottom: 5px; }
+        .price { color: #00e5ff; font-weight: 800; font-size: 1.15rem; margin-bottom: 10px; text-shadow: 0 0 10px rgba(0, 229, 255, 0.5); }
         
-        .qty-control { display: flex; align-items: center; justify-content: center; gap: 10px; margin-bottom: 12px; background: rgba(255,255,255,0.05); padding: 5px; border-radius: 12px; }
+        .qty-control { display: flex; align-items: center; justify-content: center; gap: 10px; margin-bottom: 12px; background: rgba(255,255,255,0.05); padding: 5px; border-radius: 12px; border: 1px solid #1a1a1a; }
         .qty-btn { background: #1a1a1a; border: 1px solid #333; color: #fff; width: 28px; height: 28px; border-radius: 8px; cursor: pointer; font-weight: bold; }
         .qty-val { font-weight: bold; color: #00e5ff; }
 
@@ -99,11 +99,12 @@
         const baseURL = "https://raw.githubusercontent.com/yusefna30-lgtm/ezwa-official/main/";
         const tiktokLink = "https://vt.tiktok.com/ZSxRBGRQT/";
 
+        // قمت بتعديل الأسماء لتطابق صورك الجديدة
         const products = [
-            { id: 1, name: "GHOST", img: "TSHIRT BOX RAW10.png.png", price: 115, desc: "GHOST: تصميم غامض بخامة قطنية فاخرة وطباعة نيون متطورة." },
-            { id: 2, name: "PURE", img: "TSHIRT BOX RAW.png.png", price: 115, desc: "PURE: البساطة في أبهى صورها، قطن ناعم وتصميم نقي." },
-            { id: 3, name: "FLOW", img: "TSHIRT BOX RAW11.png.png", price: 115, desc: "FLOW: انسيابية عصرية تناسب كل يوم." },
-            { id: 4, name: "MIND", img: "TSHIRT BOX RAW12.png.png", price: 115, desc: "MIND: للمبدعين الذين يبحثون عن الاختلاف." }
+            { id: 1, name: "GHOST", img: "TSHIRT GHOST.png", price: 115, desc: "GHOST: تصميم يجمع بين الغموض والفخامة." },
+            { id: 2, name: "PURE", img: "TSHIRT PURE.png", price: 115, desc: "PURE: البساطة هي أعلى مراتب الرقي." },
+            { id: 3, name: "FLOW", img: "TSHIRT FLOW.png", price: 115, desc: "FLOW: انسيابية عصرية تلائم شخصيتك." },
+            { id: 4, name: "DATA", img: "TSHIRT DATA.png", price: 115, desc: "DATA: للمستقبل لغة، وهذا هو تعبيرها." }
         ];
 
         let cart = [];
