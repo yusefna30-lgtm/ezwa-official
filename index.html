@@ -1,3 +1,6 @@
+
+
+
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
@@ -22,11 +25,7 @@
         .brand-header { font-size: 3rem; font-weight: 900; background: linear-gradient(180deg, #ffffff 40%, #777777 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin: 30px 0; letter-spacing: 5px; }
         
         .container { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; max-width: 500px; margin: auto; }
-        .img-container { position: relative; }
-.nav-arrow { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(255,255,255,0.6); border: none; font-size: 18px; padding: 4px 8px; cursor: pointer; z-index: 5; border-radius: 50%; }
-.nav-arrow:first-of-type { left: 5px; }
-.nav-arrow:last-of-type { right: 5px; }
-
+        
         .card { 
             background: #0a0a0a; border: 1px solid #1a1a1a; border-radius: 25px; padding: 12px; 
             display: flex; flex-direction: column; justify-content: space-between;
@@ -120,10 +119,9 @@
                 grid.innerHTML += `
                     <div class="card">
                         <div class="img-container">
-<button class="nav-arrow" onclick="changeColor('${p.id}', -1, this)">&lt;</button>
-<img id="img-${p.id}" src="${baseURL + encodeURIComponent(p.img)}" alt="${p.name}">
-<button class="nav-arrow" onclick="changeColor('${p.id}', 1, this)">&gt;</button>
-<div class="zoom-icon" onclick="openZoom('${baseURL + encodeURIComponent(p.img)}')">🔍</div>
+                            <img src="${baseURL + encodeURIComponent(p.img)}" alt="${p.name}">
+                            <div class="zoom-icon" onclick="openZoom('${baseURL + encodeURIComponent(p.img)}')">🔍</div>
+                        </div>
                         <div class="product-title">${p.name}</div>
                         <div class="price">${p.price} ر.س</div>
                         <div class="qty-control">
@@ -174,20 +172,7 @@
             m += `\n💰 الإجمالي: ${cart.reduce((a,b)=>a+b.price,0)} ر.س`;
             window.open(`https://wa.me/966502777884?text=${encodeURIComponent(m)}`);
         }
-function changeColor(productId, direction, btn) {
-    const img = document.getElementById(`img-${productId}`);
-    if (!img) return;
-    let src = img.getAttribute("src");
-    const match = src.match(/-(\d+)\./);
-    if (!match) return;
-    let num = parseInt(match[1]);
-    let nextNum = num + direction;
-    if (nextNum > 6) nextNum = 1;
-    if (nextNum < 1) nextNum = 6;
-    const nextNumStr = String(nextNum).padStart(2, '0');
-    let newSrc = src.replace(`-${match[1]}.`, `-${nextNumStr}.`);
-    img.setAttribute("src", newSrc);
-}
+
         render();
     </script>
  <div class="footer-container">
@@ -201,7 +186,7 @@ function changeColor(productId, direction, btn) {
            
 
     <div class="footer-bottom">
-        <p>حقوق النشر © Top Giving. جميع الحقوق محفوظة 2026.</p>
+        <p>حقوق النشر © ezwa.net جميع الحقوق محفوظة 2026.</p>
     </div>
 </footer>
 
