@@ -101,7 +101,7 @@
     </div>
 
     <div id="cart-bar">
-        <div id="cart-info" style="font-weight:bold;">القطع: 0 | المجموع: 0 ر.س</div>
+        <div id="cart-info" style="font-weight:bold;">القطع: 0 | המجموع: 0 ر.س</div>
         <div style="display:flex; gap:10px; width:100%;">
             <a href="javascript:void(0)" onclick="sendWhatsApp()" class="btn-order">تأكيد الطلب ✅</a>
             <button onclick="clearCart()" class="btn-clear">تصفير 🗑️</button>
@@ -112,19 +112,23 @@
         const baseURL = "https://raw.githubusercontent.com/yusefna30-lgtm/ezwa-official/main/";
         const tiktokLink = "https://vt.tiktok.com/ZSxRBGRQT/";
 
+        // هنا تم الاحتفاظ بمنتجات PERSIST فقط وحذف البقية
         const products = [
-            { id: 1, name: "GHOST", img: ["TSHIRT GHOST.png"], currentImgIndex: 0, price: 115, desc: "GHOST: تصميم يجمع بين الغموض والفخامة." },
-            { id: 2, name: "PURE", img: ["TSHIRT PURE.png"], currentImgIndex: 0, price: 115, desc: "PURE: البساطة هي أعلى مراتب الرقي." },
-            { id: 3, name: "FLOW", img: ["TSHIRT FLOW.png"], currentImgIndex: 0, price: 115, desc: "FLOW: انسيابية عصرية تلائم شخصيتك." },
-            { id: 4, name: "DATA", img: ["TSHIRT DATA.png"], currentImgIndex: 0, price: 115, desc: "DATA: للمستقبل لغة، وهذا هو تعبيرها." },
-            // إضافة منتج PERSIST الجديد مع الصورتين الأمامية والخلفية التي قمت برفعها
             { 
-                id: 5, 
-                name: "PERSIST", 
+                id: 1, 
+                name: "PERSIST - White", 
                 img: ["persist-white-blue.png", "persist-white-blue1.png.jpg"], 
                 currentImgIndex: 0, 
                 price: 115, 
-                desc: "PERSIST: أصالة التصميم الرياضي الكلاسيكي يمتزج مع عصرية الـ Streetwear." 
+                desc: "PERSIST (أبيض/أزرق): أصالة التصميم الرياضي الكلاسيكي يمتزج مع عصرية الـ Streetwear." 
+            },
+            { 
+                id: 2, 
+                name: "PERSIST - Black", 
+                img: ["persist-black-blue.png.png", "persist-black-blue2.png.jpg"], 
+                currentImgIndex: 0, 
+                price: 115, 
+                desc: "PERSIST (أسود/أزرق): تصميم رياضي كلاسيكي بلون أسود أنيق يعكس القوة." 
             }
         ];
 
@@ -137,7 +141,6 @@
                 const currentImgName = p.img[p.currentImgIndex];
                 const fullImgURL = baseURL + encodeURIComponent(currentImgName);
 
-                // إظهار أزرار التنقل فقط إذا كان المنتج يحتوي على أكثر من صورة واحدة
                 const showButtons = p.img.length > 1;
 
                 grid.innerHTML += `
