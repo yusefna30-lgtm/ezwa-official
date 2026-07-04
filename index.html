@@ -6,23 +6,27 @@
     <title>EZWA Official Store</title>
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700;900&display=swap" rel="stylesheet">
     <style>
+        /* إعدادات الخلفية العامة للموقع */
         html, body { background-color: #050505 !important; margin: 0; padding: 0; overflow-x: hidden; }
         body { 
             background: radial-gradient(circle at 50% 0%, #1a1a2e 0%, #050505 80%) no-repeat fixed !important;
             color: #ffffff; text-align: center; font-family: 'Tajawal', sans-serif; padding: 20px 10px 150px 10px; min-height: 100vh;
         }
         
-        /* حركة التوهج خلف الصور */
+        /* تأثير التوهج النابض خلف بطاقات المنتجات */
         @keyframes glow-pulse {
             0% { box-shadow: 0 0 20px rgba(0, 229, 255, 0.1); }
             50% { box-shadow: 0 0 45px rgba(0, 151, 255, 0.25); }
             100% { box-shadow: 0 0 20px rgba(0, 229, 255, 0.1); }
         }
 
+        /* تنسيق اسم الماركة في الأعلى */
         .brand-header { font-size: 3rem; font-weight: 900; background: linear-gradient(180deg, #ffffff 40%, #777777 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin: 30px 0; letter-spacing: 5px; }
         
+        /* شبكة عرض المنتجات (عمودين متجاورين) */
         .container { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; max-width: 500px; margin: auto; }
         
+        /* تصميم بطاقة المنتج الفردية */
         .card { 
             background: #0a0a0a; border: 1px solid #1a1a1a; border-radius: 25px; padding: 12px; 
             display: flex; flex-direction: column; justify-content: space-between;
@@ -32,9 +36,9 @@
         
         .card:hover { border-color: #00e5ff; box-shadow: 0 0 35px rgba(0, 229, 255, 0.5) !important; transform: translateY(-5px); }
 
+        /* حاوية الصورة وتأثير الإضاءة الخلفية الدائرية */
         .img-container { position: relative; width: 100%; height: 170px; margin-bottom: 12px; overflow: hidden; border-radius: 18px; }
         
-        /* الشادو المتحرك الدوار خلف التيشيرت */
         .img-container::before {
             content: ""; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%;
             background: conic-gradient(from 180deg, transparent, #00e5ff, transparent, #001eff, transparent);
@@ -45,9 +49,10 @@
 
         .card img { width: 100%; height: 100%; object-fit: cover; border-radius: 18px; position: relative; z-index: 1; background: #000; }
         
+        /* أيقونة التكبير المباشر للصور */
         .zoom-icon { position: absolute; top: 8px; right: 8px; background: rgba(0,0,0,0.6); color: #00e5ff; padding: 5px; border-radius: 50%; cursor: pointer; font-size: 12px; border: 1px solid #00e5ff; z-index: 5; }
 
-        /* تنسيق أزرار التنقل بين الصور */
+        /* أزرار التنقل بين الصورة الأمامية والخلفية للمنتج */
         .nav-btn {
             position: absolute; top: 50%; transform: translateY(-50%);
             background: rgba(0, 0, 0, 0.7); color: #00e5ff; border: 1px solid #00e5ff;
@@ -60,23 +65,28 @@
         .prev-btn { right: 8px; } 
         .next-btn { left: 8px; }  
 
+        /* نصوص تفاصيل المنتج والسعر */
         .product-title { font-size: 0.95rem; font-weight: 700; color: #ffffff; margin-bottom: 5px; }
         .price { color: #00e5ff; font-weight: 800; font-size: 1.15rem; margin-bottom: 10px; text-shadow: 0 0 10px rgba(0, 229, 255, 0.5); }
         
+        /* أزرار التحكم في الكمية المطلوبة (+ / -) */
         .qty-control { display: flex; align-items: center; justify-content: center; gap: 10px; margin-bottom: 12px; background: rgba(255,255,255,0.05); padding: 5px; border-radius: 12px; border: 1px solid #1a1a1a; }
         .qty-btn { background: #1a1a1a; border: 1px solid #333; color: #fff; width: 28px; height: 28px; border-radius: 8px; cursor: pointer; font-weight: bold; }
         .qty-val { font-weight: bold; color: #00e5ff; }
 
+        /* أزرار الإضافة والتفاصيل والفيديو */
         .btns { display: flex; flex-direction: column; gap: 8px; }
         .btn-add { background: #00e5ff; color: #000; border: none; padding: 14px; border-radius: 14px; font-weight: 900; cursor: pointer; box-shadow: 0 0 15px rgba(0, 229, 255, 0.3); }
         
         .sub-btns { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
         .btn-info, .btn-vid { background: rgba(255,255,255,0.03); color: #888; border: 1px solid #222; padding: 10px; border-radius: 10px; font-size: 0.7rem; cursor: pointer; text-decoration: none; display: flex; align-items: center; justify-content: center; }
 
+        /* شريط السلة السفلي العائم */
         #cart-bar { position: fixed; bottom: 0; left: 0; right: 0; background: rgba(0, 229, 255, 0.95); backdrop-filter: blur(15px); color: #000; padding: 15px 20px; display: none; flex-direction: column; gap: 12px; z-index: 1000; border-radius: 25px 25px 0 0; }
         .btn-order { flex: 2; background: #000; color: #00e5ff; padding: 14px; border-radius: 12px; text-decoration: none; font-weight: bold; text-align: center; }
         .btn-clear { flex: 1; background: #ff3b3b; color: #fff; border: none; border-radius: 12px; font-weight: bold; cursor: pointer; }
 
+        /* شاشات العرض المنبثقة (التفاصيل والتكبير) */
         #details-modal, #zoom-modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); z-index: 9999; justify-content: center; align-items: center; backdrop-filter: blur(15px); }
         .modal-content { background: #0a0a0a; border: 1px solid #00e5ff; padding: 30px; border-radius: 25px; width: 85%; max-width: 350px; }
         .zoom-content img { max-width: 90%; max-height: 80vh; border-radius: 20px; border: 2px solid #00e5ff; }
@@ -84,14 +94,18 @@
 </head>
 <body>
 
+    <!-- اسم العلامة التجارية -->
     <div class="brand-header">EZWA</div>
     
+    <!-- الحاوية التي يتم توليد المنتجات بداخلها برمجياً -->
     <div class="container" id="products-grid"></div>
 
+    <!-- شاشة تكبير الصورة عند الضغط على العدسة -->
     <div id="zoom-modal" onclick="this.style.display='none'">
         <div class="zoom-content"><img id="zoomed-img" src=""></div>
     </div>
 
+    <!-- شاشة عرض تفاصيل كل تيشيرت -->
     <div id="details-modal">
         <div class="modal-content">
             <h2 id="m-title" style="color: #00e5ff; margin-bottom: 15px;"></h2>
@@ -100,6 +114,7 @@
         </div>
     </div>
 
+    <!-- شريط السلة السفلي لإرسال الطلبات للواتساب -->
     <div id="cart-bar">
         <div id="cart-info" style="font-weight:bold;">القطع: 0 | المجموع: 0 ر.س</div>
         <div style="display:flex; gap:10px; width:100%;">
@@ -109,10 +124,11 @@
     </div>
 
     <script>
-        const baseURL = "https://raw.githubusercontent.com/yusefna30-lgtm/ezwa-official/main/";
+        /* التعديل الجوهري: جعل المسار يقرأ محلياً من نفس المجلد لحل مشكلة الصور المكسورة */
+        const baseURL = "./"; 
         const tiktokLink = "https://vt.tiktok.com/ZSxRBGRQT/";
 
-        // قائمة المنتجات محدثة بجميع الألوان الـ 4
+        /* مصفوفة المنتجات الـ 4 الكاملة مع أسماء ملفاتها الدقيقة */
         const products = [
             { 
                 id: 1, 
@@ -151,12 +167,12 @@
         let cart = [];
         const grid = document.getElementById('products-grid');
 
+        /* دالة بناء واجهة المنتجات وعرضها تلقائياً داخل الصفحة */
         function render() {
             grid.innerHTML = "";
             products.forEach(p => {
                 const currentImgName = p.img[p.currentImgIndex];
-                const fullImgURL = baseURL + encodeURIComponent(currentImgName);
-
+                const fullImgURL = baseURL + currentImgName;
                 const showButtons = p.img.length > 1;
 
                 grid.innerHTML += `
@@ -186,6 +202,7 @@
             });
         }
 
+        /* دالة التبديل بين صورتي المنتج (الأمامي والخلفي) */
         function changeImage(id, direction) {
             const p = products.find(x => x.id === id);
             if (!p) return;
@@ -195,24 +212,28 @@
             if (p.currentImgIndex < 0) p.currentImgIndex = p.img.length - 1;
 
             const nextImgName = p.img[p.currentImgIndex];
-            document.getElementById(`prod-img-${id}`).src = baseURL + encodeURIComponent(nextImgName);
+            document.getElementById(`prod-img-${id}`).src = baseURL + nextImgName;
         }
 
+        /* دالة زيادة ونقصان كمية المنتج المطلوب قبل الإضافة للسلة */
         function updateQty(id, chg) {
             let el = document.getElementById(`qty-${id}`);
             let v = parseInt(el.innerText) + chg;
             if (v >= 1) el.innerText = v;
         }
 
+        /* دالة عرض الصورة المكبرة بالكامل للمنتج المحدد */
         function openZoomFromProduct(id) {
             const p = products.find(x => x.id === id);
             const currentImgName = p.img[p.currentImgIndex];
-            document.getElementById('zoomed-img').src = baseURL + encodeURIComponent(currentImgName);
+            document.getElementById('zoomed-img').src = baseURL + currentImgName;
             document.getElementById('zoom-modal').style.display = 'flex';
         }
 
+        /* دالة إظهار النافذة المنبثقة للتفاصيل */
         function showDetails(n, d) { document.getElementById('m-title').innerText = n; document.getElementById('m-desc').innerText = d; document.getElementById('details-modal').style.display = 'flex'; }
 
+        /* دالة إضافة المنتجات والكميات المحددة إلى سلة المشتريات */
         function addToCart(id) {
             const p = products.find(x => x.id === id);
             const q = parseInt(document.getElementById(`qty-${id}`).innerText);
@@ -229,12 +250,16 @@
             document.getElementById(`qty-${id}`).innerText = "1";
         }
 
+        /* دالة إفراغ السلة بالكامل */
         function clearCart() { if(confirm("تصفير السلة؟")) { cart = []; document.getElementById('cart-bar').style.display = 'none'; updateCart(); } }
+        
+        /* دالة تحديث مجموع المبالغ والقطع المعروضة في الشريط الأسفل */
         function updateCart() {
             const t = cart.reduce((s, x) => s + x.price, 0);
             document.getElementById('cart-info').innerText = `القطع: ${cart.length} | المجموع: ${t} ر.س`;
         }
 
+        /* دالة تجميع الطلبات وإرسالها نصياً كرسالة WhatsApp مباشرة للهاتف المحدد */
         function sendWhatsApp() {
             let s = {}; cart.forEach(x => s[x.name] = (s[x.name] || 0) + 1);
             let m = "طلب جديد من عزوة:\n";
@@ -243,9 +268,11 @@
             window.open(`https://wa.me/966502777884?text=${encodeURIComponent(m)}`);
         }
 
+        // تشغيل البناء الأولي للموقع عند التحميل لأول مرة
         render();
     </script>
 
+    <!-- تذييل الصفحة الخاص بتوثيق المتجر -->
     <div class="footer-container">
         <div class="footer-column">
             <h3>توثيق المركز السعودي للأعمال</h3>
