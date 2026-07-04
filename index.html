@@ -101,7 +101,7 @@
     </div>
 
     <div id="cart-bar">
-        <div id="cart-info" style="font-weight:bold;">القطع: 0 | המجموع: 0 ر.س</div>
+        <div id="cart-info" style="font-weight:bold;">القطع: 0 | المجموع: 0 ر.س</div>
         <div style="display:flex; gap:10px; width:100%;">
             <a href="javascript:void(0)" onclick="sendWhatsApp()" class="btn-order">تأكيد الطلب ✅</a>
             <button onclick="clearCart()" class="btn-clear">تصفير 🗑️</button>
@@ -112,12 +112,12 @@
         const baseURL = "https://raw.githubusercontent.com/yusefna30-lgtm/ezwa-official/main/";
         const tiktokLink = "https://vt.tiktok.com/ZSxRBGRQT/";
 
-        // هنا تم الاحتفاظ بمنتجات PERSIST فقط وحذف البقية
+        // قائمة المنتجات محدثة بجميع الألوان الـ 4
         const products = [
             { 
                 id: 1, 
                 name: "PERSIST - White", 
-                img: ["persist-white-blue.png", "persist-white-blue1.png.jpg"], 
+                img: ["persist-white-blue.png.png", "persist-white-blue1.png.jpg"], 
                 currentImgIndex: 0, 
                 price: 115, 
                 desc: "PERSIST (أبيض/أزرق): أصالة التصميم الرياضي الكلاسيكي يمتزج مع عصرية الـ Streetwear." 
@@ -129,6 +129,22 @@
                 currentImgIndex: 0, 
                 price: 115, 
                 desc: "PERSIST (أسود/أزرق): تصميم رياضي كلاسيكي بلون أسود أنيق يعكس القوة." 
+            },
+            { 
+                id: 3, 
+                name: "PERSIST - Green", 
+                img: ["persist-green-blue.png.png", "persist-green-blue3.png.jpg"], 
+                currentImgIndex: 0, 
+                price: 115, 
+                desc: "PERSIST (أخضر/أزرق): لون أخضر مميز يمنحك حضوراً فريداً وأناقة لافتة." 
+            },
+            { 
+                id: 4, 
+                name: "PERSIST - Yellow", 
+                img: ["persist-yellow-black.png.png", "persist-yellow-black4.png.jpg"], 
+                currentImgIndex: 0, 
+                price: 115, 
+                desc: "PERSIST (أصفر/أسود): مزيج جريء من الأصفر والأسود يعكس طاقة وإطلالة عصرية." 
             }
         ];
 
