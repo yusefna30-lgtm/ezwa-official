@@ -47,7 +47,7 @@
         
         .zoom-icon { position: absolute; top: 8px; right: 8px; background: rgba(0,0,0,0.6); color: #00e5ff; padding: 5px; border-radius: 50%; cursor: pointer; font-size: 12px; border: 1px solid #00e5ff; z-index: 5; }
 
-        /* تنسيق أزرار التنقل بين الألوان */
+        /* تنسيق أزرار التنقل بين الصور */
         .nav-btn {
             position: absolute; top: 50%; transform: translateY(-50%);
             background: rgba(0, 0, 0, 0.7); color: #00e5ff; border: 1px solid #00e5ff;
@@ -57,8 +57,8 @@
             transition: 0.2s;
         }
         .nav-btn:hover { background: #00e5ff; color: #000; box-shadow: 0 0 10px #00e5ff; }
-        .prev-btn { right: 8px; } /* زر التالي (لليمين في الرتيل) */
-        .next-btn { left: 8px; }  /* زر السابق (لليسار في الرتيل) */
+        .prev-btn { right: 8px; } 
+        .next-btn { left: 8px; }  
 
         .product-title { font-size: 0.95rem; font-weight: 700; color: #ffffff; margin-bottom: 5px; }
         .price { color: #00e5ff; font-weight: 800; font-size: 1.15rem; margin-bottom: 10px; text-shadow: 0 0 10px rgba(0, 229, 255, 0.5); }
@@ -112,12 +112,20 @@
         const baseURL = "https://raw.githubusercontent.com/yusefna30-lgtm/ezwa-official/main/";
         const tiktokLink = "https://vt.tiktok.com/ZSxRBGRQT/";
 
-        // هنا قمنا بتحويل حقل img إلى مصفوفة تحتوي على أكثر من لون (قم بتغيير أو إضافة أسماء الصور هنا)
         const products = [
-            { id: 1, name: "GHOST", img: ["TSHIRT GHOST.png", "TSHIRT PURE.png"], currentImgIndex: 0, price: 115, desc: "GHOST: تصميم يجمع بين الغموض والفخامة." },
-            { id: 2, name: "PURE", img: ["TSHIRT PURE.png", "TSHIRT FLOW.png"], currentImgIndex: 0, price: 115, desc: "PURE: البساطة هي أعلى مراتب الرقي." },
-            { id: 3, name: "FLOW", img: ["TSHIRT FLOW.png", "TSHIRT DATA.png"], currentImgIndex: 0, price: 115, desc: "FLOW: انسيابية عصرية تلائم شخصيتك." },
-            { id: 4, name: "DATA", img: ["TSHIRT DATA.png", "TSHIRT GHOST.png"], currentImgIndex: 0, price: 115, desc: "DATA: للمستقبل لغة، وهذا هو تعبيرها." }
+            { id: 1, name: "GHOST", img: ["TSHIRT GHOST.png"], currentImgIndex: 0, price: 115, desc: "GHOST: تصميم يجمع بين الغموض والفخامة." },
+            { id: 2, name: "PURE", img: ["TSHIRT PURE.png"], currentImgIndex: 0, price: 115, desc: "PURE: البساطة هي أعلى مراتب الرقي." },
+            { id: 3, name: "FLOW", img: ["TSHIRT FLOW.png"], currentImgIndex: 0, price: 115, desc: "FLOW: انسيابية عصرية تلائم شخصيتك." },
+            { id: 4, name: "DATA", img: ["TSHIRT DATA.png"], currentImgIndex: 0, price: 115, desc: "DATA: للمستقبل لغة، وهذا هو تعبيرها." },
+            // إضافة منتج PERSIST الجديد مع الصورتين الأمامية والخلفية التي قمت برفعها
+            { 
+                id: 5, 
+                name: "PERSIST", 
+                img: ["persist-white-blue.png", "persist-white-blue1.png.jpg"], 
+                currentImgIndex: 0, 
+                price: 115, 
+                desc: "PERSIST: أصالة التصميم الرياضي الكلاسيكي يمتزج مع عصرية الـ Streetwear." 
+            }
         ];
 
         let cart = [];
@@ -126,16 +134,18 @@
         function render() {
             grid.innerHTML = "";
             products.forEach(p => {
-                // الحصول على الصورة الحالية بناءً على الفهرس الحالي
                 const currentImgName = p.img[p.currentImgIndex];
                 const fullImgURL = baseURL + encodeURIComponent(currentImgName);
+
+                // إظهار أزرار التنقل فقط إذا كان المنتج يحتوي على أكثر من صورة واحدة
+                const showButtons = p.img.length > 1;
 
                 grid.innerHTML += `
                     <div class="card">
                         <div class="img-container">
-                            <button class="nav-btn prev-btn" onclick="changeImage(${p.id}, 1)">&gt;</button>
+                            ${showButtons ? `<button class="nav-btn prev-btn" onclick="changeImage(${p.id}, 1)">&gt;</button>` : ''}
                             <img id="prod-img-${p.id}" src="${fullImgURL}" alt="${p.name}">
-                            <button class="nav-btn next-btn" onclick="changeImage(${p.id}, -1)">&lt;</button>
+                            ${showButtons ? `<button class="nav-btn next-btn" onclick="changeImage(${p.id}, -1)">&lt;</button>` : ''}
                             <div class="zoom-icon" onclick="openZoomFromProduct(${p.id})">🔍</div>
                         </div>
                         <div class="product-title">${p.name}</div>
@@ -157,17 +167,14 @@
             });
         }
 
-        // دالة التنقل بين ألوان المنتج
         function changeImage(id, direction) {
             const p = products.find(x => x.id === id);
             if (!p) return;
 
-            // تغيير الفهرس الحالي للصورة مع مراعاة الحواف لتعود من البداية أو النهاية بشكل دائري
             p.currentImgIndex += direction;
             if (p.currentImgIndex >= p.img.length) p.currentImgIndex = 0;
             if (p.currentImgIndex < 0) p.currentImgIndex = p.img.length - 1;
 
-            // تحديث رابط الصورة في الـ HTML مباشرة دون إعادة بناء الصفحة كاملة لضمان سرعة الاستجابة
             const nextImgName = p.img[p.currentImgIndex];
             document.getElementById(`prod-img-${id}`).src = baseURL + encodeURIComponent(nextImgName);
         }
@@ -178,7 +185,6 @@
             if (v >= 1) el.innerText = v;
         }
 
-        // دالة الزوم المعدلة لتقرأ الصورة الحالية للمنتج
         function openZoomFromProduct(id) {
             const p = products.find(x => x.id === id);
             const currentImgName = p.img[p.currentImgIndex];
@@ -191,7 +197,6 @@
         function addToCart(id) {
             const p = products.find(x => x.id === id);
             const q = parseInt(document.getElementById(`qty-${id}`).innerText);
-            // نقوم بحفظ نسخة من المنتج واللون المختار حالياً بالسلة
             const currentImgName = p.img[p.currentImgIndex];
             for(let i=0; i<q; i++) {
                 cart.push({
