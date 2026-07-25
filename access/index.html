@@ -3,6 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- منع المتصفح من ترجمة الصفحة تلقائياً -->
+  <meta name="google" content="notranslate">
   <title>تم منح الإذن بالدخول | عزوة</title>
   
   <!-- خط عربي حديث (Cairo) -->
@@ -102,20 +104,20 @@
     }
   </style>
 </head>
-<body>
+<body class="notranslate">
 
   <main class="access-container">
     <!-- شعار عزوة -->
     <div class="logo-wrapper">
       <img src="logo.png" alt="عزوة" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-      <span class="logo-fallback" style="display: none;">عزوة</span>
+      <span class="logo-fallback translate-no" translate="no" style="display: none;">عزوة</span>
     </div>
 
     <!-- العنوان الرئيسي -->
     <h1 class="access-title">تم منح الإذن بالدخول</h1>
 
     <!-- العنوان الفرعي -->
-    <p class="access-subtitle">أهلاً بكم في عزوة</p>
+    <p class="access-subtitle">أهلاً بكم في <span translate="no">عزوة</span></p>
   </main>
 
 </body>
