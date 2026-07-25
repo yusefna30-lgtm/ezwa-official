@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Access Granted | EZWA</title>
+  
+  <!-- Typography (Inter / Modern Sans-Serif) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    /* Reset & Base Settings */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      width: 100%;
+      height: 100%;
+      background-color: #000000;
+      color: #ffffff;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      overflow: hidden;
+    }
+
+    /* Centered Container Layout */
+    .access-container {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      width: 100%;
+      padding: 2rem;
+      text-align: center;
+      animation: fadeIn 1.2s ease-out forwards;
+    }
+
+    /* Logo Wrapper & Styling */
+    .logo-wrapper {
+      margin-bottom: 2.5rem;
+      max-width: 220px;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .logo-wrapper img {
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+    }
+
+    /* Fallback Text Logo (if image is missing/loading) */
+    .logo-fallback {
+      font-size: 2.5rem;
+      font-weight: 800;
+      letter-spacing: 0.25em;
+      color: #ffffff;
+      text-transform: uppercase;
+    }
+
+    /* Main Heading */
+    .access-title {
+      font-size: clamp(1.8rem, 4vw, 3rem);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: #ffffff;
+      margin-bottom: 0.75rem;
+    }
+
+    /* Subtitle */
+    .access-subtitle {
+      font-size: clamp(0.9rem, 2vw, 1.2rem);
+      font-weight: 300;
+      letter-spacing: 0.2em;
+      color: #888888;
+      text-transform: uppercase;
+    }
+
+    /* Animations */
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Mobile adjustments */
+    @media (max-width: 480px) {
+      .logo-wrapper {
+        max-width: 160px;
+        margin-bottom: 2rem;
+      }
+      .access-title {
+        letter-spacing: 0.1em;
+      }
+      .access-subtitle {
+        letter-spacing: 0.15em;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <main class="access-container">
+    <!-- EZWA Logo -->
+    <div class="logo-wrapper">
+      <!-- Replace 'logo.png' with your relative image path (e.g., /assets/logo.png) -->
+      <img src="logo.png" alt="EZWA" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+      <span class="logo-fallback" style="display: none;">EZWA</span>
+    </div>
+
+    <!-- Main Title -->
+    <h1 class="access-title">Access Granted</h1>
+
+    <!-- Subtitle -->
+    <p class="access-subtitle">Welcome to EZWA</p>
+  </main>
+
+</body>
+</html>
