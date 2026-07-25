@@ -1,124 +1,132 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- منع المتصفح من ترجمة الصفحة تلقائياً -->
-  <meta name="google" content="notranslate">
-  <title>تم منح الإذن بالدخول | عزوة</title>
-  
-  <!-- خط عربي حديث (Cairo) -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EZWA Access</title>
 
-  <style>
-    /* Reset & Base Settings */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
 
-    html, body {
-      width: 100%;
-      height: 100%;
-      background-color: #000000;
-      color: #ffffff;
-      font-family: 'Cairo', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      overflow: hidden;
-    }
+<style>
 
-    /* Centered Container Layout */
-    .access-container {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      min-height: 100vh;
-      width: 100%;
-      padding: 2rem;
-      text-align: center;
-      animation: fadeIn 1.2s ease-out forwards;
-    }
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
 
-    /* Logo Wrapper & Styling */
-    .logo-wrapper {
-      margin-bottom: 2.5rem;
-      max-width: 220px;
-      width: 100%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
+body{
+background:#000;
+color:#fff;
+font-family:Inter,sans-serif;
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
+overflow:hidden;
+}
 
-    .logo-wrapper img {
-      width: 100%;
-      height: auto;
-      object-fit: contain;
-    }
+.container{
+text-align:center;
+width:90%;
+max-width:500px;
+animation:fade 1s ease;
+}
 
-    /* Fallback Text Logo */
-    .logo-fallback {
-      font-size: 3rem;
-      font-weight: 800;
-      letter-spacing: 0.05em;
-      color: #ffffff;
-    }
+.logo{
+width:180px;
+margin-bottom:60px;
+}
 
-    /* Main Heading */
-    .access-title {
-      font-size: clamp(1.8rem, 4vw, 3rem);
-      font-weight: 700;
-      letter-spacing: 0.05em;
-      color: #ffffff;
-      margin-bottom: 0.75rem;
-    }
+.logo img{
+width:100%;
+}
 
-    /* Subtitle */
-    .access-subtitle {
-      font-size: clamp(0.9rem, 2vw, 1.2rem);
-      font-weight: 300;
-      letter-spacing: 0.05em;
-      color: #888888;
-    }
+.status{
+font-size:13px;
+letter-spacing:4px;
+color:#777;
+margin-bottom:12px;
+text-transform:uppercase;
+}
 
-    /* Animations */
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-        transform: translateY(10px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
+.title{
+font-size:42px;
+font-weight:700;
+letter-spacing:3px;
+margin-bottom:18px;
+}
 
-    /* Mobile adjustments */
-    @media (max-width: 480px) {
-      .logo-wrapper {
-        max-width: 160px;
-        margin-bottom: 2rem;
-      }
-    }
-  </style>
+.subtitle{
+font-size:16px;
+color:#9d9d9d;
+margin-bottom:60px;
+line-height:1.8;
+}
+
+.line{
+width:70px;
+height:1px;
+background:#333;
+margin:0 auto 40px;
+}
+
+.vault{
+font-size:22px;
+font-weight:600;
+margin-bottom:10px;
+}
+
+.small{
+color:#666;
+font-size:14px;
+}
+
+@keyframes fade{
+from{
+opacity:0;
+transform:translateY(15px);
+}
+to{
+opacity:1;
+transform:translateY(0);
+}
+}
+
+</style>
+
 </head>
-<body class="notranslate">
+<body>
 
-  <main class="access-container">
-    <!-- شعار عزوة -->
-    <div class="logo-wrapper">
-      <img src="logo.png" alt="عزوة" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-      <span class="logo-fallback translate-no" translate="no" style="display: none;">عزوة</span>
-    </div>
+<div class="container">
 
-    <!-- العنوان الرئيسي -->
-    <h1 class="access-title">تم منح الإذن بالدخول</h1>
+<div class="logo">
+<img src="logo.png" alt="EZWA">
+</div>
 
-    <!-- العنوان الفرعي -->
-    <p class="access-subtitle">أهلاً بكم في <span translate="no">عزوة</span></p>
-  </main>
+<div class="status">
+NFC VERIFIED
+</div>
+
+<div class="title">
+ACCESS GRANTED
+</div>
+
+<div class="subtitle">
+Your EZWA piece has been successfully verified.
+</div>
+
+<div class="line"></div>
+
+<div class="vault">
+🔒 The Vault is Closed
+</div>
+
+<div class="small">
+The next opening will be announced soon.
+</div>
+
+</div>
 
 </body>
 </html>
