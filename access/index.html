@@ -1,14 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Access Granted | EZWA</title>
+  <title>تم منح الإذن بالدخول | عزوة</title>
   
-  <!-- Typography (Inter / Modern Sans-Serif) -->
+  <!-- خط عربي حديث (Cairo) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap" rel="stylesheet">
 
   <style>
     /* Reset & Base Settings */
@@ -23,7 +23,7 @@
       height: 100%;
       background-color: #000000;
       color: #ffffff;
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      font-family: 'Cairo', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
       overflow: hidden;
     }
 
@@ -56,21 +56,19 @@
       object-fit: contain;
     }
 
-    /* Fallback Text Logo (if image is missing/loading) */
+    /* Fallback Text Logo */
     .logo-fallback {
-      font-size: 2.5rem;
+      font-size: 3rem;
       font-weight: 800;
-      letter-spacing: 0.25em;
+      letter-spacing: 0.05em;
       color: #ffffff;
-      text-transform: uppercase;
     }
 
     /* Main Heading */
     .access-title {
       font-size: clamp(1.8rem, 4vw, 3rem);
       font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.15em;
+      letter-spacing: 0.05em;
       color: #ffffff;
       margin-bottom: 0.75rem;
     }
@@ -79,9 +77,8 @@
     .access-subtitle {
       font-size: clamp(0.9rem, 2vw, 1.2rem);
       font-weight: 300;
-      letter-spacing: 0.2em;
+      letter-spacing: 0.05em;
       color: #888888;
-      text-transform: uppercase;
     }
 
     /* Animations */
@@ -102,30 +99,23 @@
         max-width: 160px;
         margin-bottom: 2rem;
       }
-      .access-title {
-        letter-spacing: 0.1em;
-      }
-      .access-subtitle {
-        letter-spacing: 0.15em;
-      }
     }
   </style>
 </head>
 <body>
 
   <main class="access-container">
-    <!-- EZWA Logo -->
+    <!-- شعار عزوة -->
     <div class="logo-wrapper">
-      <!-- Replace 'logo.png' with your relative image path (e.g., /assets/logo.png) -->
-      <img src="logo.png" alt="EZWA" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-      <span class="logo-fallback" style="display: none;">EZWA</span>
+      <img src="logo.png" alt="عزوة" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+      <span class="logo-fallback" style="display: none;">عزوة</span>
     </div>
 
-    <!-- Main Title -->
-    <h1 class="access-title">Access Granted</h1>
+    <!-- العنوان الرئيسي -->
+    <h1 class="access-title">تم منح الإذن بالدخول</h1>
 
-    <!-- Subtitle -->
-    <p class="access-subtitle">Welcome to EZWA</p>
+    <!-- العنوان الفرعي -->
+    <p class="access-subtitle">أهلاً بكم في عزوة</p>
   </main>
 
 </body>
