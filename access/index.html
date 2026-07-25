@@ -1,11 +1,16 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="google" content="notranslate">
+
 <title>EZWA Access</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap" rel="stylesheet">
 
 <style>
 
@@ -15,53 +20,58 @@ padding:0;
 box-sizing:border-box;
 }
 
-body{
+html,body{
+width:100%;
+min-height:100vh;
 background:#000;
 color:#fff;
-font-family:Inter,sans-serif;
+font-family:'Cairo',sans-serif;
+}
+
+body{
 display:flex;
 justify-content:center;
 align-items:center;
-height:100vh;
-overflow:hidden;
+padding:40px 20px;
 }
 
 .container{
+width:100%;
+max-width:850px;
 text-align:center;
-width:90%;
-max-width:500px;
-animation:fade 1s ease;
+animation:fade .8s ease;
 }
 
 .logo{
 width:180px;
-margin-bottom:60px;
+margin:auto;
+margin-bottom:50px;
 }
 
 .logo img{
 width:100%;
+height:auto;
+display:block;
 }
 
 .status{
 font-size:13px;
 letter-spacing:4px;
 color:#777;
-margin-bottom:12px;
-text-transform:uppercase;
+margin-bottom:15px;
 }
 
 .title{
-font-size:42px;
-font-weight:700;
-letter-spacing:3px;
-margin-bottom:18px;
+font-size:44px;
+font-weight:800;
+margin-bottom:15px;
 }
 
 .subtitle{
-font-size:16px;
+font-size:17px;
 color:#9d9d9d;
-margin-bottom:60px;
 line-height:1.8;
+margin-bottom:40px;
 }
 
 .line{
@@ -71,15 +81,53 @@ background:#333;
 margin:0 auto 40px;
 }
 
-.vault{
-font-size:22px;
-font-weight:600;
-margin-bottom:10px;
+.card{
+background:#0b0b0b;
+border:1px solid #222;
+border-radius:10px;
+padding:30px;
+margin-top:20px;
 }
 
-.small{
-color:#666;
-font-size:14px;
+.button{
+display:inline-block;
+margin-top:20px;
+padding:12px 28px;
+background:#fff;
+color:#000;
+text-decoration:none;
+border-radius:6px;
+font-weight:700;
+transition:.25s;
+}
+
+.button:hover{
+opacity:.85;
+}
+
+.countdown{
+display:flex;
+justify-content:center;
+gap:15px;
+margin-top:25px;
+}
+
+.box{
+background:#111;
+padding:15px;
+border-radius:8px;
+min-width:75px;
+}
+
+.box span:first-child{
+display:block;
+font-size:24px;
+font-weight:bold;
+}
+
+.box span:last-child{
+font-size:12px;
+color:#888;
 }
 
 @keyframes fade{
@@ -94,9 +142,9 @@ transform:translateY(0);
 }
 
 </style>
-
 </head>
-<body>
+
+<body class="notranslate">
 
 <div class="container">
 
@@ -104,29 +152,268 @@ transform:translateY(0);
 <img src="logo.png" alt="EZWA">
 </div>
 
+<div id="content">
+
 <div class="status">
-NFC VERIFIED
+جاري التحقق...
 </div>
 
 <div class="title">
-ACCESS GRANTED
+ACCESS
 </div>
 
 <div class="subtitle">
-Your EZWA piece has been successfully verified.
+يتم الآن التحقق من مفتاح عزوة الخاص بك...
+</div>
+
+</div>
+
+</div>
+
+<script>
+
+const CONFIG={
+
+status:"closed",
+
+title:"الخزنة مغلقة",
+
+message:"سيتم الإعلان عن موعد فتحها قريبًا.",
+
+last_opening_date:"2026-05-01",
+
+next_opening_date:"2026-08-01",
+
+opening_timestamp:"2026-08-01T00:00:00",
+
+cards:[
+
+{
+
+title:"عرض حصري للأعضاء",
+
+description:"وصول مبكر لمجموعة الشتاء الجديدة بخصم خاص.",
+
+button_text:"استكشف العرض",
+
+url:"https://ezwa-store.com"
+
+}
+
+]
+
+};
+
+const content=document.getElementById("content");
+
+const params=new URLSearchParams(window.location.search);
+
+const token=params.get("token");
+
+const key=params.get("key");
+
+function showSuccess(){
+
+content.innerHTML=`
+
+<div class="status">
+✓ VERIFIED
+</div>
+
+<div class="title">
+تم التحقق
+</div>
+
+<div class="subtitle">
+تم التحقق من مفتاحك بنجاح.
+</div>
+
+<div class="card">
+
+<div style="color:#888;margin-bottom:10px;">
+المفتاح
+</div>
+
+<div style="font-size:22px;font-weight:bold;">
+${key||"UNKNOWN"}
+</div>
+
+</div>
+
+`;
+
+setTimeout(showVault,1000);
+
+}
+  function showVault(){
+
+const target=new Date(CONFIG.opening_timestamp).getTime();
+
+const now=new Date().getTime();
+
+const open=(CONFIG.status==="open")||(now>=target);
+
+if(open){
+
+let cards="";
+
+CONFIG.cards.forEach(card=>{
+
+cards+=`
+
+<div class="card">
+
+<h2>${card.title}</h2>
+
+<p style="margin-top:15px;color:#999;line-height:1.8;">
+${card.description}
+</p>
+
+<a class="button" href="${card.url}" target="_blank">
+${card.button_text}
+</a>
+
+</div>
+
+`;
+
+});
+
+content.innerHTML=`
+
+<div class="status">
+VAULT OPEN
+</div>
+
+<div class="title">
+${CONFIG.title}
+</div>
+
+<div class="subtitle">
+منطقة خاصة بأصحاب مفتاح عزوة
+</div>
+
+${cards}
+
+`;
+
+}else{
+
+content.innerHTML=`
+
+<div class="status">
+VAULT CLOSED
+</div>
+
+<div class="title">
+${CONFIG.title}
+</div>
+
+<div class="subtitle">
+${CONFIG.message}
 </div>
 
 <div class="line"></div>
 
-<div class="vault">
-🔒 The Vault is Closed
+<div class="countdown">
+
+<div class="box">
+<span id="days">00</span>
+<span>يوم</span>
 </div>
 
-<div class="small">
-The next opening will be announced soon.
+<div class="box">
+<span id="hours">00</span>
+<span>ساعة</span>
+</div>
+
+<div class="box">
+<span id="minutes">00</span>
+<span>دقيقة</span>
+</div>
+
+<div class="box">
+<span id="seconds">00</span>
+<span>ثانية</span>
 </div>
 
 </div>
+
+`;
+
+startCountdown(target);
+
+}
+
+}
+  function startCountdown(target){
+
+function update(){
+
+const now=new Date().getTime();
+
+const distance=target-now;
+
+if(distance<=0){
+
+CONFIG.status="open";
+
+showVault();
+
+return;
+
+}
+
+const days=Math.floor(distance/(1000*60*60*24));
+
+const hours=Math.floor((distance%(1000*60*60*24))/(1000*60*60));
+
+const minutes=Math.floor((distance%(1000*60*60))/60000);
+
+const seconds=Math.floor((distance%(1000*60))/1000);
+
+document.getElementById("days").textContent=String(days).padStart(2,"0");
+document.getElementById("hours").textContent=String(hours).padStart(2,"0");
+document.getElementById("minutes").textContent=String(minutes).padStart(2,"0");
+document.getElementById("seconds").textContent=String(seconds).padStart(2,"0");
+
+}
+
+update();
+
+setInterval(update,1000);
+
+}
+
+setTimeout(()=>{
+
+if(!token){
+
+content.innerHTML=`
+
+<div class="status">
+ERROR
+</div>
+
+<div class="title">
+رمز الوصول غير صالح
+</div>
+
+<div class="subtitle">
+يرجى استخدام رابط التحقق الصحيح.
+</div>
+
+`;
+
+return;
+
+}
+
+showSuccess();
+
+},1800);
+
+</script>
 
 </body>
 </html>
