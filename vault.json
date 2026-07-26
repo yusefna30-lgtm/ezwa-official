@@ -1,0 +1,16 @@
+{
+  "status": "closed",
+  "title": "الخزنة",
+  "subtitle": "منطقة خاصة بأصحاب مفتاح عزوة",
+  "last_opening_date": "2026-05-01",
+  "next_opening_date": "2026-08-01",
+  "opening_timestamp": "2026-08-01T00:00:00",
+  "cards": [
+    {
+      "title": "عرض حصري للأعضاء",
+      "description": "وصول مبكر لمجموعة الشتاء الجديدة بخصم خاص.",
+      "button_text": "استكشف العرض",
+      "url": "https://ezwa-store.com"
+    }
+  ]
+}
