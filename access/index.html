@@ -643,8 +643,12 @@ update();
 setInterval(update,1000);
 
 }
-  setTimeout(()=>{
+(async()=>{
 
+if(!(await validateKey())) return;
+
+setTimeout(()=>{
+  
 if(!token){
 
 render(`
@@ -669,7 +673,7 @@ return;
 
 showSuccess();
 
-},1800);
+},1800);})();
 
   window.addEventListener("focus",()=>{
 
