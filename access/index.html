@@ -670,28 +670,6 @@ if(!(await validateKey())) return;
 
 setTimeout(()=>{
 
-if(!token){
-
-render(`
-
-<div class="title">
-
-رمز الوصول غير صالح
-
-</div>
-
-<div class="subtitle">
-
-يرجى استخدام رابط التحقق الصحيح الخاص بقطعتك.
-
-</div>
-
-`);
-
-return;
-
-}
-
 showSuccess();
 
 },1800);
