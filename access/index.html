@@ -525,9 +525,29 @@ ${CONFIG.subtitle}
 
 ${statusPanel(true)}
 
+<div class="product-info">
+
+<p><strong>رقم المنتج:</strong> ${KEY_DATA.product}</p>
+
+<p><strong>رمز المفتاح:</strong> ${KEY_DATA.key}</p>
+
+<p><strong>الحالة:</strong> ${KEY_DATA.status}</p>
+
+</div>
+
 <div class="cards">
 
 ${cardsHTML}
+
+</div>
+
+<div class="product-info">
+
+<p><strong>اسم المالك:</strong> قريبًا</p>
+
+<p><strong>رقم المالك:</strong> قريبًا</p>
+
+<p><strong>البريد الإلكتروني:</strong> قريبًا</p>
 
 </div>
 
@@ -649,10 +669,12 @@ setInterval(update,1000);
 }
 (async()=>{
 
+await loadVault();
+
 if(!(await validateKey())) return;
 
 setTimeout(()=>{
-  
+
 if(!token){
 
 render(`
@@ -677,22 +699,10 @@ return;
 
 showSuccess();
 
-},1800);})();
+},1800);
 
-  window.addEventListener("focus",()=>{
-
-const target=new Date(CONFIG.opening_timestamp).getTime();
-
-if(new Date().getTime()>=target){
-
-CONFIG.status="open";
-
-showVault();
-
-}
-
-});
-
+})();
+  
 document.addEventListener("visibilitychange",()=>{
 
 if(document.visibilityState==="visible"){
