@@ -1,0 +1,18 @@
+[
+  {
+    "id": "P001",
+    "name": "Oversize Black",
+    "color": "Black",
+    "size": "L",
+    "image": "shirt-black.png",
+    "description": "تيشيرت أوفر سايز أسود"
+  },
+  {
+    "id": "P002",
+    "name": "Oversize White",
+    "color": "White",
+    "size": "M",
+    "image": "shirt-white.png",
+    "description": "تيشيرت أوفر سايز أبيض"
+  }
+]
