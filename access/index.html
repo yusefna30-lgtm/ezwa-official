@@ -326,6 +326,34 @@ const token=params.get("token");
 
 const key=params.get("key");
 
+  async function validateKey() {
+
+    const res = await fetch("keys.json?" + Date.now());
+    const keys = await res.json();
+
+    const found = keys.find(k => k.key === key);
+
+    if (!found) {
+
+        document.getElementById("app").innerHTML = `
+        <div class="title">مفتاح غير صالح</div>
+        <div class="subtitle">هذه القطعة غير مسجلة في EZWA.</div>
+        `;
+        return false;
+    }
+
+    if (found.status !== "active") {
+
+        document.getElementById("app").innerHTML = `
+        <div class="title">تم إيقاف المفتاح</div>
+        <div class="subtitle">لا يمكن استخدام هذه القطعة حالياً.</div>
+        `;
+        return false;
+    }
+
+    return true;
+}
+  
 function render(html){
 
 app.innerHTML=html;
