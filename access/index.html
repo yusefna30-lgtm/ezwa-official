@@ -286,37 +286,32 @@ color:#666;
 </div>
 <script>
 
-const CONFIG={
+let CONFIG={};
 
-status:"closed",
+async function loadVault(){
 
-title:"الخزنة",
+  let PRODUCTS={};
+let KEY_DATA=null;
 
-subtitle:"منطقة خاصة بأصحاب مفتاح عزوة",
+async function loadProducts(){
 
-last_opening_date:"2026-05-01",
+const response=await fetch("products.json?"+Date.now());
 
-next_opening_date:"2026-08-01",
+const list=await response.json();
 
-opening_timestamp:"2026-08-01T00:00:00",
+list.forEach(item=>{
 
-cards:[
+PRODUCTS[item.id]=item;
 
-{
-
-title:"عرض حصري للأعضاء",
-
-description:"وصول مبكر لمجموعة الشتاء الجديدة بخصم خاص.",
-
-button_text:"استكشف العرض",
-
-url:"https://ezwa-store.com"
+});
 
 }
 
-]
+const response=await fetch("vault.json?"+Date.now());
 
-};
+CONFIG=await response.json();
+
+}
 
 const app=document.getElementById("app");
 
@@ -333,6 +328,13 @@ const key=params.get("key");
 
     const found = keys.find(k => k.key === key);
 
+    KEY_DATA = found;
+
+if(found){
+
+await loadProducts();
+
+}
     if (!found) {
 
         document.getElementById("app").innerHTML = `
@@ -475,39 +477,41 @@ const now=new Date().getTime();
 
 const isOpen=(CONFIG.status==="open")||(now>=target);
 
+  const PRODUCT = PRODUCTS[KEY_DATA.product];
+  
 if(isOpen){
 
-let cardsHTML="";
-
-CONFIG.cards.forEach(card=>{
-
-cardsHTML+=`
+let cardsHTML=`
 
 <div class="card">
 
-<h3>${card.title}</h3>
+<h3>${PRODUCT.name}</h3>
 
 <p>
 
-${card.description}
+${PRODUCT.description}
 
 </p>
 
-<a href="${card.url}" target="_blank">
-
-${card.button_text}
-
-</a>
+${PRODUCT.image ? `<img src="${PRODUCT.image}" style="width:100%;border-radius:12px;margin-top:10px;">` : ""}
 
 </div>
 
 `;
-
-});
-
+  
 render(`
 
 <div class="title">
+
+<div class="product-info">
+
+<h2>${PRODUCT.name}</h2>
+
+<p>اللون: ${PRODUCT.color}</p>
+
+<p>المقاس: ${PRODUCT.size}</p>
+
+</div>
 
 ${CONFIG.title}
 
