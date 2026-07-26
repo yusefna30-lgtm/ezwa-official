@@ -1,17 +1,17 @@
 [
   {
     "key": "EZWA001",
-    "owner": "يوسف",
-    "status": "active"
+    "status": "active",
+    "product": "P001"
   },
   {
     "key": "EZWA002",
-    "owner": "",
-    "status": "active"
+    "status": "active",
+    "product": "P002"
   },
   {
     "key": "EZWA003",
-    "owner": "",
-    "status": "blocked"
+    "status": "blocked",
+    "product": "P001"
   }
 ]
