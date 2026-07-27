@@ -293,6 +293,16 @@ async function loadVault(){
   let PRODUCTS={};
 let KEY_DATA=null;
 
+  let OWNERS=[];
+
+async function loadOwners(){
+
+const response=await fetch("owners.json?"+Date.now());
+
+OWNERS=await response.json();
+
+}
+  
 async function loadProducts(){
 
 const response=await fetch("products.json?"+Date.now());
@@ -330,6 +340,14 @@ const key=params.get("key");
 
     KEY_DATA = found;
 
+    await loadOwners();
+
+const OWNER = OWNERS.find(owner =>
+owner.keys.includes(KEY_DATA.key)
+);
+
+KEY_DATA.owner = OWNER || null;
+    
     if (!found) {
 
         document.getElementById("app").innerHTML = `
