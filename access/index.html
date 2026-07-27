@@ -556,11 +556,11 @@ ${cardsHTML}
 
 <div class="product-info">
 
-<p><strong>اسم المالك:</strong> قريبًا</p>
+<p><strong>اسم المالك:</strong> ${KEY_DATA.owner?.name || "غير مسجل"}</p>
 
-<p><strong>رقم المالك:</strong> قريبًا</p>
+<p><strong>رقم الجوال:</strong> ${KEY_DATA.owner?.phone || "غير متوفر"}</p>
 
-<p><strong>البريد الإلكتروني:</strong> قريبًا</p>
+<p><strong>البريد الإلكتروني:</strong> ${KEY_DATA.owner?.email || "غير متوفر"}</p>
 
 </div>
 
