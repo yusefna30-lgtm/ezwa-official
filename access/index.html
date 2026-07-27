@@ -287,23 +287,42 @@ color:#666;
 <script>
 
 let CONFIG={};
+let PRODUCTS={};
+let KEY_DATA=null;
+let OWNERS=[];
 
 async function loadVault(){
 
-  let PRODUCTS={};
-let KEY_DATA=null;
+    await loadOwners();
+    await loadProducts();
 
-  let OWNERS=[];
+    const response = await fetch("vault.json?" + Date.now());
+
+    CONFIG = await response.json();
+
+}
 
 async function loadOwners(){
 
-const response=await fetch("owners.json?"+Date.now());
+    const response = await fetch("owners.json?" + Date.now());
 
-OWNERS=await response.json();
+    OWNERS = await response.json();
 
 }
-  
+
 async function loadProducts(){
+
+    const response = await fetch("products.json?" + Date.now());
+
+    const list = await response.json();
+
+    list.forEach(item => {
+
+        PRODUCTS[item.id] = item;
+
+    });
+
+}
 
 const response=await fetch("products.json?"+Date.now());
 
