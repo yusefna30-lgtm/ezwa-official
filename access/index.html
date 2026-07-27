@@ -485,43 +485,35 @@ const now=new Date().getTime();
 
 const isOpen=(CONFIG.status==="open")||(now>=target);
 
-  const PRODUCT = PRODUCTS[KEY_DATA.product];
-
-  const OWNER = KEY_DATA.owner;
-  
 if(isOpen){
 
-let cardsHTML=`
+let cardsHTML="";
+
+CONFIG.cards.forEach(card=>{
+
+cardsHTML+=`
 
 <div class="card">
 
-<h3>${PRODUCT.name}</h3>
+<h3>${card.title}</h3>
 
-<p>
+<p>${card.description}</p>
 
-${PRODUCT.description}
+<a href="${card.url}" target="_blank">
 
-</p>
+${card.button_text}
 
-${PRODUCT.image ? `<img src="${PRODUCT.image}" style="width:100%;border-radius:12px;margin-top:10px;">` : ""}
+</a>
 
 </div>
 
 `;
-  
+
+});
+
 render(`
 
 <div class="title">
-
-<div class="product-info">
-
-<h2>${PRODUCT.name}</h2>
-
-<p>اللون: ${PRODUCT.color}</p>
-
-<p>المقاس: ${PRODUCT.size}</p>
-
-</div>
 
 ${CONFIG.title}
 
@@ -535,29 +527,9 @@ ${CONFIG.subtitle}
 
 ${statusPanel(true)}
 
-<div class="product-info">
-
-<p><strong>رقم المنتج:</strong> ${KEY_DATA.product}</p>
-
-<p><strong>رمز المفتاح:</strong> ${KEY_DATA.key}</p>
-
-<p><strong>الحالة:</strong> ${KEY_DATA.status}</p>
-
-</div>
-
 <div class="cards">
 
 ${cardsHTML}
-
-</div>
-
-<div class="product-info">
-
-<p><strong>اسم المالك:</strong> ${KEY_DATA.owner?.name || "غير مسجل"}</p>
-
-<p><strong>رقم الجوال:</strong> ${KEY_DATA.owner?.phone || "غير متوفر"}</p>
-
-<p><strong>البريد الإلكتروني:</strong> ${KEY_DATA.owner?.email || "غير متوفر"}</p>
 
 </div>
 
@@ -568,7 +540,7 @@ ${cardsHTML}
 </div>
 
 `);
-
+  
 }else{
 
 render(`
