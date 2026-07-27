@@ -340,13 +340,6 @@ const key=params.get("key");
 
     KEY_DATA = found;
 
-    await loadOwners();
-
-const OWNER = OWNERS.find(owner =>
-owner.keys.includes(KEY_DATA.key)
-);
-
-KEY_DATA.owner = OWNER || null;
     
     if (!found) {
 
