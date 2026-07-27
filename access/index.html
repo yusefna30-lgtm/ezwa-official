@@ -471,8 +471,10 @@ ${keyCard()}
 
 `);
 
-setTimeout(showVault,800);
-
+setTimeout(() => {
+showVault();
+}, 800);
+    
 }
 
 function showVault(){
