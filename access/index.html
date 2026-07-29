@@ -32,7 +32,7 @@ body{
   display:flex;
   justify-content:center;
   align-items:center;
-  min-height: 100vh;
+  min-height:100vh;
 }
 
 .container{
@@ -78,7 +78,7 @@ body{
 .check{
   font-size:55px;
   margin-bottom:20px;
-  color: #d4af37;
+  color:#d4af37;
 }
 
 .key-card{
@@ -88,7 +88,7 @@ body{
   border:1px solid #332b15;
   border-radius:10px;
   margin-top:25px;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+  box-shadow:0 4px 20px rgba(0,0,0,0.5);
 }
 
 .key-title{
@@ -186,12 +186,12 @@ body{
   border:1px solid #222;
   border-radius:8px;
   padding:22px;
-  text-align: right;
-  transition: border-color 0.3s ease;
+  text-align:right;
+  transition:border-color 0.3s ease;
 }
 
-.card:hover {
-  border-color: #d4af37;
+.card:hover{
+  border-color:#d4af37;
 }
 
 .card h3{
@@ -215,11 +215,6 @@ body{
   border-radius:5px;
   font-weight:700;
   text-align:center;
-  transition: opacity 0.2s;
-}
-
-.card a:hover{
-  opacity:0.9;
 }
 
 .footer{
@@ -235,20 +230,16 @@ body{
 <body>
 
 <div class="container">
-
   <div class="logo">
     <img src="logo.png" alt="EZWA">
   </div>
-
   <div id="app" class="fade">
     <div class="verify">جاري التحقق...</div>
   </div>
-
 </div>
 
 <script>
 
-// المتغيرات العامة
 let CONFIG = {};
 let PRODUCTS = {};
 let OWNERS = [];
@@ -260,7 +251,6 @@ const params = new URLSearchParams(location.search);
 const token = params.get("token");
 const key = params.get("key");
 
-// تحميل بيانات الخزنة والمنتجات والمالكين بالتوازي
 async function loadVault() {
   try {
     const [vaultRes, ownersRes, productsRes] = await Promise.all([
@@ -269,31 +259,22 @@ async function loadVault() {
       fetch("products.json?" + Date.now()).catch(() => null)
     ]);
 
-    if (vaultRes && vaultRes.ok) {
-      CONFIG = await vaultRes.json();
-    }
-
-    if (ownersRes && ownersRes.ok) {
-      OWNERS = await ownersRes.json();
-    }
-
+    if (vaultRes && vaultRes.ok) CONFIG = await vaultRes.json();
+    if (ownersRes && ownersRes.ok) OWNERS = await ownersRes.json();
     if (productsRes && productsRes.ok) {
       const list = await productsRes.json();
-      list.forEach(item => {
-        PRODUCTS[item.id] = item;
-      });
+      list.forEach(item => { PRODUCTS[item.id] = item; });
     }
   } catch (err) {
-    console.error("خطأ أثناء تحميل البيانات:", err);
+    console.error("خطأ في التحميل:", err);
   }
 }
 
-// التحقق من صحة المفتاح
 async function validateKey() {
   if (!key) {
     render(`
       <div class="title">مفتاح مفقود</div>
-      <div class="subtitle">يرجى فتح الرابط متضمناً مفتاح الوصول الخاص بك.</div>
+      <div class="subtitle">يرجى استخدام الرابط الخاص بمفتاحك.</div>
     `);
     return false;
   }
@@ -308,7 +289,7 @@ async function validateKey() {
     if (!found) {
       render(`
         <div class="title">مفتاح غير صالح</div>
-        <div class="subtitle">هذه القطعة غير مسجلة في نظام EZWA.</div>
+        <div class="subtitle">هذه القطعة غير مسجلة في EZWA.</div>
       `);
       return false;
     }
@@ -316,7 +297,7 @@ async function validateKey() {
     if (found.status !== "active") {
       render(`
         <div class="title">تم إيقاف المفتاح</div>
-        <div class="subtitle">لا يمكن استخدام هذا المفتاح حالياً.</div>
+        <div class="subtitle">لا يمكن استخدام هذه القطعة حالياً.</div>
       `);
       return false;
     }
@@ -324,8 +305,8 @@ async function validateKey() {
     return true;
   } catch (err) {
     render(`
-      <div class="title">خطأ في الاتصال</div>
-      <div class="subtitle">تعذر التحقق من المفتاح، يرجى المحاولة لاحقاً.</div>
+      <div class="title">خطأ في الشبكة</div>
+      <div class="subtitle">تعذر التحقق من المفتاح حالياً.</div>
     `);
     return false;
   }
@@ -336,12 +317,13 @@ function render(html) {
 }
 
 function keyCard() {
-  const product = KEY_DATA && KEY_DATA.product_id ? PRODUCTS[KEY_DATA.product_id] : null;
+  const prodId = KEY_DATA ? (KEY_DATA.product || KEY_DATA.product_id) : null;
+  const product = prodId ? PRODUCTS[prodId] : null;
   const productName = product ? product.name : "";
 
   return `
     <div class="key-card">
-      <div class="key-title">مفتاحك الخاص</div>
+      <div class="key-title">مفتاحك</div>
       <div class="key-value">${key || "غير معروف"}</div>
       ${productName ? `<div class="key-product">${productName}</div>` : ''}
     </div>
@@ -378,7 +360,7 @@ function showSuccess() {
 
   setTimeout(() => {
     showVault();
-  }, 1200);
+  }, 1000);
 }
 
 function showVault() {
@@ -388,8 +370,7 @@ function showVault() {
 
   if (isOpen) {
     let cardsHTML = "";
-
-    if (CONFIG.cards && CONFIG.cards.length > 0) {
+    if (CONFIG.cards) {
       CONFIG.cards.forEach(card => {
         cardsHTML += `
           <div class="card">
@@ -405,34 +386,19 @@ function showVault() {
       <div class="title">${CONFIG.title || "الخزنة"}</div>
       <div class="subtitle">${CONFIG.subtitle || ""}</div>
       ${statusPanel(true)}
-      <div class="cards">
-        ${cardsHTML}
-      </div>
+      <div class="cards">${cardsHTML}</div>
       <div class="footer">يتم تحديث محتوى الخزنة باستمرار.</div>
     `);
-
   } else {
     render(`
       <div class="title">${CONFIG.title || "الخزنة"}</div>
       <div class="subtitle">الخزنة مغلقة حالياً، سيتم فتحها في الموعد المحدد.</div>
       ${statusPanel(false)}
       <div class="countdown">
-        <div class="time-box">
-          <div id="days" class="time-number">00</div>
-          <div class="time-label">يوم</div>
-        </div>
-        <div class="time-box">
-          <div id="hours" class="time-number">00</div>
-          <div class="time-label">ساعة</div>
-        </div>
-        <div class="time-box">
-          <div id="minutes" class="time-number">00</div>
-          <div class="time-label">دقيقة</div>
-        </div>
-        <div class="time-box">
-          <div id="seconds" class="time-number">00</div>
-          <div class="time-label">ثانية</div>
-        </div>
+        <div class="time-box"><div id="days" class="time-number">00</div><div class="time-label">يوم</div></div>
+        <div class="time-box"><div id="hours" class="time-number">00</div><div class="time-label">ساعة</div></div>
+        <div class="time-box"><div id="minutes" class="time-number">00</div><div class="time-label">دقيقة</div></div>
+        <div class="time-box"><div id="seconds" class="time-number">00</div><div class="time-label">ثانية</div></div>
       </div>
       <div class="footer">يتم تحديث محتوى الخزنة باستمرار.</div>
     `);
@@ -460,22 +426,21 @@ function startCountdown(target) {
     const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
     const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-    const daysEl = document.getElementById("days");
-    const hoursEl = document.getElementById("hours");
-    const minutesEl = document.getElementById("minutes");
-    const secondsEl = document.getElementById("seconds");
+    const d = document.getElementById("days");
+    const h = document.getElementById("hours");
+    const m = document.getElementById("minutes");
+    const s = document.getElementById("seconds");
 
-    if (daysEl) daysEl.textContent = String(days).padStart(2, "0");
-    if (hoursEl) hoursEl.textContent = String(hours).padStart(2, "0");
-    if (minutesEl) minutesEl.textContent = String(minutes).padStart(2, "0");
-    if (secondsEl) secondsEl.textContent = String(seconds).padStart(2, "0");
+    if (d) d.textContent = String(days).padStart(2, "0");
+    if (h) h.textContent = String(hours).padStart(2, "0");
+    if (m) m.textContent = String(minutes).padStart(2, "0");
+    if (s) s.textContent = String(seconds).padStart(2, "0");
   }
 
   update();
   countdownInterval = setInterval(update, 1000);
 }
 
-// بدء التشغيل
 (async () => {
   await loadVault();
   const isValid = await validateKey();
@@ -483,10 +448,9 @@ function startCountdown(target) {
 
   setTimeout(() => {
     showSuccess();
-  }, 1000);
+  }, 800);
 })();
 
-// تحديث الصفحة تلقائياً عند العودة للتبويب
 document.addEventListener("visibilitychange", () => {
   if (document.visibilityState === "visible" && CONFIG.opening_timestamp) {
     const target = new Date(CONFIG.opening_timestamp).getTime();
