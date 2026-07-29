@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>EZWA | Access</title>
+  <title>EZWA | Vault Access</title>
   <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
   <style>
     body {
@@ -18,31 +18,32 @@
       justify-content: center;
       min-height: 100vh;
       box-sizing: border-box;
+      text-align: center;
     }
 
     .logo {
-      width: 120px;
-      margin-bottom: 20px;
+      width: 100px;
+      margin-bottom: 15px;
     }
 
     h1 {
-      font-size: 28px;
-      margin-bottom: 10px;
+      font-size: 26px;
+      margin-bottom: 5px;
       color: #fff;
     }
 
     p.subtitle {
       color: #aaa;
       font-size: 14px;
-      margin-bottom: 30px;
+      margin-bottom: 25px;
     }
 
     /* حاوية بطاقة الخدش */
     .scratch-card-box {
       position: relative;
       width: 320px;
-      height: 160px;
-      margin: 20px auto;
+      height: 170px;
+      margin: 15px auto;
       border-radius: 12px;
       overflow: hidden;
       box-shadow: 0 0 15px rgba(212, 175, 55, 0.2);
@@ -50,17 +51,16 @@
       background: #111;
     }
 
-    /* الجائزة التي تظهر تحت الطلاء */
     .reward-text {
       position: absolute;
       width: 100%;
       height: 100%;
       display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
       font-weight: bold;
-      font-size: 16px;
-      text-align: center;
+      font-size: 15px;
       padding: 15px;
       box-sizing: border-box;
       color: #d4af37;
@@ -74,51 +74,124 @@
       touch-action: none;
     }
 
-    /* هالة المفتاح الذهبي الاستثنائية */
+    /* هالة المفتاح الذهبي */
     .golden-mode {
       border: 2px solid #ffd700 !important;
-      box-shadow: 0 0 30px rgba(255, 215, 0, 0.7) !important;
+      box-shadow: 0 0 35px rgba(255, 215, 0, 0.8) !important;
       background: linear-gradient(145deg, #2a2408, #000) !important;
+    }
+
+    /* قسم لغز الكنز */
+    .riddle-box {
+      display: none;
+      margin-top: 15px;
+      width: 320px;
+    }
+
+    input.riddle-input {
+      width: 100%;
+      padding: 10px;
+      border-radius: 8px;
+      border: 1px solid #d4af37;
+      background: #111;
+      color: #fff;
+      text-align: center;
+      font-family: 'Cairo', sans-serif;
+      font-size: 14px;
+      box-sizing: border-box;
+      margin-top: 10px;
+    }
+
+    button.btn-unlock {
+      width: 100%;
+      padding: 10px;
+      margin-top: 10px;
+      border-radius: 8px;
+      border: none;
+      background: #d4af37;
+      color: #000;
+      font-weight: bold;
+      font-family: 'Cairo', sans-serif;
+      cursor: pointer;
+    }
+
+    .geo-status {
+      font-size: 12px;
+      color: #e74c3c;
+      margin-top: 10px;
     }
   </style>
 </head>
 <body>
 
-  <!-- الشعار الرئيسي -->
   <img src="logo.png" alt="EZWA Logo" class="logo" onerror="this.style.display='none'">
 
   <h1>خزنة عزوة الحصرية</h1>
-  <p class="subtitle">امسح الكارت واكشف المفاجأة الخاصة بقطعتك</p>
+  <p class="subtitle" id="sub-title">امسح الكارت واكشف أسرار القطعة</p>
 
   <!-- كرت الخدش التفاعلي -->
   <div id="scratch-container" class="scratch-card-box">
-    <div id="scratch-reward" class="reward-text">جاري التحقق من المفتاح...</div>
-    <canvas id="scratch-canvas" width="320" height="160"></canvas>
+    <div id="scratch-reward" class="reward-text">جاري جلب بيانات الخزنة...</div>
+    <canvas id="scratch-canvas" width="320" height="170"></canvas>
   </div>
 
+  <!-- قسم لغز الكنز (يظهر بعد الخدش إذا كان هناك لغز) -->
+  <div id="riddle-container" class="riddle-box">
+    <p id="riddle-question" style="color:#fff; font-size:14px; margin:0;"></p>
+    <input type="text" id="riddle-answer-input" class="riddle-input" placeholder="اكتب إجابة اللغز هنا...">
+    <button onclick="checkRiddle()" class="btn-unlock">تأكيد الإجابة وفتح الجائزة 🔓</button>
+  </div>
+
+  <div id="geo-msg" class="geo-status"></div>
+
   <script>
-    // قراءة المفتاح من رابط الصفحة تلقائياً
     const urlParams = new URLSearchParams(window.location.search);
     const keyParam = urlParams.get('key') || 'EZWA001';
+    let activeKeyData = null;
 
-    // جلب البيانات من ملف keys.json
     fetch('keys.json')
       .then(res => res.json())
       .then(data => {
-        const currentKey = data.find(k => k.key === keyParam);
-        if (currentKey) {
-          initScratchCard(currentKey.reward || 'خصم خاص لحاملي القطعة', currentKey.is_golden);
+        activeKeyData = data.find(k => k.key === keyParam);
+        if (activeKeyData) {
+          if (activeKeyData.requires_geo) {
+            verifyLocation();
+          } else {
+            setupVault();
+          }
         } else {
-          initScratchCard('عذراً، المفتاح غير صحيح', false);
+          initScratchCard('عذراً، المفتاح غير صحيح ❌', false);
         }
       })
       .catch(() => {
-        // حالة احتياطية للعرض التجريبي
-        initScratchCard('مبروك! حصلت على خصم VIP حصري', true);
+        initScratchCard('عذراً، تعذر الاتصال بالنظام', false);
       });
 
-    // تشغيل نظام الخدش باللمس أو الماوس
-    function initScratchCard(rewardText, isGolden) {
+    // التحقق من الموقع الجغرافي (الرياض)
+    function verifyLocation() {
+      document.getElementById('geo-msg').innerText = '📍 جاري التحقق من موقعك لتفعيل الخزنة الجغرافية...';
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(() => {
+          document.getElementById('geo-msg').innerText = '✅ تم تأكيد النطاق الجغرافي بنجاح!';
+          setupVault();
+        }, () => {
+          document.getElementById('geo-msg').innerText = '⚠️ يلزم تفعيل الموقع الجغرافي (GPS) لفتح هذه الخزنة الخاصة.';
+          initScratchCard('خزنة مغلقة جغرافياً 🔒', false);
+        });
+      } else {
+        setupVault();
+      }
+    }
+
+    function setupVault() {
+      const hasRiddle = activeKeyData.riddle && activeKeyData.riddle !== "";
+      const textOnScratch = hasRiddle ? "🧩 تم كشف اللغز! أجب عليه أسفله" : activeKeyData.reward;
+      
+      initScratchCard(textOnScratch, activeKeyData.is_golden, hasRiddle);
+    }
+
+    // إعداد ورسم بطاقة الخدش
+    function initScratchCard(rewardText, isGolden, hasRiddle) {
       const canvas = document.getElementById('scratch-canvas');
       const ctx = canvas.getContext('2d');
       const container = document.getElementById('scratch-container');
@@ -129,15 +202,13 @@
         container.classList.add('golden-mode');
       }
 
-      // رسم طبقة الطلاء (ذهبي للمفتاح الذهبي / رمادي دكن للعادي)
       ctx.fillStyle = isGolden ? '#d4af37' : '#222222';
       ctx.fillRect(0, 0, canvas.width, canvas.height);
       
-      // كتابة النص فوق الطلاء
       ctx.fillStyle = isGolden ? '#000000' : '#d4af37';
-      ctx.font = 'bold 16px Cairo, sans-serif';
+      ctx.font = 'bold 15px Cairo, sans-serif';
       ctx.textAlign = 'center';
-      ctx.fillText('احكِ البطاقة لإظهار المفاجأة ✍️', canvas.width / 2, canvas.height / 2 + 5);
+      ctx.fillText('احكِ البطاقة لإظهار السر ✍️', canvas.width / 2, canvas.height / 2 + 5);
 
       let isDrawing = false;
 
@@ -152,8 +223,14 @@
 
         ctx.globalCompositeOperation = 'destination-out';
         ctx.beginPath();
-        ctx.arc(x, y, 20, 0, Math.PI * 2);
+        ctx.arc(x, y, 22, 0, Math.PI * 2);
         ctx.fill();
+
+        // إظهار صندوق اللغز عند بدء الخدش إذا كان المفتاح يحتوي لغزاً
+        if (hasRiddle) {
+          document.getElementById('riddle-container').style.display = 'block';
+          document.getElementById('riddle-question').innerText = activeKeyData.riddle;
+        }
       }
 
       canvas.addEventListener('mousedown', () => isDrawing = true);
@@ -163,6 +240,17 @@
       canvas.addEventListener('touchstart', () => isDrawing = true);
       canvas.addEventListener('touchend', () => isDrawing = false);
       canvas.addEventListener('touchmove', scratch);
+    }
+
+    // التحقق من إجابة اللغز
+    function checkRiddle() {
+      const userAnswer = document.getElementById('riddle-answer-input').value.trim();
+      if (userAnswer === activeKeyData.riddle_answer) {
+        document.getElementById('scratch-reward').innerText = activeKeyData.reward;
+        document.getElementById('riddle-container').innerHTML = '<p style="color:#2ecc71; font-weight:bold;">🎉 إجابة صحيحة! تم فتح الكنز بنجاح.</p>';
+      } else {
+        alert('الإجابة غير صحيحة، حاول مجدداً!');
+      }
     }
   </script>
 </body>
