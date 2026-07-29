@@ -10,253 +10,222 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
 <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap" rel="stylesheet">
 
 <style>
 
 *{
-margin:0;
-padding:0;
-box-sizing:border-box;
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
 }
 
 html,body{
-
-width:100%;
-height:100%;
-background:#000;
-color:#fff;
-font-family:'Cairo',sans-serif;
-
+  width:100%;
+  height:100%;
+  background:#000;
+  color:#fff;
+  font-family:'Cairo',sans-serif;
 }
 
 body{
-
-display:flex;
-justify-content:center;
-align-items:center;
-
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  min-height: 100vh;
 }
 
 .container{
-
-width:100%;
-max-width:820px;
-padding:40px 25px;
-text-align:center;
-
+  width:100%;
+  max-width:820px;
+  padding:40px 25px;
+  text-align:center;
 }
 
 .logo{
-
-width:180px;
-margin:auto;
-margin-bottom:45px;
-
+  width:180px;
+  margin:auto;
+  margin-bottom:45px;
 }
 
 .logo img{
-
-width:100%;
-
+  width:100%;
+  height:auto;
 }
 
 .fade{
-
-transition:.5s;
-
+  transition:.5s opacity ease-in-out;
 }
 
 .title{
-
-font-size:42px;
-font-weight:800;
-margin-bottom:12px;
-
+  font-size:42px;
+  font-weight:800;
+  margin-bottom:12px;
 }
 
 .subtitle{
-
-color:#8e8e8e;
-font-size:16px;
-margin-bottom:35px;
-
+  color:#8e8e8e;
+  font-size:16px;
+  margin-bottom:35px;
 }
 
 .verify{
-
-font-size:15px;
-letter-spacing:2px;
-color:#8e8e8e;
-
+  font-size:15px;
+  letter-spacing:2px;
+  color:#8e8e8e;
 }
 
 .check{
-
-font-size:55px;
-margin-bottom:20px;
-
+  font-size:55px;
+  margin-bottom:20px;
+  color: #d4af37;
 }
 
 .key-card{
-
-display:inline-block;
-padding:14px 30px;
-background:#111;
-border:1px solid #222;
-border-radius:8px;
-margin-top:25px;
-
+  display:inline-block;
+  padding:16px 32px;
+  background:#111;
+  border:1px solid #332b15;
+  border-radius:10px;
+  margin-top:25px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.5);
 }
 
 .key-title{
-
-font-size:13px;
-color:#777;
-
+  font-size:13px;
+  color:#888;
 }
 
 .key-value{
+  font-size:20px;
+  margin-top:6px;
+  font-weight:700;
+  color:#d4af37;
+  letter-spacing:1px;
+}
 
-font-size:19px;
-margin-top:6px;
-font-weight:700;
-
+.key-product{
+  font-size:13px;
+  color:#aaa;
+  margin-top:4px;
 }
 
 .vault-box{
-
-margin-top:40px;
-background:#111;
-border:1px solid #222;
-padding:25px;
-border-radius:8px;
-
+  margin-top:40px;
+  background:#111;
+  border:1px solid #222;
+  padding:25px;
+  border-radius:8px;
 }
 
 .status{
-
-font-size:20px;
-font-weight:700;
-margin-bottom:20px;
-
+  font-size:20px;
+  font-weight:700;
+  margin-bottom:20px;
 }
+
 .status-date{
-
-display:flex;
-justify-content:space-between;
-margin-top:20px;
-padding-top:20px;
-border-top:1px solid #222;
-
+  display:flex;
+  justify-content:space-between;
+  margin-top:20px;
+  padding-top:20px;
+  border-top:1px solid #222;
 }
 
 .date-box{
-
-flex:1;
-
+  flex:1;
 }
 
 .date-title{
-
-font-size:13px;
-color:#777;
-margin-bottom:8px;
-
+  font-size:13px;
+  color:#777;
+  margin-bottom:8px;
 }
 
 .date-value{
-
-font-size:16px;
-font-weight:600;
-
+  font-size:16px;
+  font-weight:600;
 }
 
 .countdown{
-
-display:flex;
-justify-content:center;
-gap:18px;
-margin-top:35px;
-
+  display:flex;
+  justify-content:center;
+  gap:18px;
+  margin-top:35px;
 }
 
 .time-box{
-
-background:#0d0d0d;
-border:1px solid #222;
-border-radius:8px;
-padding:18px;
-min-width:75px;
-
+  background:#0d0d0d;
+  border:1px solid #222;
+  border-radius:8px;
+  padding:18px;
+  min-width:75px;
 }
 
 .time-number{
-
-font-size:28px;
-font-weight:700;
-
+  font-size:28px;
+  font-weight:700;
+  color:#d4af37;
 }
 
 .time-label{
-
-font-size:12px;
-color:#777;
-margin-top:8px;
-
+  font-size:12px;
+  color:#777;
+  margin-top:8px;
 }
 
 .cards{
-
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:18px;
-margin-top:35px;
-
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:18px;
+  margin-top:35px;
 }
 
 .card{
+  background:#111;
+  border:1px solid #222;
+  border-radius:8px;
+  padding:22px;
+  text-align: right;
+  transition: border-color 0.3s ease;
+}
 
-background:#111;
-border:1px solid #222;
-border-radius:8px;
-padding:22px;
-
+.card:hover {
+  border-color: #d4af37;
 }
 
 .card h3{
-
-margin-bottom:12px;
-
+  margin-bottom:12px;
+  color:#fff;
 }
 
 .card p{
-
-color:#888;
-line-height:1.8;
-margin-bottom:18px;
-
+  color:#888;
+  line-height:1.8;
+  margin-bottom:18px;
+  font-size:14px;
 }
 
 .card a{
+  display:block;
+  background:#d4af37;
+  color:#000;
+  text-decoration:none;
+  padding:12px;
+  border-radius:5px;
+  font-weight:700;
+  text-align:center;
+  transition: opacity 0.2s;
+}
 
-display:block;
-background:#fff;
-color:#000;
-text-decoration:none;
-padding:12px;
-border-radius:5px;
-font-weight:700;
-
+.card a:hover{
+  opacity:0.9;
 }
 
 .footer{
-
-margin-top:45px;
-font-size:13px;
-color:#666;
-
+  margin-top:45px;
+  font-size:13px;
+  color:#666;
 }
 
 </style>
@@ -267,422 +236,268 @@ color:#666;
 
 <div class="container">
 
-<div class="logo">
+  <div class="logo">
+    <img src="logo.png" alt="EZWA">
+  </div>
 
-<img src="logo.png" alt="EZWA">
-
-</div>
-
-<div id="app" class="fade">
-
-<div class="verify">
-
-جاري التحقق...
+  <div id="app" class="fade">
+    <div class="verify">جاري التحقق...</div>
+  </div>
 
 </div>
 
-</div>
-
-</div>
 <script>
 
-let CONFIG={};
+// المتغيرات العامة
+let CONFIG = {};
+let PRODUCTS = {};
+let OWNERS = [];
+let KEY_DATA = null;
+let countdownInterval = null;
 
-async function loadVault(){
+const app = document.getElementById("app");
+const params = new URLSearchParams(location.search);
+const token = params.get("token");
+const key = params.get("key");
 
-  let PRODUCTS={};
-let KEY_DATA=null;
+// تحميل بيانات الخزنة والمنتجات والمالكين بالتوازي
+async function loadVault() {
+  try {
+    const [vaultRes, ownersRes, productsRes] = await Promise.all([
+      fetch("vault.json?" + Date.now()),
+      fetch("owners.json?" + Date.now()).catch(() => null),
+      fetch("products.json?" + Date.now()).catch(() => null)
+    ]);
 
-  let OWNERS=[];
+    if (vaultRes && vaultRes.ok) {
+      CONFIG = await vaultRes.json();
+    }
 
-async function loadOwners(){
+    if (ownersRes && ownersRes.ok) {
+      OWNERS = await ownersRes.json();
+    }
 
-const response=await fetch("owners.json?"+Date.now());
-
-OWNERS=await response.json();
-
+    if (productsRes && productsRes.ok) {
+      const list = await productsRes.json();
+      list.forEach(item => {
+        PRODUCTS[item.id] = item;
+      });
+    }
+  } catch (err) {
+    console.error("خطأ أثناء تحميل البيانات:", err);
+  }
 }
-  
-async function loadProducts(){
 
-const response=await fetch("products.json?"+Date.now());
+// التحقق من صحة المفتاح
+async function validateKey() {
+  if (!key) {
+    render(`
+      <div class="title">مفتاح مفقود</div>
+      <div class="subtitle">يرجى فتح الرابط متضمناً مفتاح الوصول الخاص بك.</div>
+    `);
+    return false;
+  }
 
-const list=await response.json();
-
-list.forEach(item=>{
-
-PRODUCTS[item.id]=item;
-
-});
-
-}
-
-const response=await fetch("vault.json?"+Date.now());
-
-CONFIG=await response.json();
-
-}
-
-const app=document.getElementById("app");
-
-const params=new URLSearchParams(location.search);
-
-const token=params.get("token");
-
-const key=params.get("key");
-
-  async function validateKey() {
-
+  try {
     const res = await fetch("keys.json?" + Date.now());
     const keys = await res.json();
-
     const found = keys.find(k => k.key === key);
 
     KEY_DATA = found;
 
-    
     if (!found) {
-
-        document.getElementById("app").innerHTML = `
+      render(`
         <div class="title">مفتاح غير صالح</div>
-        <div class="subtitle">هذه القطعة غير مسجلة في EZWA.</div>
-        `;
-        return false;
+        <div class="subtitle">هذه القطعة غير مسجلة في نظام EZWA.</div>
+      `);
+      return false;
     }
 
     if (found.status !== "active") {
-
-        document.getElementById("app").innerHTML = `
+      render(`
         <div class="title">تم إيقاف المفتاح</div>
-        <div class="subtitle">لا يمكن استخدام هذه القطعة حالياً.</div>
-        `;
-        return false;
+        <div class="subtitle">لا يمكن استخدام هذا المفتاح حالياً.</div>
+      `);
+      return false;
     }
 
     return true;
-}
-  
-function render(html){
-
-app.innerHTML=html;
-
-}
-
-function keyCard(){
-
-return`
-
-<div class="key-card">
-
-<div class="key-title">
-
-مفتاحك
-
-</div>
-
-<div class="key-value">
-
-${key||"غير معروف"}
-
-</div>
-
-</div>
-
-`;
-
+  } catch (err) {
+    render(`
+      <div class="title">خطأ في الاتصال</div>
+      <div class="subtitle">تعذر التحقق من المفتاح، يرجى المحاولة لاحقاً.</div>
+    `);
+    return false;
+  }
 }
 
-function statusPanel(open){
-
-return`
-
-<div class="vault-box">
-
-<div class="status">
-
-${open?"🟢 الخزنة مفتوحة":"🔒 الخزنة مغلقة"}
-
-</div>
-
-<div class="status-date">
-
-<div class="date-box">
-
-<div class="date-title">
-
-آخر فتح
-
-</div>
-
-<div class="date-value">
-
-${CONFIG.last_opening_date}
-
-</div>
-
-</div>
-
-<div class="date-box">
-
-<div class="date-title">
-
-الفتح القادم
-
-</div>
-
-<div class="date-value">
-
-${CONFIG.next_opening_date}
-
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-`;
-
-}
-  function showSuccess(){
-
-render(`
-
-<div class="check">
-
-✓
-
-</div>
-
-<div class="title">
-
-تم التحقق
-
-</div>
-
-<div class="subtitle">
-
-تم التحقق من مفتاح عزوة بنجاح.
-
-</div>
-
-${keyCard()}
-
-`);
-
-setTimeout(() => {
-showVault();
-}, 800);
-    
+function render(html) {
+  app.innerHTML = html;
 }
 
-function showVault(){
+function keyCard() {
+  const product = KEY_DATA && KEY_DATA.product_id ? PRODUCTS[KEY_DATA.product_id] : null;
+  const productName = product ? product.name : "";
 
-const target=new Date(CONFIG.opening_timestamp).getTime();
-
-const now=new Date().getTime();
-
-const isOpen=(CONFIG.status==="open")||(now>=target);
-
-if(isOpen){
-
-let cardsHTML="";
-
-CONFIG.cards.forEach(card=>{
-
-cardsHTML+=`
-
-<div class="card">
-
-<h3>${card.title}</h3>
-
-<p>${card.description}</p>
-
-<a href="${card.url}" target="_blank">
-
-${card.button_text}
-
-</a>
-
-</div>
-
-`;
-
-});
-
-render(`
-
-<div class="title">
-
-${CONFIG.title}
-
-</div>
-
-<div class="subtitle">
-
-${CONFIG.subtitle}
-
-</div>
-
-${statusPanel(true)}
-
-<div class="cards">
-
-${cardsHTML}
-
-</div>
-
-<div class="footer">
-
-يتم تحديث محتوى الخزنة باستمرار.
-
-</div>
-
-`);
-  
-}else{
-
-render(`
-
-<div class="title">
-
-${CONFIG.title}
-
-</div>
-
-<div class="subtitle">
-
-الخزنة مغلقة حالياً، سيتم فتحها في الموعد المحدد.
-
-</div>
-
-${statusPanel(false)}
-
-<div class="countdown">
-
-<div class="time-box">
-
-<div id="days" class="time-number">00</div>
-
-<div class="time-label">يوم</div>
-
-</div>
-
-<div class="time-box">
-
-<div id="hours" class="time-number">00</div>
-
-<div class="time-label">ساعة</div>
-
-</div>
-<div class="time-box">
-
-<div id="minutes" class="time-number">00</div>
-
-<div class="time-label">دقيقة</div>
-
-</div>
-
-<div class="time-box">
-
-<div id="seconds" class="time-number">00</div>
-
-<div class="time-label">ثانية</div>
-
-</div>
-
-</div>
-
-<div class="footer">
-
-يتم تحديث محتوى الخزنة باستمرار.
-
-</div>
-
-`);
-
-startCountdown(target);
-
+  return `
+    <div class="key-card">
+      <div class="key-title">مفتاحك الخاص</div>
+      <div class="key-value">${key || "غير معروف"}</div>
+      ${productName ? `<div class="key-product">${productName}</div>` : ''}
+    </div>
+  `;
 }
 
+function statusPanel(open) {
+  return `
+    <div class="vault-box">
+      <div class="status">
+        ${open ? "🟢 الخزنة مفتوحة" : "🔒 الخزنة مغلقة"}
+      </div>
+      <div class="status-date">
+        <div class="date-box">
+          <div class="date-title">آخر فتح</div>
+          <div class="date-value">${CONFIG.last_opening_date || "-"}</div>
+        </div>
+        <div class="date-box">
+          <div class="date-title">الفتح القادم</div>
+          <div class="date-value">${CONFIG.next_opening_date || "-"}</div>
+        </div>
+      </div>
+    </div>
+  `;
 }
 
-function startCountdown(target){
+function showSuccess() {
+  render(`
+    <div class="check">✓</div>
+    <div class="title">تم التحقق</div>
+    <div class="subtitle">تم التحقق من مفتاح عزوة بنجاح.</div>
+    ${keyCard()}
+  `);
 
-function update(){
-
-const now=new Date().getTime();
-
-const distance=target-now;
-
-if(distance<=0){
-
-CONFIG.status="open";
-
-showVault();
-
-return;
-
+  setTimeout(() => {
+    showVault();
+  }, 1200);
 }
 
-const days=Math.floor(distance/(1000*60*60*24));
+function showVault() {
+  const target = new Date(CONFIG.opening_timestamp).getTime();
+  const now = new Date().getTime();
+  const isOpen = (CONFIG.status === "open") || (now >= target);
 
-const hours=Math.floor((distance%(1000*60*60*24))/(1000*60*60));
+  if (isOpen) {
+    let cardsHTML = "";
 
-const minutes=Math.floor((distance%(1000*60*60))/60000);
+    if (CONFIG.cards && CONFIG.cards.length > 0) {
+      CONFIG.cards.forEach(card => {
+        cardsHTML += `
+          <div class="card">
+            <h3>${card.title}</h3>
+            <p>${card.description}</p>
+            <a href="${card.url}" target="_blank">${card.button_text}</a>
+          </div>
+        `;
+      });
+    }
 
-const seconds=Math.floor((distance%(1000*60))/1000);
+    render(`
+      <div class="title">${CONFIG.title || "الخزنة"}</div>
+      <div class="subtitle">${CONFIG.subtitle || ""}</div>
+      ${statusPanel(true)}
+      <div class="cards">
+        ${cardsHTML}
+      </div>
+      <div class="footer">يتم تحديث محتوى الخزنة باستمرار.</div>
+    `);
 
-document.getElementById("days").textContent=String(days).padStart(2,"0");
+  } else {
+    render(`
+      <div class="title">${CONFIG.title || "الخزنة"}</div>
+      <div class="subtitle">الخزنة مغلقة حالياً، سيتم فتحها في الموعد المحدد.</div>
+      ${statusPanel(false)}
+      <div class="countdown">
+        <div class="time-box">
+          <div id="days" class="time-number">00</div>
+          <div class="time-label">يوم</div>
+        </div>
+        <div class="time-box">
+          <div id="hours" class="time-number">00</div>
+          <div class="time-label">ساعة</div>
+        </div>
+        <div class="time-box">
+          <div id="minutes" class="time-number">00</div>
+          <div class="time-label">دقيقة</div>
+        </div>
+        <div class="time-box">
+          <div id="seconds" class="time-number">00</div>
+          <div class="time-label">ثانية</div>
+        </div>
+      </div>
+      <div class="footer">يتم تحديث محتوى الخزنة باستمرار.</div>
+    `);
 
-document.getElementById("hours").textContent=String(hours).padStart(2,"0");
-
-document.getElementById("minutes").textContent=String(minutes).padStart(2,"0");
-
-document.getElementById("seconds").textContent=String(seconds).padStart(2,"0");
-
+    startCountdown(target);
+  }
 }
 
-update();
+function startCountdown(target) {
+  if (countdownInterval) clearInterval(countdownInterval);
 
-setInterval(update,1000);
+  function update() {
+    const now = new Date().getTime();
+    const distance = target - now;
 
+    if (distance <= 0) {
+      clearInterval(countdownInterval);
+      CONFIG.status = "open";
+      showVault();
+      return;
+    }
+
+    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+    const daysEl = document.getElementById("days");
+    const hoursEl = document.getElementById("hours");
+    const minutesEl = document.getElementById("minutes");
+    const secondsEl = document.getElementById("seconds");
+
+    if (daysEl) daysEl.textContent = String(days).padStart(2, "0");
+    if (hoursEl) hoursEl.textContent = String(hours).padStart(2, "0");
+    if (minutesEl) minutesEl.textContent = String(minutes).padStart(2, "0");
+    if (secondsEl) secondsEl.textContent = String(seconds).padStart(2, "0");
+  }
+
+  update();
+  countdownInterval = setInterval(update, 1000);
 }
-(async()=>{
 
-await loadVault();
+// بدء التشغيل
+(async () => {
+  await loadVault();
+  const isValid = await validateKey();
+  if (!isValid) return;
 
-if(!(await validateKey())) return;
-
-setTimeout(()=>{
-
-showSuccess();
-
-},1800);
-
+  setTimeout(() => {
+    showSuccess();
+  }, 1000);
 })();
-  
-document.addEventListener("visibilitychange",()=>{
 
-if(document.visibilityState==="visible"){
-
-const target=new Date(CONFIG.opening_timestamp).getTime();
-
-if(new Date().getTime()>=target){
-
-CONFIG.status="open";
-
-showVault();
-
-}
-
-}
-
+// تحديث الصفحة تلقائياً عند العودة للتبويب
+document.addEventListener("visibilitychange", () => {
+  if (document.visibilityState === "visible" && CONFIG.opening_timestamp) {
+    const target = new Date(CONFIG.opening_timestamp).getTime();
+    if (new Date().getTime() >= target && CONFIG.status !== "open") {
+      CONFIG.status = "open";
+      showVault();
+    }
+  }
 });
 
-  </script>
+</script>
 
 </body>
-
 </html>
