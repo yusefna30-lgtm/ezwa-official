@@ -115,6 +115,19 @@
       cursor: pointer;
     }
 
+    .wa-help-btn {
+      display: inline-block;
+      margin-top: 12px;
+      color: #25D366;
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: bold;
+      border: 1px solid #25D366;
+      padding: 8px 12px;
+      border-radius: 6px;
+      background: rgba(37, 211, 102, 0.05);
+    }
+
     .geo-status {
       font-size: 12px;
       color: #e74c3c;
@@ -135,11 +148,12 @@
     <canvas id="scratch-canvas" width="320" height="170"></canvas>
   </div>
 
-  <!-- قسم لغز الكنز (يظهر بعد الخدش إذا كان هناك لغز) -->
+  <!-- قسم لغز الكنز -->
   <div id="riddle-container" class="riddle-box">
     <p id="riddle-question" style="color:#fff; font-size:14px; margin:0;"></p>
     <input type="text" id="riddle-answer-input" class="riddle-input" placeholder="اكتب إجابة اللغز هنا...">
     <button onclick="checkRiddle()" class="btn-unlock">تأكيد الإجابة وفتح الجائزة 🔓</button>
+    <div id="riddle-feedback"></div>
   </div>
 
   <div id="geo-msg" class="geo-status"></div>
@@ -167,7 +181,6 @@
         initScratchCard('عذراً، تعذر الاتصال بالنظام', false);
       });
 
-    // التحقق من الموقع الجغرافي (الرياض)
     function verifyLocation() {
       document.getElementById('geo-msg').innerText = '📍 جاري التحقق من موقعك لتفعيل الخزنة الجغرافية...';
       if (navigator.geolocation) {
@@ -190,7 +203,6 @@
       initScratchCard(textOnScratch, activeKeyData.is_golden, hasRiddle);
     }
 
-    // إعداد ورسم بطاقة الخدش
     function initScratchCard(rewardText, isGolden, hasRiddle) {
       const canvas = document.getElementById('scratch-canvas');
       const ctx = canvas.getContext('2d');
@@ -226,7 +238,6 @@
         ctx.arc(x, y, 22, 0, Math.PI * 2);
         ctx.fill();
 
-        // إظهار صندوق اللغز عند بدء الخدش إذا كان المفتاح يحتوي لغزاً
         if (hasRiddle) {
           document.getElementById('riddle-container').style.display = 'block';
           document.getElementById('riddle-question').innerText = activeKeyData.riddle;
@@ -242,14 +253,24 @@
       canvas.addEventListener('touchmove', scratch);
     }
 
-    // التحقق من إجابة اللغز
+    // دالة التحقق من الإجابة ورابط الواتساب المباشر
     function checkRiddle() {
       const userAnswer = document.getElementById('riddle-answer-input').value.trim();
+      const feedbackDiv = document.getElementById('riddle-feedback');
+
       if (userAnswer === activeKeyData.riddle_answer) {
         document.getElementById('scratch-reward').innerText = activeKeyData.reward;
-        document.getElementById('riddle-container').innerHTML = '<p style="color:#2ecc71; font-weight:bold;">🎉 إجابة صحيحة! تم فتح الكنز بنجاح.</p>';
+        feedbackDiv.innerHTML = '<p style="color:#2ecc71; font-weight:bold; margin-top:10px;">🎉 إجابة صحيحة! تم فتح الكنز بنجاح.</p>';
       } else {
-        alert('الإجابة غير صحيحة، حاول مجدداً!');
+        const waMsg = encodeURIComponent("مرحباً، محتاج مساعدة في حل لغز خزنة عزوة للمفتاح: " + keyParam);
+        const waLink = `https://wa.me/966502777884?text=${waMsg}`;
+        
+        feedbackDiv.innerHTML = `
+          <p style="color:#e74c3c; font-size:13px; margin-top:10px; margin-bottom:5px;">الإجابة غير صحيحة، حاول مجدداً!</p>
+          <a href="${waLink}" target="_blank" class="wa-help-btn">
+            💬 لم تعرف الجواب؟ طلب المساعدة عبر الواتساب
+          </a>
+        `;
       }
     }
   </script>
