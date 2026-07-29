@@ -3,128 +3,174 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>EZWA | Vault Access</title>
-  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+  <title>EZWA | Vault Cipher</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
   <style>
+    * {
+      box-sizing: border-box;
+    }
     body {
-      background-color: #000;
+      background-color: #050505;
       color: #fff;
       font-family: 'Cairo', sans-serif;
       margin: 0;
-      padding: 20px;
+      padding: 20px 15px;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       min-height: 100vh;
-      box-sizing: border-box;
       text-align: center;
     }
 
     .logo {
-      width: 100px;
-      margin-bottom: 15px;
+      width: 90px;
+      margin-bottom: 10px;
     }
 
     h1 {
-      font-size: 26px;
-      margin-bottom: 5px;
-      color: #fff;
+      font-size: 24px;
+      margin: 5px 0;
+      letter-spacing: 1px;
     }
 
-    p.subtitle {
-      color: #aaa;
-      font-size: 14px;
-      margin-bottom: 25px;
+    .subtitle {
+      color: #888;
+      font-size: 13px;
+      margin-bottom: 15px;
     }
 
-    /* حاوية بطاقة الخدش */
-    .scratch-card-box {
-      position: relative;
-      width: 320px;
-      height: 170px;
-      margin: 15px auto;
-      border-radius: 12px;
-      overflow: hidden;
-      box-shadow: 0 0 15px rgba(212, 175, 55, 0.2);
+    /* العداد التنازلي */
+    .timer-card {
+      background: rgba(212, 175, 55, 0.05);
       border: 1px solid #d4af37;
-      background: #111;
+      border-radius: 10px;
+      padding: 8px 20px;
+      margin-bottom: 15px;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
     }
 
-    .reward-text {
-      position: absolute;
-      width: 100%;
-      height: 100%;
+    .timer-title {
+      font-size: 13px;
+      color: #aaa;
+    }
+
+    .timer-seconds {
+      font-size: 22px;
+      font-weight: 900;
+      color: #e74c3c;
+      font-family: monospace;
+    }
+
+    /* التلميح الخفي */
+    .hint-box {
+      background: #111;
+      border-right: 3px solid #d4af37;
+      padding: 10px 15px;
+      font-size: 13px;
+      color: #ddd;
+      margin-bottom: 15px;
+      max-width: 320px;
+      border-radius: 4px;
+    }
+
+    /* شاشة الشفرة المدخلة */
+    .cipher-display {
+      width: 280px;
+      height: 55px;
+      background: #000;
+      border: 2px solid #d4af37;
+      border-radius: 10px;
       display: flex;
-      flex-direction: column;
       align-items: center;
       justify-content: center;
+      font-size: 28px;
       font-weight: bold;
-      font-size: 15px;
-      padding: 15px;
-      box-sizing: border-box;
-      color: #d4af37;
+      letter-spacing: 10px;
+      color: #ffd700;
+      box-shadow: 0 0 15px rgba(212, 175, 55, 0.2);
+      margin-bottom: 15px;
     }
 
-    #scratch-canvas {
-      position: absolute;
-      top: 0;
-      left: 0;
+    /* لوحة الأرقام التكتيكية */
+    .keypad {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      width: 280px;
+    }
+
+    .key-btn {
+      background: #121212;
+      border: 1px solid #222;
+      color: #fff;
+      font-size: 20px;
+      font-weight: bold;
+      padding: 15px 0;
+      border-radius: 10px;
       cursor: pointer;
-      touch-action: none;
+      user-select: none;
+      transition: all 0.15s ease;
+      font-family: 'Cairo', sans-serif;
+    }
+
+    .key-btn:active {
+      background: #d4af37;
+      color: #000;
+      transform: scale(0.96);
+    }
+
+    .key-btn.action-btn {
+      font-size: 14px;
+      background: #1e1b10;
+      color: #d4af37;
+      border-color: #332a10;
     }
 
     /* هالة المفتاح الذهبي */
-    .golden-mode {
-      border: 2px solid #ffd700 !important;
-      box-shadow: 0 0 35px rgba(255, 215, 0, 0.8) !important;
-      background: linear-gradient(145deg, #2a2408, #000) !important;
+    .golden-glow {
+      box-shadow: 0 0 35px rgba(255, 215, 0, 0.4) !important;
+      border-color: #ffd700 !important;
     }
 
-    /* قسم لغز الكنز */
-    .riddle-box {
+    /* شاشة النتيجة والجائزة */
+    .result-box {
       display: none;
-      margin-top: 15px;
-      width: 320px;
-    }
-
-    input.riddle-input {
-      width: 100%;
-      padding: 10px;
-      border-radius: 8px;
-      border: 1px solid #d4af37;
+      width: 300px;
+      padding: 20px;
       background: #111;
-      color: #fff;
-      text-align: center;
-      font-family: 'Cairo', sans-serif;
-      font-size: 14px;
-      box-sizing: border-box;
+      border: 2px solid #d4af37;
+      border-radius: 12px;
+      margin-top: 15px;
+      box-shadow: 0 0 25px rgba(212, 175, 55, 0.3);
+    }
+
+    .reward-text {
+      color: #ffd700;
+      font-size: 18px;
+      font-weight: bold;
       margin-top: 10px;
     }
 
-    button.btn-unlock {
-      width: 100%;
-      padding: 10px;
-      margin-top: 10px;
-      border-radius: 8px;
-      border: none;
+    .btn-retry {
       background: #d4af37;
       color: #000;
+      border: none;
+      padding: 10px 20px;
+      font-size: 14px;
       font-weight: bold;
-      font-family: 'Cairo', sans-serif;
+      border-radius: 8px;
       cursor: pointer;
-    }
-
-    /* حالة التنبيه الجغرافي */
-    .geo-status {
-      font-size: 13px;
-      color: #e74c3c;
       margin-top: 15px;
-      font-weight: bold;
+      font-family: 'Cairo', sans-serif;
     }
 
-    .geo-status.success {
-      color: #2ecc71;
+    .geo-status {
+      font-size: 12px;
+      color: #e74c3c;
+      margin-top: 10px;
     }
   </style>
 </head>
@@ -132,29 +178,56 @@
 
   <img src="logo.png" alt="EZWA Logo" class="logo" onerror="this.style.display='none'">
 
-  <h1>خزنة عزوة الحصرية</h1>
-  <p class="subtitle" id="sub-title">امسح الكارت واكشف أسرار القطعة</p>
+  <h1>مهمة اختراق الخزنة</h1>
+  <p class="subtitle">أدخل شفرة القطعة السرية قبل انتهاء الوقت</p>
 
-  <!-- كرت الخدش التفاعلي -->
-  <div id="scratch-container" class="scratch-card-box">
-    <div id="scratch-reward" class="reward-text">جاري جلب بيانات الخزنة...</div>
-    <canvas id="scratch-canvas" width="320" height="170"></canvas>
+  <!-- العداد التنازلي -->
+  <div class="timer-card" id="timer-box">
+    <span class="timer-title">الوقت المتبقي:</span>
+    <span class="timer-seconds" id="timer">45</span>
   </div>
 
-  <!-- قسم لغز الكنز -->
-  <div id="riddle-container" class="riddle-box">
-    <p id="riddle-question" style="color:#fff; font-size:14px; margin:0;"></p>
-    <input type="text" id="riddle-answer-input" class="riddle-input" placeholder="اكتب إجابة اللغز هنا...">
-    <button onclick="checkRiddle()" class="btn-unlock">تأكيد الإجابة وفتح الجائزة 🔓</button>
+  <!-- التلميح للبحث في القطعة -->
+  <div class="hint-box" id="hint-box">
+    📍 جاري تحميل التلميح...
   </div>
 
-  <!-- تنبيه الموقع الجغرافي النظيف -->
+  <!-- شاشة عرض الأرقام المدخلة -->
+  <div class="cipher-display" id="cipher-display">____</div>
+
+  <!-- لوحة الأرقام -->
+  <div class="keypad" id="keypad">
+    <button class="key-btn" onclick="pressKey('1')">1</button>
+    <button class="key-btn" onclick="pressKey('2')">2</button>
+    <button class="key-btn" onclick="pressKey('3')">3</button>
+    <button class="key-btn" onclick="pressKey('4')">4</button>
+    <button class="key-btn" onclick="pressKey('5')">5</button>
+    <button class="key-btn" onclick="pressKey('6')">6</button>
+    <button class="key-btn" onclick="pressKey('7')">7</button>
+    <button class="key-btn" onclick="pressKey('8')">8</button>
+    <button class="key-btn" onclick="pressKey('9')">9</button>
+    <button class="key-btn action-btn" onclick="clearCipher()">مسح</button>
+    <button class="key-btn" onclick="pressKey('0')">0</button>
+    <button class="key-btn action-btn" onclick="submitCipher()">تأكيد 🔓</button>
+  </div>
+
+  <!-- شاشة الجائزة / النتيجة -->
+  <div class="result-box" id="result-box">
+    <div id="result-title" style="font-size: 16px;"></div>
+    <div class="reward-text" id="reward-display"></div>
+    <button class="btn-retry" id="retry-btn" style="display:none;" onclick="location.reload()">إعادة المحاولة 🔄</button>
+  </div>
+
   <div id="geo-msg" class="geo-status"></div>
 
   <script>
     const urlParams = new URLSearchParams(window.location.search);
     const keyParam = urlParams.get('key') || 'EZWA001';
     let activeKeyData = null;
+    let inputCode = "";
+    let timeLeft = 45;
+    let timerInterval = null;
+    let isGameOver = false;
 
     fetch('keys.json')
       .then(res => res.json())
@@ -164,107 +237,110 @@
           if (activeKeyData.requires_geo) {
             verifyLocation();
           } else {
-            setupVault();
+            startMission();
           }
         } else {
-          initScratchCard('عذراً، المفتاح غير صحيح ❌', false);
+          document.getElementById('hint-box').innerText = '❌ المفتاح غير صحيح!';
         }
       })
       .catch(() => {
-        initScratchCard('عذراً، تعذر الاتصال بالنظام', false);
+        document.getElementById('hint-box').innerText = '⚠️ تعذر الاتصال بنظام الخزنة.';
       });
 
-    // التحقق من الموقع الجغرافي بدون تعقيدات
     function verifyLocation() {
       const geoMsg = document.getElementById('geo-msg');
-      geoMsg.innerText = '📍 جاري التحقق من موقعك لتفعيل الخزنة الجغرافية...';
-      geoMsg.className = 'geo-status';
+      geoMsg.innerText = '📍 جاري التحقق من الموقع لتفعيل الخزنة الجغرافية...';
 
       if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(
           () => {
-            geoMsg.innerText = '✅ تم تأكيد النطاق الجغرافي بنجاح!';
-            geoMsg.className = 'geo-status success';
-            setupVault();
+            geoMsg.innerText = '';
+            startMission();
           },
           () => {
-            geoMsg.innerText = '📌 الخزنة مغلقة! يجب التواجد في الموقع المخصص وتفعيل الـ GPS لفتح الكنز 🔒';
-            geoMsg.className = 'geo-status';
-            initScratchCard('خزنة مغلقة جغرافياً 🔒', false);
+            geoMsg.innerText = '📌 الخزنة مغلقة! يجب التواجد في الموقع المخصص وتفعيل الـ GPS.';
+            document.getElementById('keypad').style.pointerEvents = 'none';
+            document.getElementById('hint-box').innerText = '🔒 تم قفل اللوحة جغرافياً';
           }
         );
       } else {
-        setupVault();
+        startMission();
       }
     }
 
-    function setupVault() {
-      const hasRiddle = activeKeyData.riddle && activeKeyData.riddle.trim() !== "";
-      const textOnScratch = hasRiddle ? "🧩 تم كشف اللغز! أجب عليه أسفله" : activeKeyData.reward;
+    function startMission() {
+      document.getElementById('hint-box').innerText = '💡 التلميح: ' + (activeKeyData.hint || 'ابحث عن الكود في القطعة');
       
-      initScratchCard(textOnScratch, activeKeyData.is_golden, hasRiddle);
-    }
-
-    // إعداد ورسم بطاقة الخدش
-    function initScratchCard(rewardText, isGolden, hasRiddle) {
-      const canvas = document.getElementById('scratch-canvas');
-      const ctx = canvas.getContext('2d');
-      const container = document.getElementById('scratch-container');
-      
-      document.getElementById('scratch-reward').innerText = rewardText;
-
-      if (isGolden) {
-        container.classList.add('golden-mode');
+      if (activeKeyData.is_golden) {
+        document.getElementById('cipher-display').classList.add('golden-glow');
       }
 
-      ctx.fillStyle = isGolden ? '#d4af37' : '#222222';
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
-      
-      ctx.fillStyle = isGolden ? '#000000' : '#d4af37';
-      ctx.font = 'bold 15px Cairo, sans-serif';
-      ctx.textAlign = 'center';
-      ctx.fillText('اكشط البطاقة لإظهار السر ✍️', canvas.width / 2, canvas.height / 2 + 5);
-
-      let isDrawing = false;
-
-      function scratch(e) {
-        if (!isDrawing) return;
-        const rect = canvas.getBoundingClientRect();
-        const clientX = e.clientX || (e.touches && e.touches[0].clientX);
-        const clientY = e.clientY || (e.touches && e.touches[0].clientY);
-        
-        const x = clientX - rect.left;
-        const y = clientY - rect.top;
-
-        ctx.globalCompositeOperation = 'destination-out';
-        ctx.beginPath();
-        ctx.arc(x, y, 22, 0, Math.PI * 2);
-        ctx.fill();
-
-        if (hasRiddle) {
-          document.getElementById('riddle-container').style.display = 'block';
-          document.getElementById('riddle-question').innerText = activeKeyData.riddle;
+      // بدء العد التنازلي
+      timerInterval = setInterval(() => {
+        if (timeLeft > 0) {
+          timeLeft--;
+          document.getElementById('timer').innerText = timeLeft;
+        } else {
+          endGameTimeout();
         }
-      }
-
-      canvas.addEventListener('mousedown', () => isDrawing = true);
-      canvas.addEventListener('mouseup', () => isDrawing = false);
-      canvas.addEventListener('mousemove', scratch);
-
-      canvas.addEventListener('touchstart', () => isDrawing = true);
-      canvas.addEventListener('touchend', () => isDrawing = false);
-      canvas.addEventListener('touchmove', scratch);
+      }, 1000);
     }
 
-    // التحقق من إجابة اللغز
-    function checkRiddle() {
-      const userAnswer = document.getElementById('riddle-answer-input').value.trim();
-      if (userAnswer === activeKeyData.riddle_answer) {
-        document.getElementById('scratch-reward').innerText = activeKeyData.reward;
-        document.getElementById('riddle-container').innerHTML = '<p style="color:#2ecc71; font-weight:bold; margin-top:15px;">🎉 إجابة صحيحة! تم فتح الكنز بنجاح.</p>';
-      } else {
-        alert('الإجابة غير صحيحة، حاول مجدداً!');
+    function pressKey(num) {
+      if (isGameOver) return;
+      if (inputCode.length < 4) {
+        inputCode += num;
+        updateDisplay();
       }
+    }
+
+    function clearCipher() {
+      if (isGameOver) return;
+      inputCode = "";
+      updateDisplay();
+    }
+
+    function updateDisplay() {
+      const padded = inputCode.padEnd(4, '_');
+      document.getElementById('cipher-display').innerText = padded;
+    }
+
+    function submitCipher() {
+      if (isGameOver || inputCode.length < 4) return;
+
+      if (inputCode === activeKeyData.cipher_code) {
+        // نجاح الاختراق
+        clearInterval(timerInterval);
+        isGameOver = true;
+        
+        document.getElementById('keypad').style.display = 'none';
+        document.getElementById('cipher-display').style.borderColor = '#2ecc71';
+        
+        const resultBox = document.getElementById('result-box');
+        resultBox.style.display = 'block';
+        document.getElementById('result-title').innerHTML = '🎉 <span style="color:#2ecc71;">تم اختراق الخزنة بنجاح!</span>';
+        document.getElementById('reward-display').innerText = activeKeyData.reward;
+      } else {
+        // شفرة خاطئة
+        document.getElementById('cipher-display').style.borderColor = '#e74c3c';
+        setTimeout(() => {
+          document.getElementById('cipher-display').style.borderColor = activeKeyData.is_golden ? '#ffd700' : '#d4af37';
+          clearCipher();
+        }, 600);
+      }
+    }
+
+    function endGameTimeout() {
+      clearInterval(timerInterval);
+      isGameOver = true;
+      document.getElementById('keypad').style.opacity = '0.3';
+      document.getElementById('keypad').style.pointerEvents = 'none';
+      
+      const resultBox = document.getElementById('result-box');
+      resultBox.style.display = 'block';
+      document.getElementById('result-title').innerHTML = '💥 <span style="color:#e74c3c;">انتهى الوقت! أغلقت الخزنة تلقائياً.</span>';
+      document.getElementById('reward-display').innerText = 'حاول مجدداً وكن أسرع في البحث!';
+      document.getElementById('retry-btn').style.display = 'inline-block';
     }
   </script>
 </body>
