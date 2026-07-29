@@ -1,16 +1,20 @@
 [
   {
     "key": "EZWA001",
+    "mode": "hack",
     "is_golden": true,
+    "requires_geo": false,
     "passcode": "2026",
     "hint": "💡 التلميح: ابحث عن الكود المطبوع خلف تاغ القطعة",
     "reward": "مبروك! كشفت الكنز الذهبي: تيشيرت مجاني مع طلبك القادم 🎁"
   },
   {
     "key": "EZWA002",
+    "mode": "scratch",
     "is_golden": false,
-    "passcode": "1234",
-    "hint": "💡 التلميح: الرمز هو أول أربع أرقام متسلسلة",
+    "requires_geo": true,
+    "riddle": "أكمل المثل: الخيل من خيّالها وعزوة من...",
+    "riddle_answer": "رجالها",
     "reward": "كود خصم VIP حصري 20%: EZWA20 🏷️"
   }
 ]
