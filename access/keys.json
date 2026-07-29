@@ -1,14 +1,18 @@
 [
   {
     "key": "EZWA001",
-    "product_id": "P001",
     "is_golden": true,
-    "reward": "مبروك! حصلت على المفتاح الذهبي + تيشيرت مجاني مع طلبك القادم"
+    "requires_geo": false,
+    "riddle": "ما هو الشارع الأشهر لثقافة الشارع والستريت وير في الرياض؟",
+    "riddle_answer": "التحلية",
+    "reward": "مبروك! كشفت الكنز الذهبي: تيشيرت مجاني مع طلبك القادم 🎁"
   },
   {
     "key": "EZWA002",
-    "product_id": "P002",
     "is_golden": false,
-    "reward": "كود خصم VIP حصري 20%: EZWA20"
+    "requires_geo": true,
+    "riddle": "أكمل المثل: الخيل من خيّالها وعزوة من...",
+    "riddle_answer": "رجالها",
+    "reward": "كود خصم VIP حصري 20%: EZWA20 🏷️"
   }
 ]
