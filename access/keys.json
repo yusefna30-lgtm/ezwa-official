@@ -3,12 +3,12 @@
     "key": "EZWA001",
     "product_id": "P001",
     "is_golden": true,
-    "reward": "مبروك! حصلت على المفتاح الذهبي + شدة مجانية مع طلبك القادم"
+    "reward": "مبروك! حصلت على المفتاح الذهبي + تيشيرت مجاني مع طلبك القادم"
   },
   {
     "key": "EZWA002",
     "product_id": "P002",
     "is_golden": false,
-    "reward": "كود خصم حصري 15%: EZWA-VIP"
+    "reward": "كود خصم VIP حصري 20%: EZWA20"
   }
 ]
