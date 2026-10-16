@@ -31,7 +31,7 @@
         .card-container {
             width: 100%;
             max-width: 440px;
-            background: rgba(18, 8, 11, 0.85);
+            background: rgba(18, 8, 11, 0.92);
             backdrop-filter: blur(25px);
             -webkit-backdrop-filter: blur(25px);
             border: 1px solid rgba(212, 175, 55, 0.3);
@@ -43,20 +43,9 @@
         }
 
         .cover-header {
-            height: 160px;
+            height: 120px;
             background: linear-gradient(135deg, #4a0e17 0%, #7c1525 50%, #b48646 100%);
             position: relative;
-            overflow: hidden;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .cover-header::after {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background: linear-gradient(to bottom, rgba(255,255,255,0.1), transparent);
         }
 
         .profile-section {
@@ -64,18 +53,17 @@
             text-align: center;
             position: relative;
             z-index: 2;
-            margin-top: -65px;
+            margin-top: -55px;
         }
         .avatar-box {
-            width: 110px;
-            height: 110px;
+            width: 90px;
+            height: 90px;
             margin: 0 auto;
             border-radius: 50%;
             background: rgba(18, 8, 11, 0.95);
             padding: 4px;
             box-shadow: 0 15px 30px rgba(0,0,0,0.7);
             border: 2px solid rgba(212, 175, 55, 0.6);
-            backdrop-filter: blur(10px);
         }
         .avatar-inner {
             width: 100%;
@@ -86,23 +74,22 @@
             justify-content: center;
             background: linear-gradient(135deg, #2a080d, #12080b);
             color: #d4af37;
-            font-size: 42px;
+            font-size: 36px;
             font-weight: 700;
         }
         
         .name {
-            font-size: 38px;
+            font-size: 34px;
             font-weight: 700;
-            margin-top: 10px;
+            margin-top: 8px;
             color: #ffffff;
             letter-spacing: 1px;
             text-shadow: 0 2px 20px rgba(212, 175, 55, 0.6);
         }
 
         .title {
-            font-size: 15px;
+            font-size: 14px;
             color: #d4af37;
-            margin-top: 2px;
             font-weight: 700;
         }
 
@@ -112,31 +99,25 @@
             gap: 8px;
             background: rgba(212, 175, 55, 0.1);
             color: #e5c158;
-            font-size: 13px;
+            font-size: 12px;
             font-weight: 700;
-            padding: 6px 16px;
+            padding: 5px 14px;
             border-radius: 20px;
-            margin-top: 12px;
+            margin-top: 10px;
             border: 1px solid rgba(212, 175, 55, 0.3);
-            backdrop-filter: blur(10px);
         }
 
-        /* تصميم قسم الكتالوج البصري (Lookbook) */
         .catalog-card {
-            margin: 20px 24px 0 24px;
+            margin: 16px 20px 0 20px;
             background: rgba(255, 255, 255, 0.03);
             border: 1px solid rgba(212, 175, 55, 0.25);
-            border-radius: 24px;
+            border-radius: 20px;
             overflow: hidden;
-            backdrop-filter: blur(12px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
         }
 
         .catalog-img-container {
             width: 100%;
-            height: 380px;
-            overflow: hidden;
-            position: relative;
+            height: 280px;
             background: #12080b;
         }
 
@@ -144,70 +125,55 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 0.5s ease;
-        }
-
-        .catalog-card:hover .catalog-img-container img {
-            transform: scale(1.03);
+            display: block;
         }
 
         .catalog-details {
-            padding: 16px;
+            padding: 14px;
             text-align: right;
         }
 
         .catalog-tag {
-            font-size: 12px;
+            font-size: 11px;
             color: #b48646;
             font-weight: 700;
-            text-transform: uppercase;
             letter-spacing: 1px;
         }
 
         .catalog-title {
-            font-size: 18px;
+            font-size: 16px;
             font-weight: 700;
             color: #ffffff;
-            margin: 4px 0;
+            margin: 3px 0;
         }
 
         .catalog-desc {
-            font-size: 13px;
+            font-size: 12px;
             color: #cbd5e1;
-            margin-bottom: 12px;
-            line-height: 1.5;
+            margin-bottom: 10px;
+            line-height: 1.4;
         }
 
         .buy-btn {
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 10px;
+            gap: 8px;
             background: linear-gradient(135deg, #7c1525, #b48646);
             color: #ffffff;
             text-decoration: none;
-            padding: 12px;
-            border-radius: 14px;
+            padding: 10px;
+            border-radius: 12px;
             font-weight: 700;
-            font-size: 15px;
+            font-size: 14px;
             box-shadow: 0 4px 15px rgba(124, 21, 37, 0.4);
-            transition: all 0.3s ease;
         }
 
-        .buy-btn:hover {
-            opacity: 0.95;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(180, 134, 70, 0.6);
-        }
-
-        /* قائمة الروابط الأخرى */
         .links-list {
-            padding: 18px 24px 0 24px;
+            padding: 14px 20px 0 20px;
             display: flex;
             flex-direction: column;
-            gap: 12px;
-            position: relative;
-            z-index: 2;
+            gap: 10px;
         }
 
         .btn {
@@ -215,33 +181,128 @@
             align-items: center;
             justify-content: space-between;
             background: rgba(255, 255, 255, 0.03);
-            backdrop-filter: blur(12px);
             color: #ffffff;
             text-decoration: none;
-            padding: 14px 18px;
-            border-radius: 18px;
+            padding: 12px 16px;
+            border-radius: 16px;
             font-weight: 700;
-            font-size: 15px;
+            font-size: 14px;
             border: 1px solid rgba(212, 175, 55, 0.15);
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            cursor: pointer;
-            width: 100%;
-        }
-        .btn:hover {
-            background: rgba(212, 175, 55, 0.1);
-            transform: translateY(-2px);
-            border-color: rgba(212, 175, 55, 0.4);
         }
         .btn-content {
             display: flex;
             align-items: center;
-            gap: 14px;
+            gap: 12px;
         }
         .icon-box {
-            width: 36px;
-            height: 36px;
-            border-radius: 12px;
+            width: 32px;
+            height: 32px;
+            border-radius: 10px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 16px;
+            font-size: 14px;
+            background: rgba(212, 175, 55, 0.08);
+            border: 1px solid rgba(212, 175, 55, 0.15);
+        }
+        .btn-arrow {
+            font-size: 11px;
+            color: #b48646;
+        }
+        
+        .btn.store .icon-box { color: #f59e0b; }
+        .btn.whatsapp .icon-box { color: #4ade80; }
+        .btn.snap .icon-box { color: #facc15; }
+        .btn.insta .icon-box { color: #f472b6; }
+        .btn.tiktok .icon-box { color: #ffffff; }
+
+        .footer-brand {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 11px;
+            color: #b48646;
+            letter-spacing: 3px;
+            font-weight: 700;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="card-container">
+        <div class="cover-header"></div>
+        
+        <div class="profile-section">
+            <div class="avatar-box">
+                <div class="avatar-inner">ع</div>
+            </div>
+            <div class="name">عزوة</div>
+            <div class="title">لأزياء الشارع الفاخرة</div>
+            <div class="nfc-badge">
+                <i class="fa-solid fa-wifi"></i>
+                <span>قطعة أصلية مدمجة بتقنية NFC</span>
+            </div>
+        </div>
+
+        <div class="catalog-card">
+            <div class="catalog-img-container">
+                <img src="ezwa-hero.webp" alt="تراثنا بتقنية المستقبل - عزوة">
+            </div>
+            <div class="catalog-details">
+                <div class="catalog-tag">TECH HERITAGE • إصدار حصري</div>
+                <div class="catalog-title">أول تيشرت بتقنية الـ NFC في السعودية</div>
+                <div class="catalog-desc">من نقوش أجدادنا إلى تكنولوجيا الغد - تيشيرت يحمل هويتك ويشارك عالمك بلمسة.</div>
+                
+                <a href="https://ezwa-store.com/" class="buy-btn" target="_blank">
+                    <i class="fa-solid fa-bag-shopping"></i>
+                    <span>اكتشف التجربة - اطلب الآن</span>
+                </a>
+            </div>
+        </div>
+
+        <div class="links-list">
+            <a href="https://ezwa-store.com/" class="btn store" target="_blank">
+                <div class="btn-content">
+                    <div class="icon-box"><i class="fa-solid fa-bag-shopping"></i></div>
+                    <span>زيارة المتجر الإلكتروني</span>
+                </div>
+                <i class="fa-solid fa-chevron-left btn-arrow"></i>
+            </a>
+
+            <a href="https://wa.me/966502777884" class="btn whatsapp" target="_blank">
+                <div class="btn-content">
+                    <div class="icon-box"><i class="fa-brands fa-whatsapp"></i></div>
+                    <span>خدمة العملاء (واتساب)</span>
+                </div>
+                <i class="fa-solid fa-chevron-left btn-arrow"></i>
+            </a>
+
+            <a href="https://www.snapchat.com/add/ezwa.36?share_id=uc7520vuWoQ&locale=ar-SA" class="btn snap" target="_blank">
+                <div class="btn-content">
+                    <div class="icon-box"><i class="fa-brands fa-snapchat"></i></div>
+                    <span>سناب شات</span>
+                </div>
+                <i class="fa-solid fa-chevron-left btn-arrow"></i>
+            </a>
+
+            <a href="https://www.instagram.com/ezwa36?exln=YTBpM2pib3d5amll" class="btn insta" target="_blank">
+                <div class="btn-content">
+                    <div class="icon-box"><i class="fa-brands fa-instagram"></i></div>
+                    <span>إنستغرام</span>
+                </div>
+                <i class="fa-solid fa-chevron-left btn-arrow"></i>
+            </a>
+
+            <a href="https://www.tiktok.com/@ezwa36?_r=1&_t=ZS-9Abk9s78Rb2" class="btn tiktok" target="_blank">
+                <div class="btn-content">
+                    <div class="icon-box"><i class="fa-brands fa-tiktok"></i></div>
+                    <span>تيك توك</span>
+                </div>
+                <i class="fa-solid fa-chevron-left btn-arrow"></i>
+            </a>
+        </div>
+
+        <div class="footer-brand">EZWA LUXURY BRAND</div>
+    </div>
+
+</body>
+</html>
