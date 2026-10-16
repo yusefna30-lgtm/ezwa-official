@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>عزوة | البوابة الرقمية والكتالوج الفاخر</title>
+    <!-- استيراد الخط التراثي الفاخر -->
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Amiri', serif;
+        }
+        body {
+            background: #050203;
+            color: #f3f4f6;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            background-image: 
+                radial-gradient(circle at 20% 20%, rgba(120, 18, 30, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(180, 130, 70, 0.2) 0%, transparent 50%),
+                radial-gradient(circle at 50% 50%, rgba(20, 5, 8, 0.95) 0%, #050203 100%);
+        }
+        
+        .card-container {
+            width: 100%;
+            max-width: 440px;
+            background: rgba(18, 8, 11, 0.92);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 36px;
+            overflow: hidden;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.9), inset 0 1px 0 rgba(212, 175, 55, 0.35);
+            padding-bottom: 35px;
+            position: relative;
+        }
+
+        .cover-header {
+            height: 120px;
+            background: linear-gradient(135deg, #4a0e17 0%, #7c1525 50%, #b48646 100%);
+            position: relative;
+        }
+
+        .profile-section {
+            padding: 0 24px;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+            margin-top: -55px;
+        }
+        .avatar-box {
+            width: 90px;
+            height: 90px;
+            margin: 0 auto;
+            border-radius: 50%;
+            background: rgba(18, 8, 11, 0.95);
+            padding: 4px;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.7);
+            border: 2px solid rgba(212, 175, 55, 0.6);
+        }
+        .avatar-inner {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #2a080d, #12080b);
+            color: #d4af37;
+            font-size: 36px;
+            font-weight: 700;
+        }
+        
+        .name {
+            font-size: 34px;
+            font-weight: 700;
+            margin-top: 8px;
+            color: #ffffff;
+            letter-spacing: 1px;
+            text-shadow: 0 2px 20px rgba(212, 175, 55, 0.6);
+        }
+
+        .title {
+            font-size: 14px;
+            color: #d4af37;
+            font-weight: 700;
+        }
+
+        .nfc-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(212, 175, 55, 0.1);
+            color: #e5c158;
+            font-size: 12px;
+            font-weight: 700;
+            padding: 5px 14px;
+            border-radius: 20px;
+            margin-top: 10px;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+        }
+
+        .catalog-card {
+            margin: 16px 20px 0 20px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(212, 175, 55, 0.25);
+            border-radius: 20px;
+            overflow: hidden;
+        }
+
+        .catalog-img-container {
+            width: 100%;
+            height: 380px;
+            background: #12080b;
+        }
+
+        .catalog-img-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .catalog-details {
+            padding: 14px;
+            text-align: right;
+        }
+
+        .catalog-tag {
+            font-size: 11px;
+            color: #b48646;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .catalog-title {
+            font-size: 16px;
+            font-weight: 700;
+            color: #ffffff;
+            margin: 3px 0;
+        }
+
+        .catalog-desc {
+            font-size: 12px;
+            color: #cbd5e1;
+            margin-bottom: 10px;
+            line-height: 1.4;
+        }
+
+        .buy-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            background: linear-gradient(135deg, #7c1525, #b48646);
+            color: #ffffff;
+            text-decoration: none;
+            padding: 10px;
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: 14px;
+            box-shadow: 0 4px 15px rgba(124, 21, 37, 0.4);
+        }
+
+        .links-list {
+            padding: 14px 20px 0 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .btn {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: rgba(255, 255, 255, 0.03);
+            color: #ffffff;
+            text-decoration: none;
+            padding: 12px 16px;
+            border-radius: 16px;
+            font-weight: 700;
+            font-size: 14px;
+            border: 1px solid rgba(212, 175, 55, 0.15);
+        }
+        .btn-content {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .icon-box {
+            width: 32px;
+            height: 32px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            background: rgba(212, 175, 55, 0.08);
+            border: 1px solid rgba(212, 175, 55, 0.15);
+        }
+        .btn-arrow {
+            font-size: 11px;
+            color: #b48646;
+        }
+        
+        .btn.store .icon-box { color: #f59e0b; }
+        .btn.whatsapp .icon-box { color: #4ade80; }
+        .btn.snap .icon-box { color: #facc15; }
+        .btn.insta .icon-box { color: #f472b6; }
+        .btn.tiktok .icon-box { color: #ffffff; }
+
+        .footer-brand {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 11px;
+            color: #b48646;
+            letter-spacing: 3px;
+            font-weight: 700;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="card-container">
+        <div class="cover-header"></div>
+        
+        <div class="profile-section">
+            <div class="avatar-box">
+                <div class="avatar-inner">ع</div>
+            </div>
+            <div class="name">عزوة</div>
+            <div class="title">لأزياء الشارع الفاخرة</div>
+            <div class="nfc-badge">
+                <i class="fa-solid fa-wifi"></i>
+                <span>قطعة أصلية مدمجة بتقنية NFC</span>
+            </div>
+        </div>
+
+        <div class="catalog-card">
+            <div class="catalog-img-container">
+                <img src="https://raw.githubusercontent.com/yusefna30-lgtm/ezwa-official/refs/heads/main/ezwa/ezwa-hero.webp" alt="تراثنا بتقنية المستقبل - عزوة">
+            </div>
+            <div class="catalog-details">
+                <div class="catalog-tag">TECH HERITAGE • إصدار حصري</div>
+                <div class="catalog-title">أول تيشرت بتقنية الـ NFC في السعودية</div>
+                <div class="catalog-desc">من نقوش أجدادنا إلى تكنولوجيا الغد - تيشيرت يحمل هويتك ويشارك عالمك بلمسة.</div>
+                
+                <a href="https://ezwa-store.com/" class="buy-btn" target="_blank">
+                    <i class="fa-solid fa-bag-shopping"></i>
+                    <span>اكتشف التجربة - اطلب الآن</span>
+                </a>
+            </div>
+        </div>
+
+        <div class="links-list">
+            <a href="https://ezwa-store.com/" class="btn store" target="_blank">
+                <div class="btn-content">
+                    <div class="icon-box"><i class="fa-solid fa-bag-shopping"></i></div>
+                    <span>زيارة المتجر الإلكتروني</span>
+                </div>
+                <i class="fa-solid fa-chevron-left btn-arrow"></i>
+            </a>
+
+            <a href="https://wa.me/966502777884" class="btn whatsapp" target="_blank">
+                <div class="btn-content">
+                    <div class="icon-box"><i class="fa-brands fa-whatsapp"></i></div>
+                    <span>خدمة العملاء (واتساب)</span>
+                </div>
+                <i class="fa-solid fa-chevron-left btn-arrow"></i>
+            </a>
+
+            <a href="https://www.snapchat.com/add/ezwa.36?share_id=uc7520vuWoQ&locale=ar-SA" class="btn snap" target="_blank">
+                <div class="btn-content">
+                    <div class="icon-box"><i class="fa-brands fa-snapchat"></i></div>
+                    <span>سناب شات</span>
+                </div>
+                <i class="fa-solid fa-chevron-left btn-arrow"></i>
+            </a>
+
+            <a href="https://www.instagram.com/ezwa36?exln=YTBpM2pib3d5amll" class="btn insta" target="_blank">
+                <div class="btn-content">
+                    <div class="icon-box"><i class="fa-brands fa-instagram"></i></div>
+                    <span>إنستغرام</span>
+                </div>
+                <i class="fa-solid fa-chevron-left btn-arrow"></i>
+            </a>
+
+            <a href="https://www.tiktok.com/@ezwa36?_r=1&_t=ZS-9Abk9s78Rb2" class="btn tiktok" target="_blank">
+                <div class="btn-content">
+                    <div class="icon-box"><i class="fa-brands fa-tiktok"></i></div>
+                    <span>تيك توك</span>
+                </div>
+                <i class="fa-solid fa-chevron-left btn-arrow"></i>
+            </a>
+        </div>
+
+        <div class="footer-brand">EZWA LUXURY BRAND</div>
+    </div>
+
+</body>
+</html>
